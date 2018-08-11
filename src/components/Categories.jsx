@@ -29,8 +29,15 @@ const customStyles = {
 };
 
 let loginStatus = true;
+let userUID;
+Firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    userUID = user.uid;
 
+  } else {
 
+  }
+});
 
 class Categories extends React.Component {
   constructor(props) {
@@ -68,7 +75,15 @@ class Tables extends React.Component {
     var PostRef = Firebase.database()
       .ref(`Users/${value}/Messages`).push()
     var PostRefKey = PostRef.getKey()
-    Firebase.database().ref(`Users/${value}/Messages`).push(PostRefKey)
+    Firebase.database().ref(`Users/${value}/Messages`)
+      .push({
+        messageKey: PostRefKey,
+        name: userUID,
+        text: "New Message"
+      })
+      .catch((error) => {
+        console.error('Error writing new message to Firebase Database', error);
+      });
     //console.log(PostRef.getKey())
     browserHistory.push({
       pathname: '/messages',

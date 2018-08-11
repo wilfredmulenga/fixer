@@ -18,13 +18,13 @@ class ViewProfile extends Component {
         Firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 userUID = user.uid;
-                console.log(userUID);
+                //console.log(userUID);
 
                 Firebase.database()
                     .ref(`Users/${userUID}`)
                     .on('value', (snapshot) => {
                         const data = snapshot.val()
-                        console.log(snapshot.val())
+                        //console.log(snapshot.val())
                         if ((data == null)) {
                             browserHistory.push('/updateprofile')
 

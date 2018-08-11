@@ -21,17 +21,14 @@ const customStyles = {
 function LoadMessages() {
   const setMessage = function (snap) {
     const data = snap.val();
-    console.log(snap.key)
+    console.log("load", selectedPersonUserUID)
     displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
   }.bind(this);
   Firebase.database()
-    .ref(`Users/${selectedPersonUserUID}/messages/${userUID}`)
+    .ref(`Message/${selectedPersonUserUID}`)
     .limitToLast(12)
     .on('child_added', setMessage);
-  Firebase.database()
-    .ref(`messages/${userUID}`)
-    .limitToLast(12)
-    .on('child_added', setMessage);
+
 };
 function displayMessage(key, name, text, picUrl, imageUrl) {
   const MESSAGE_TEMPLATE =
@@ -85,7 +82,7 @@ class Messages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      messageKey: this.props.location.state.messageKey
+      //  messageKey: this.props.location.state.messageKey
     }
     //this.LoadMessages = this.LoadMessages.bind(this);
     //this.displayMessage = this.displayMessage.bind(this);
@@ -97,12 +94,12 @@ class Messages extends React.Component {
   componentDidMount() {
     LoadMessages();
     this.LoadChatHistory();
-    console.log(this.props.location.state.messageKey);
+    //console.log(this.props.location.state.messageKey);
     document.addEventListener('click', this.handleMouseClick)
   }
 
-  componentWillMount(x) {
-    // this.LoadMessages()
+  componentWillMount() {
+    LoadMessages()
     document.removeEventListener('click', this.handleMouseClick)
     this.props.location.state
       ? (selectedPersonUserUID = this.props.location.state.selectedPersonUserUID)
@@ -126,20 +123,21 @@ class Messages extends React.Component {
     const setChatHistory = function (snap) {
       const data = snap.val();
       let elements = Object.values(data);
+      //console.log("loadchathistory", elements)
       let properties = [];
       for (const index in data) {
         properties.push(data[index])
       }
       // console.log(elements['0'])
-      this.displayChatHistory(elements['0']['name'], elements['0']['text'], elements['0']['userUID'])
+      this.displayChatHistory(elements['2'], elements['1'], elements['0'])
     }.bind(this);
     Firebase.database()
-      .ref(`Users/messages/${userUID}/${selectedPersonUserUID}`)
+      .ref(`Users/${userUID}/Messages`)
       .limitToLast(1)
       .on('child_added', setChatHistory);
   }
 
-  displayChatHistory = (name, text, userUID) => {
+  displayChatHistory = (name, text, messageKey) => {
     const MESSAGE_TEMPLATE =
       '<div class="message-container">' +
       '<div class="spacing"><div class="pic"></div></div>' +
@@ -161,9 +159,9 @@ class Messages extends React.Component {
     div.querySelector('.message').textContent = text;
     div.onclick = function (event) {
       if (event.button === 0) {
-        selectedPersonUserUID = userUID
-        LoadMessages()
+        selectedPersonUserUID = messageKey
       }
+      LoadMessages()
 
     }
 
