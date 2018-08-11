@@ -17,58 +17,6 @@ const customStyles = {
   },
 };
 
-
-function LoadMessages() {
-  const setMessage = function (snap) {
-    const data = snap.val();
-    console.log("load", selectedPersonUserUID)
-    displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
-  }.bind(this);
-  Firebase.database()
-    .ref(`Message/${selectedPersonUserUID}`)
-    .limitToLast(12)
-    .on('child_added', setMessage);
-
-};
-function displayMessage(key, name, text, picUrl, imageUrl) {
-  const MESSAGE_TEMPLATE =
-    '<div class="message-container">' +
-    '<div class="spacing"><div class="pic"></div></div>' +
-    '<div class="message"></div>' +
-    '<div class="name"></div>' +
-    '</div>';
-
-  let div = document.getElementById(key);
-  const messageList = document.getElementById('messages');
-  // If an element for that message does not exists yet we create it.
-  if (!div) {
-    const container = document.createElement('div');
-    container.innerHTML = MESSAGE_TEMPLATE;
-    div = container.firstChild;
-    div.setAttribute('id', key);
-    messageList.appendChild(div);
-  }
-  div.querySelector('.name').textContent = name;
-  div.querySelector('.message').textContent = text;
-  div.querySelector('.pic').style.backgroundImage = `url(${picUrl})`;
-
-  // if (text) { // If the message is text.
-  //     messageElement.textContent = text;
-  //     // Replace all line breaks by <br>.
-  //     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-  //   }
-
-  if (!picUrl) {
-    div.querySelector('.pic').style.backgroundImage =
-      'url(https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png)';
-  }
-
-  // var div = document.getElementById("messages");
-
-  // console.log(text)
-  messageList.scrollTop = messageList.scrollHeight;
-};
-
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userUID = user.uid;
@@ -84,28 +32,30 @@ class Messages extends React.Component {
     this.state = {
       //  messageKey: this.props.location.state.messageKey
     }
-    //this.LoadMessages = this.LoadMessages.bind(this);
-    //this.displayMessage = this.displayMessage.bind(this);
+    this.loadMessages = this.loadMessages.bind(this);
+    this.displayMessage = this.displayMessage.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
     this.messageSubmit = this.messageSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
   }
 
   componentDidMount() {
-    LoadMessages();
+
+    //this.loadMessages();
     this.LoadChatHistory();
     //console.log(this.props.location.state.messageKey);
     document.addEventListener('click', this.handleMouseClick)
   }
 
   componentWillMount() {
-    LoadMessages()
+
+    //this.loadMessages()
     document.removeEventListener('click', this.handleMouseClick)
     this.props.location.state
-      ? (selectedPersonUserUID = this.props.location.state.selectedPersonUserUID)
+      ? (selectedPersonUserUID = this.props.location.state.messageKey)
       : null;
 
-    // console.log(x);
+    //console.log(this.props.location.state.messageKey);
   }
 
   handleMouseClick(event) {
@@ -117,6 +67,57 @@ class Messages extends React.Component {
     alert("hello");
   }
 
+  loadMessages = () => {
+    console.log("loads", selectedPersonUserUID)
+    const setMessage = function (snap) {
+      const data = snap.val();
+      console.log(snap.key)
+      this.displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
+    }.bind(this);
+    Firebase.database()
+      .ref(`Messages/${selectedPersonUserUID}`)
+      .limitToLast(12)
+      .on('child_added', setMessage);
+
+  };
+  displayMessage = (key, name, text, picUrl, imageUrl) => {
+    const MESSAGE_TEMPLATE =
+      '<div class="message-container">' +
+      '<div class="spacing"><div class="pic"></div></div>' +
+      '<div class="message"></div>' +
+      '<div class="name"></div>' +
+      '</div>';
+
+    let div = document.getElementById(key);
+    const messageList = document.getElementById('messages');
+    // If an element for that message does not exists yet we create it.
+    if (!div) {
+      const container = document.createElement('div');
+      container.innerHTML = MESSAGE_TEMPLATE;
+      div = container.firstChild;
+      div.setAttribute('id', key);
+      messageList.appendChild(div);
+    }
+    div.querySelector('.name').textContent = name;
+    div.querySelector('.message').textContent = text;
+    div.querySelector('.pic').style.backgroundImage = `url(${picUrl})`;
+
+    // if (text) { // If the message is text.
+    //     messageElement.textContent = text;
+    //     // Replace all line breaks by <br>.
+    //     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
+    //   }
+
+    if (!picUrl) {
+      div.querySelector('.pic').style.backgroundImage =
+        'url(https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png)';
+    }
+
+    // var div = document.getElementById("messages");
+
+    // console.log(text)
+    messageList.scrollTop = messageList.scrollHeight;
+  };
 
 
   LoadChatHistory = () => {
@@ -157,12 +158,11 @@ class Messages extends React.Component {
     }
     div.querySelector('.name').textContent = name;
     div.querySelector('.message').textContent = text;
-    div.onclick = function (event) {
+    div.onclick = (event) => {
       if (event.button === 0) {
         selectedPersonUserUID = messageKey
       }
-      LoadMessages()
-
+      this.loadMessages()
     }
 
 
@@ -185,10 +185,11 @@ class Messages extends React.Component {
     // messageList.scrollTop = messageList.scrollHeight;
   };
 
+
   saveMessage = (messageText) => {
     // Add a new message entry to the Firebase Database.
     Firebase.database()
-      .ref(`/Users/${selectedPersonUserUID}/messages/${userUID}`)
+      .ref(`/Messages/${selectedPersonUserUID}`)
       // .ref(`/messages/${userUID}${seletcedPersonUserID}`)
       .push({
         name: this.getUserName(),

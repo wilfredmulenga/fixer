@@ -81,6 +81,12 @@ class Tables extends React.Component {
         name: userUID,
         text: "New Message"
       })
+    Firebase.database().ref(`Users/${userUID}/Messages`)
+      .push({
+        messageKey: PostRefKey,
+        name: value,
+        text: "New Message"
+      })
       .catch((error) => {
         console.error('Error writing new message to Firebase Database', error);
       });
