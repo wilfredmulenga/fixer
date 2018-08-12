@@ -30,12 +30,23 @@ const customStyles = {
 
 let loginStatus = true;
 let userUID;
+let displayName = 'Anonymous';
+let pic = 'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png';
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userUID = user.uid;
+    Firebase.database().ref(`Users/${userUID}`).on('value', (snapshot) => {
+      var data = snapshot.val()
+      if (data != null) {
+        displayName = `${data.firstName} ${data.lastName}`;
+        pic = data.pic
+      }
+    })
 
   } else {
-
+    browserHistory.push({
+      pathname: '/phonelogin'
+    })
   }
 });
 
@@ -78,14 +89,16 @@ class Tables extends React.Component {
     Firebase.database().ref(`Users/${value}/Messages`)
       .push({
         messageKey: PostRefKey,
-        name: userUID,
-        text: "New Message"
+        name: displayName,
+        text: "New Message",
+        profilePicUrl: pic
       })
     Firebase.database().ref(`Users/${userUID}/Messages`)
       .push({
         messageKey: PostRefKey,
-        name: value,
-        text: "New Message"
+        name: displayName,
+        text: "New Message",
+        profilePicUrl: pic
       })
       .catch((error) => {
         console.error('Error writing new message to Firebase Database', error);

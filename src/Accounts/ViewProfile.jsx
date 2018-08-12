@@ -10,6 +10,7 @@ class ViewProfile extends Component {
     constructor() {
         super()
         this.handleLoad = this.handleLoad.bind(this)
+        this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
             listOfPeople: ''
         }
@@ -39,6 +40,13 @@ class ViewProfile extends Component {
             }
         });
     }
+
+    handleSignOut() {
+        console.log()
+        Firebase.auth().signOut();
+        browserHistory.push('/');
+    }
+
     componentWillMount() {
         this.handleLoad()
     }
@@ -47,6 +55,9 @@ class ViewProfile extends Component {
         return (
             <div>
                 <Navbar title={'Navbar Page'} />
+                <Button className="mt-3" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                    onClick={this.handleSignOut}>Sign Out</Button>
+
 
                 <div>
 

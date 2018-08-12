@@ -49,7 +49,7 @@ class Messages extends React.Component {
 
   componentWillMount() {
 
-    //this.loadMessages()
+    this.LoadChatHistory()
     document.removeEventListener('click', this.handleMouseClick)
     this.props.location.state
       ? (selectedPersonUserUID = this.props.location.state.messageKey)
@@ -81,6 +81,7 @@ class Messages extends React.Component {
 
   };
   displayMessage = (key, name, text, picUrl, imageUrl) => {
+    console.log('pic', picUrl)
     const MESSAGE_TEMPLATE =
       '<div class="message-container">' +
       '<div class="spacing"><div class="pic"></div></div>' +
@@ -124,13 +125,13 @@ class Messages extends React.Component {
     const setChatHistory = function (snap) {
       const data = snap.val();
       let elements = Object.values(data);
-      //console.log("loadchathistory", elements)
+      console.log("loadchathistory", elements)
       let properties = [];
       for (const index in data) {
         properties.push(data[index])
       }
       // console.log(elements['0'])
-      this.displayChatHistory(elements['2'], elements['1'], elements['0'])
+      this.displayChatHistory(elements['1'], elements['3'], elements['0'])
     }.bind(this);
     Firebase.database()
       .ref(`Users/${userUID}/Messages`)
@@ -154,7 +155,7 @@ class Messages extends React.Component {
       container.innerHTML = MESSAGE_TEMPLATE;
       div = container.firstChild;
       div.setAttribute('id', name);
-      messageList.appendChild(div);
+      (messageList != null) ? messageList.appendChild(div) : null;
     }
     div.querySelector('.name').textContent = name;
     div.querySelector('.message').textContent = text;
