@@ -26,7 +26,7 @@ const customStyles = {
 
 let userUID;
 let hasProfile = false;
-let element = '';
+let userDetails = '';
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userUID = user.uid;
@@ -38,7 +38,7 @@ Firebase.auth().onAuthStateChanged((user) => {
         const data = snapshot.val()
         if ((data != null) && data.firstName != null) {
           hasProfile = true
-          element = data
+          userDetails = data
         }
       });
   } else {
@@ -52,37 +52,37 @@ class UpdateProfile extends Component {
     super(props);
     this.state = {
       signedIn: true,
-      chipData: [{ label: 'Sowing' }, { label: 'Plumbing' }, { label: 'Wood-Work' }],
+      chipData: userDetails.skills,
       input: '',
       selectedFile: ['asa', 'asa'],
-      uploadedImages: [],
+      uploadedImages: userDetails.galleryOfWork,
       file: '',
       imagePreviewUrl: '',
-      profilePic: '',
-      firstName: '',
-      lastName: '',
-      age: '',
-      nrc: '',
-      phoneNumber: '',
-      email: '',
-      city: '',
+      profilePic: userDetails.pic,
+      firstName: userDetails.firstName,
+      lastName: userDetails.lastName,
+      age: userDetails.age,
+      nrc: userDetails.nrc,
+      phoneNumber: userDetails.phoneNumber,
+      email: userDetails.email,
+      city: userDetails.city,
       rating: 3,
       status: 'available',
       reviews: [],
-      briefDescription: '',
-      profession: '',
+      briefDescription: userDetails.briefDescription,
+      profession: userDetails.profession,
       UploadModalOpen: false,
       // skills : [],
       // profilePicPreviewUrl is actually base64 of the image
       profilePicPreviewUrl: '',
       // base64 of uploaded Images
       uploadedImagesBase64: [],
-      userUID: ''
+      userUID: userDetails.userUID
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.addItem = this.addItem.bind(this);
     this.sendData = this.sendData.bind(this);
-    this.handleChangeImages = this.handleChangeImages.bind(this);
+
     this.handleChangeInput = this.handleChangeInput.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeImages = this.handleChangeImages.bind(this);
@@ -251,7 +251,7 @@ class UpdateProfile extends Component {
     if (profilePicPreviewUrl) {
       $profilePicPreview = <img className="img-thumbnail" src={profilePicPreviewUrl} />;
     } else {
-      $profilePicPreview = <img className="img-thumbnail" src={greybackground} />;
+      $profilePicPreview = <img className="img-thumbnail" src={this.state.profilePic} />;
     }
     // Gallery of Work Images
     const { imagePreviewUrl } = this.state;
@@ -261,7 +261,7 @@ class UpdateProfile extends Component {
       this.state.uploadedImages.push($imagePreview);
       this.state.uploadedImagesBase64.push(imagePreviewUrl);
     } else {
-      $imagePreview = <div className="previewText">Please select an Image for Preview</div>;
+      $imagePreview = <img className="img-thumbnail" src={this.state.uploadedImages} />;
     }
     return (
       <div>

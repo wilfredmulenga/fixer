@@ -25,8 +25,8 @@ class ViewProfile extends Component {
                     .ref(`Users/${userUID}`)
                     .on('value', (snapshot) => {
                         const data = snapshot.val()
-                        //console.log(snapshot.val())
-                        if ((data == null)) {
+
+                        if ((data.userUID == null)) {
                             browserHistory.push('/updateprofile')
 
                         } else {
