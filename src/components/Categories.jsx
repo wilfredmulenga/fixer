@@ -267,7 +267,7 @@ class Tables extends React.Component {
                   </div>
 
 
-
+                  {console.log(selectedPerson.skills, "skills")}
                   {/* Modal when user clicks on a specific person */}
                   {(selectedPerson.firstName != '' && selectedPerson.lastName != '' && selectedPerson.age != ''
                     && selectedPerson.city != '' && selectedPerson.briefDescription != '' && selectedPerson.email != ''
@@ -276,51 +276,60 @@ class Tables extends React.Component {
                       isOpen={this.state.modalIsOpen}
                       style={customStyles}
                       contentLabel="Example Modal">
-                      <div className="row">
-                        <div className="col-md-6">
-                          <div className="row">
-                            <img
-                              className="rounded-circle"
-                              src={selectedPerson.pic}
-                              style={{ width: 160, height: 160 }}
-                              alt={'profile pic'}
-                            />
-                            <div className="col-md-6 ml-3">
-                              <b> Name: </b>{`${element.firstName} ${element.lastName}`}
-                              <br />
-                              <b> Skills: </b>{`${element.skills.map((element, i) => (
-                                element.label
-                              ))}`} <br />
-                              <b> City: </b>{element.city} <br />
+                      <div clasName="container ">
+                        <div className=" row mb-3 justify-content-end"
+                        >
+                          <Button
 
-
-                              {/* <Link
-                                to={{
-                                  pathname: '/messages',
-                                  state: { selectedPersonUserUID: element.userUID },
-                                }}> */}
-                              {' '} {console.log(element.userUID)}
-                              <Button className="mt-3" variant='contained'
-                                style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={() => this.handleConnect(element.userUID)}
-                              >Connect</Button>
-                              {/* </Link> */}
-                            </div>
-                          </div>
-                          <h5 className="mt-4 mb-1">Brief Job Description</h5>
-                          {`${element.briefDescription}`}
+                            type="button"
+                            onClick={() => this.setState({
+                              modalIsOpen: false
+                            })}
+                            variant='contained'
+                            color="secondary">
+                            Cancel
+            </Button>
                         </div>
-                        <div className="col-md-6">
-                          <div>
-                            <h5 className="mt-4">Gallery of Work</h5>
-                            {element.galleryOfWork.map((image, key) => (
-                              <div className="row mb-3" key={i}>
-                                <div className="col-md-6">
-                                  <img className="img-thumbnail mr-2" src={image} />
-                                </div>
+                        <div className="row">
 
+                          <div className="col-md-6">
+                            <div className="row">
+                              <img
+                                className="rounded-circle"
+                                src={selectedPerson.pic}
+                                style={{ width: 160, height: 160 }}
+                                alt={'profile pic'}
+                              />
+                              <div className="col-md-6 ml-3">
+                                <b> Name: </b>{`${selectedPerson.firstName} ${selectedPerson.lastName}`}
+                                <br />
+                                <b> Skills: </b>{(selectedPerson.skills) ? selectedPerson.skills.map((element, i) => (
+                                  element.label
+                                )) : null} <br />
+                                <b> City: </b>{selectedPerson.city} <br />
+
+                                <Button className="mt-3" variant='contained'
+                                  style={{ backgroundColor: '#FFF', color: '#000' }}
+                                  onClick={() => this.handleConnect(selectedPerson.userUID)}
+                                >Connect</Button>
+                                {/* </Link> */}
                               </div>
-                            ))}
+                            </div>
+                            <h5 className="mt-4 mb-1">Brief Job Description</h5>
+                            {`${selectedPerson.briefDescription}`}
+                          </div>
+                          <div className="col-md-6">
+                            <div>
+                              <h5 className="mt-4">Gallery of Work</h5>
+                              {(selectedPerson.galleryOfWork) ? selectedPerson.galleryOfWork.map((image, i) => (
+                                <div className="row mb-3" key={i}>
+                                  <div className="col-md-6">
+                                    <img className="img-thumbnail mr-2" src={image} />
+                                  </div>
+
+                                </div>
+                              )) : null}
+                            </div>
                           </div>
                         </div>
                       </div>

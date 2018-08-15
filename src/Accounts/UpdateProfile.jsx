@@ -8,25 +8,10 @@ import greybackground from '../images/greybackground.jpeg';
 import Firebase from '../config/firebase';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root');
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: '50%',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-    // to make the modal scrollable if it is bigger than than the page
-    height: '500px',
-    overflow: 'scroll',
-  },
-};
-
 let userUID;
 let hasProfile = false;
-let userDetails = '';
+let userDetails
+
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userUID = user.uid;
@@ -36,9 +21,10 @@ Firebase.auth().onAuthStateChanged((user) => {
       .ref(`Users/${userUID}`)
       .on('value', (snapshot) => {
         const data = snapshot.val()
-        if ((data != null) && data.firstName != null) {
+        if (data) {
           hasProfile = true
           userDetails = data
+          console.log(userDetails)
         }
       });
   } else {
@@ -48,36 +34,38 @@ Firebase.auth().onAuthStateChanged((user) => {
 
 // Components
 class UpdateProfile extends Component {
+
   constructor(props) {
     super(props);
+    //userDetails = this.props.location.state.userDetails;
     this.state = {
       signedIn: true,
-      chipData: userDetails.skills,
+      chipData: [],
       input: '',
       selectedFile: ['asa', 'asa'],
-      uploadedImages: userDetails.galleryOfWork,
+      uploadedImages: [],
       file: '',
       imagePreviewUrl: '',
-      profilePic: userDetails.pic,
-      firstName: userDetails.firstName,
-      lastName: userDetails.lastName,
-      age: userDetails.age,
-      nrc: userDetails.nrc,
-      phoneNumber: userDetails.phoneNumber,
-      email: userDetails.email,
-      city: userDetails.city,
+      profilePic: '',
+      firstName: '',
+      lastName: '',
+      age: '',
+      nrc: '',
+      phoneNumber: '',
+      email: '',
+      city: '',
       rating: 3,
       status: 'available',
       reviews: [],
-      briefDescription: userDetails.briefDescription,
-      profession: userDetails.profession,
+      briefDescription: '',
+      profession: 'Maid',
       UploadModalOpen: false,
       // skills : [],
       // profilePicPreviewUrl is actually base64 of the image
       profilePicPreviewUrl: '',
       // base64 of uploaded Images
       uploadedImagesBase64: [],
-      userUID: userDetails.userUID
+      userUID: ''
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.addItem = this.addItem.bind(this);
@@ -160,16 +148,6 @@ class UpdateProfile extends Component {
             console.log('write successful');
           }
         },
-    );
-    this.setState({
-      UploadModalOpen: true
-    })
-    setTimeout(
-      function () {
-
-      }
-        .bind(this),
-      2000
     );
     browserHistory.push('/categories')
   }
@@ -417,13 +395,13 @@ class UpdateProfile extends Component {
                       </div>
                     </div>
 
-                    {this.state.chipData.map(data => (
+                    {(this.state.chipData) ? this.state.chipData.map(data => (
                       <Chip
                         // key={data.key}
                         label={data.label}
                         onDelete={this.handleDelete(data)}
                       />
-                    ))}
+                    )) : null}
                   </div>
                 </div>
                 <h3>Gallery of Your Work</h3>
@@ -460,33 +438,25 @@ class UpdateProfile extends Component {
          {$imagePreview}
        </div> */}
                 <div className="row col-md-12 mb-5">
-                  {uploadedImages.map((element, i) => (
+                  {(uploadedImages) ? uploadedImages.map((element, i) => (
                     <div style={{ marginRight: 10 }}>{element}</div>
-                  ))}
+                  )) : null}
                 </div>
 
-              </form>
-              <div className="col-md-12 text-center">
                 {/* To have the page reload after the submit button is pressed put the button inside the form div */}
                 <button
-                  className="btn btn-success" type="submit"
+                  className="btn btn-success" type="submit" //change onClick to onSubmit if you want it not to submit without filling out all the feeds
+
                   onClick={this.sendData}>
                   Update Profile
                </button>
-              </div>
+
+              </form>
+
             </div>
           </div>
         </div>
-        <Modal isOpen={this.state.UploadModalOpen}
 
-          style={customStyles}>
-
-          <div style={{ textAlign: 'center' }}>
-            {/* <img src={} /> */}
-            <h5>Successfully Updated</h5>
-            <h5>View in Categories</h5>
-          </div>
-        </Modal>
       </div>
     );
   }

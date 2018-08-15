@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import Firebase from '../config/firebase';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 
 let element = '';
 let userUID
 class ViewProfile extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.handleLoad = this.handleLoad.bind(this)
         this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
@@ -52,12 +52,10 @@ class ViewProfile extends Component {
     }
     render() {
         const { listOfPeople } = this.state;
+
         return (
             <div>
                 <Navbar title={'Navbar Page'} />
-                <Button className="mt-3" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                    onClick={this.handleSignOut}>Sign Out</Button>
-
 
                 <div>
 
@@ -107,7 +105,8 @@ class ViewProfile extends Component {
                         </div>
                     </div>
                         <div className='mt-5' style={{ textAlign: 'center' }}><Button variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                            onClick={() => browserHistory.push('/updateprofile')}>Update Profile</Button></div>
+                        //onClick={() => browserHistory.push('/updateprofile')}
+                        ><Link to={{ pathname: '/updateprofile', state: { userDetails: listOfPeople } }} >Update Profile</Link></Button></div>
 
                     </div> : <div className="mt-5" style={{ textAlign: 'center' }}><h1>Sign In to View your profile</h1></div>}
 

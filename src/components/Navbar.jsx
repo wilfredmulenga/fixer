@@ -174,17 +174,7 @@ class Navbar extends React.Component {
     }
   }
 
-  componentWillMount() {
-    console.log('component will mount')
-    if (!loginStatus) {
-      this.openSignInModal
-    }
-  }
 
-  componentDidMount() {
-
-
-  }
   render() {
     return (
       <div className="App" id="navbar">
