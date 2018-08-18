@@ -182,7 +182,7 @@ class Navbar extends React.Component {
         <nav className="navbar navbar-expand-lg "
           style={{ backgroundColor: '#182157' }}>
           <Link to="/" className="navbar-brand link">
-            Nchito
+            Fixer
 
          </Link>
           <button
