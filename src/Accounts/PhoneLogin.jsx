@@ -44,12 +44,12 @@ class PhoneLogin extends React.Component {
     handleSignOut() {
 
         Firebase.auth().signOut();
-        browserHistory.push('/')
-
+        browserHistory.push('/phonelogin')
+        console.log('signed out')
     }
     render() {
-        if (this.state.userUID != null) {
-            return <div  >
+        if (this.state.userUID != undefined) {
+            return (<div  >
 
                 <div style={{ marginTop: 50, textAlign: 'center' }}>{
 
@@ -67,12 +67,12 @@ class PhoneLogin extends React.Component {
 
                 }
                 </div>
-            </div>
+            </div>)
         } else {
-            <div>
+            return (<div className='text-center'>
                 <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
-            </div>
+            </div>)
         }
     }
 }

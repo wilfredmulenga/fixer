@@ -12,10 +12,9 @@ import Firebase from './config/firebase'
 import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
-
 let peopleArray = [];
 let currentUser = []
-let userUID //= "kbVNfYtVIcUKwtTXFthTaFB8Xsp1"
+let userUID
 let JobsSnapshot;
 
 
@@ -39,6 +38,10 @@ class App extends Component {
         userUID = user.uid
         console.log(userUID)
       } else {
+        this.setState({
+          loading: true,
+          listOfPeople: peopleArray
+        })
         browserHistory.push('/phonelogin')
       }
     })
@@ -46,15 +49,12 @@ class App extends Component {
       .ref('Users/')
       .on('value', (snapshot) => {
         JobsSnapshot = snapshot.val();
-        //JobsSnapshot = jsonData["Users"]
+        JobsSnapshot = jsonData["Users"]
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
-
           elements = JobsSnapshot[index];
-          if (elements.profession != null) {
-            peopleArray.push(elements);
-          }
+          peopleArray.push(elements);
         }
         let currentUserObject
         for (const index in JobsSnapshot) {
@@ -62,7 +62,7 @@ class App extends Component {
 
           if (JobsSnapshot[index]['userUID'] ===
             userUID
-            // 'kbVNfYtVIcUKwtTXFthTaFB8Xsp1'
+            //'kbVNfYtVIcUKwtTXFthTaFB8Xsp1'
           ) {
             currentUserObject = JobsSnapshot[index]
           }
@@ -70,12 +70,12 @@ class App extends Component {
 
         currentUser.push(currentUserObject)
 
-
-
         this.setState({
           loading: true,
           listOfPeople: peopleArray
         })
+
+
         //console.log("home", peopleArray)
       });
 
@@ -92,12 +92,12 @@ class App extends Component {
           <Route path="/updateprofile" component={UpdateProfile} userData={currentUser} userUID={userUID} />
           <Route path="/messages" component={Messages} userUID={userUID} />
           <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
-          <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
+          <Route path='/phonelogin' component={PhoneLogin} />
         </Router>
 
       );
     } else {
-      return (<div><Loader /></div>)
+      return (<Loader />)
     }
   }
 }

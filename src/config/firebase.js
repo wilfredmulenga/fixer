@@ -3,12 +3,12 @@ import firebase from 'firebase';
 
 
 var config = {
-  apiKey: "AIzaSyDWHKJFtKRsA_YpQMjfnyL4dbUdttkn9Xo",
-  authDomain: "lsk-guide-jobs.firebaseapp.com",
-  databaseURL: "https://lsk-guide-jobs.firebaseio.com",
-  projectId: "lsk-guide-jobs",
-  storageBucket: "gs://lsk-guide-jobs.appspot.com",
-  messagingSenderId: "319224351068"
+  apiKey: "AIzaSyASmpiQKTf7wbshqrxZiFiWNl9-snFBYFc",
+  authDomain: "fixer-2fd6e.firebaseapp.com",
+  databaseURL: "https://fixer-2fd6e.firebaseio.com",
+  projectId: "fixer-2fd6e",
+  storageBucket: "fixer-2fd6e.appspot.com",
+  messagingSenderId: "40670467793"
 };
 firebase.initializeApp(config);
 var Firebase = firebase;
