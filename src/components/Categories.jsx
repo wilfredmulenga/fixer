@@ -39,13 +39,22 @@ Modal.setAppElement('#root');
 class Categories extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modalIsOpen: false,
-      userData: this.props.route.userData,
-      userUID: this.props.route.userUID,
-      currentUser: this.props.route.currentUser[0]
-    };
+    if (!this.props.route.currentUser) {
+      this.state = {
+        modalIsOpen: false,
+        userData: this.props.route.userData,
+        userUID: this.props.route.userUID,
+        currentUser: this.props.route.currentUser[0]
+      };
 
+    } else {
+      this.state = {
+        modalIsOpen: false,
+        userData: this.props.route.userData,
+        userUID: this.props.route.userUID,
+        currentUser: []
+      }
+    }
   }
 
   render() {
@@ -62,16 +71,29 @@ class Categories extends React.Component {
 class Tables extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      listOfPeople: this.props.userData,
-      userUID: this.props.userUID,
-      job: '',
-      selectedPerson: [],
-      loading: true,
-      typeOfUsers: "Search Results: Featured Workers",
-      pic: this.props.currentUser.pic,
-      fullName: `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}`
-    };
+    if (this.props.currentUser.pic) {
+      this.state = {
+        listOfPeople: this.props.userData,
+        userUID: this.props.userUID,
+        job: '',
+        selectedPerson: [],
+        loading: true,
+        typeOfUsers: "Search Results: Featured Workers",
+        pic: this.props.currentUser.pic,
+        fullName: `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}`
+      };
+    } else {
+      this.state = {
+        listOfPeople: this.props.userData,
+        userUID: this.props.userUID,
+        job: '',
+        selectedPerson: [],
+        loading: true,
+        typeOfUsers: "Search Results: Featured Workers",
+        pic: 'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png',
+        fullName: `Annonymous`
+      };
+    }
 
     this.handleClick = this.handleClick.bind(this);
     this.handleCardClick = this.handleCardClick.bind(this);

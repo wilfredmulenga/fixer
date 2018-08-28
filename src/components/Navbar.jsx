@@ -27,13 +27,15 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div className="App" id="navbar">
+      <div id="navbar">
         {/* Navbar section */}
         <nav className="navbar navbar-expand-lg "
           style={{ backgroundColor: '#182157' }}>
-          <Link to="/" className="navbar-brand link" style={{lineHeight: '1.3',fontSize:'23px',
-                         letterSpacing: 'normal',fontWeight: 'bold',textTransform: 'capitalize'}}>
-            Nchito
+          <Link to="/" className="navbar-brand link" style={{
+            lineHeight: '1.3', fontSize: '23px',
+            letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
+          }}>
+            Fixer
 
          </Link>
           <button

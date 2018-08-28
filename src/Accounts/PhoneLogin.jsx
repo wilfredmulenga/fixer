@@ -31,9 +31,9 @@ class PhoneLogin extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state({
+        this.state = {
             userUID: this.props.route.userUID
-        })
+        }
 
 
         this.handleSignOut = this.handleSignOut.bind(this)
@@ -48,7 +48,7 @@ class PhoneLogin extends React.Component {
 
     }
     render() {
-        if (this.state.userUID) {
+        if (this.state.userUID != null) {
             return <div  >
 
                 <div style={{ marginTop: 50, textAlign: 'center' }}>{
