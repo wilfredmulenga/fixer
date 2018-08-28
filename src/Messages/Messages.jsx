@@ -1,4 +1,3 @@
-// Overlay component to where people chat
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Firebase from '../config/firebase';
@@ -6,25 +5,16 @@ import Button from '@material-ui/core/Button';
 
 let selectedPersonUserUID = '';
 let userUID;
-const customStyles = {
-  content: {
-    width: '200px',
-    height: '100px',
-    color: 'grey',
-    absolute: {
-      position: 'absolute',
-    },
-  },
-};
 
-Firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    userUID = user.uid;
-    console.log('signed in');
-  } else {
-    console.log('signed out');
-  }
-});
+
+// Firebase.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     userUID = user.uid;
+//     console.log('signed in');
+//   } else {
+//     console.log('signed out');
+//   }
+// });
 
 class Messages extends React.Component {
   constructor(props) {
@@ -37,6 +27,7 @@ class Messages extends React.Component {
     this.handleMouseClick = this.handleMouseClick.bind(this);
     this.messageSubmit = this.messageSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
+    userUID = this.props.route.userUID
   }
 
   componentDidMount() {
@@ -47,7 +38,7 @@ class Messages extends React.Component {
     document.addEventListener('click', this.handleMouseClick)
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
 
     this.LoadChatHistory()
     document.removeEventListener('click', this.handleMouseClick)
@@ -68,10 +59,10 @@ class Messages extends React.Component {
   }
 
   loadMessages = () => {
-    console.log("loads", selectedPersonUserUID)
+
     const setMessage = function (snap) {
       const data = snap.val();
-      console.log(snap.key)
+
       this.displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
     }.bind(this);
     Firebase.database()
@@ -81,13 +72,13 @@ class Messages extends React.Component {
 
   };
   displayMessage = (key, name, text, picUrl, imageUrl) => {
-    console.log('pic', picUrl)
+
     const MESSAGE_TEMPLATE =
       '<div class="message-container">' +
-      '<div class="spacing"><div class="pic"></div></div>' +
-      '<div class="message"></div>' +
-      '<div class="name"></div>' +
-      '</div>';
+      '<div><img class="pic" className=" rounded-circle"/>' +
+      '<div class="spacing"><div class="message"></div>' +
+      '<div class="name"></div></div>' +
+      '</div></div>';
 
     let div = document.getElementById(key);
     const messageList = document.getElementById('messages');
@@ -101,7 +92,7 @@ class Messages extends React.Component {
     }
     div.querySelector('.name').textContent = name;
     div.querySelector('.message').textContent = text;
-    div.querySelector('.pic').style.backgroundImage = `url(${picUrl})`;
+    div.querySelector('.pic').src = `${picUrl}`;
 
     // if (text) { // If the message is text.
     //     messageElement.textContent = text;
@@ -110,7 +101,7 @@ class Messages extends React.Component {
     //   }
 
     if (!picUrl) {
-      div.querySelector('.pic').style.backgroundImage =
+      div.querySelector('.pic').src =
         'url(https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png)';
     }
 
@@ -122,30 +113,33 @@ class Messages extends React.Component {
 
 
   LoadChatHistory = () => {
+
     const setChatHistory = function (snap) {
       const data = snap.val();
       let elements = Object.values(data);
-      console.log("loadchathistory", elements)
+      //  console.log("loadchathistory", elements)
       let properties = [];
       for (const index in data) {
         properties.push(data[index])
       }
       // console.log(elements['0'])
-      this.displayChatHistory(elements['1'], elements['3'], elements['0'])
+      this.displayChatHistory(elements['1'], elements['3'], elements['0'], elements['2'])
     }.bind(this);
-    Firebase.database()
-      .ref(`Users/${userUID}/Messages`)
-      .limitToLast(1)
-      .on('child_added', setChatHistory);
+    //precaution incase userUID is null, dont push to database. preventing errors
+    (userUID != null) ?
+      Firebase.database()
+        .ref(`Users/${userUID}/Messages`)
+        .limitToLast(1)
+        .on('child_added', setChatHistory) : null
   }
 
-  displayChatHistory = (name, text, messageKey) => {
+  displayChatHistory = (name, text, messageKey, picUrl) => {
     const MESSAGE_TEMPLATE =
       '<div class="message-container">' +
-      '<div class="spacing"><div class="pic"></div></div>' +
-      '<div class="message"></div>' +
-      '<div class="name"></div>' +
-      '</div>';
+      '<div><img class="pic" className=" rounded-circle"/>' +
+      '<div class="spacing"><div class="message"></div>' +
+      '<div class="name"></div></div>' +
+      '</div></div>';
 
     let div = document.getElementById(name);
     const messageList = document.getElementById('chatHistory');
@@ -165,9 +159,7 @@ class Messages extends React.Component {
       }
       this.loadMessages()
     }
-
-
-    // div.querySelector('.pic').style.backgroundImage = `url(${picUrl})`;
+    div.querySelector('.pic').src = `${picUrl}`;
 
     // if (text) { // If the message is text.
     //     messageElement.textContent = text;
@@ -175,10 +167,10 @@ class Messages extends React.Component {
     //     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
     //   }
 
-    // if (!picUrl) {
-    //   div.querySelector('.pic').style.backgroundImage =
-    //     'url(https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png)';
-    // }
+    if (!picUrl) {
+      div.querySelector('.pic').src =
+        'url(https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png)';
+    }
 
     // var div = document.getElementById("messages");
 
@@ -222,19 +214,19 @@ class Messages extends React.Component {
   render() {
     return (
       <div>
-        <Navbar title="Categories" />
-        <div className="container row mt-3">
+        <Navbar />
+        <div className="container row mt-3 mb-3" style={{ height: '80%' }}>
           <div className="col-md-4">
-            <div className='card'>
-              <div id='chatHistory' className='chatHistory'>
+            <div className='card' style={{ height: '100%' }}>
+              <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
               </div>
             </div>
           </div>
           <div className="card justify-content-center col-md-8">
             <div className="card-body justify-content-center">
-              <div className="">
-                <div id="messages" className="message-form" />
-                <div className="messageInputContainer">
+              <div className="d-flex " style={{ flexDirection: "column" }}>
+                <div id="messages" className="message-form " ></div>
+                <div className="messageInputContainer" >
                   <input className="messageInput" type="text" id="messageInput" />
                   <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
                     onClick={this.messageSubmit}>SEND</Button>

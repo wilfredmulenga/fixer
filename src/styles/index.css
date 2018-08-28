@@ -1,29 +1,34 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
 
 .message-form{
-  height: calc(100% - 35)
+  
+  height: 450px;
+  overflow-y: auto
+  
 }
+
 
 .spacing {
   display: table-cell;
   vertical-align: top;
 }
 
+.message-container {
+  border-bottom: 1px solid silver;
+  padding-bottom: 3px;
+  padding-top: 3px
+}
+
 .message-container .pic {
   background-image: url('https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png');
   background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
-  background-size: 30px;
-  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  background-size: 50px;
+  border-radius: 30px;
 }
 
 .message-container .spacing {
-  display: table-cell;
+  display: inline-block;
   vertical-align: top;
 }
 .message-container .message {
@@ -34,13 +39,14 @@ body {
 .message-container .name {
   display: inline-block;
   width: 100%;
-  padding-left: 40px;
+  padding-left: 10px;
   color: #bbb;
   font-style: italic;
   font-size: 12px;
   box-sizing: border-box;
 }
 .messageInputContainer {
+  margin-top: 20;
   display: flex
 }
 
@@ -55,3 +61,65 @@ body {
 .link:hover {
    color: #00F
 }
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+  #modalStyles {
+    top: '50%';
+    left: '50%';
+    right: '50%';
+    bottom: 'auto';
+    margin-right: '-50%';
+    transform: 'translate(-50%, -50%)';
+    width: '90%';
+     /* to make the modal scrollable if it is bigger than than the page */
+    height: '500px';
+    overflow: 'scroll';
+  }
+
+  
