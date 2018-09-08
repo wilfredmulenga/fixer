@@ -5,6 +5,7 @@ import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
 import Loader from './Loader'
+import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
 
@@ -37,6 +38,8 @@ Modal.setAppElement('#root');
 // console.log(newFucn == true)
 
 class Categories extends React.Component {
+
+
   constructor(props) {
     super(props);
     if (!this.props.route.currentUser) {
@@ -55,6 +58,8 @@ class Categories extends React.Component {
         currentUser: []
       }
     }
+
+
   }
 
   render() {
@@ -67,6 +72,8 @@ class Categories extends React.Component {
     );
   }
 }
+
+
 
 class Tables extends React.Component {
   constructor(props) {
@@ -101,35 +108,41 @@ class Tables extends React.Component {
     console.log(this.state.userUID)
   }
 
+
+
   handleConnect = (selectedPersonFirstName, selectedPersonLastName, selectedPersonPic, selectedPersonUserUID) => {
     //console.log("handleConnect", selectedPersonFirstName, selectedPersonLastName, selectedPersonPic, selectedPersonUserUID, this.state.pic)
-    var PostRef = Firebase.database()
-      .ref(`Users/${this.state.userUID}/Messages`).push()
-    var PostRefKey = PostRef.getKey()
-    Firebase.database().ref(`Users/${this.state.userUID}/Messages`)
-      .push({
-        messageKey: PostRefKey,
-        name: `${selectedPersonFirstName} ${selectedPersonLastName}`,
-        text: "Click here to start chatting",
-        profilePicUrl: selectedPersonPic
-      })
-    Firebase.database().ref(`Users/${selectedPersonUserUID}/Messages`)
-      .push({
-        messageKey: PostRefKey,
-        name: this.state.fullName,
-        text: "New Connection",
-        profilePicUrl: this.state.pic
-      })
+    if (this.state.userUID) {
+      var PostRef = Firebase.database()
+        .ref(`Users/${this.state.userUID}/Messages`).push()
+      var PostRefKey = PostRef.getKey()
+      Firebase.database().ref(`Users/${this.state.userUID}/Messages`)
+        .push({
+          messageKey: PostRefKey,
+          name: `${selectedPersonFirstName} ${selectedPersonLastName}`,
+          text: "Click here to start chatting",
+          profilePicUrl: selectedPersonPic
+        })
+      Firebase.database().ref(`Users/${selectedPersonUserUID}/Messages`)
+        .push({
+          messageKey: PostRefKey,
+          name: this.state.fullName,
+          text: "New Connection",
+          profilePicUrl: this.state.pic
+        })
 
-      .catch((error) => {
-        console.error('Error writing new message to Firebase Database', error);
-      });
-    //console.log(PostRef.getKey())
-    browserHistory.push({
-      pathname: '/messages',
-      // search: '?the=search',
-      state: { messageKey: PostRefKey }
-    })
+        .catch((error) => {
+          console.error('Error writing new message to Firebase Database', error);
+        });
+      //console.log(PostRef.getKey())
+      browserHistory.push({
+        pathname: '/messages',
+        // search: '?the=search',
+        state: { messageKey: PostRefKey }
+      })
+    } else {
+      browserHistory.push('/')
+    }
   }
 
   handleCardClick = (selectedPersonUserID) => {
@@ -235,7 +248,7 @@ class Tables extends React.Component {
           >All</Button>
 
         </div>
-        <div className="card col center-align mr-3 ml-3 ">
+        <div className="card col  mr-3 ml-3 ">
           <div className="mt-2 mb-1">{this.state.typeOfUsers}</div>
           {/* <div className="input-group mt-3 row justify-content-center ">
            
@@ -260,7 +273,7 @@ class Tables extends React.Component {
               </span>
             </div>
           </div> */}
-          <div className="row pl-2 mt-4 pr-2">
+          <div className="row pl-4 justify-content-between mt-4 pr-4">
             {/* {
            listOfPeople.forEach((element,i)=>{
              newArray.push(Object.values(element))
@@ -271,17 +284,18 @@ class Tables extends React.Component {
             {
 
               (listOfPeople !== ["empty"]) ? listOfPeople.map((element, i) => (
-                <div className="card col-md-6 pt-3 pb-3 " key={i} >
-                  <div className="row justify-content-around">
-                    <div className="col-md-4 mr-2  justify-content-start">
+                <div className="card col-md-5 pt-3 pb-3 mb-4 " key={i}
+                  onClick={() => this.handleCardClick(element.userUID)}>
+                  <div className="row justify-content-center">
+                    <div className="col-md-6 mb-2 text-center">
                       <img
                         className="card-img-top rounded-circle"
                         src={element.pic}
-                        style={{ width: 160, height: 160 }}
+                        style={{ width: 100, height: 100 }}
                         alt={'profile pic'}
                       />
                     </div>
-                    <div className="col-md-7  text-align-start">
+                    <div className="col-md-6  text-align-center">
                       <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
 
                       <b>  Skills: </b>{(element.skills != undefined) ? `${
@@ -291,8 +305,8 @@ class Tables extends React.Component {
                         }` : null} <br />
                       <b> City:</b> {element.city} <br />
 
-                      <Button className='mt-5' variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                        onClick={() => this.handleCardClick(element.userUID)}>View More</Button>
+                      {/* <Button className='mt-5' variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                        onClick={() => this.handleCardClick(element.userUID)}>View More</Button> */}
                     </div>
 
                     {/* Modal when user clicks on a specific person */}
@@ -307,7 +321,8 @@ class Tables extends React.Component {
                         <div className="container ">
                           <div className=" row mb-3 justify-content-end"
                           >
-                            <Button
+                            <img src={cancelButton} />
+                            {/* <Button
 
                               type="button"
                               onClick={() => this.setState({
@@ -315,18 +330,20 @@ class Tables extends React.Component {
                               })}
                               variant='contained'
                               color="secondary">
-                              Cancel</Button>
+                              Cancel</Button> */}
                           </div>
                           <div className="row">
 
                             <div className="col-md-6">
                               <div className="row">
-                                <img
-                                  className="rounded-circle"
-                                  src={selectedPerson.pic}
-                                  style={{ width: 160, height: 160 }}
-                                  alt={'profile pic'}
-                                />
+                                <div className='text-center col mb-2'>
+                                  <img
+                                    className="rounded-circle"
+                                    src={selectedPerson.pic}
+                                    style={{ width: 160, height: 160 }}
+                                    alt={'profile pic'}
+                                  />
+                                </div>
                                 <div className="col-md-6 ml-3">
                                   <b> Name: </b>{`${selectedPerson.firstName} ${selectedPerson.lastName}`}
                                   <br />

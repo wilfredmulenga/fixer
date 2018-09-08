@@ -4,17 +4,6 @@ import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 
-// let loginStatus = true;
-// Firebase.auth().onAuthStateChanged(function (user) {
-//     if (user) {
-//         loginStatus = true
-
-//     } else {
-//         loginStatus = false
-//     };
-// })
-
-
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',

@@ -61,14 +61,14 @@ class Home extends React.Component {
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
-              <p style={{ fontSize: 30, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Helping you get the right service</p></div>
+              <p style={{ fontSize: 30, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
           </div>
           <div className="container">
             {/* How it Works section */}
             <div className="mt-5 flex mb-5" style={{ textAlign: 'center' }}>
               <h3 className="titles">How It Works</h3>
               <div className="row d-flex justify-content-between">
-                <div className="col-4">
+                <div className="col-md-4 col-sm-12">
                   <img src={workingIcon} alt="working icon" />
                   <div className="card mt-3">
                     <h5 className="card-title mt-3">I want to get hired</h5>
@@ -77,7 +77,7 @@ class Home extends React.Component {
                 </p>
                   </div>
                 </div>
-                <div className=" col-4 ">
+                <div className=" col-md-4 col-sm-12">
                   <img src={workerIcon} alt='worker icon' />
                   <div className='card mt-3'>
                     <h5 className="card-title mt-3">I want to hire someone</h5>
@@ -87,7 +87,7 @@ class Home extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-4">
+                <div className="col-md-4 col-sm-12">
                   <img src={handIcon} alt="hand icon" />
                   <div className="card mt-3">
                     <h5 className="card-title mt-3">I want to be a Partner</h5>
@@ -101,7 +101,7 @@ class Home extends React.Component {
             {/* About */}
             <div className="row">
               <div className="col-6">
-
+                <h1>Contacts</h1>
               </div>
 
             </div>

@@ -12,10 +12,10 @@ import Firebase from './config/firebase'
 import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
-let peopleArray = [];
-let currentUser = []
-let userUID
-let JobsSnapshot;
+var peopleArray = [];
+var currentUser = []
+var userUID
+var JobsSnapshot;
 
 
 class App extends Component {
@@ -32,56 +32,59 @@ class App extends Component {
   //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
 
-    Firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        //handleLoadUsers()
-        userUID = user.uid
-        console.log(userUID)
-      } else {
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray
-        })
-        browserHistory.push('/phonelogin')
+    // Firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     //handleLoadUsers()
+    //     userUID = user.uid
+    //     console.log(userUID)
+    //   } else {
+    //     this.setState({
+    //       loading: true,
+    //       listOfPeople: peopleArray
+    //     })
+    //     browserHistory.push('/')
+    //   }
+    // })
+    // Firebase.database()
+    //   .ref('Users/')
+    //   .on('value', (snapshot) => {
+    //     JobsSnapshot = snapshot.val();
+    JobsSnapshot = jsonData["Users"]
+    let elements;
+    // React doesnt accept objects in states so it has to be converted into an array
+    for (const index in JobsSnapshot) {
+
+      elements = JobsSnapshot[index];
+      if (elements.profession != null) {
+
+        peopleArray.push(elements);
+
       }
-    })
-    Firebase.database()
-      .ref('Users/')
-      .on('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
-        JobsSnapshot = jsonData["Users"]
-        let elements;
-        // React doesnt accept objects in states so it has to be converted into an array
-        for (const index in JobsSnapshot) {
-          elements = JobsSnapshot[index];
-          peopleArray.push(elements);
-        }
-        let currentUserObject
-        for (const index in JobsSnapshot) {
-          //console.log(JobsSnapshot[index]['userUID'])
+    }
+    let currentUserObject;
+    for (const index in JobsSnapshot) {
+      // console.log(JobsSnapshot[index]['userUID'])
 
-          if (JobsSnapshot[index]['userUID'] ===
-            userUID
-            //'kbVNfYtVIcUKwtTXFthTaFB8Xsp1'
-          ) {
-            currentUserObject = JobsSnapshot[index]
-          }
-        }
+      if (
+        JobsSnapshot[index].userUID ===
+        //userUID
+        'O6VVUA0fm1QpOt23QaOctFux27h1'
+      ) {
+        currentUserObject = JobsSnapshot[index];
+      }
+    }
 
-        currentUser.push(currentUserObject)
+    currentUser.push(currentUserObject);
 
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray
-        })
+    this.setState({
+      loading: true,
+      listOfPeople: peopleArray,
+    });
 
-
-        //console.log("home", peopleArray)
-      });
-
-  };
+    // });
+  }
   render() {
-    if (this.state.loading) {
+    if (true) {
       return (
 
         <Router history={browserHistory}>
@@ -92,7 +95,7 @@ class App extends Component {
           <Route path="/updateprofile" component={UpdateProfile} userData={currentUser} userUID={userUID} />
           <Route path="/messages" component={Messages} userUID={userUID} />
           <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
-          <Route path='/phonelogin' component={PhoneLogin} />
+          <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
         </Router>
 
       );
