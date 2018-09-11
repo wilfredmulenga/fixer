@@ -207,7 +207,7 @@ class Tables extends React.Component {
 
     return (
       <div className="row container-fluid justify-content-start mt-4 mb-4">
-        <div className="card col-md-2 ml-3 d-flex">
+        <div className="card col-md-2 ml-3 mb-3 d-flex">
           <div className="mt-3 justify-content-start text-center">
             <h5>BROWSE JOBS</h5>
             <hr />
@@ -248,7 +248,7 @@ class Tables extends React.Component {
           >All</Button>
 
         </div>
-        <div className="card col  mr-3 ml-3 ">
+        <div className="card col ml-3 ">
           <div className="mt-2 mb-1">{this.state.typeOfUsers}</div>
           {/* <div className="input-group mt-3 row justify-content-center ">
            

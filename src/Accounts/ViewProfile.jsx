@@ -36,18 +36,13 @@ class ViewProfile extends Component {
         const { listOfPeople } = this.state;
 
         return (
-            // <UserContext.Consumer>
 
-            //     {
-            //         user => ( // use the user wherever you want
-
-            //             < Fragment >
             <div>
                 <Navbar title={'Navbar Page'} />
                 <div className="row container-fluid justify-content-start mt-4">
-                    <div className="card col-md-2 ml-3 d-flex">
+                    <div className="card col-md-2 ml-3 d-flex mt-2 mb-3">
                         <div className="justify-content-start text-center">
-                            <h3 className='mb-3'>Account </h3>
+                            <h3 className='mb-3 mt-3'>Account </h3>
                         </div>
 
                         <Button variant='contained'
@@ -69,9 +64,9 @@ class ViewProfile extends Component {
                             onClick={this.handleSignOut}>Log Out</Button>
                     </div>
 
-                    <div className="card col center-align mr-3 ml-3">
+                    <div className="card col center-align mt-2  ml-3">
                         {(listOfPeople) ? <div className='container' >
-                            <h3 className='mb-3'>Your Profile</h3>
+                            <h3 className='mb-3 mt-3'>Your Profile</h3>
                             <div className="d-flex justify-content-center ">
 
 
@@ -85,8 +80,8 @@ class ViewProfile extends Component {
 
                                 </div>
                             </div>
-                            <div className="row mt-5">
-                                <div className=" col-lg-6 col-md-6 ">
+                            <div className="row mt-5 justify-content-between">
+                                <div className="mb-3 col-md-5 ">
                                     <h4>Personal Details</h4>
                                     <b>
                                         Name:</b>{`${listOfPeople.firstName} ${listOfPeople.lastName}`}
@@ -106,8 +101,8 @@ class ViewProfile extends Component {
 
                                     <b>Job Desciption: </b>{`${listOfPeople.briefDescription}`}
                                 </div>
-                                <div className=" col-lg-6 col-md-6 ">
-                                    <h4>Gallery of Work</h4>
+                                <div className=" col-md-5 ">
+                                    <h4 className="mb-2">Gallery of Work</h4>
                                     {listOfPeople.galleryOfWork.map((image, i) => (
                                         <div key={i} className="row mb-3" >
                                             <div className="col-md-6">

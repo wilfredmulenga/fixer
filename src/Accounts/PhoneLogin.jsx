@@ -3,6 +3,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
+import Navbar from '../components/Navbar'
 
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -37,32 +38,39 @@ class PhoneLogin extends React.Component {
         console.log('signed out')
     }
     render() {
-        if (this.state.userUID != undefined) {
-            return (<div  >
+        return (
+            <div>
+                <Navbar />
+                {
+                    (this.state.userUID != undefined) ?
+                        (<div className='mt-5' >
 
-                <div style={{ marginTop: 50, textAlign: 'center' }}>{
+                            <div style={{ marginTop: 50, textAlign: 'center' }}>{
 
-                    <div>
-                        <h1> Sign Out of Fixer? </h1>
-                        <div className='row justify-content-center' style={{ textAlign: 'center' }}>
-                            <Button className='mt-5 mr-5' variant='contained' color='secondary'
-                                onClick={this.handleSignOut}>Yes</Button>
-                            <Button className='mt-5 ml-5' variant='contained' color='primary'
-                                onClick={() => browserHistory.push('/categories')}>Not Yet</Button>
-                        </div>
-                    </div>
+                                <div>
+                                    <h1> Sign Out of Fixer? </h1>
+                                    <div className='row justify-content-center' style={{ textAlign: 'center' }}>
+                                        <Button className='mt-5 mr-5' variant='contained' color='secondary'
+                                            onClick={this.handleSignOut}>Yes</Button>
+                                        <Button className='mt-5 ml-5' variant='contained' color='primary'
+                                            onClick={() => browserHistory.push('/categories')}>Not Yet</Button>
+                                    </div>
+                                </div>
 
 
+
+                            }
+                            </div>
+                        </div>)
+                        :
+                        (<div className='mt-5 text-center'>
+                            <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
+                            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
+                        </div>)
 
                 }
-                </div>
-            </div>)
-        } else {
-            return (<div className='text-center'>
-                <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
-            </div>)
-        }
+            </div>
+        )
     }
 }
 

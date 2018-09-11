@@ -6,11 +6,9 @@ import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
 import greybackground from '../images/greybackground.jpeg';
 import Firebase from '../config/firebase';
-import Modal from 'react-modal';
 import { UserContext } from './UserContext';
 import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button'
+
 let userData
 let galleryFiles = []
 let userUID
@@ -135,7 +133,7 @@ class UpdateProfile extends Component {
   };
 
   sendData = (event) => {
-    if (galleryFiles.length == 0) {
+    if (galleryFiles.length === 0) {
       this.setState({
         open: true,
         snackbarText: "Please upload at least one image to Gallery of Work"
@@ -143,8 +141,8 @@ class UpdateProfile extends Component {
     }
     event.preventDefault();
     console.log(this.state.firstName)
-    const { profilePicPreviewUrl, firstName, lastName, email, phoneNumber, city,
-      age, nrc, profession, chipData, briefDescription, uploadedImagesBase64 } = this.state;
+    const { firstName, lastName, email, phoneNumber, city,
+      age, nrc, profession, chipData, briefDescription } = this.state;
 
 
     Firebase.database()
@@ -337,16 +335,16 @@ class UpdateProfile extends Component {
     const { profilePicPreviewUrl } = this.state;
     let $profilePicPreview = null;
     if (profilePicPreviewUrl) {
-      $profilePicPreview = <img alt='profile pic' style={{ width: 300, height: 200 }} className="img-thumbnail" src={profilePicPreviewUrl} />;
+      $profilePicPreview = <img alt='profile pic' style={{ width: 160, height: 160 }} className="img-thumbnail rounded-circle" src={profilePicPreviewUrl} />;
     } else {
-      $profilePicPreview = <img alt='profile pic' style={{ width: 300, height: 200 }} className="img-thumbnail" src={greybackground} />;
+      $profilePicPreview = <img alt='profile pic' style={{ width: 160, height: 160 }} className="img-thumbnail rounded-circle" src={greybackground} />;
     }
     // Gallery of Work Images
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl && !this.state.uploadedImages.includes($imagePreview)
       && !this.state.uploadedImagesBase64.includes(imagePreviewUrl)) {
-      $imagePreview = <img alt='gallery of work' style={{ widht: 200, height: 150 }} className="img-thumbnail" src={imagePreviewUrl} />;
+      $imagePreview = <img alt='gallery of work' style={{ widht: 160, height: 160 }} className="img-thumbnail  " src={imagePreviewUrl} />;
       //this.state.uploadedImages.push($imagePreview);
       //this.state.uploadedImagesBase64.push(imagePreviewUrl);
     }
@@ -375,13 +373,13 @@ class UpdateProfile extends Component {
                         <h3>Update Profile</h3>
                       </div>
                       <div className="row" style={{ marginBottom: 50 }}>
-                        <div className="col-md-6">{$profilePicPreview}</div>
+                        <div className="col-md-6 mb-2 text-center">{$profilePicPreview}</div>
                         <div className="col-md-6">
                           <h5 className="mb-2">Upload Profile picture</h5>
                           <input
                             type="file"
                             className="form-control"
-                            accept="image/*" capture="camera"
+                            accept="image/png, image/jpeg, image/jpg"
                             onChange={this.handleChangeProfilePic}
 
                           />
@@ -412,7 +410,7 @@ class UpdateProfile extends Component {
                           </div>
                         </div>
                         <div className="form-row">
-                          <div className="col mb-3">
+                          <div className="col-md-6 col-sm-12 mb-3">
                             <input
                               type="text"
                               value={this.state.email}
@@ -468,7 +466,7 @@ class UpdateProfile extends Component {
                       </div>
                       <h3>Professional Information</h3>
                       <div className="row">
-                        <div className="col mb-3">
+                        <div className="col-md-6 col-sm-12 mb-3">
                           <select
                             className="form-control mb-3"
                             id="professionSelect"
@@ -492,7 +490,7 @@ class UpdateProfile extends Component {
                             required
                           />
                         </div>
-                        <div className="col mb-3">
+                        <div className="col-md-6 col-sm-12 mb-3">
                           <div className="input-group">
                             <input
                               value={this.state.input}
@@ -534,7 +532,7 @@ class UpdateProfile extends Component {
                                   this.fileInput = input;
                                 }}
                                 className="custom-file-input"
-                                accept="image/*" capture="camera"
+                                accept="image/png, image/jpeg, image/jpg"
                                 required
                               />
                               <label className="custom-file-label" htmlFor="inputGroupFile04">
@@ -565,18 +563,19 @@ class UpdateProfile extends Component {
                           <div className="row">
                             {(uploadedImages) ? uploadedImages.map((element, i) => (
                               <div key={i} style={{ margin: 10 }}>{<img className="img-thumbnail"
-                                style={{ widht: 200, height: 150 }} src={element} />}</div>
+                                alt='gallery of work' style={{ widht: 200, height: 150 }} src={element} />}</div>
                             )) : null}</div></div>
                       </div>
 
                       {/* To have the page reload after the submit button is pressed put the button inside the form div */}
-                      <button
+                      <div className="text-center col-md-12"> <button
                         className="btn btn-success" //type="submit" //change onClick to onSubmit if you want it not to submit without filling out all the fields
 
                         onSubmit={this.sendData}
                       >
                         Update Profile
                </button>
+                      </div>
 
                     </form>
 
@@ -584,7 +583,7 @@ class UpdateProfile extends Component {
                   <Snackbar className="mb-4"
                     anchorOrigin={{
                       vertical: 'bottom',
-                      horizontal: 'center',
+                      horizontal: 'left',
                     }}
                     open={this.state.open} //change to this.state.open to show snackbar
                     autoHideDuration={3000}

@@ -28,17 +28,17 @@ class Navbar extends React.Component {
   render() {
     return (
       <div id="navbar">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark">
           <Link to="/" className="navbar-brand link" style={{
             lineHeight: '1.3', fontSize: '23px',
             letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
           }}>
             Fixer
          </Link>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav mr-auto ">
 
               <li className="nav-item active mr-3">

@@ -1,12 +1,15 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import Firebase from '../config/firebase';
-import landingPage from '../images/landingPage.jpeg';
+import landingPage from '../images/landingPage2.jpg';
 import workingIcon from '../images/icons8-work-light-100.png'
 import handIcon from '../images/icons8-handshake-100.png'
 import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import Loader from './Loader';
+import facebookIcon from '../images/icons8-facebook-32.png'
+import twitterIcon from '../images/icons8-twitter-32.png'
+import instagramIcon from '../images/icons8-instagram-32.png'
 
 
 
@@ -68,7 +71,7 @@ class Home extends React.Component {
             <div className="mt-5 flex mb-5" style={{ textAlign: 'center' }}>
               <h3 className="titles">How It Works</h3>
               <div className="row d-flex justify-content-between">
-                <div className="col-md-4 col-sm-12">
+                <div className="col-md-4 col-sm-12 mb-3">
                   <img src={workingIcon} alt="working icon" />
                   <div className="card mt-3">
                     <h5 className="card-title mt-3">I want to get hired</h5>
@@ -77,7 +80,7 @@ class Home extends React.Component {
                 </p>
                   </div>
                 </div>
-                <div className=" col-md-4 col-sm-12">
+                <div className=" col-md-4 col-sm-12 mb-3">
                   <img src={workerIcon} alt='worker icon' />
                   <div className='card mt-3'>
                     <h5 className="card-title mt-3">I want to hire someone</h5>
@@ -87,7 +90,7 @@ class Home extends React.Component {
                   </div>
                 </div>
 
-                <div className="col-md-4 col-sm-12">
+                <div className="col-md-4 col-sm-12 mb-3">
                   <img src={handIcon} alt="hand icon" />
                   <div className="card mt-3">
                     <h5 className="card-title mt-3">I want to be a Partner</h5>
@@ -98,12 +101,28 @@ class Home extends React.Component {
                 </div>
               </div>
             </div>
-            {/* About */}
-            <div className="row">
-              <div className="col-6">
-                <h1>Contacts</h1>
-              </div>
+          </div>
+          {/* Contact */}
+          <div style={{ backgroundColor: '#343a40', color: 'white', marginTop: '100px ' }} >
 
+            <div className="container pt-3 pb-3">
+              {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
+              <div className="row justify-content-between">
+                <div className="col-md-5 align-items-center">
+
+                  <h4 className="mb-3">Contact</h4>
+                  <h5>Email: info@fixer-app.co</h5>
+                  <h5>Phone: 0979622855</h5>
+                  <h5>Address:</h5>
+
+                </div>
+                <div className="col-md-5">
+                  <h4 className="mb-3">Social Media</h4>
+                  <div className="justify-content-between">
+                    <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' target='_blank'>  <img src={facebookIcon} /></a> <img src={twitterIcon} /> <img src={instagramIcon} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

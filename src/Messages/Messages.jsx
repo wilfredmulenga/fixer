@@ -1,7 +1,10 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import Navbar from '../components/Navbar';
 import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
+import ChatIcon from '../images/icons8-chat-100.png';
+import Media from "react-media";
 
 let selectedPersonUserUID = '';
 let userUID;
@@ -20,21 +23,24 @@ class Messages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loginStatus: true,
+      selectedPersonUsername: '',
+      loadMessagesMobile: false
       //  messageKey: this.props.location.state.messageKey
     }
     this.loadMessages = this.loadMessages.bind(this);
     this.displayMessage = this.displayMessage.bind(this);
-    this.handleMouseClick = this.handleMouseClick.bind(this);
     this.messageSubmit = this.messageSubmit.bind(this);
-    this.handleEnter = this.handleEnter.bind(this);
+
     userUID = this.props.route.userUID
+
   }
 
   componentDidMount() {
 
     //this.loadMessages();
     this.LoadChatHistory();
-    //console.log(this.props.location.state.messageKey);
+
     document.addEventListener('click', this.handleMouseClick)
   }
 
@@ -46,17 +52,11 @@ class Messages extends React.Component {
       ? (selectedPersonUserUID = this.props.location.state.messageKey)
       : null;
 
-    //console.log(this.props.location.state.messageKey);
+
   }
 
-  handleMouseClick(event) {
-    if (event.button === 0) {
-      // this.handleEnter()
-    }
-  }
-  handleEnter() {
-    alert("hello");
-  }
+
+
 
   loadMessages = () => {
 
@@ -75,7 +75,7 @@ class Messages extends React.Component {
 
     const MESSAGE_TEMPLATE =
       '<div class="message-container">' +
-      '<div><img class="pic" className=" rounded-circle"/>' +
+      '<div><img class="smallpic" className=" rounded-circle"/>' +
       '<div class="spacing"><div class="message"></div>' +
       '<div class="name"></div></div>' +
       '</div></div>';
@@ -92,7 +92,7 @@ class Messages extends React.Component {
     }
     div.querySelector('.name').textContent = name;
     div.querySelector('.message').textContent = text;
-    div.querySelector('.pic').src = `${picUrl}`;
+    div.querySelector('.smallpic').src = `${picUrl}`;
 
     // if (text) { // If the message is text.
     //     messageElement.textContent = text;
@@ -117,6 +117,7 @@ class Messages extends React.Component {
     const setChatHistory = function (snap) {
       const data = snap.val();
       let elements = Object.values(data);
+
       //  console.log("loadchathistory", elements)
       let properties = [];
       for (const index in data) {
@@ -130,7 +131,10 @@ class Messages extends React.Component {
       Firebase.database()
         .ref(`Users/${userUID}/Messages`)
         .limitToLast(1)
-        .on('child_added', setChatHistory) : null
+        .on('child_added', setChatHistory) : this.setState({
+          loginStatus: false
+        })
+
   }
 
   displayChatHistory = (name, text, messageKey, picUrl) => {
@@ -155,9 +159,12 @@ class Messages extends React.Component {
     div.querySelector('.message').textContent = text;
     div.onclick = (event) => {
       if (event.button === 0) {
-        selectedPersonUserUID = messageKey
+        selectedPersonUserUID = messageKey;
+
+        (true) ?
+          browserHistory.push({ pathname: '/messagesmobile', state: { selectedPersonUserUID: selectedPersonUserUID, selectedPersonName: name } }) : this.loadMessages()
       }
-      this.loadMessages()
+
     }
     div.querySelector('.pic').src = `${picUrl}`;
 
@@ -212,29 +219,48 @@ class Messages extends React.Component {
     Firebase.auth().currentUser.photoURL ||
     'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png';
   render() {
+
     return (
       <div>
+
         <Navbar />
-        <div className="container row mt-3 mb-3" style={{ height: '80%' }}>
-          <div className="col-md-4">
-            <div className='card' style={{ height: '100%' }}>
-              <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
-              </div>
+        <Media query="(max-width: 769px)"
+          render={() => <div className='card mt-3' style={{ height: '100%' }}>
+            <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
             </div>
-          </div>
-          <div className="card justify-content-center col-md-8">
-            <div className="card-body justify-content-center">
-              <div className="d-flex " style={{ flexDirection: "column" }}>
-                <div id="messages" className="message-form " ></div>
-                <div className="messageInputContainer" >
-                  <input className="messageInput" type="text" id="messageInput" />
-                  <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
-                    onClick={this.messageSubmit}>SEND</Button>
+          </div>}
+          state={{ loadMessagesMobile: true }}
+        />
+        <Media query="(min-width: 770px)"
+          render={() => (this.state.loginStatus) ? <div className="container row mt-3 mb-3" style={{ height: '80%' }}>
+            <div className="col-md-4">
+              <div className='card' style={{ height: '100%' }}>
+                <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+            <div className="card justify-content-center col-md-8">
+              <div className="card-body justify-content-center">
+                <div className="text-center mb-5" style={{ backgroundColor: 'grey' }}>{this.state.selectedPersonUsername}</div>
+                <div className="d-flex " style={{ flexDirection: "column" }}>
+                  <div id="messages" className="message-form " ></div>
+                  <div className="messageInputContainer" >
+                    <input className="messageInput" type="text" id="messageInput" />
+                    <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
+                      onClick={this.messageSubmit}>SEND</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> : <div className="container text-center mt-5" style={{ height: '100%' }} >
+              <img src={ChatIcon} />
+              <h4 className="mt-5">Please login to view Messages</h4>
+              <Button variant='outlined'
+                style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
+                onClick={() => browserHistory.push('/phoneLogin')}>Login</Button>
+            </div>
+          } />
+
       </div>
     );
   }

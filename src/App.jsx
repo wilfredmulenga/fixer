@@ -4,6 +4,7 @@ import './styles/App.css';
 import Categories from './components/Categories';
 import Home from './components/Home';
 import Messages from './Messages/Messages';
+import MessagesMobile from './Messages/MessagesMobile';
 import ViewProfile from './Accounts/ViewProfile';
 import UpdateProfile from './Accounts/UpdateProfile';
 import SignIn from './Accounts/SignIn'
@@ -15,6 +16,7 @@ import PhoneLogin from './Accounts/PhoneLogin'
 var peopleArray = [];
 var currentUser = []
 var userUID
+//= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -32,59 +34,61 @@ class App extends Component {
   //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
 
-    // Firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     //handleLoadUsers()
-    //     userUID = user.uid
-    //     console.log(userUID)
-    //   } else {
-    //     this.setState({
-    //       loading: true,
-    //       listOfPeople: peopleArray
-    //     })
-    //     browserHistory.push('/')
-    //   }
-    // })
-    // Firebase.database()
-    //   .ref('Users/')
-    //   .on('value', (snapshot) => {
-    //     JobsSnapshot = snapshot.val();
-    JobsSnapshot = jsonData["Users"]
-    let elements;
-    // React doesnt accept objects in states so it has to be converted into an array
-    for (const index in JobsSnapshot) {
-
-      elements = JobsSnapshot[index];
-      if (elements.profession != null) {
-
-        peopleArray.push(elements);
-
+    Firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        //handleLoadUsers()
+        userUID = user.uid
+        console.log(userUID)
+      } else {
+        this.setState({
+          loading: true,
+          listOfPeople: peopleArray
+        })
+        browserHistory.push('/')
       }
-    }
-    let currentUserObject;
-    for (const index in JobsSnapshot) {
-      // console.log(JobsSnapshot[index]['userUID'])
+    })
+    Firebase.database()
+      .ref('Users/')
+      .on('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
+        //JobsSnapshot = jsonData["Users"]
+        let elements;
+        // React doesnt accept objects in states so it has to be converted into an array
+        for (const index in JobsSnapshot) {
 
-      if (
-        JobsSnapshot[index].userUID ===
-        //userUID
-        'O6VVUA0fm1QpOt23QaOctFux27h1'
-      ) {
-        currentUserObject = JobsSnapshot[index];
-      }
-    }
+          elements = JobsSnapshot[index];
+          if (elements.profession != null) {
 
-    currentUser.push(currentUserObject);
+            peopleArray.push(elements);
 
-    this.setState({
-      loading: true,
-      listOfPeople: peopleArray,
-    });
+          }
+        }
+        let currentUserObject;
+        for (const index in JobsSnapshot) {
+          // console.log(JobsSnapshot[index]['userUID'])
 
-    // });
+          if (
+            JobsSnapshot[index].userUID ===
+            userUID
+            //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+            //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
+            //'O6VVUA0fm1QpOt23QaOctFux27h1'
+          ) {
+            currentUserObject = JobsSnapshot[index];
+          }
+        }
+
+        currentUser.push(currentUserObject);
+
+        this.setState({
+          loading: true,
+          listOfPeople: peopleArray,
+        });
+
+      });
   }
   render() {
-    if (true) {
+    if (this.state.loading) {
       return (
 
         <Router history={browserHistory}>
@@ -96,6 +100,7 @@ class App extends Component {
           <Route path="/messages" component={Messages} userUID={userUID} />
           <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
+          <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
         </Router>
 
       );
