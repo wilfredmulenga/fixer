@@ -40,10 +40,10 @@ class App extends Component {
         userUID = user.uid
         console.log(userUID)
       } else {
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray
-        })
+        // this.setState({
+        //   loading: true,
+        //   listOfPeople: peopleArray
+        // })
         browserHistory.push('/')
       }
     })
@@ -51,6 +51,7 @@ class App extends Component {
       .ref('Users/')
       .on('value', (snapshot) => {
         JobsSnapshot = snapshot.val();
+
         //JobsSnapshot = jsonData["Users"]
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
@@ -63,6 +64,11 @@ class App extends Component {
 
           }
         }
+        this.setState({
+          loading: true,
+          listOfPeople: peopleArray,
+        });
+
         let currentUserObject;
         for (const index in JobsSnapshot) {
           // console.log(JobsSnapshot[index]['userUID'])
@@ -77,21 +83,15 @@ class App extends Component {
             currentUserObject = JobsSnapshot[index];
           }
         }
-
         currentUser.push(currentUserObject);
-
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray,
-        });
-
       });
   }
   render() {
+
     if (this.state.loading) {
       return (
 
-        <Router history={browserHistory}>
+        < Router history={browserHistory} >
           <Route path="/" component={Home} />
           <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
           <Route path="/signin" component={SignIn} />
@@ -101,7 +101,7 @@ class App extends Component {
           <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
-        </Router>
+        </Router >
 
       );
     } else {

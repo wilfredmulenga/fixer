@@ -4,7 +4,8 @@ import Navbar from './Navbar';
 import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
-import Loader from './Loader'
+import Loader from './Loader';
+import Snackbar from '@material-ui/core/Snackbar';
 import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
@@ -47,7 +48,8 @@ class Categories extends React.Component {
         modalIsOpen: false,
         userData: this.props.route.userData,
         userUID: this.props.route.userUID,
-        currentUser: this.props.route.currentUser[0]
+        currentUser: this.props.route.currentUser[0],
+
       };
 
     } else {
@@ -55,7 +57,8 @@ class Categories extends React.Component {
         modalIsOpen: false,
         userData: this.props.route.userData,
         userUID: this.props.route.userUID,
-        currentUser: []
+        currentUser: [],
+
       }
     }
 
@@ -85,6 +88,7 @@ class Tables extends React.Component {
         job: '',
         selectedPerson: [],
         loading: true,
+        open: false,
         typeOfUsers: "Search Results: Featured Workers",
         pic: this.props.currentUser.pic,
         fullName: `${this.props.currentUser.firstName} ${this.props.currentUser.lastName}`
@@ -96,6 +100,7 @@ class Tables extends React.Component {
         job: '',
         selectedPerson: [],
         loading: true,
+        open: false,
         typeOfUsers: "Search Results: Featured Workers",
         pic: 'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png',
         fullName: `Annonymous`
@@ -105,9 +110,12 @@ class Tables extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleCardClick = this.handleCardClick.bind(this);
     this.handleConnect = this.handleConnect.bind(this);
-    console.log(this.state.userUID)
-  }
+    this.handleClose = this.handleClose.bind(this)
 
+  }
+  handleClose = () => {
+    this.setState({ open: false })
+  }
 
 
   handleConnect = (selectedPersonFirstName, selectedPersonLastName, selectedPersonPic, selectedPersonUserUID) => {
@@ -141,7 +149,7 @@ class Tables extends React.Component {
         state: { messageKey: PostRefKey }
       })
     } else {
-      browserHistory.push('/')
+      this.setState({ open: true })
     }
   }
 
@@ -174,7 +182,7 @@ class Tables extends React.Component {
     this.setState({
       listOfPeople: filterByProfession
     })
-    console.log(filterByProfession)
+
     switch (value) {
       case "Maid": this.setState({
         typeOfUsers: "Search Results: Maids"
@@ -385,6 +393,19 @@ class Tables extends React.Component {
               )) : <Loader />}
           </div>
         </div>
+        <Snackbar className="mb-4"
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open} //change to this.state.open to show snackbar
+          autoHideDuration={3000}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">Login first to start Messaging</span>}
+        />
       </div >
     );
   }

@@ -93,11 +93,7 @@ class UpdateProfile extends Component {
     this.saveImageMessage = this.saveImageMessage.bind(this)
     this.saveGalleryFiles = this.saveGalleryFiles.bind(this)
   }
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
+  handleClose = () => {
     this.setState({ open: false });
   };
 
