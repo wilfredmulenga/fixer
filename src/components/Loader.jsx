@@ -1,18 +1,11 @@
 import React from 'react';
-import '../styles/loader.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loader = () => (
-    <div className="sk-cube-grid">
-      <div className="sk-cube sk-cube1" />
-      <div className="sk-cube sk-cube2" />
-      <div className="sk-cube sk-cube3" />
-      <div className="sk-cube sk-cube4" />
-      <div className="sk-cube sk-cube5" />
-      <div className="sk-cube sk-cube6" />
-      <div className="sk-cube sk-cube7" />
-      <div className="sk-cube sk-cube8" />
-      <div className="sk-cube sk-cube9" />
-    </div>
+  <div style={{ height: 'inherit' }}
+    class="text-center align-items-center">
+    <CircularProgress style={{ marginTop: 200, color: '#343a40' }} size={75} /></div>
+
 );
 
 export default Loader;

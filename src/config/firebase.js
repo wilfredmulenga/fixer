@@ -1,14 +1,17 @@
 //firebase configuration
-import firebase from 'firebase';
+const firebase = require('firebase/app')
+require('firebase/auth');
+require('firebase/database');
+require('firebase/storage');
 
 
 var config = {
-  apiKey: "AIzaSyASmpiQKTf7wbshqrxZiFiWNl9-snFBYFc",
-  authDomain: "fixer-2fd6e.firebaseapp.com",
-  databaseURL: "https://fixer-2fd6e.firebaseio.com",
-  projectId: "fixer-2fd6e",
-  storageBucket: "fixer-2fd6e.appspot.com",
-  messagingSenderId: "40670467793"
+  apiKey: "AIzaSyCQQOqoAv9gfqTqtpXgLVEFO-0MFb7MFDw",
+  authDomain: "fixer-test.firebaseapp.com",
+  databaseURL: "https://fixer-test.firebaseio.com",
+  projectId: "fixer-test",
+  storageBucket: "fixer-test.appspot.com",
+  messagingSenderId: "539870130177"
 };
 firebase.initializeApp(config);
 var Firebase = firebase;

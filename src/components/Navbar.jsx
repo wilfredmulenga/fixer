@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Firebase from '../config/firebase';
 import Modal from 'react-modal';
 import Button from '@material-ui/core/Button';
+import brandImage from '../images/fixer-logo-v3.jpg'
 
 
 let loginStatus
@@ -33,6 +34,7 @@ class Navbar extends React.Component {
             lineHeight: '1.3', fontSize: '23px',
             letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
           }}>
+            {/* <img src={brandImage} width="30" height="30" class="d-inline-block align-top" alt=""></img> */}
             Fixer
          </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

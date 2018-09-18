@@ -10,9 +10,14 @@ const uiConfig = {
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
     signInSuccessUrl: '/',
+
     // We will display Google and Facebook as auth providers.
     signInOptions: [
-        Firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        {
+            provider: Firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+            defaultCountry: 'ZM'
+        },
+
     ]
 };
 
