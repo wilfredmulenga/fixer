@@ -279,7 +279,7 @@ class UpdateProfile extends Component {
           lastName: value,
         });
         break;
-      case 'Phone Number':
+      case 'Phone Number e.g 0979999999':
         this.setState({
           phoneNumber: value,
         });
@@ -419,12 +419,14 @@ class UpdateProfile extends Component {
                           <div className="col mb-3">
                             <input
                               type="number"
+                              style={{ display: 'inline-block' }}
                               value={this.state.phoneNumber}
                               onChange={this.handleChangeInput}
                               className="form-control"
-                              placeholder="Phone Number"
+                              placeholder="Phone Number e.g 0979999999"
                               required
-                            />
+                              pattern="[0-9]{9,9}" />
+                            <span className="validity"></span>
                           </div>
                         </div>
                         <div className="form-row">
@@ -450,13 +452,15 @@ class UpdateProfile extends Component {
                           </div>
                           <div className="col-md-3 mb-3">
                             <input
-                              type="number"
+                              style={{ display: 'inline-block' }}
+                              type="text"
                               value={this.state.nrc}
                               onChange={this.handleChangeInput}
                               className="form-control"
                               placeholder="NRC Number"
                               required
-                            />
+                              pattern="[0-9,/]{9,11}" />
+                            <span className="validity"></span>
                           </div>
                         </div>
                       </div>

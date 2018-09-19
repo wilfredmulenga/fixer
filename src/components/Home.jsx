@@ -77,7 +77,7 @@ class Home extends React.Component {
                     <div className="card mt-3">
                       <h5 className="card-title mt-3">I want to get hired</h5>
                       <p className="card-text">
-                        Our platform creates lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
+                        Our platform lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
                 </p>
                     </div>
                   </div>

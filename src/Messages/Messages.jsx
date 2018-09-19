@@ -146,7 +146,8 @@ class Messages extends React.Component {
       '</div></div>';
 
     let div = document.getElementById(name);
-    const messageList = document.getElementById('chatHistory');
+    const messageList = document.getElementById('chatHistory') || document.getElementById('chatHistoryMobile');
+    console.log(messageList)
     // If an element for that message does not exists yet we create it.
     if (!div) {
       const container = document.createElement('div');
@@ -160,11 +161,19 @@ class Messages extends React.Component {
     div.onclick = (event) => {
       if (event.button === 0) {
         selectedPersonUserUID = messageKey;
-
-        (true) ?
-          browserHistory.push({ pathname: '/messagesmobile', state: { selectedPersonUserUID: selectedPersonUserUID, selectedPersonName: name } }) : this.loadMessages()
+        if (messageList == document.getElementById('chatHistoryMobile')) {
+          browserHistory.push({
+            pathname: '/messagesmobile',
+            state: {
+              selectedPersonUserUID: selectedPersonUserUID,
+              selectedPersonName: name
+            }
+          })
+        } else if (messageList == document.getElementById('chatHistory')) {
+          console.log("do this")
+          this.loadMessages()
+        }
       }
-
     }
     div.querySelector('.pic').src = `${picUrl}`;
 
@@ -219,17 +228,16 @@ class Messages extends React.Component {
     Firebase.auth().currentUser.photoURL ||
     'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png';
   render() {
-
+    console.log(this.state.loadMessagesMobile)
     return (
       <div>
 
         <Navbar />
         <Media query="(max-width: 769px)"
           render={() => <div className='card mt-3' style={{ height: '100%' }}>
-            <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
+            <div id='chatHistoryMobile' className='chatHistory' style={{ padding: 8, height: '100%' }}>
             </div>
           </div>}
-          state={{ loadMessagesMobile: true }}
         />
         <Media query="(min-width: 770px)"
           render={() => (this.state.loginStatus) ? <div className="container row mt-3 mb-3" style={{ height: '80%' }}>
@@ -245,7 +253,7 @@ class Messages extends React.Component {
                 <div className="d-flex " style={{ flexDirection: "column" }}>
                   <div id="messages" className="message-form " ></div>
                   <div className="messageInputContainer" >
-                    <input className="messageInput" type="text" id="messageInput" />
+                    <input className="messageInput col" type="text" id="messageInput" />
                     <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
                       onClick={this.messageSubmit}>SEND</Button>
                   </div>
