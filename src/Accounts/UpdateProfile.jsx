@@ -377,7 +377,7 @@ class UpdateProfile extends Component {
                             className="form-control"
                             accept="image/png, image/jpeg, image/jpg"
                             onChange={this.handleChangeProfilePic}
-
+                            required
                           />
                         </div>
                       </div>

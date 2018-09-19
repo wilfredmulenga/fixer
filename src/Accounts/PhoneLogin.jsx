@@ -15,7 +15,8 @@ const uiConfig = {
     signInOptions: [
         {
             provider: Firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-            defaultCountry: 'ZM'
+            defaultCountry: 'ZM',
+            //defaultNationalNumber: '979 99 99',
         },
 
     ]
@@ -41,6 +42,7 @@ class PhoneLogin extends React.Component {
         Firebase.auth().signOut();
         browserHistory.push('/phonelogin')
         console.log('signed out')
+        return false;
     }
     render() {
         return (
