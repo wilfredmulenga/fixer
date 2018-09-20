@@ -13,6 +13,7 @@ let userData
 let galleryFiles = []
 let userUID
 class UpdateProfile extends Component {
+
   constructor(props) {
     super(props);
     userData = this.props.route.userData['0'];
@@ -349,271 +350,251 @@ class UpdateProfile extends Component {
     // }
     // rename the following to better names
     return (
-      <UserContext.Consumer>
-
-        {
-          user => ( // use the user wherever you want
-            <Fragment>
-              <Navbar title={'Navbar Page'} />
-              {
-                // this.state.signedIn ?  null   :  <SignIn loginStatus={this.state.signedIn}/>
-              }
-
-              <div className="container justify-content-center">
-                <div className="card">
-                  <div className="card-body">
-                    <form
-                      className="needs-validation" onSubmit={this.sendData}
-                    >
-                      <div className="card-title">
-                        <h3>Update Profile</h3>
-                      </div>
-                      <div className="row" style={{ marginBottom: 50 }}>
-                        <div className="col-md-6 mb-2 text-center">{$profilePicPreview}</div>
-                        <div className="col-md-6">
-                          <h5 className="mb-2">Upload Profile picture</h5>
-                          <input
-                            type="file"
-                            className="form-control"
-                            accept="image/png, image/jpeg, image/jpg"
-                            onChange={this.handleChangeProfilePic}
-                            required
-                          />
-                        </div>
-                      </div>
-                      <h3>Personal Information</h3>
-                      <div className="mb-5">
-                        <div className="form-row">
-                          <div className="col mb-3">
-                            <input
-                              type="text"
-                              value={this.state.firstName}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="First Name"
-                              required
-                            />
-                          </div>
-                          <div className="col mb-3">
-                            <input
-                              type="text"
-                              value={this.state.lastName}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="Last Name"
-                              required
-                            />
-                          </div>
-                        </div>
-                        <div className="form-row">
-                          <div className="col-md-6 col-sm-12 mb-3">
-                            <input
-                              type="text"
-                              value={this.state.email}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="Email"
-                              required
-                            />
-                          </div>
-                          <div className="col mb-3">
-                            <input
-                              type="number"
-                              style={{ display: 'inline-block' }}
-                              value={this.state.phoneNumber}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="Phone Number e.g 0979999999"
-                              required
-                              pattern="[0-9]{9,9}" />
-                            <span className="validity"></span>
-                          </div>
-                        </div>
-                        <div className="form-row">
-                          <div className="col-md-6 mb-3">
-                            <input
-                              type="text"
-                              value={this.state.city}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="City"
-                              required
-                            />
-                          </div>
-                          <div className="col-md-3 mb-3">
-                            <input
-                              type="number"
-                              value={this.state.age}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="Age"
-                              required
-                            />
-                          </div>
-                          <div className="col-md-3 mb-3">
-                            <input
-                              style={{ display: 'inline-block' }}
-                              type="text"
-                              value={this.state.nrc}
-                              onChange={this.handleChangeInput}
-                              className="form-control"
-                              placeholder="NRC Number"
-                              required
-                              pattern="[0-9,/]{9,11}" />
-                            <span className="validity"></span>
-                          </div>
-                        </div>
-                      </div>
-                      <h3>Professional Information</h3>
-                      <div className="row">
-                        <div className="col-md-6 col-sm-12 mb-3">
-                          <select
-                            className="form-control mb-3"
-                            id="professionSelect"
-                            onChange={this.handleProfessionChange}>
-                            <option value={'Maid'}>Maid</option>
-                            <option value={'Electrician'}>Electrician</option>
-                            <option value={'Carpenter'}>Carpenter</option>
-                            {/* <option value={'Plumber'}>Plumber</option>
+      <div>
+        <Navbar title={'Navbar Page'} />
+        <div className="container justify-content-center">
+          <div className="card">
+            <div className="card-body">
+              <form
+                className="needs-validation" onSubmit={this.sendData}
+              >
+                <div className="card-title">
+                  <h3>Update Profile</h3>
+                </div>
+                <div className="row" style={{ marginBottom: 50 }}>
+                  <div className="col-md-6 mb-2 text-center">{$profilePicPreview}</div>
+                  <div className="col-md-6">
+                    <h5 className="mb-2">Upload Profile picture</h5>
+                    <input
+                      type="file"
+                      className="form-control"
+                      accept="image/png, image/jpeg, image/jpg"
+                      onChange={this.handleChangeProfilePic}
+                      required
+                    />
+                  </div>
+                </div>
+                <h3>Personal Information</h3>
+                <div className="mb-5">
+                  <div className="form-row">
+                    <div className="col mb-3">
+                      <input
+                        type="text"
+                        value={this.state.firstName}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="First Name"
+                        required
+                      />
+                    </div>
+                    <div className="col mb-3">
+                      <input
+                        type="text"
+                        value={this.state.lastName}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="Last Name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-row">
+                    <div className="col-md-6 col-sm-12 mb-3">
+                      <input
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="Email"
+                        required
+                      />
+                    </div>
+                    <div className="col mb-3">
+                      <input
+                        type="number"
+                        style={{ display: 'inline-block' }}
+                        value={this.state.phoneNumber}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="Phone Number e.g 0979999999"
+                        required
+                        pattern="[0-9]{9,9}" />
+                      <span className="validity"></span>
+                    </div>
+                  </div>
+                  <div className="form-row">
+                    <div className="col-md-6 mb-3">
+                      <input
+                        type="text"
+                        value={this.state.city}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="City"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-3 mb-3">
+                      <input
+                        type="number"
+                        value={this.state.age}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="Age"
+                        required
+                      />
+                    </div>
+                    <div className="col-md-3 mb-3">
+                      <input
+                        style={{ display: 'inline-block' }}
+                        type="text"
+                        value={this.state.nrc}
+                        onChange={this.handleChangeInput}
+                        className="form-control"
+                        placeholder="NRC Number"
+                        required
+                        pattern="[0-9,/]{9,11}" />
+                      <span className="validity"></span>
+                    </div>
+                  </div>
+                </div>
+                <h3>Professional Information</h3>
+                <div className="row">
+                  <div className="col-md-6 col-sm-12 mb-3">
+                    <select
+                      className="form-control mb-3"
+                      id="professionSelect"
+                      onChange={this.handleProfessionChange}>
+                      <option value={'Maid'}>Maid</option>
+                      <option value={'Electrician'}>Electrician</option>
+                      <option value={'Carpenter'}>Carpenter</option>
+                      {/* <option value={'Plumber'}>Plumber</option>
                      <option value={'Painter'}>Painter</option>
                      <option value={'Other'}>Other</option> */}
-                          </select>
-                          {/* <input type="text" value={this.state.profession} onChange={this.handleChangeInput}
+                    </select>
+                    {/* <input type="text" value={this.state.profession} onChange={this.handleChangeInput}
                 class="form-control mb-3" placeholder="Profession" /> */}
-                          <textarea
-                            className="form-control"
-                            value={this.state.briefDescription}
-                            onChange={this.handleChangeInput}
-                            id="exampleFormControlTextarea1"
-                            rows="5"
-                            placeholder="Brief Description of Profession/ Duties"
-                            required
-                          />
-                        </div>
-                        <div className="col-md-6 col-sm-12 mb-3">
-                          <div className="input-group">
-                            <input
-                              value={this.state.input}
-                              onChange={this.handleChangeChips}
-                              type="text"
-                              className="form-control mb-3"
-                              placeholder="Type in a skill e.g  'Painting'"
+                    <textarea
+                      className="form-control"
+                      value={this.state.briefDescription}
+                      onChange={this.handleChangeInput}
+                      id="exampleFormControlTextarea1"
+                      rows="5"
+                      placeholder="Brief Description of Profession/ Duties"
+                      required
+                    />
+                  </div>
+                  <div className="col-md-6 col-sm-12 mb-3">
+                    <div className="input-group">
+                      <input
+                        value={this.state.input}
+                        onChange={this.handleChangeChips}
+                        type="text"
+                        className="form-control mb-3"
+                        placeholder="Type in a skill e.g  'Painting'"
 
-                            />
+                      />
 
-                            <div>
-                              <button
-                                className=" input-group-append btn btn-secondary"
-                                onClick={this.addItem}
-                                type="button">
-                                Add
+                      <div>
+                        <button
+                          className=" input-group-append btn btn-secondary"
+                          onClick={this.addItem}
+                          type="button">
+                          Add
                        </button>
-                            </div>
-                          </div>
-
-                          {(this.state.chipData) ? this.state.chipData.map((data, i) => (
-                            <Chip
-                              key={i}
-                              label={data.label}
-                              onDelete={this.handleDelete(data)}
-                            />
-                          )) : null}
-                        </div>
                       </div>
-                      <h3>Gallery of Your Work</h3>
-                      <div className=" mb-3">
-                        <div className="input-group col-md-6 mb-3">
-                          <div className="input-group mb-3">
-                            <div className="custom-file">
-                              <input
-                                type="file"
-                                onChange={this.handleChangeImages}
-                                ref={(input) => {
-                                  this.fileInput = input;
-                                }}
-                                className="custom-file-input"
-                                accept="image/png, image/jpeg, image/jpg"
-                                required
-                              />
-                              <label className="custom-file-label" htmlFor="inputGroupFile04">
-                                Choose file
+                    </div>
+
+                    {(this.state.chipData) ? this.state.chipData.map((data, i) => (
+                      <Chip
+                        key={i}
+                        label={data.label}
+                        onDelete={this.handleDelete(data)}
+                      />
+                    )) : null}
+                  </div>
+                </div>
+
+                <h3>Gallery of Your Work</h3>
+                <div className=" mb-3">
+                  <div className="input-group col-md-6 mb-3">
+                    <div className="input-group mb-3">
+                      <div className="custom-file">
+                        <input
+                          type="file"
+                          onChange={this.handleChangeImages}
+                          ref={(input) => {
+                            this.fileInput = input;
+                          }}
+                          className="custom-file-input"
+                          accept="image/png, image/jpeg, image/jpg"
+                          required
+                        />
+                        <label className="custom-file-label" htmlFor="inputGroupFile04">
+                          Choose file
+  
                        </label>
-                            </div>
-                            <div className="input-group-append">
-                              <button // onClick={this.uploadHandler}
-                                onClick={this.saveGalleryFiles}
-                                className="btn btn-outline-secondary"
-                                type="button">
-                                Upload
-                       </button>
-                            </div>
-                          </div>
-                        </div>
                       </div>
-                      {/* <div className="imgPreview">
+                      <div className="input-group-append">
+                        <button // onClick={this.uploadHandler}
+                          onClick={this.saveGalleryFiles}
+                          className="btn btn-outline-secondary"
+                          type="button">
+                          Upload
+                       </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className="imgPreview">
          {$imagePreview}
        </div> */}
-                      <div className="row col-md-12 mb-5">
-                        <div className="col-md-6 mb-2" >
-                          <h5 className=" row mb-1">Preview</h5>
-                          {$imagePreview}
-                        </div>
-                        <div className='col-md-6'>
-                          <h5 className="mb-1">Uploaded Images</h5>
-                          <div className="row">
-                            {(uploadedImages) ? uploadedImages.map((element, i) => (
-                              <div key={i} style={{ margin: 10 }}>{<img className="img-thumbnail"
-                                alt='gallery of work' style={{ widht: 200, height: 150 }} src={element} />}</div>
-                            )) : null}</div></div>
-                      </div>
 
-                      {/* To have the page reload after the submit button is pressed put the button inside the form div */}
-                      <div className="text-center col-md-12"> <button
-                        className="btn btn-success" //type="submit" //change onClick to onSubmit if you want it not to submit without filling out all the fields
-
-                        onSubmit={this.sendData}
-                      >
-                        Update Profile
-               </button>
-                      </div>
-
-                    </form>
-
+                <div className="row col-md-12 mb-5">
+                  <div className="col-md-6 mb-2" >
+                    <h5 className=" row mb-1">Preview</h5>
+                    {$imagePreview}
                   </div>
-                  <Snackbar className="mb-4"
-                    anchorOrigin={{
-                      vertical: 'bottom',
-                      horizontal: 'left',
-                    }}
-                    open={this.state.open} //change to this.state.open to show snackbar
-                    autoHideDuration={3000}
-                    onClose={this.handleClose}
-                    ContentProps={{
-                      'aria-describedby': 'message-id',
-                    }}
-                    message={<span id="message-id">{this.state.snackbarText}</span>}
-                  //         action={[
-                  //           <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-                  //             UNDO
-                  // </Button>,
-                  //           <IconButton
-                  //             key="close"
-                  //             aria-label="Close"
-                  //             color="inherit"
-                  //             // className={classes.close}
-                  //             onClick={this.handleClose}
-                  //           >
-                  //           </IconButton>,
-                  //         ]}
-                  />
+                  <div className='col-md-6'>
+                    <h5 className="mb-1">Uploaded Images</h5>
+                    <div className="row">
+                      {(uploadedImages) ? uploadedImages.map((element, i) => (
+                        <div key={i} style={{ margin: 10 }}>{<img className="img-thumbnail"
+                          alt='gallery of work' style={{ widht: 200, height: 150 }} src={element} />}</div>
+                      )) : null}</div></div>
                 </div>
-              </div>
-            </Fragment>
-          )
-        }
+
+                {/* To have the page reload after the submit button is pressed put the button inside the form div */}
+                <div className="text-center col-md-12"> <button
+                  className="btn btn-success" //type="submit" //change onClick to onSubmit if you want it not to submit without filling out all the fields
+
+                  onSubmit={this.sendData}
+                >
+                  Update Profile
+               </button>
+                </div>
+
+              </form>
+
+            </div>
+            <Snackbar className="mb-4"
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              open={this.state.open} //change to this.state.open to show snackbar
+              autoHideDuration={3000}
+              onClose={this.handleClose}
+              ContentProps={{
+                'aria-describedby': 'message-id',
+              }}
+              message={<span id="message-id">{this.state.snackbarText}</span>}
+            />
+          </div>
+        </div>
+      </div>
 
 
-      </UserContext.Consumer>
+
     );
   }
 }
