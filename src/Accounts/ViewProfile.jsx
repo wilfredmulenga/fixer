@@ -10,6 +10,7 @@ import Loader from '../components/Loader'
 class ViewProfile extends Component {
     constructor(props) {
         super(props)
+
         this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
             listOfPeople: this.props.route.userData['0'],
@@ -79,6 +80,20 @@ class ViewProfile extends Component {
                                             alt={'profile pic'}
                                         /> <br />
 
+                                    </div>
+                                </div>
+                                <div className="row mt-5 justify-content-between">
+                                    <div className="mb-3 col-md-5 ">
+                                        <h4>Personal Details</h4>
+                                        <b>
+                                            Name:</b>{`${listOfPeople.firstName} ${listOfPeople.lastName}`}
+                                        <br />
+                                        <b>Profession: </b>{listOfPeople.profession} <br />
+
+                                        <b>
+                                            City: </b>{listOfPeople.city} <br />
+
+
                                         <h4 className="mt-4 mb-1">Job Details</h4>
                                         <b>
                                             Skills: </b>{`${listOfPeople.skills.map((element, i) => (
@@ -87,52 +102,6 @@ class ViewProfile extends Component {
 
 
                                         <b>Job Desciption: </b>{`${listOfPeople.briefDescription}`}
-                                    </div>
-                                    <div className=" col-lg-6 col-md-6 ">
-                                        <h4>Gallery of Work</h4>
-                                        {listOfPeople.galleryOfWork.map((image, i) => (
-                                            <div key={i} className="row mb-3" >
-                                                <div className="col-md-6">
-                                                    <img className="img-thumbnail mr-2" src={image} />
-                                                </div>
-                                            </div>
-                                            <div className="row mt-5 justify-content-between">
-                                                <div className="mb-3 col-md-5 ">
-                                                    <h4>Personal Details</h4>
-                                                    <b>
-                                                        Name:</b>{`${listOfPeople.firstName} ${listOfPeople.lastName}`}
-                                                    <br />
-                                                    <b>Profession: </b>{listOfPeople.profession} <br />
-
-                                                    <b>
-                                                        City: </b>{listOfPeople.city} <br />
-
-
-                                                    <h4 className="mt-4 mb-1">Job Details</h4>
-                                                    <b>
-                                                        Skills: </b>{`${listOfPeople.skills.map((element, i) => (
-                                                            element.label
-                                                        ))}`} <br />
-
-                                                    <div className='mt-5' style={{ textAlign: 'center' }}>
-                                                        <Button variant='contained' style={{
-                                                            backgroundColor: '#FFF',
-                                                            color: '#000'
-                                                        }}
-                                                        //onClick={() => browserHistory.push('/updateprofile')}
-                                                        ><Link to={{
-                                                            pathname: '/updateprofile',
-                                                            state: { userDetails: listOfPeople }
-                                                        }} >Update Profile</Link>
-                                                        </Button>
-
-                                                    </div></div> : <div className="mt-5" style={{ textAlign: 'center' }}><h1>Sign In to View your profile</h1></div>}
-                            
-                            
-                            
-            </div>
-
-                                            <b>Job Desciption: </b>{`${listOfPeople.briefDescription}`}
                                     </div>
                                     <div className=" col-md-5 ">
                                         <h4 className="mb-2">Gallery of Work</h4>
