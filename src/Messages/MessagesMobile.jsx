@@ -9,27 +9,32 @@ class MessagesMobile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //loginStatus: false,
+            loginStatus: true,
             messageKey: this.props.location.state.selectedPersonUserUID,
             name: this.props.location.state.selectedPersonName,
-            loginStatus: true
+            showChatHistory: true
         }
         this.loadMessages = this.loadMessages.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.messageSubmit = this.messageSubmit.bind(this);
         userUID = this.props.route.userUID,
             (userUID != null) ? null : this.setState({ loginStatus: false })
-
+        console.log(userUID, "heloo", this.state.loginStatus)
     }
 
     componentDidMount() {
-        this.loadMessages()
-        document.addEventListener('click', this.handleMouseClick)
+
+
     }
 
     UNSAFE_componentWillMount() {
-        document.removeEventListener('click', this.handleMouseClick)
+        this.loadMessages()
+        // this.props.location.state
+        //     ? (selectedPersonUserUID = this.props.location.state.messageKey)
+        //     : null;
     }
+
+
     loadMessages = () => {
 
         const setMessage = function (snap) {
@@ -111,24 +116,29 @@ class MessagesMobile extends React.Component {
         'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png';
 
     render() {
+        console.log(this.state.showChatHistory, "render")
         return (
             <div style={{ height: 'inherit', margin: 0 }}>
                 <Navbar />
-                {(this.state.loginStatus) ? <div className="row" style={{ height: 'inherit' }}>
 
-                    <div className="d-flex flex-column col ml-2 mr-2">
-                        <div className="text-center mt-3 mb-5">{this.state.name}</div>
+                {(this.state.loginStatus) ?
+                    <div className="row" style={{ height: 'inherit' }}>
 
-                        <div id="messages" className=" flex-grow-1 messagemobile-form " ></div>
-                        <div className="messageInputContainer mb-3" >
-                            <input className="messageInput col" type="text" id="messageInput" />
-                            <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={this.messageSubmit}>SEND</Button>
+                        <div className="d-flex flex-column col ml-2 mr-2">
+                            <div className="text-center mt-3 mb-5">{this.state.name}</div>
+
+                            <div id="messages" className=" flex-grow-1 messagemobile-form " ></div>
+                            <div className="messageInputContainer mb-3" >
+                                <input className="messageInput col" type="text" id="messageInput" />
+                                <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
+                                    onClick={this.messageSubmit}>SEND</Button>
+
+                            </div>
 
                         </div>
-
                     </div>
-                </div> : <div className="container text-center mt-5" style={{ height: '100%' }} >
+
+                    : <div className="container text-center mt-5" style={{ height: '100%' }} >
                         <img src={ChatIcon} />
                         <h4 className="mt-5">Please login to view Messages</h4>
                         <Button variant='outlined'

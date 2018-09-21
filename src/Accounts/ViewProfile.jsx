@@ -3,8 +3,7 @@ import Navbar from '../components/Navbar';
 import Firebase from '../config/firebase';
 import { Link, browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
-import { UserContext } from './UserContext';
-import Loader from '../components/Loader'
+import Media from "react-media";
 
 
 class ViewProfile extends Component {
@@ -60,8 +59,16 @@ class ViewProfile extends Component {
                             state: { userDetails: listOfPeople }
                         }} >Update Profile</Link> */}
                             </Button>
-                            <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={() => browserHistory.push('/messages')}>Messages</Button>
+                            {/* On small devices route to /messagemobile when Messages button is clicked. On large devices /messages */}
+                            <Media query="(max-width: 769px)"
+                                render={() => <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                                    onClick={() => browserHistory.push('/chathistorymobile')}>Messages</Button>}
+                            /> <Media query="(min-width: 770px)"
+                                render={() => <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                                    onClick={() => browserHistory.push('/messages')}>Messages</Button>}
+                            />
+                            {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                                onClick={() => browserHistory.push('/messages')}>Messages</Button> */}
                             <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={this.handleSignOut}>Log Out</Button>
                         </div>

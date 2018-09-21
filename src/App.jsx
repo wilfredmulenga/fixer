@@ -5,11 +5,11 @@ import Categories from './components/Categories';
 import Home from './components/Home';
 import Messages from './Messages/Messages';
 import MessagesMobile from './Messages/MessagesMobile';
+import ChatHistoryMobile from './Messages/ChatHistoryMobile';
 import ViewProfile from './Accounts/ViewProfile';
 import UpdateProfile from './Accounts/UpdateProfile';
 import SignIn from './Accounts/SignIn'
 import SignUp from './Accounts/SignUp'
-import Firebase from './config/firebase'
 import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
@@ -101,6 +101,7 @@ class App extends Component {
           <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
+          <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
         </Router >
 
       );

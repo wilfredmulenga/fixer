@@ -9,16 +9,6 @@ import Media from "react-media";
 let selectedPersonUserUID = '';
 let userUID;
 
-
-// Firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     userUID = user.uid;
-//     console.log('signed in');
-//   } else {
-//     console.log('signed out');
-//   }
-// });
-
 class Messages extends React.Component {
   constructor(props) {
     super(props);
@@ -37,17 +27,13 @@ class Messages extends React.Component {
   }
 
   componentDidMount() {
-
     //this.loadMessages();
     this.LoadChatHistory();
-
-    document.addEventListener('click', this.handleMouseClick)
   }
 
   UNSAFE_componentWillMount() {
 
     this.LoadChatHistory()
-    document.removeEventListener('click', this.handleMouseClick)
     this.props.location.state
       ? (selectedPersonUserUID = this.props.location.state.messageKey)
       : null;
