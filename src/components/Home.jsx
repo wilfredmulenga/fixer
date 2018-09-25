@@ -1,27 +1,18 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
-import Firebase from '../config/firebase';
-import landingPage from '../images/landingPage2.jpg';
 import workingIcon from '../images/icons8-work-light-100.png'
 import handIcon from '../images/icons8-handshake-100.png'
 import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
-import Loader from './Loader';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
-import instagramIcon from '../images/icons8-instagram-32.png'
-
-
-
-
-
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-      listOfPeople: ["users"]
+      listOfPeople: ["users"],
+      userUID: this.props.route.userUID
     }
     //this.handleLoadUsers = this.handleLoadUsers.bind(this)
     //this.handleLoadUsers()
@@ -54,7 +45,7 @@ class Home extends React.Component {
     return (
       <div>
         <div id="home">
-          <Navbar userData={"some data"} />
+          <Navbar userUID={this.state.userUID} />
           <div id="landingPage">
             {/* <img
               src={landingPage} // style={{width:"1520px"}}
@@ -120,8 +111,8 @@ class Home extends React.Component {
                   <div className="col-md-5">
                     <h4 className="mb-3">Social Media</h4>
                     <div className="justify-content-between">
-                      <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' >  <img src={facebookIcon} /></a>
-                      <a href="https://twitter.com/fixer_app"><img src={twitterIcon} /></a>
+                      <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' >  <img src={facebookIcon} alt="twitter icon" /></a>
+                      <a href="https://twitter.com/fixer_app"><img src={twitterIcon} alt="twitter icon" /></a>
                       {/* <img src={instagramIcon} /> */}
                     </div>
                   </div>

@@ -68,7 +68,7 @@ class Categories extends React.Component {
   render() {
     return (
       <div>
-        <Navbar title="Categories" />
+        <Navbar userUID={this.state.userUID} />
         <Tables userData={this.state.userData}
           userUID={this.state.userUID} currentUser={this.state.currentUser} />
       </div>
@@ -306,7 +306,7 @@ class Tables extends React.Component {
                     <div className="col-md-6  text-align-center">
                       <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
 
-                      <b>  Skills: </b>{(element.skills != undefined) ? `${
+                      <b>  Skills: </b>{(element.skills !== undefined) ? `${
                         element.skills.map((element, i) => (
                           element.label
                         ))
@@ -329,7 +329,7 @@ class Tables extends React.Component {
                         <div className="container ">
                           <div className=" row mb-3 justify-content-end"
                           >
-                            <img src={cancelButton} />
+                            <img src={cancelButton} alt="cancel button" />
                             {/* <Button
 
                               type="button"

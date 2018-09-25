@@ -7,6 +7,7 @@ import ChatIcon from '../images/icons8-chat-100.png';
 import Media from "react-media";
 
 let selectedPersonUserUID = '';
+//remove this variable and use this.state.userUID
 let userUID;
 
 class Messages extends React.Component {
@@ -15,7 +16,8 @@ class Messages extends React.Component {
     this.state = {
       loginStatus: true,
       selectedPersonUsername: '',
-      loadMessagesMobile: false
+      loadMessagesMobile: false,
+      userUID: this.props.route.userUID
       //  messageKey: this.props.location.state.messageKey
     }
     this.loadMessages = this.loadMessages.bind(this);
@@ -147,7 +149,7 @@ class Messages extends React.Component {
     div.onclick = (event) => {
       if (event.button === 0) {
         selectedPersonUserUID = messageKey;
-        if (messageList == document.getElementById('chatHistoryMobile')) {
+        if (messageList === document.getElementById('chatHistoryMobile')) {
           browserHistory.push({
             pathname: '/messagesmobile',
             state: {
@@ -155,7 +157,7 @@ class Messages extends React.Component {
               selectedPersonName: name
             }
           })
-        } else if (messageList == document.getElementById('chatHistory')) {
+        } else if (messageList === document.getElementById('chatHistory')) {
           console.log("do this")
           this.loadMessages()
         }
@@ -218,7 +220,7 @@ class Messages extends React.Component {
     return (
       <div>
 
-        <Navbar />
+        <Navbar userUID={this.state.userUID} />
         <Media query="(max-width: 769px)"
           render={() => <div className='card mt-3' style={{ height: '100%' }}>
             <div id='chatHistoryMobile' className='chatHistory' style={{ padding: 8, height: '100%' }}>
@@ -247,7 +249,7 @@ class Messages extends React.Component {
               </div>
             </div>
           </div> : <div className="container text-center mt-5" style={{ height: '100%' }} >
-              <img src={ChatIcon} />
+              <img src={ChatIcon} alt="chat icon" />
               <h4 className="mt-5">Please login to view Messages</h4>
               <Button variant='outlined'
                 style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}

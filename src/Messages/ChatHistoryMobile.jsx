@@ -15,9 +15,9 @@ class ChatHistoryMobile extends React.Component {
             //name: this.props.location.state.selectedPersonName,
             showChatHistory: true
         }
-        userUID = this.props.route.userUID,
+        userUID = this.props.route.userUID
             (userUID != null) ? null : this.setState({ loginStatus: false })
-        console.log(userUID, "heloo", this.state.loginStatus)
+
     }
 
     componentDidMount() {
@@ -138,14 +138,14 @@ class ChatHistoryMobile extends React.Component {
         console.log(this.state.showChatHistory, "render")
         return (
             <div style={{ height: 'inherit', margin: 0 }}>
-                <Navbar />
+                <Navbar userUID={this.state.userUID} />
 
                 {(this.state.loginStatus) ? <div className='card mt-3' style={{ height: '100%' }}>
                     <div id='chatHistory' className='chatHistory' style={{ padding: 8, height: '100%' }}>
                     </div>
                 </div>
                     : <div className="container text-center mt-5" style={{ height: '100%' }} >
-                        <img src={ChatIcon} />
+                        <img src={ChatIcon} alt="chat icon" />
                         <h4 className="mt-5">Please login to view Messages</h4>
                         <Button variant='outlined'
                             style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}

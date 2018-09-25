@@ -10,7 +10,7 @@ class ViewProfile extends Component {
     constructor(props) {
         super(props)
 
-        this.handleSignOut = this.handleSignOut.bind(this)
+        // this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
             listOfPeople: this.props.route.userData['0'],
             userUID: this.props.route.userUID
@@ -19,11 +19,10 @@ class ViewProfile extends Component {
     }
 
 
-    handleSignOut() {
-
-        Firebase.auth().signOut();
-        browserHistory.push('/');
-    }
+    // handleSignOut() {
+    //     Firebase.auth().signOut();
+    //     browserHistory.push('/');
+    // }
 
     // UNSAFE_componentWillMount() {
     //     this.handleLoad()
@@ -38,7 +37,7 @@ class ViewProfile extends Component {
         return (
 
             <div>
-                <Navbar title={'Navbar Page'} />
+                <Navbar userUID={this.state.userUID} />
                 {(userUID) ?
                     <div className="row container-fluid justify-content-start mt-4">
                         <div className="card col-md-2 ml-3 d-flex mt-2 mb-3">
@@ -69,8 +68,8 @@ class ViewProfile extends Component {
                             />
                             {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => browserHistory.push('/messages')}>Messages</Button> */}
-                            <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={this.handleSignOut}>Log Out</Button>
+                            {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                                onClick={this.handleSignOut}>Log Out</Button> */}
                         </div>
 
                         <div className="card col center-align mt-2  ml-3">

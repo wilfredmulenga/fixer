@@ -47,9 +47,9 @@ class PhoneLogin extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar userUID={this.state.userUID} />
                 {
-                    (this.state.userUID != undefined) ?
+                    (this.state.userUID !== undefined) ?
                         (<div className='mt-5' >
 
                             <div style={{ marginTop: 50, textAlign: 'center' }}>{

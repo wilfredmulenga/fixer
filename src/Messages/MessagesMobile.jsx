@@ -4,6 +4,7 @@ import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
 import ChatIcon from '../images/icons8-chat-100.png';
 import { browserHistory } from 'react-router';
+//remove this variable and use this.state.userUID
 let userUID
 class MessagesMobile extends React.Component {
     constructor(props) {
@@ -12,14 +13,15 @@ class MessagesMobile extends React.Component {
             loginStatus: true,
             messageKey: this.props.location.state.selectedPersonUserUID,
             name: this.props.location.state.selectedPersonName,
-            showChatHistory: true
+            showChatHistory: true,
+            userUID: this.props.route.userUID
         }
+        userUID = this.props.route.userUID;
         this.loadMessages = this.loadMessages.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.messageSubmit = this.messageSubmit.bind(this);
-        userUID = this.props.route.userUID,
-            (userUID != null) ? null : this.setState({ loginStatus: false })
-        console.log(userUID, "heloo", this.state.loginStatus)
+
+        (userUID !== null) ? null : this.setState({ loginStatus: false })
     }
 
     componentDidMount() {
@@ -119,7 +121,7 @@ class MessagesMobile extends React.Component {
         console.log(this.state.showChatHistory, "render")
         return (
             <div style={{ height: 'inherit', margin: 0 }}>
-                <Navbar />
+                <Navbar userUID={this.state.userUID} />
 
                 {(this.state.loginStatus) ?
                     <div className="row" style={{ height: 'inherit' }}>
@@ -139,7 +141,7 @@ class MessagesMobile extends React.Component {
                     </div>
 
                     : <div className="container text-center mt-5" style={{ height: '100%' }} >
-                        <img src={ChatIcon} />
+                        <img src={ChatIcon} alt="chat icon" />
                         <h4 className="mt-5">Please login to view Messages</h4>
                         <Button variant='outlined'
                             style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}

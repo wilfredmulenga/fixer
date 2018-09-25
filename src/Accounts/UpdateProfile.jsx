@@ -1,12 +1,11 @@
 // This is the profile component
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
 import greybackground from '../images/greybackground.jpeg';
 import Firebase from '../config/firebase';
-import { UserContext } from './UserContext';
 import Snackbar from '@material-ui/core/Snackbar';
 
 let userData
@@ -232,7 +231,7 @@ class UpdateProfile extends Component {
         });
       });
       //}.bind(this));
-    }.bind(this)).catch(function (error) {
+    }).catch(function (error) {
       console.error('There was an error uploading a file to Cloud Storage:', error);
     });
   };
@@ -260,7 +259,7 @@ class UpdateProfile extends Component {
         });
 
         //}.bind(this));
-      }.bind(this)).catch(function (error) {
+      }).catch(function (error) {
         console.error('There was an error uploading a file to Cloud Storage:', error);
       });
     }
@@ -351,7 +350,7 @@ class UpdateProfile extends Component {
     // rename the following to better names
     return (
       <div>
-        <Navbar title={'Navbar Page'} />
+        <Navbar userUID={this.state.userUID} />
         <div className="container justify-content-center">
           <div className="card">
             <div className="card-body">
@@ -531,7 +530,7 @@ class UpdateProfile extends Component {
                         />
                         <label className="custom-file-label" htmlFor="inputGroupFile04">
                           Choose file
-  
+
                        </label>
                       </div>
                       <div className="input-group-append">

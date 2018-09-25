@@ -12,7 +12,9 @@ Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      userUID: this.props.userUID
+    }
     this.handleSignOut = this.handleSignOut.bind(this);
 
   }
@@ -57,7 +59,7 @@ class Navbar extends React.Component {
                 <Link to="/viewprofile" className="link">Profile</Link>
               </li>
               <li className="nav-item active mr-3">
-                <Link to="/phonelogin" className="link">Login</Link>
+                <Link to="/phonelogin" className="link">{(this.state.userUID) ? `Logout` : `Login`}</Link>
               </li>
             </ul>
           </div>
