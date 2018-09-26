@@ -13,7 +13,6 @@ import SignUp from './Accounts/SignUp'
 import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
-import Navbar from './components/Navbar';
 import Firebase from './config/firebase';
 
 var peopleArray = [];

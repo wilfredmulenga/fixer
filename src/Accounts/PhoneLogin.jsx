@@ -38,11 +38,10 @@ class PhoneLogin extends React.Component {
 
 
     handleSignOut() {
-
         Firebase.auth().signOut();
-        browserHistory.push('/phonelogin')
+        //browserHistory.push('/')
         console.log('signed out')
-        return false;
+        window.location.reload()
     }
     render() {
         return (
