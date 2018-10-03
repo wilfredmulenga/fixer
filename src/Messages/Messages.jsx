@@ -10,6 +10,7 @@ let selectedPersonUserUID = '';
 //remove this variable and use this.state.userUID
 let userUID;
 
+
 class Messages extends React.Component {
   constructor(props) {
     super(props);
@@ -23,14 +24,16 @@ class Messages extends React.Component {
     this.loadMessages = this.loadMessages.bind(this);
     this.displayMessage = this.displayMessage.bind(this);
     this.messageSubmit = this.messageSubmit.bind(this);
-
+    this.handleEnter = this.handleEnter.bind(this)
     userUID = this.props.route.userUID
-
   }
-
   componentDidMount() {
     //this.loadMessages();
     this.LoadChatHistory();
+  }
+
+  handleEnter = () => {
+    alert("hello")
   }
 
   UNSAFE_componentWillMount() {
@@ -134,7 +137,7 @@ class Messages extends React.Component {
       '</div></div>';
 
     let div = document.getElementById(name);
-    const messageList = document.getElementById('chatHistory') || document.getElementById('chatHistoryMobile');
+    const messageList = document.getElementById('chatHistory');
     console.log(messageList)
     // If an element for that message does not exists yet we create it.
     if (!div) {
@@ -149,18 +152,7 @@ class Messages extends React.Component {
     div.onclick = (event) => {
       if (event.button === 0) {
         selectedPersonUserUID = messageKey;
-        if (messageList === document.getElementById('chatHistoryMobile')) {
-          browserHistory.push({
-            pathname: '/messagesmobile',
-            state: {
-              selectedPersonUserUID: selectedPersonUserUID,
-              selectedPersonName: name
-            }
-          })
-        } else if (messageList === document.getElementById('chatHistory')) {
-          console.log("do this")
-          this.loadMessages()
-        }
+        this.loadMessages()
       }
     }
     div.querySelector('.pic').src = `${picUrl}`;
@@ -199,9 +191,9 @@ class Messages extends React.Component {
       });
   };
 
-  messageSubmit = () => {
+  messageSubmit = (target) => {
     this.messageInput = document.getElementById('messageInput');
-    if (this.messageInput.value) {
+    if (this.messageInput.value || target.charCode == 13) {
       this.saveMessage(this.messageInput.value);
       this.messageInput.value = '';
     }
@@ -242,8 +234,8 @@ class Messages extends React.Component {
                   <div id="messages" className="message-form " ></div>
                   <div className="messageInputContainer" >
                     <input className="messageInput col" type="text" id="messageInput" />
-                    <Button variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
-                      onClick={this.messageSubmit}>SEND</Button>
+                    <Button id='sendMessage' variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
+                      onClick={this.messageSubmit} onKeyPress={this.handleEnter}>SEND</Button>
                   </div>
                 </div>
               </div>
