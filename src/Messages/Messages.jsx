@@ -32,8 +32,11 @@ class Messages extends React.Component {
     this.LoadChatHistory();
   }
 
-  handleEnter = () => {
-    alert("hello")
+  handleEnter = (event) => {
+    if (event.keyCode == 13) {
+      alert("hello")
+    }
+    console.log("hello enter")
   }
 
   UNSAFE_componentWillMount() {
@@ -235,7 +238,8 @@ class Messages extends React.Component {
                   <div className="messageInputContainer" >
                     <input className="messageInput col" type="text" id="messageInput" />
                     <Button id='sendMessage' variant='outlined' style={{ backgroundColor: '#FFF', color: '#000' }}
-                      onClick={this.messageSubmit} onKeyPress={this.handleEnter}>SEND</Button>
+                      onClick={this.messageSubmit}
+                      onKeyDown={this.messageSubmit}>SEND</Button>
                   </div>
                 </div>
               </div>
