@@ -363,9 +363,13 @@ class Tables extends React.Component {
                                   <Button className="mt-3" variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
                                     onClick={() =>
-                                      this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
-                                        selectedPerson.pic, selectedPerson.userUID)}
-                                  >Connect</Button>
+                                      browserHistory.push({
+                                        pathname: '/requestservice'
+                                        //state: { messageKey: PostRefKey }
+                                      })}
+                                  //this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
+                                  //selectedPerson.pic, selectedPerson.userUID)}
+                                  >Request Service</Button>
                                   {/* </Link> */}
                                 </div>
                               </div>

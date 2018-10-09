@@ -14,6 +14,7 @@ import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
+import RequestService from './components/RequestService'
 import Firebase from './config/firebase';
 
 var peopleArray = [];
@@ -106,6 +107,7 @@ class App extends Component {
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
+          <Route path='requestservice' component={RequestService} />
         </Router >
 
       );
