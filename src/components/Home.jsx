@@ -5,6 +5,8 @@ import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
+import { browserHistory } from 'react-router';
+import Button from '@material-ui/core/Button';
 
 class Home extends React.Component {
   constructor(props) {
@@ -56,6 +58,11 @@ class Home extends React.Component {
               textAlign: 'center'
             }}>
               <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
+
+          </div>
+          <div className="row text-center">
+            <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Looking to hire</button>
+            <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Looking to be hired</button>
           </div>
           <div >
             <div className="container">
