@@ -56,7 +56,7 @@ class App extends Component {
       .on('value', (snapshot) => {
         JobsSnapshot = snapshot.val();
 
-        JobsSnapshot = jsonData["Users"]
+        //JobsSnapshot = jsonData["Users"]
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
@@ -107,7 +107,7 @@ class App extends Component {
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
-          <Route path='requestservice' component={RequestService} />
+          <Route path='/requestservice' component={RequestService} />
         </Router >
 
       );

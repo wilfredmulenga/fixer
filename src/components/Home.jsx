@@ -5,7 +5,8 @@ import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -57,7 +58,13 @@ class Home extends React.Component {
               textAlign: 'center'
             }}>
               <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
+
           </div>
+          {(this.state.userUID) ? null : (<div className="row text-center">
+            <button onClick={() => browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: "customer" } })}>Looking to hire</button>
+            <button onClick={() => browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: "fixer" } })}>Looking to be hired</button>
+          </div>)}
+          {console.log(this.state.userUID)}
           <div >
             <div className="container">
               {/* How it Works section */}
