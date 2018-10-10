@@ -45,7 +45,7 @@ class PhoneLogin extends React.Component {
         super(props)
         this.state = {
             userUID: this.props.route.userUID,
-            typeOfUser: this.props.location.state.typeOfUser
+            typeOfUser: (this.props.location.state.typeOfUser) ? this.props.location.state.typeOfUser : "customer"
         }
         console.log(this.props.location.state.typeOfUser)
 

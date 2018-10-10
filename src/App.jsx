@@ -16,11 +16,12 @@ import PhoneLogin from './Accounts/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
 import Firebase from './config/firebase';
+import Profile from './Accounts/Profile'
 
 var peopleArray = [];
 var currentUser = []
 var userUID
-// = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+  = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -33,66 +34,65 @@ class App extends Component {
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleLoadUsers()
-    //console.log(jsonData["Users"])
   }
   //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
 
-    Firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        //handleLoadUsers()
-        userUID = user.uid
-        console.log(userUID)
-      } else {
-        // this.setState({
-        //   loading: true,
-        //   listOfPeople: peopleArray
-        // })
-        browserHistory.push('/')
+    // Firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     //handleLoadUsers()
+    //     userUID = user.uid
+    //     console.log(userUID)
+    //   } else {
+    //     // this.setState({
+    //     //   loading: true,
+    //     //   listOfPeople: peopleArray
+    //     // })
+    //     browserHistory.push('/')
+    //   }
+    // })
+    // Firebase.database()
+    //   .ref('Users/')
+    //   .on('value', (snapshot) => {
+    //     JobsSnapshot = snapshot.val();
+
+    JobsSnapshot = jsonData["Users"]
+    let elements;
+    // React doesnt accept objects in states so it has to be converted into an array
+    for (const index in JobsSnapshot) {
+
+      elements = JobsSnapshot[index];
+      if (elements.profession != null) {
+
+        peopleArray.push(elements);
+
       }
-    })
-    Firebase.database()
-      .ref('Users/')
-      .on('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
+    }
+    this.setState({
+      loading: true,
+      listOfPeople: peopleArray,
+    });
 
-        //JobsSnapshot = jsonData["Users"]
-        let elements;
-        // React doesnt accept objects in states so it has to be converted into an array
-        for (const index in JobsSnapshot) {
+    let currentUserObject;
+    for (const index in JobsSnapshot) {
+      // console.log(JobsSnapshot[index]['userUID'])
 
-          elements = JobsSnapshot[index];
-          if (elements.profession != null) {
-
-            peopleArray.push(elements);
-
-          }
-        }
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray,
-        });
-
-        let currentUserObject;
-        for (const index in JobsSnapshot) {
-          // console.log(JobsSnapshot[index]['userUID'])
-
-          if (
-            JobsSnapshot[index].userUID ===
-            userUID
-            //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
-            //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
-            //'O6VVUA0fm1QpOt23QaOctFux27h1'
-          ) {
-            currentUserObject = JobsSnapshot[index];
-          }
-        }
-        currentUser.push(currentUserObject);
-      });
+      if (
+        JobsSnapshot[index].userUID ===
+        userUID
+        //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+        //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
+        //'O6VVUA0fm1QpOt23QaOctFux27h1'
+      ) {
+        currentUserObject = JobsSnapshot[index];
+      }
+    }
+    currentUser.push(currentUserObject);
+    // });
   }
   render() {
 
-    if (this.state.loading) {
+    if (true) {
       return (
 
         < Router history={browserHistory} >
@@ -103,11 +103,11 @@ class App extends Component {
           <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/updateprofile" component={UpdateProfile} userData={currentUser} userUID={userUID} />
           <Route path="/messages" component={Messages} userUID={userUID} />
-          <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
+          <Route path='/profile' component={Profile} userData={currentUser} userUID={userUID} />
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
-          <Route path='/requestservice' component={RequestService} />
+          <Route path='/requestservice' component={RequestService} userUID={userUID} />
         </Router >
 
       );

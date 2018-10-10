@@ -362,10 +362,14 @@ class Tables extends React.Component {
 
                                   <Button className="mt-3" variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
-                                    onClick={() =>
+                                    onClick={() => (this.state.userUID) ?
                                       browserHistory.push({
-                                        pathname: '/requestservice'
-                                        //state: { messageKey: PostRefKey }
+                                        pathname: '/requestservice',
+                                        state: {
+                                          selectedPersonUserUID: selectedPerson.userUID
+                                        }
+                                      }) : this.setState({
+                                        open: true
                                       })}
                                   //this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
                                   //selectedPerson.pic, selectedPerson.userUID)}
@@ -408,7 +412,7 @@ class Tables extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">Login first to start Messaging</span>}
+          message={<span id="message-id">Login first</span>}
         />
       </div >
     );

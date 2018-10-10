@@ -56,7 +56,7 @@ class Navbar extends React.Component {
   </li>
 </Link> */}
               <li className="nav-item active mr-3">
-                <Link to="/viewprofile" className="link">Profile</Link>
+                <Link to="/profile" className="link">Profile</Link>
               </li>
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" className="link">{(this.state.userUID) ? `Logout` : `Login`}</Link>

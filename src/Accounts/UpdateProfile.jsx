@@ -544,9 +544,7 @@ class UpdateProfile extends Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="imgPreview">
-         {$imagePreview}
-       </div> */}
+
 
                 <div className="row col-md-12 mb-5">
                   <div className="col-md-6 mb-2" >
