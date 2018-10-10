@@ -41,7 +41,9 @@ class RequestService extends React.Component {
                                 <input className="form-control mb-2" type="text" placeholder="area" required></input>
                                 <input className="form-control mb-2" type="text" placeholder="city" required></input>
                                 <input className="form-control mb-2" type="number" placeholder="phone number" required></input>
-                                <input className="form-control mb-2" type="text" placeholder="preferred start date" required></input></div>
+                                <input className="form-control mb-2" type="text" placeholder="preferred start date" required></input>
+                                <input type="checkbox" name="vehicle2" value="Car" /> Remember this address
+                            </div>
                         </div>
                     </div>
                 </div>
