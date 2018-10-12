@@ -366,7 +366,9 @@ class Tables extends React.Component {
                                       browserHistory.push({
                                         pathname: '/requestservice',
                                         state: {
-                                          selectedPersonUserUID: selectedPerson.userUID
+                                          selectedPersonUserUID: selectedPerson.userUID,
+                                          profession: selectedPerson.profession,
+                                          selectedPersonFullName: `${selectedPerson.firstName} ${selectedPerson.lastName}`
                                         }
                                       }) : this.setState({
                                         open: true

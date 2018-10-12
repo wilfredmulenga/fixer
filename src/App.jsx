@@ -107,7 +107,7 @@ class App extends Component {
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
-          <Route path='/requestservice' component={RequestService} userUID={userUID} />
+          <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
         </Router >
 
       );

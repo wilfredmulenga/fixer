@@ -1,42 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Firebase from '../config/firebase';
 import { Link, browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
-import ViewProfile from './ViewProfile'
+import ViewProfile from './ViewProfile';
+import ViewRequestServices from './ViewRequestServices';
 
 
-class Profile extends Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props)
-
-        // this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
-
+            userData: this.props.route.userData['0'],
             userUID: this.props.route.userUID,
             viewRequestServices: false,
-            ViewProfile: false
+            viewProfile: false,
         }
-
+        this.openViewProfile = this.openViewProfile.bind(this)
+        this.openViewRequestServices = this.openViewRequestServices.bind(this)
     }
 
-
-    // handleSignOut() {
-    //     Firebase.auth().signOut();
-    //     browserHistory.push('/');
-    // }
-
-    // UNSAFE_componentWillMount() {
-    //     this.handleLoad()
-    // }
-    componentDidMount() {
-        //this.handleLoad();
+    openViewProfile = () => {
+        // this.setState({
+        //     viewProfile: true,
+        //     viewRequestServices: false
+        // })
+        console.log("view profile")
     }
-
+    openViewRequestServices = () => {
+        this.setState({
+            viewProfile: false,
+            viewRequestServices: true
+        })
+    }
     render() {
-        const { listOfPeople, userUID } = this.state;
-        console.log(userUID)
+        const { userUID } = this.state;
         return (
 
             <div>
@@ -49,7 +48,8 @@ class Profile extends Component {
                             </div>
                             <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => this.setState({
-                                    ViewProfile: true
+                                    viewProfile: true,
+                                    viewRequestServices: false
                                 })}>View Profile</Button>
                             <Button variant='contained'
                                 className="btn  mb-1"
@@ -66,6 +66,7 @@ class Profile extends Component {
                             </Button>
                             <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => this.setState({
+                                    viewProfile: false,
                                     viewRequestServices: true
                                 })}>Requested Services</Button>
 
@@ -86,7 +87,9 @@ class Profile extends Component {
                         </div>
 
                         <div className="card col center-align mt-2  ml-3">
-                            {(false) ? <ViewProfile /> : <div><h3>Please Update Your Profile</h3></div>}
+                            {(this.state.viewProfile) ? <ViewProfile userData={this.state.userData} />
+                                : (this.state.viewRequestServices) ? <ViewRequestServices />
+                                    : < div > <h3>Please Update Your Profile</h3></div>}
                         </div>
                     </div>
                     : <div className="container text-center mt-5" style={{ height: '100%' }} >
