@@ -33,7 +33,9 @@ class ViewRequestServices extends React.Component {
         console.log('cancel')
         Firebase.database()
             .ref(`ServiceRequests/${this.state.requestID}`)
-            .remove()
+            .update({
+                status: "cancelled"
+            })
     }
     render() {
         return (<div>
