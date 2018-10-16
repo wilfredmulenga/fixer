@@ -64,7 +64,7 @@ class Home extends React.Component {
             <button onClick={() => browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: "customer" } })}>Looking to hire</button>
             <button onClick={() => browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: "fixer" } })}>Looking to be hired</button>
           </div>)}
-          {console.log(this.state.userUID)}
+
           <div >
             <div className="container">
               {/* How it Works section */}

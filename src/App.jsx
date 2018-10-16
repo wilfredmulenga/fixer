@@ -21,7 +21,7 @@ import Profile from './Accounts/Profile'
 var peopleArray = [];
 var currentUser = []
 var userUID
-  = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+//= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -38,61 +38,61 @@ class App extends Component {
   //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
 
-    // Firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     //handleLoadUsers()
-    //     userUID = user.uid
-    //     console.log(userUID)
-    //   } else {
-    //     // this.setState({
-    //     //   loading: true,
-    //     //   listOfPeople: peopleArray
-    //     // })
-    //     browserHistory.push('/')
-    //   }
-    // })
-    // Firebase.database()
-    //   .ref('Users/')
-    //   .on('value', (snapshot) => {
-    //     JobsSnapshot = snapshot.val();
-
-    JobsSnapshot = jsonData["Users"]
-    let elements;
-    // React doesnt accept objects in states so it has to be converted into an array
-    for (const index in JobsSnapshot) {
-
-      elements = JobsSnapshot[index];
-      if (elements.profession != null) {
-
-        peopleArray.push(elements);
-
+    Firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        //handleLoadUsers()
+        userUID = user.uid
+        console.log(userUID)
+      } else {
+        // this.setState({
+        //   loading: true,
+        //   listOfPeople: peopleArray
+        // })
+        browserHistory.push('/')
       }
-    }
-    this.setState({
-      loading: true,
-      listOfPeople: peopleArray,
-    });
+    })
+    Firebase.database()
+      .ref('Users/')
+      .on('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
 
-    let currentUserObject;
-    for (const index in JobsSnapshot) {
-      // console.log(JobsSnapshot[index]['userUID'])
+        //JobsSnapshot = jsonData["Users"]
+        let elements;
+        // React doesnt accept objects in states so it has to be converted into an array
+        for (const index in JobsSnapshot) {
 
-      if (
-        JobsSnapshot[index].userUID ===
-        userUID
-        //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
-        //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
-        //'O6VVUA0fm1QpOt23QaOctFux27h1'
-      ) {
-        currentUserObject = JobsSnapshot[index];
-      }
-    }
-    currentUser.push(currentUserObject);
-    // });
+          elements = JobsSnapshot[index];
+          if (elements.profession != null) {
+
+            peopleArray.push(elements);
+
+          }
+        }
+        this.setState({
+          loading: true,
+          listOfPeople: peopleArray,
+        });
+
+        let currentUserObject;
+        for (const index in JobsSnapshot) {
+          // console.log(JobsSnapshot[index]['userUID'])
+
+          if (
+            JobsSnapshot[index].userUID ===
+            userUID
+            //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+            //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
+            //'O6VVUA0fm1QpOt23QaOctFux27h1'
+          ) {
+            currentUserObject = JobsSnapshot[index];
+          }
+        }
+        currentUser.push(currentUserObject);
+      });
   }
   render() {
 
-    if (true) {
+    if (this.state.loading) {
       return (
 
         < Router history={browserHistory} >
