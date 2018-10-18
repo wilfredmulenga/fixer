@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
 import { browserHistory } from 'react-router';
+import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
 
 class Home extends React.Component {
@@ -48,11 +49,11 @@ class Home extends React.Component {
       <div>
         <div id="home">
           <Navbar userUID={this.state.userUID} />
-          <div id="landingPage">
-            {/* <img
-              src={landingPage} // style={{width:"1520px"}}
+          <div id="landingPage" className="col-md-12 col-sm-12">
+            <img
+              src={landingPage}
               className={'img-fluid'}
-              alt="landing page" /> */}
+              alt="landing page" />
             <div style={{
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
@@ -60,9 +61,16 @@ class Home extends React.Component {
               <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
 
           </div>
-          <div className="row text-center">
-            <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Looking to hire</button>
-            <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Looking to be hired</button>
+          {/* customer/fixer */}
+          <div className="text-center">
+            <div>
+              <h3>Looking for a Fixer</h3>
+              <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</button>
+            </div>
+            <div>
+              <h3>Looking to get hired</h3>
+              <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</button>
+            </div>
           </div>
           <div >
             <div className="container">
