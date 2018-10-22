@@ -66,7 +66,7 @@ class Navbar extends React.Component {
         </nav>
         {/* Currently under testing notice */}
         <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert">
-          This application is currently under testing. Feel free to give us feedback at info@fixer-app.co
+          This application is currently under testing. Feel free to give us feedback at support@myfixerapp.com
 </div>
       </div >
     );

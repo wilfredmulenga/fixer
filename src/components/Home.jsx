@@ -62,7 +62,7 @@ class Home extends React.Component {
 
           </div>
           {/* customer/fixer */}
-          <div className="text-center">
+          {/* <div className="text-center">
             <div>
               <h3>Looking for a Fixer</h3>
               <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</button>
@@ -71,7 +71,7 @@ class Home extends React.Component {
               <h3>Looking to get hired</h3>
               <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</button>
             </div>
-          </div>
+          </div> */}
           <div >
             <div className="container">
               {/* How it Works section */}
@@ -118,7 +118,7 @@ class Home extends React.Component {
                   <div className="col-md-5 align-items-center">
 
                     <h4 className="mb-3">Contact</h4>
-                    <h5>Email: info@fixer-app.co</h5>
+                    <h5>Email: support@myfixerapp.com</h5>
                     <h5>Phone: 0979622855</h5>
                     {/* <h5>Address:</h5> */}
 
