@@ -139,7 +139,6 @@ class Messages extends React.Component {
 
     let div = document.getElementById(name);
     const messageList = document.getElementById('chatHistory');
-
     // If an element for that message does not exists yet we create it.
     if (!div) {
       const container = document.createElement('div');

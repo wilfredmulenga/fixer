@@ -5,7 +5,7 @@ import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
 
@@ -115,7 +115,11 @@ class Home extends React.Component {
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
                 <div className="row justify-content-between">
-                  <div className="col-md-5 align-items-center">
+                  <div className="col-md-4">
+                    <h4 className="mb-3">Links</h4>
+                    <Link to="/privacypolicy" className="link">Privacy Policy</Link>
+                  </div>
+                  <div className="col-md-4 align-items-center">
 
                     <h4 className="mb-3">Contact</h4>
                     <h5>Email: support@myfixerapp.com</h5>
@@ -123,7 +127,7 @@ class Home extends React.Component {
                     {/* <h5>Address:</h5> */}
 
                   </div>
-                  <div className="col-md-5">
+                  <div className="col-md-4">
                     <h4 className="mb-3">Social Media</h4>
                     <div className="justify-content-between">
                       <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' >  <img src={facebookIcon} alt="twitter icon" /></a>

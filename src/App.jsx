@@ -13,7 +13,10 @@ import SignUp from './Accounts/SignUp'
 import Loader from './components/Loader'
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import RequestService from './components/RequestService'
 import Firebase from './config/firebase';
+import Profile from './Accounts/Profile'
 
 var peopleArray = [];
 var currentUser = []
@@ -31,7 +34,6 @@ class App extends Component {
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleLoadUsers()
-    //console.log(jsonData["Users"])
   }
   //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
@@ -86,7 +88,7 @@ class App extends Component {
       }
     }
     currentUser.push(currentUserObject);
-    //  });
+    // });
   }
   render() {
 
@@ -98,12 +100,14 @@ class App extends Component {
           <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/privacypolicy" component={PrivacyPolicy} />
           <Route path="/updateprofile" component={UpdateProfile} userData={currentUser} userUID={userUID} />
           <Route path="/messages" component={Messages} userUID={userUID} />
-          <Route path='/viewprofile' component={ViewProfile} userData={currentUser} userUID={userUID} />
+          <Route path='/profile' component={Profile} userData={currentUser} userUID={userUID} />
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
+          <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
         </Router >
 
       );

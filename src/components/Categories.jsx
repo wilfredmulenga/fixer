@@ -362,10 +362,20 @@ class Tables extends React.Component {
 
                                   <Button className="mt-3" variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
-                                    onClick={() =>
-                                      this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
-                                        selectedPerson.pic, selectedPerson.userUID)}
-                                  >Connect</Button>
+                                    onClick={() => (this.state.userUID) ?
+                                      browserHistory.push({
+                                        pathname: '/requestservice',
+                                        state: {
+                                          selectedPersonUserUID: selectedPerson.userUID,
+                                          profession: selectedPerson.profession,
+                                          selectedPersonFullName: `${selectedPerson.firstName} ${selectedPerson.lastName}`
+                                        }
+                                      }) : this.setState({
+                                        open: true
+                                      })}
+                                  //this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
+                                  //selectedPerson.pic, selectedPerson.userUID)}
+                                  >Request Service</Button>
                                   {/* </Link> */}
                                 </div>
                               </div>
@@ -404,7 +414,7 @@ class Tables extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">Login first to start Messaging</span>}
+          message={<span id="message-id">Login first</span>}
         />
       </div >
     );

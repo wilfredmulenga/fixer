@@ -176,9 +176,10 @@ class UpdateProfile extends Component {
         },
       );
     setTimeout(() => {
-      browserHistory.push('/categories')
-    }, 5000);
-    return false
+
+    }, 2000);
+    window.location.reload()
+    browserHistory.push('/categories')
   }
   handleChangeImages(event) {
     const reader = new FileReader();
@@ -242,18 +243,21 @@ class UpdateProfile extends Component {
       galleryOfWork: [],
       //storageUri: fileSnapshot.metadata.fullPath
     });
-
+    var uploadedImageURL = []
     for (var x = 0; x < galleryFiles.length; x++) {
       var filePath = userUID + '/' + galleryFiles[x].name;
       Firebase.storage().ref(filePath).put(galleryFiles[x]).then(function (fileSnapshot) {
         // 3 - Generate a public URL for the file.
+
         return fileSnapshot.ref.getDownloadURL().then((url) => {
           // 4 - Update the chat message placeholder with the image's URL.
-          this.state.uploadedImages.push(url)
+
+          uploadedImageURL.push(url)
+
           //rewrite this line so that it only updates once if it is update several times
-          console.log(x)
+
           return Firebase.database().ref(`Users/${userUID}`).update({
-            galleryOfWork: this.state.uploadedImages,
+            galleryOfWork: uploadedImageURL,
             //storageUri: fileSnapshot.metadata.fullPath
           });
         });
@@ -263,6 +267,9 @@ class UpdateProfile extends Component {
         console.error('There was an error uploading a file to Cloud Storage:', error);
       });
     }
+    this.setState({
+      uploadedImages: uploadedImageURL
+    })
   }
   // handle input change except for those that need images
   // we can use a switch statement here 
@@ -547,9 +554,7 @@ class UpdateProfile extends Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="imgPreview">
-         {$imagePreview}
-       </div> */}
+
 
                 <div className="row col-md-12 mb-5">
                   <div className="col-md-6 mb-2" >
