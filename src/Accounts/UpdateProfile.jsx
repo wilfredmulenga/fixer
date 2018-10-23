@@ -410,15 +410,17 @@ class UpdateProfile extends Component {
                     </div>
                     <div className="col mb-3">
                       <input
-                        type="number"
+                        type="text"
                         style={{ display: 'inline-block' }}
                         value={this.state.phoneNumber}
                         onChange={this.handleChangeInput}
                         className="form-control"
+                        minlength='10'
+                        maxlength='13'
                         placeholder="Phone Number e.g 0979999999"
                         required
-                        pattern="[0-9]{9,9}" />
-                      <span className="validity"></span>
+                        pattern="[0-9,+]" />
+                      {/* <span className="validity"></span> */}
                     </div>
                   </div>
                   <div className="form-row">
@@ -450,9 +452,10 @@ class UpdateProfile extends Component {
                         onChange={this.handleChangeInput}
                         className="form-control"
                         placeholder="NRC Number"
+                        maxlength='11'
                         required
-                        pattern="[0-9,/]{9,11}" />
-                      <span className="validity"></span>
+                        pattern="[0-9,/]{11}" />
+                      {/* <span className="validity"></span> */}
                     </div>
                   </div>
                 </div>

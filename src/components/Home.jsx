@@ -6,6 +6,9 @@ import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+import landingPage from '../images/landingPage2.jpg'
+import Button from '@material-ui/core/Button';
 
 class Home extends React.Component {
   constructor(props) {
@@ -47,17 +50,29 @@ class Home extends React.Component {
       <div>
         <div id="home">
           <Navbar userUID={this.state.userUID} />
-          <div id="landingPage">
-            {/* <img
-              src={landingPage} // style={{width:"1520px"}}
+          <div id="landingPage" className="col-md-12 col-sm-12">
+            <img
+              src={landingPage}
               className={'img-fluid'}
-              alt="landing page" /> */}
+              alt="landing page" />
             <div style={{
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
               <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
+
           </div>
+          {/* customer/fixer */}
+          {/* <div className="text-center">
+            <div>
+              <h3>Looking for a Fixer</h3>
+              <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</button>
+            </div>
+            <div>
+              <h3>Looking to get hired</h3>
+              <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</button>
+            </div>
+          </div> */}
           <div >
             <div className="container">
               {/* How it Works section */}
@@ -108,7 +123,7 @@ class Home extends React.Component {
                   <div className="col-md-4 align-items-center">
 
                     <h4 className="mb-3">Contact</h4>
-                    <h5>Email: info@fixer-app.co</h5>
+                    <h5>Email: support@myfixerapp.com</h5>
                     <h5>Phone: 0979622855</h5>
                     {/* <h5>Address:</h5> */}
 
