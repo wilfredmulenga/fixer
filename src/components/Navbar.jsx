@@ -9,7 +9,7 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       userUID: this.props.userUID,
-      typeOfUser: this.props.typeOfUser
+
     }
     this.handleSignOut = this.handleSignOut.bind(this);
 
@@ -44,16 +44,10 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" className="link">Categories</Link>
               </li>
-              {/* <Link to="/login" className="link" //onClick={this.props.action} 
-  onClick={this.openSignInModal}>
-  <li className="nav-item active mr-3" id='login'>{
-    (loginStatus) ? `Sign Out` : `Sign In`
-  }
-  </li>
-</Link> */}
               <li className="nav-item active mr-3">
-                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" className="link">Profile</Link>
-                  : (localStorage.getItem('typeOfUser' === 'fixer') ? <Link to="/fixer/profile" className="link">Profile</Link> : null)}
+
+                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" className="link">Profile</Link> : null}
+                {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" className="link">Profile</Link> : null}
               </li>
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" className="link">{(this.state.userUID) ? `Logout` : `Login`}</Link>

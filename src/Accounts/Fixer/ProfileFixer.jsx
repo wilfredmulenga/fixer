@@ -3,11 +3,11 @@ import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
-import ViewProfile from '../ViewProfile';
+import ViewProfileFixer from '../Fixer/ViewProfileFixer';
 import ViewRequestServices from '../ViewRequestServices';
 
 
-class ProfileUser extends React.Component {
+class ProfileFixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,10 +21,10 @@ class ProfileUser extends React.Component {
     }
 
     openViewProfile = () => {
-        // this.setState({
-        //     viewProfile: true,
-        //     viewRequestServices: false
-        // })
+        this.setState({
+            viewProfile: true,
+            viewRequestServices: false
+        })
         console.log("view profile")
     }
     openViewRequestServices = () => {
@@ -56,7 +56,7 @@ class ProfileUser extends React.Component {
                                     backgroundColor: '#FFF',
                                     color: '#000'
                                 }}
-                                onClick={() => browserHistory.push('/user/updateprofile')}
+                                onClick={() => browserHistory.push('/fixer/updateprofile')}
                             >Update Profile
                             {/* <Link to={{
                             pathname: '/updateprofile',
@@ -86,7 +86,7 @@ class ProfileUser extends React.Component {
                         </div>
 
                         <div className="card col center-align mt-2  ml-3">
-                            {(this.state.viewProfile) ? <ViewProfile userData={this.state.userData} />
+                            {(this.state.viewProfile) ? <ViewProfileFixer userData={this.state.userData} />
                                 : (this.state.viewRequestServices) ? <ViewRequestServices />
                                     : < div > <h3>Please Update Your Profile</h3></div>}
                         </div>
@@ -106,4 +106,4 @@ class ProfileUser extends React.Component {
 
 
 
-export default ProfileUser;
+export default ProfileFixer;

@@ -27,7 +27,7 @@ const uiConfigFixer = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: '/profile',
+    signInSuccessUrl: '/fixer/profile',
 
     // We will display Google and Facebook as auth providers.
     signInOptions: [
@@ -47,7 +47,7 @@ class PhoneLogin extends React.Component {
         super(props)
         this.state = {
             userUID: this.props.route.userUID,
-            typeOfUser: (this.props.location.state !== undefined) ? this.props.location.state.typeOfUser : null
+            typeOfUser: (localStorage.getItem('typeOfuser') === 'user') ? 'user' : (localStorage.getItem('typeOfUser') === 'fixer') ? 'fixer' : null
         }
 
 
@@ -57,6 +57,8 @@ class PhoneLogin extends React.Component {
 
 
     handleSignOut() {
+        localStorage.setItem('typeOfUser', null)
+
         Firebase.auth().signOut();
         //browserHistory.push('/')
         console.log('signed out')

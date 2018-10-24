@@ -16,8 +16,10 @@ class Home extends React.Component {
       loading: false,
       listOfPeople: ["users"],
       userUID: this.props.route.userUID,
-      typeOfUser: ''
+      serviceImages: this.props.route.serviceImages
+
     }
+
     //this.handleLoadUsers = this.handleLoadUsers.bind(this)
     //this.handleLoadUsers()
   }
@@ -44,8 +46,6 @@ class Home extends React.Component {
   // };
 
   render() {
-
-
     return (
       <div>
         <div id="home">
@@ -64,7 +64,7 @@ class Home extends React.Component {
           </div>
           {/* customer/fixer */}
           {(this.state.userUID === undefined) ? (<div className="row mt-5  justify-content-center">
-            <div className='card text-center  col-md-4'>
+            <div className='card-body text-center  col-md-4'>
               <div>
                 <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>
                 <Button
@@ -72,7 +72,7 @@ class Home extends React.Component {
                   variant='text'
                   onClick={() => {
                     localStorage.setItem('typeOfUser', 'user');
-                    browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: 'user' } })
+                    browserHistory.push({ pathname: '/phonelogin' })
                   }}>Join as Customer</Button>
               </div>
               <div>
@@ -84,11 +84,31 @@ class Home extends React.Component {
                   onClick={() => {
 
                     localStorage.setItem('typeOfUser', 'fixer');
-                    browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: 'fixer' } })
+                    browserHistory.push({ pathname: '/phonelogin' })
                   }}>Join as Fixer</Button>
               </div>
             </div>
           </div>) : null}
+          {/* customer/fixer */}
+
+          {/* Choose a particular service */}
+          <div className='mt-5 justify-content-center'>
+            <div className='card  col-md-5'>
+              <div className='card-body'>
+                {console.log(this.state.serviceImages)}
+                {
+
+                  (this.state.serviceImages !== undefined) ? this.state.serviceImages.map((element, i) =>
+                    <div key={i}><img src={element.img} />
+                      <p>{element.service}</p></div>) : null}
+              </div>
+            </div>
+          </div>
+
+          {/* Choose a particular service */}
+          <div>
+
+          </div>
           <div >
             <div className="container">
               {/* How it Works section */}
@@ -99,7 +119,7 @@ class Home extends React.Component {
                     <img src={workingIcon} alt="working icon" />
                     <div className="card mt-3">
                       <h5 className="card-title mt-3">I want to get hired</h5>
-                      <p className="card-text">
+                      <p className="card-body">
                         Our platform lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
                 </p>
                     </div>
@@ -108,7 +128,7 @@ class Home extends React.Component {
                     <img src={workerIcon} alt='worker icon' />
                     <div className='card mt-3'>
                       <h5 className="card-title mt-3">I want to hire someone</h5>
-                      <p className="card-text">
+                      <p className="card-body">
                         Looking for a good hairdresser but just don't know where to look. Or maybe your Kitchen needs some remodeling. Our platform lists the very best professionals in the informal job sector, skilled for the job you may require. Feel free to browse through our category section to get started.
                 </p>
                     </div>
@@ -118,7 +138,7 @@ class Home extends React.Component {
                     <img src={handIcon} alt="hand icon" />
                     <div className="card mt-3">
                       <h5 className="card-title mt-3">I want to be a Partner</h5>
-                      <p className="card-text">
+                      <p className="card-body">
                         We are always looking for ways to improve our platform and from new angles or ideas. We feel that people with informal jobs could use a platform that is taylored specifically for them to showcase their work. If you share the same passion as well do, we would be happy to hear from you.
                     </p>
                     </div>

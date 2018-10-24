@@ -18,11 +18,15 @@ import RequestService from './components/RequestService'
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
 import ProfileUser from './Accounts/User/ProfileUser';
+import UpdateProfileUser from './Accounts/User/UpdateProfileUser';
+import ProfileFixer from './Accounts/Fixer/ProfileFixer';
+import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 
 var peopleArray = [];
-var currentUser = []
-var userUID
-// = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+var currentUser = [];
+var serviceImages = [];
+var userUID;
+//= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -55,11 +59,11 @@ class App extends Component {
       }
     })
     Firebase.database()
-      .ref('Users/')
+      .ref('Fixers/')
       .on('value', (snapshot) => {
         JobsSnapshot = snapshot.val();
 
-        // JobsSnapshot = jsonData["Users"]
+        //JobsSnapshot = jsonData["Users"]
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
@@ -92,6 +96,13 @@ class App extends Component {
         }
         currentUser.push(currentUserObject);
       });
+    Firebase.database()
+      .ref('HomePage/ServiceImages')
+      .on('value', (snapshot) => {
+        for (const index in snapshot.val()) {
+          serviceImages.push(snapshot.val()[index])
+        }
+      })
   }
   render() {
 
@@ -99,7 +110,7 @@ class App extends Component {
       return (
 
         < Router history={browserHistory} >
-          <Route path="/" component={Home} userUID={userUID} />
+          <Route path="/" component={Home} userUID={userUID} serviceImages={serviceImages} />
           <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
@@ -111,7 +122,10 @@ class App extends Component {
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
           <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
-          <Route path='/user/profile' component={ProfileUser} />
+          <Route path='/user/profile' component={ProfileUser} userData={currentUser} userUID={userUID} />
+          <Route path='/user/updateprofile' component={UpdateProfileUser} userData={currentUser} userUID={userUID} />
+          <Route path='/fixer/profile' component={ProfileFixer} userData={currentUser} userUID={userUID} />
+          <Route path='/fixer/updateprofile' component={UpdateProfileFixer} userData={currentUser} userUID={userUID} />
         </Router >
 
       );
