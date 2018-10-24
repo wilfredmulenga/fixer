@@ -1,13 +1,13 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
-import ViewProfile from './ViewProfile';
-import ViewRequestServices from './ViewRequestServices';
+import ViewProfile from '../ViewProfile';
+import ViewRequestServices from '../ViewRequestServices';
 
 
-class Profile extends React.Component {
+class ProfileUser extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -106,4 +106,4 @@ class Profile extends React.Component {
 
 
 
-export default Profile;
+export default ProfileUser;

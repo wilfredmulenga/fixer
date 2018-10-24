@@ -60,6 +60,8 @@ class RequestService extends React.Component {
                     preferredStartDate: value
                 })
                 break;
+            default:
+                break
         }
     }
     submitRequest = (event) => {

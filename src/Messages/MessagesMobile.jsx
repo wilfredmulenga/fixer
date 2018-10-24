@@ -20,7 +20,7 @@ class MessagesMobile extends React.Component {
         this.loadMessages = this.loadMessages.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.messageSubmit = this.messageSubmit.bind(this);
-
+        // eslint-disable-next-line
         (userUID !== null) ? null : this.setState({ loginStatus: false })
     }
 

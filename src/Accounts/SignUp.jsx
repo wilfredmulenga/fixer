@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
-let loginStatus;
+
 let errorMessage;
 
 

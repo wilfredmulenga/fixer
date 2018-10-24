@@ -5,6 +5,8 @@ import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Navbar from '../components/Navbar'
 
+
+
 const uiConfigCustomer = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
@@ -45,7 +47,7 @@ class PhoneLogin extends React.Component {
         super(props)
         this.state = {
             userUID: this.props.route.userUID,
-            typeOfUser: (this.props.location.state !== undefined) ? this.props.location.state.typeOfUser : "customer"
+            typeOfUser: (this.props.location.state !== undefined) ? this.props.location.state.typeOfUser : null
         }
 
 
@@ -88,7 +90,7 @@ class PhoneLogin extends React.Component {
                         :
                         (<div className='mt-5 text-center'>
                             <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
-                            {(this.state.typeOfUser == "customer") ? (<StyledFirebaseAuth uiConfig={uiConfigCustomer} firebaseAuth={Firebase.auth()} />)
+                            {(this.state.typeOfUser === "user") ? (<StyledFirebaseAuth uiConfig={uiConfigCustomer} firebaseAuth={Firebase.auth()} />)
                                 : (<StyledFirebaseAuth uiConfig={uiConfigFixer} firebaseAuth={Firebase.auth()} />)}
                         </div>)
 

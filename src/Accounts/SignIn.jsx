@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
-let loginStatus;
+//let loginStatus;
 let errorMessage;
 
 
@@ -40,7 +40,7 @@ class SignIn extends React.Component {
     Firebase.auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
-        loginStatus = true;
+        //loginStatus = true;
         browserHistory.push('/');
       })
       .catch((error) => {

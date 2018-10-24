@@ -33,17 +33,17 @@ class Messages extends React.Component {
   }
 
   handleEnter = (event) => {
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       alert("hello")
     }
     console.log("hello enter")
   }
 
   UNSAFE_componentWillMount() {
-
+    // eslint-disable-next-line
     this.LoadChatHistory()
-    this.props.location.state
-      ? (selectedPersonUserUID = this.props.location.state.messageKey)
+      // eslint-disable-next-line
+      (this.props.location.state) ? (selectedPersonUserUID = this.props.location.state.messageKey)
       : null;
   }
 
@@ -73,6 +73,7 @@ class Messages extends React.Component {
       '</div></div>';
 
     let div = document.getElementById(key);
+    // eslint-disable-next-line
     const messageList = document.getElementById('messages');
     // If an element for that message does not exists yet we create it.
     if (!div) {
@@ -145,6 +146,7 @@ class Messages extends React.Component {
       container.innerHTML = MESSAGE_TEMPLATE;
       div = container.firstChild;
       div.setAttribute('id', name);
+      // eslint-disable-next-line
       (messageList != null) ? messageList.appendChild(div) : null;
     }
     div.querySelector('.name').textContent = name;
@@ -193,7 +195,7 @@ class Messages extends React.Component {
 
   messageSubmit = (target) => {
     this.messageInput = document.getElementById('messageInput');
-    if (this.messageInput.value || target.charCode == 13) {
+    if (this.messageInput.value || target.charCode === 13) {
       this.saveMessage(this.messageInput.value);
       this.messageInput.value = '';
     }

@@ -2,18 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import Firebase from '../config/firebase';
 import Modal from 'react-modal';
-import Button from '@material-ui/core/Button';
-import brandImage from '../images/fixer-logo-v3.jpg'
-
-
-let loginStatus
 
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userUID: this.props.userUID
+      userUID: this.props.userUID,
+      typeOfUser: this.props.typeOfUser
     }
     this.handleSignOut = this.handleSignOut.bind(this);
 
@@ -56,7 +52,8 @@ class Navbar extends React.Component {
   </li>
 </Link> */}
               <li className="nav-item active mr-3">
-                <Link to="/profile" className="link">Profile</Link>
+                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" className="link">Profile</Link>
+                  : (localStorage.getItem('typeOfUser' === 'fixer') ? <Link to="/fixer/profile" className="link">Profile</Link> : null)}
               </li>
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" className="link">{(this.state.userUID) ? `Logout` : `Login`}</Link>

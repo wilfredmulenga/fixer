@@ -5,7 +5,7 @@ import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
 import Loader from './Loader';
-import Snackbar from '@material-ui/core/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar'
 import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
@@ -49,6 +49,7 @@ class Categories extends React.Component {
         userData: this.props.route.userData,
         userUID: this.props.route.userUID,
         currentUser: this.props.route.currentUser[0],
+        typeOfUser: (this.props.location.state) ? this.props.location.state.typeOfUser : null
 
       };
 
@@ -58,7 +59,7 @@ class Categories extends React.Component {
         userData: this.props.route.userData,
         userUID: this.props.route.userUID,
         currentUser: [],
-
+        typeOfUser: (this.props.location.state) ? this.props.location.state.typeOfUser : null
       }
     }
 
@@ -68,7 +69,7 @@ class Categories extends React.Component {
   render() {
     return (
       <div>
-        <Navbar userUID={this.state.userUID} />
+        <Navbar userUID={this.state.userUID} typeOfUser={this.state.typeOfUser} />
         <Tables userData={this.state.userData}
           userUID={this.state.userUID} currentUser={this.state.currentUser} />
       </div>
@@ -155,10 +156,10 @@ class Tables extends React.Component {
 
   handleCardClick = (selectedPersonUserID) => {
     for (const item in this.state.listOfPeople) {
-      selectedPersonUserID === this.state.listOfPeople[item].userUID
-        ? this.setState({
-          selectedPerson: this.state.listOfPeople[item],
-        }) : null;
+      // eslint-disable-next-line
+      (selectedPersonUserID === this.state.listOfPeople[item].userUID) ? this.setState({
+        selectedPerson: this.state.listOfPeople[item],
+      }) : null;
 
     }
     this.openModal();

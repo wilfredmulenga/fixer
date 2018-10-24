@@ -1,9 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import Navbar from '../components/Navbar';
-import Firebase from '../config/firebase';
-import { Link, browserHistory } from 'react-router';
-import Button from '@material-ui/core/Button';
-import Media from "react-media";
+import React, { Component } from 'react';
+
 
 
 class ViewProfile extends Component {

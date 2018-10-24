@@ -15,7 +15,8 @@ class Home extends React.Component {
     this.state = {
       loading: false,
       listOfPeople: ["users"],
-      userUID: this.props.route.userUID
+      userUID: this.props.route.userUID,
+      typeOfUser: ''
     }
     //this.handleLoadUsers = this.handleLoadUsers.bind(this)
     //this.handleLoadUsers()
@@ -48,7 +49,7 @@ class Home extends React.Component {
     return (
       <div>
         <div id="home">
-          <Navbar userUID={this.state.userUID} />
+          <Navbar userUID={this.state.userUID} typeOfUser={this.state.typeOfUser} />
           <div id="landingPage" className="col-md-12 col-sm-12">
             <img
               src={landingPage}
@@ -62,16 +63,32 @@ class Home extends React.Component {
 
           </div>
           {/* customer/fixer */}
-          {/* <div className="text-center">
-            <div>
-              <h3>Looking for a Fixer</h3>
-              <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</button>
+          {(this.state.userUID === undefined) ? (<div className="row mt-5  justify-content-center">
+            <div className='card text-center  col-md-4'>
+              <div>
+                <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>
+                <Button
+                  type="button"
+                  variant='text'
+                  onClick={() => {
+                    localStorage.setItem('typeOfUser', 'user');
+                    browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: 'user' } })
+                  }}>Join as Customer</Button>
+              </div>
+              <div>
+                <h3 className='mb-4 mt-5'>Looking to get hired</h3>
+                <Button
+                  type="button"
+                  variant='text'
+                  className='mb-5'
+                  onClick={() => {
+
+                    localStorage.setItem('typeOfUser', 'fixer');
+                    browserHistory.push({ pathname: '/phonelogin', state: { typeOfUser: 'fixer' } })
+                  }}>Join as Fixer</Button>
+              </div>
             </div>
-            <div>
-              <h3>Looking to get hired</h3>
-              <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</button>
-            </div>
-          </div> */}
+          </div>) : null}
           <div >
             <div className="container">
               {/* How it Works section */}

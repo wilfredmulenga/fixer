@@ -246,6 +246,7 @@ class UpdateProfile extends Component {
     var uploadedImageURL = []
     for (var x = 0; x < galleryFiles.length; x++) {
       var filePath = userUID + '/' + galleryFiles[x].name;
+      // eslint-disable-next-line
       Firebase.storage().ref(filePath).put(galleryFiles[x]).then(function (fileSnapshot) {
         // 3 - Generate a public URL for the file.
 
