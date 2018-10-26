@@ -23,10 +23,9 @@ import ProfileFixer from './Accounts/Fixer/ProfileFixer';
 import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 
 var peopleArray = [];
-var currentUser = [];
-var serviceImages = [];
-var userUID;
-//= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+var currentUser = []
+var userUID
+  = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -70,9 +69,7 @@ class App extends Component {
 
           elements = JobsSnapshot[index];
           if (elements.profession != null) {
-
             peopleArray.push(elements);
-
           }
         }
         this.setState({
