@@ -25,7 +25,7 @@ import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 var peopleArray = [];
 var currentUser = []
 var userUID
-  = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+// = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
