@@ -93,13 +93,7 @@ class App extends Component {
         }
         currentUser.push(currentUserObject);
       });
-    Firebase.database()
-      .ref('HomePage/ServiceImages')
-      .on('value', (snapshot) => {
-        for (const index in snapshot.val()) {
-          serviceImages.push(snapshot.val()[index])
-        }
-      })
+
   }
   render() {
 
@@ -107,7 +101,7 @@ class App extends Component {
       return (
 
         < Router history={browserHistory} >
-          <Route path="/" component={Home} userUID={userUID} serviceImages={serviceImages} />
+          <Route path="/" component={Home} userUID={userUID} />
           <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />

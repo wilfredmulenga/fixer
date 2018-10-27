@@ -167,7 +167,12 @@ class Tables extends React.Component {
 
   openModal() {
     // open and close modal upon clicking
-    this.setState({ modalIsOpen: !this.state.modalIsOpen });
+    this.setState({ modalIsOpen: true });
+  }
+  closeModal = () => {
+    this.setState({
+      modalIsOpen: false
+    })
   }
 
 

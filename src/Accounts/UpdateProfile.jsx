@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
-import greybackground from '../images/greybackground.jpeg';
 import Firebase from '../config/firebase';
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -104,7 +103,7 @@ class UpdateProfile extends Component {
 
   handleDelete = data => () => {
     if (data.label === 'nameOfChip') {
-      alert('Why would you want to delete specifc Chip?! :)'); // eslint-disable-line no-alert
+      alert('Why would you want to delete specific Chip?! :)');
       return;
     }
     const chipData = [...this.state.chipData];
@@ -116,7 +115,7 @@ class UpdateProfile extends Component {
   // handle the addition of a chip
   addItem = () => {
     this.state.chipData.push({ label: this.state.input });
-    console.log(this.state.chipData);
+    console.log("addItem", this.state.chipData);
     const chipData = [...this.state.chipData];
     this.setState({ chipData });
   };
