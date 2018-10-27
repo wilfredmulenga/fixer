@@ -11,7 +11,7 @@ import SignIn from './Accounts/SignIn'
 import SignUp from './Accounts/SignUp'
 import Loader from './components/Loader'
 // eslint-disable-next-line
-import jsonData from './database/NchitoUserDatabase.json'
+import jsonData from './database/fixer-test-export.json'
 import PhoneLogin from './Accounts/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
@@ -38,7 +38,9 @@ class App extends Component {
       listOfPeople: []
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
+    //this.handleDataLoad = this.handleDataLoad.bind(this)
     this.handleLoadUsers()
+    //this.handleDataLoad()
   }
   handleLoadUsers = () => {
     //check which type of user 
@@ -93,7 +95,7 @@ class App extends Component {
   }
   render() {
 
-    if (this.state.loading) {
+    if (true) {
       return (
 
         < Router history={browserHistory} >
