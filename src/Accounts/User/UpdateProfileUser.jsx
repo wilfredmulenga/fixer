@@ -22,13 +22,15 @@ class UpdateProfileUser extends Component {
                 lastName: userData.lastName,
                 phoneNumber: userData.phoneNumber,
                 email: userData.email,
-                streetAddress: '',
-                area: '',
-                city: userData.city,
+                streetAddress: userData.serviceAddress.streetAddress,
+                area: userData.serviceAddress.area,
+                city: userData.serviceAddress.city,
                 userUID: userData.userUID,
                 open: false,
                 snackbarText: '',
-                servicePhoneNumber: ''
+                servicePhoneNumber: userData.serviceAddress.servicePhoneNumber,
+                error: '',
+
             }
         } else {
             this.state = {
@@ -44,7 +46,9 @@ class UpdateProfileUser extends Component {
                 userUID: '',
                 open: false,
                 snackbarText: '',
-                servicePhoneNumber: ''
+                servicePhoneNumber: '',
+                error: '',
+
             }
         }
 
@@ -63,21 +67,21 @@ class UpdateProfileUser extends Component {
 
     sendData = (event) => {
         event.preventDefault();
-        console.log(this.state.firstName, this.state.lastName, this.state.phoneNumber,
-            this.state.city, this.state.area, this.state.streetAddress, this.state.servicePhoneNumber)
-        {/*    Firebase.database()
+        // console.log(this.state.firstName, this.state.lastName, this.state.phoneNumber,
+        //     this.state.city, this.state.area, this.state.streetAddress, this.state.servicePhoneNumber)
+        Firebase.database()
             .ref(`Users/${userUID}`)
             .update(
                 {
-                    firstName: firstName,
-                    lastName: lastName,
-                    phoneNumber: phoneNumber,
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    phoneNumber: this.state.phoneNumber,
                     userUID: userUID,
                     serviceAddress: {
                         streetAddress: this.state.streetAddress,
                         city: this.state.city,
                         area: this.state.area,
-                        phoneNumber: this.state.phoneNumber
+                        servicePhoneNumber: this.state.phoneNumber
                     }
                 },
                 (error) => {
@@ -101,7 +105,7 @@ class UpdateProfileUser extends Component {
         }, 2000);
         window.location.reload()
         browserHistory.push('/categories')
-    */}
+
     }
 
 
@@ -216,7 +220,7 @@ class UpdateProfileUser extends Component {
                                         onChange={this.handleChangeInput} value={this.state.area} required></input>
                                     <input className="form-control mb-3" type="text" placeholder="city"
                                         onChange={this.handleChangeInput} value={this.state.city} required></input>
-                                    <input className="form-control mb-3" type="number" placeholder="phone number"
+                                    <input className="form-control mb-3" type="text" placeholder="phone number"
                                         minLength='10'
                                         maxLength='13'
                                         pattern="[0-9,+]"

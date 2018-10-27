@@ -47,7 +47,7 @@ class PhoneLogin extends React.Component {
         super(props)
         this.state = {
             userUID: this.props.route.userUID,
-            typeOfUser: (localStorage.getItem('typeOfuser') === 'user') ? 'user' : (localStorage.getItem('typeOfUser') === 'fixer') ? 'fixer' : null
+            typeOfUser: (localStorage.getItem('typeOfUser') === 'user') ? 'user' : (localStorage.getItem('typeOfUser') === 'fixer') ? 'fixer' : null
         }
 
 
@@ -97,6 +97,7 @@ class PhoneLogin extends React.Component {
                         </div>)
 
                 }
+                {console.log(localStorage.getItem('typeOfUser'))}
             </div>
         )
     }

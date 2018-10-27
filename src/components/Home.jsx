@@ -16,7 +16,7 @@ class Home extends React.Component {
       loading: false,
       listOfPeople: ["users"],
       userUID: this.props.route.userUID,
-      serviceImages: this.props.route.serviceImages
+
 
     }
 
@@ -95,12 +95,7 @@ class Home extends React.Component {
           <div className='mt-5 justify-content-center'>
             <div className='card  col-md-5'>
               <div className='card-body'>
-                {console.log(this.state.serviceImages)}
-                {
 
-                  (this.state.serviceImages !== undefined) ? this.state.serviceImages.map((element, i) =>
-                    <div key={i}><img src={element.img} />
-                      <p>{element.service}</p></div>) : null}
               </div>
             </div>
           </div>

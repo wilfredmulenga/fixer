@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
-import ViewProfile from '../ViewProfile';
+import ViewProfileUser from '../../Accounts/User/ViewProfileUser';
 import ViewRequestServices from '../ViewRequestServices';
 
 
@@ -86,7 +86,7 @@ class ProfileUser extends React.Component {
                         </div>
 
                         <div className="card col center-align mt-2  ml-3">
-                            {(this.state.viewProfile) ? <ViewProfile userData={this.state.userData} />
+                            {(this.state.viewProfile) ? <ViewProfileUser userData={this.state.userData} />
                                 : (this.state.viewRequestServices) ? <ViewRequestServices />
                                     : < div > <h3>Please Update Your Profile</h3></div>}
                         </div>

@@ -24,7 +24,6 @@ import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 
 var peopleArray = [];
 var currentUser = [];
-var serviceImages = [];
 var userUID;
 //= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
@@ -40,30 +39,35 @@ class App extends Component {
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleLoadUsers()
   }
-  //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
-
+    //check which type of user 
+    var typeOfUser = localStorage.getItem('typeOfUser');
+    if (typeOfUser === 'user') {
+      typeOfUser = 'Users'
+    } else {
+      typeOfUser = 'Fixers'
+    }
+    //get current user data
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         //handleLoadUsers()
         userUID = user.uid
-        console.log("current user", userUID)
+        // console.log("current user", userUID)
+        Firebase.database()
+          .ref(`${typeOfUser}/${userUID}`)
+          .once('value', (snapshot) => {
+            currentUser.push(snapshot.val())
+          })
       } else {
-        // this.setState({
-        //   loading: true,
-        //   listOfPeople: peopleArray
-        // })
-
         browserHistory.push('/')
-
       }
     })
-    Firebase.database()
-      .ref('Fixers/')
-      .on('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
 
-        //JobsSnapshot = jsonData["Users"]
+    //fectch data of fixers
+    Firebase.database()
+      .ref(`Fixers`)
+      .once('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
@@ -79,30 +83,8 @@ class App extends Component {
           loading: true,
           listOfPeople: peopleArray,
         });
-
-        let currentUserObject;
-        for (const index in JobsSnapshot) {
-          // console.log(JobsSnapshot[index]['userUID'])
-
-          if (
-            JobsSnapshot[index].userUID ===
-            userUID
-            //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
-            //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
-            //'O6VVUA0fm1QpOt23QaOctFux27h1'
-          ) {
-            currentUserObject = JobsSnapshot[index];
-          }
-        }
-        currentUser.push(currentUserObject);
       });
-    Firebase.database()
-      .ref('HomePage/ServiceImages')
-      .on('value', (snapshot) => {
-        for (const index in snapshot.val()) {
-          serviceImages.push(snapshot.val()[index])
-        }
-      })
+
   }
   render() {
 
@@ -110,7 +92,7 @@ class App extends Component {
       return (
 
         < Router history={browserHistory} >
-          <Route path="/" component={Home} userUID={userUID} serviceImages={serviceImages} />
+          <Route path="/" component={Home} userUID={userUID} />
           <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
