@@ -13,8 +13,12 @@ import Loader from './components/Loader'
 // eslint-disable-next-line
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
+<<<<<<< Updated upstream
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
+=======
+import ContactUs from './components/ContactUs'
+>>>>>>> Stashed changes
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
 import ProfileUser from './Accounts/User/ProfileUser';
@@ -53,7 +57,14 @@ class App extends Component {
         //   listOfPeople: peopleArray
         // })
 
+<<<<<<< Updated upstream
         browserHistory.push('/')
+=======
+    //JobsSnapshot = jsonData["Users"]
+    let elements;
+    // React doesnt accept objects in states so it has to be converted into an array
+    for (const index in JobsSnapshot) {
+>>>>>>> Stashed changes
 
       }
     })
@@ -94,6 +105,21 @@ class App extends Component {
         currentUser.push(currentUserObject);
       });
 
+<<<<<<< Updated upstream
+=======
+      if (
+        JobsSnapshot[index].userUID ===
+        userUID
+        //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+        //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
+        //'O6VVUA0fm1QpOt23QaOctFux27h1'
+      ) {
+        currentUserObject = JobsSnapshot[index];
+      }
+    }
+    currentUser.push(currentUserObject);
+    // });
+>>>>>>> Stashed changes
   }
   render() {
 
@@ -112,11 +138,15 @@ class App extends Component {
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
+<<<<<<< Updated upstream
           <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
           <Route path='/user/profile' component={ProfileUser} userData={currentUser} userUID={userUID} />
           <Route path='/user/updateprofile' component={UpdateProfileUser} userData={currentUser} userUID={userUID} />
           <Route path='/fixer/profile' component={ProfileFixer} userData={currentUser} userUID={userUID} />
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} userData={currentUser} userUID={userUID} />
+=======
+          <Route path='/contactus' component={ContactUs} />
+>>>>>>> Stashed changes
         </Router >
 
       );

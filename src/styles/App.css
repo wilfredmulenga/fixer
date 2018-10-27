@@ -75,3 +75,6 @@ input:valid+span:after {
   padding-left: 5px;
 }
 
+.mandatory {
+  color : red
+}
