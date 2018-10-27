@@ -81,7 +81,6 @@ class App extends Component {
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
-
           elements = JobsSnapshot[index];
           if (elements.profession != null) {
             peopleArray.push(elements);
@@ -95,7 +94,7 @@ class App extends Component {
   }
   render() {
 
-    if (true) {
+    if (this.state.loading) {
       return (
 
         < Router history={browserHistory} >
