@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
 import Firebase from '../config/firebase';
 import Snackbar from '@material-ui/core/Snackbar';
+import greybackground from '../images/greybackground.jpeg'
 
 let userData
 let galleryFiles = []

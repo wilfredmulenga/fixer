@@ -5,11 +5,7 @@ import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
-<<<<<<< Updated upstream
 import { Link, browserHistory } from 'react-router';
-=======
-import { browserHistory, Link } from 'react-router';
->>>>>>> Stashed changes
 import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
 
@@ -20,7 +16,7 @@ class Home extends React.Component {
       loading: false,
       listOfPeople: ["users"],
       userUID: this.props.route.userUID,
-      serviceImages: this.props.route.serviceImages
+
 
     }
 
@@ -99,12 +95,7 @@ class Home extends React.Component {
           <div className='mt-5 justify-content-center'>
             <div className='card  col-md-5'>
               <div className='card-body'>
-                {console.log(this.state.serviceImages)}
-                {
 
-                  (this.state.serviceImages !== undefined) ? this.state.serviceImages.map((element, i) =>
-                    <div key={i}><img src={element.img} />
-                      <p>{element.service}</p></div>) : null}
               </div>
             </div>
           </div>
@@ -163,11 +154,7 @@ class Home extends React.Component {
                   <div className="col-md-4 align-items-center">
 
                     <h4 className="mb-3">Contact</h4>
-<<<<<<< Updated upstream
-                    <h5>Email: support@myfixerapp.com</h5>
-=======
                     <h5>Email: <Link to='/contactus'>info@fixer-app.co</Link></h5>
->>>>>>> Stashed changes
                     <h5>Phone: 0979622855</h5>
                     {/* <h5>Address:</h5> */}
 

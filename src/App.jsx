@@ -13,12 +13,9 @@ import Loader from './components/Loader'
 // eslint-disable-next-line
 import jsonData from './database/NchitoUserDatabase.json'
 import PhoneLogin from './Accounts/PhoneLogin'
-<<<<<<< Updated upstream
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
-=======
 import ContactUs from './components/ContactUs'
->>>>>>> Stashed changes
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
 import ProfileUser from './Accounts/User/ProfileUser';
@@ -27,9 +24,9 @@ import ProfileFixer from './Accounts/Fixer/ProfileFixer';
 import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 
 var peopleArray = [];
-var currentUser = []
-var userUID
-// = 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
+var currentUser = [];
+var userUID;
+//= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
 
@@ -43,37 +40,42 @@ class App extends Component {
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleLoadUsers()
   }
-  //fetching data from firebase or json in ./database folder
   handleLoadUsers = () => {
-
+    //check which type of user 
+    var typeOfUser = localStorage.getItem('typeOfUser');
+    if (typeOfUser === 'user') {
+      typeOfUser = 'Users'
+    } else {
+      typeOfUser = 'Fixers'
+    }
+    //get current user data
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         //handleLoadUsers()
         userUID = user.uid
-        console.log("current user", userUID)
+        // console.log("current user", userUID)
+        Firebase.database()
+          .ref(`${typeOfUser}/${userUID}`)
+          .once('value', (snapshot) => {
+            currentUser.push(snapshot.val())
+          })
       } else {
+
         // this.setState({
         //   loading: true,
         //   listOfPeople: peopleArray
         // })
 
-<<<<<<< Updated upstream
         browserHistory.push('/')
-=======
-    //JobsSnapshot = jsonData["Users"]
-    let elements;
-    // React doesnt accept objects in states so it has to be converted into an array
-    for (const index in JobsSnapshot) {
->>>>>>> Stashed changes
 
       }
     })
-    Firebase.database()
-      .ref('Fixers/')
-      .on('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
 
-        //JobsSnapshot = jsonData["Users"]
+    //fectch data of fixers
+    Firebase.database()
+      .ref(`Fixers`)
+      .once('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
         let elements;
         // React doesnt accept objects in states so it has to be converted into an array
         for (const index in JobsSnapshot) {
@@ -87,39 +89,7 @@ class App extends Component {
           loading: true,
           listOfPeople: peopleArray,
         });
-
-        let currentUserObject;
-        for (const index in JobsSnapshot) {
-          // console.log(JobsSnapshot[index]['userUID'])
-
-          if (
-            JobsSnapshot[index].userUID ===
-            userUID
-            //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
-            //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
-            //'O6VVUA0fm1QpOt23QaOctFux27h1'
-          ) {
-            currentUserObject = JobsSnapshot[index];
-          }
-        }
-        currentUser.push(currentUserObject);
       });
-
-<<<<<<< Updated upstream
-=======
-      if (
-        JobsSnapshot[index].userUID ===
-        userUID
-        //'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
-        //'HxzHuXo1E1M0F3kxBrKf550KsCa2'
-        //'O6VVUA0fm1QpOt23QaOctFux27h1'
-      ) {
-        currentUserObject = JobsSnapshot[index];
-      }
-    }
-    currentUser.push(currentUserObject);
-    // });
->>>>>>> Stashed changes
   }
   render() {
 
@@ -138,15 +108,12 @@ class App extends Component {
           <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
           <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
-<<<<<<< Updated upstream
           <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
           <Route path='/user/profile' component={ProfileUser} userData={currentUser} userUID={userUID} />
           <Route path='/user/updateprofile' component={UpdateProfileUser} userData={currentUser} userUID={userUID} />
           <Route path='/fixer/profile' component={ProfileFixer} userData={currentUser} userUID={userUID} />
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} userData={currentUser} userUID={userUID} />
-=======
           <Route path='/contactus' component={ContactUs} />
->>>>>>> Stashed changes
         </Router >
 
       );

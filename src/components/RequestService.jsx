@@ -9,18 +9,21 @@ class RequestService extends React.Component {
         this.state = {
             jobDescription: '',
             estimatedBudget: '',
-            streetAddress: '',
-            area: '',
-            city: '',
-            phoneNumber: '',
+            userData: this.props.route.userData[0],
+            streetAddress: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.streetAddress : null,
+            area: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.area : null,
+            city: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.city : null,
+            phoneNumber: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.servicePhoneNumber : null,
             preferredStartDate: '',
             userUID: this.props.route.userUID,
             selectedPersonUserUID: this.props.location.state.selectedPersonUserUID,
             selectedPersonFullName: `${this.props.location.state.selectedPersonFullName}`,
-            profession: this.props.location.state.profession
+            profession: this.props.location.state.profession,
+
         }
         this.handleChangeInput = this.handleChangeInput.bind(this)
         this.submitRequest = this.submitRequest.bind(this)
+        console.log(this.state.userData)
     }
 
     handleChangeInput = ({ target: { value, placeholder } }) => {
@@ -125,6 +128,12 @@ class RequestService extends React.Component {
                                     onChange={this.handleChangeInput}
                                     value={this.state.estimatedBudget} required /> </div>
                             </div>
+                            <p>When would you like the serice</p>
+                            <div>
+                                <input className="form-control mb-2" type="text" placeholder="preferred start date"
+                                    style={{ display: 'inline-block' }}
+                                    onChange={this.handleChangeInput} value={this.state.preferredStartDate} required></input>
+                            </div>
                         </div>
                         <div className="col-md-6 text-center">
                             <p>Service Address</p>
@@ -137,12 +146,20 @@ class RequestService extends React.Component {
                                         onChange={this.handleChangeInput} value={this.state.area} required></input>
                                     <input className="form-control mb-2" type="text" placeholder="city"
                                         onChange={this.handleChangeInput} value={this.state.city} required></input>
-                                    <input className="form-control mb-2" type="number" placeholder="phone number"
-                                        onChange={this.handleChangeInput} value={this.state.phoneNumber} required></input>
-                                    <input className="form-control mb-2" type="text" placeholder="preferred start date"
-                                        onChange={this.handleChangeInput} value={this.state.preferredStartDate} required></input>
-                                    <input type="checkbox" name="rememberAddress" value="" /> Remember this address
-                            </div>
+                                    <input
+                                        type="text"
+                                        value={this.state.phoneNumber}
+                                        onChange={this.handleChangeInput}
+                                        className="form-control mb-2"
+                                        minLength='10'
+                                        maxLength='13'
+                                        placeholder="phone number"
+                                        required
+                                        pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                                    />
+
+                                    {/* <input type="checkbox" name="rememberAddress" value="" /> Remember this address */}
+                                </div>
                             </div>
                         </div>
                     </div>
