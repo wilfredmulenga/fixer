@@ -9,37 +9,9 @@ import Snackbar from '@material-ui/core/Snackbar'
 import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
-
 var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
 
-
-//let displayName = 'Anonymous';
-//let pic = 'https://storage.googleapis.com/lsk-guide-jobs.appspot.com/profile_placeholder.png';
-// Firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     userUID = user.uid;
-//     // Firebase.database().ref(`Users/${userUID}`).on('value', (snapshot) => {
-//     //   var data = snapshot.val()
-//     //   if (data != null) {
-//     //     displayName = `${data.firstName} ${data.lastName}`;
-//     //     pic = data.pic
-//     //   }
-//     // })
-//     // newFucn()
-
-//   } else {
-//     //comment out and when app loads, takes user to /phonelogin
-//     // browserHistory.push({
-//     //   pathname: '/phonelogin'
-//     // })
-//   }
-// });
-
-
-// console.log(newFucn == true)
-
 class Categories extends React.Component {
-
 
   constructor(props) {
     super(props);
