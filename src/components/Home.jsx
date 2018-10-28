@@ -8,17 +8,11 @@ import twitterIcon from '../images/icons8-twitter-32.png'
 import { Link, browserHistory } from 'react-router';
 import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
-
+var userUID = localStorage.getItem('userUID');
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: false,
-      listOfPeople: ["users"],
-      userUID: localStorage.getItem('userUID'),
 
-
-    }
 
     //this.handleLoadUsers = this.handleLoadUsers.bind(this)
     //this.handleLoadUsers()
@@ -49,7 +43,7 @@ class Home extends React.Component {
     return (
       <div>
         <div id="home">
-          <Navbar userUID={this.state.userUID} typeOfUser={this.state.typeOfUser} />
+          <Navbar />
           <div id="landingPage" className="col-md-12 col-sm-12">
             <img
               src={landingPage}
@@ -63,7 +57,8 @@ class Home extends React.Component {
 
           </div>
           {/* customer/fixer */}
-          {(this.state.userUID === undefined) ? (<div className="row mt-5  justify-content-center">
+          {console.log(typeof null)}
+          {(userUID === 'null') ? (<div className="row mt-5  justify-content-center">
             <div className='card-body text-center  col-md-4'>
               <div>
                 <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>

@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Navbar from '../components/Navbar'
 
-
+var userUID = localStorage.getItem('userUID')
 
 const uiConfigCustomer = {
     // Popup signin flow rather than redirect flow.
@@ -46,11 +46,9 @@ class PhoneLogin extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userUID: localStorage.getItem('userUID'),
+
             typeOfUser: (localStorage.getItem('typeOfUser') === 'user') ? 'user' : (localStorage.getItem('typeOfUser') === 'fixer') ? 'fixer' : null
         }
-
-
         this.handleSignOut = this.handleSignOut.bind(this)
     }
 
@@ -58,22 +56,22 @@ class PhoneLogin extends React.Component {
 
     handleSignOut() {
         localStorage.setItem('typeOfUser', null)
+        localStorage.setItem('userUID', null)
 
         Firebase.auth().signOut();
         //browserHistory.push('/')
         console.log('signed out')
+        //reload page
         window.location.reload()
     }
     render() {
         return (
             <div>
-                <Navbar userUID={this.state.userUID} typeOfUser={this.state.typeOfUser} />
+                <Navbar typeOfUser={this.state.typeOfUser} />
                 {
-                    (this.state.userUID !== undefined) ?
+                    (userUID !== 'null') ?
                         (<div className='mt-5' >
-
                             <div style={{ marginTop: 50, textAlign: 'center' }}>{
-
                                 <div>
                                     <h1> Sign Out of Fixer? </h1>
                                     <div className='row justify-content-center' style={{ textAlign: 'center' }}>
