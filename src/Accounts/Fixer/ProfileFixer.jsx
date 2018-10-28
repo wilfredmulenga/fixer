@@ -11,8 +11,8 @@ class ProfileFixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userData: this.props.route.userData['0'],
-            userUID: this.props.route.userUID,
+            userData: JSON.parse(localStorage.getItem('currentUserData')),
+            userUID: localStorage.getItem('userUID'),
             viewRequestServices: false,
             viewProfile: false,
         }
@@ -38,7 +38,7 @@ class ProfileFixer extends React.Component {
         return (
 
             <div>
-                <Navbar userUID={this.state.userUID} />
+                <Navbar />
                 {(userUID) ?
                     <div className="row container-fluid justify-content-start mt-4">
                         <div className="card col-md-2 ml-3 d-flex mt-2 mb-3">

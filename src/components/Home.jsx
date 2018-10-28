@@ -15,7 +15,7 @@ class Home extends React.Component {
     this.state = {
       loading: false,
       listOfPeople: ["users"],
-      userUID: this.props.route.userUID,
+      userUID: localStorage.getItem('userUID'),
 
 
     }

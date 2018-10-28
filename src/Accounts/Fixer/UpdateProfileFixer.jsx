@@ -15,8 +15,8 @@ class UpdateProfileFixer extends Component {
 
     constructor(props) {
         super(props);
-        userData = this.props.route.userData['0'];
-        userUID = this.props.route.userUID;
+        userData = JSON.parse(localStorage.getItem('currentUserData'));
+        userUID = localStorage.getItem('userUID');
         if (userData != null) {
             this.state = {
                 signedIn: true,

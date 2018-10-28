@@ -3,19 +3,21 @@ import Navbar from './Navbar';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 
+var currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
+
 class RequestService extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             jobDescription: '',
             estimatedBudget: '',
-            userData: this.props.route.userData[0],
-            streetAddress: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.streetAddress : null,
-            area: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.area : null,
-            city: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.city : null,
-            phoneNumber: (this.props.route.userData) ? this.props.route.userData[0].serviceAddress.servicePhoneNumber : null,
+            userData: currentUserData,
+            streetAddress: currentUserData.serviceAddress.streetAddress,
+            area: currentUserData.serviceAddress.area,
+            city: currentUserData.serviceAddress.city,
+            phoneNumber: currentUserData.serviceAddress.servicePhoneNumber,
             preferredStartDate: '',
-            userUID: this.props.route.userUID,
+            userUID: localStorage.getItem('userUID'),
             selectedPersonUserUID: this.props.location.state.selectedPersonUserUID,
             selectedPersonFullName: `${this.props.location.state.selectedPersonFullName}`,
             profession: this.props.location.state.profession,
@@ -23,7 +25,7 @@ class RequestService extends React.Component {
         }
         this.handleChangeInput = this.handleChangeInput.bind(this)
         this.submitRequest = this.submitRequest.bind(this)
-        console.log(this.state.userData)
+
     }
 
     handleChangeInput = ({ target: { value, placeholder } }) => {

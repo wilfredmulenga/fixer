@@ -11,13 +11,14 @@ class ProfileUser extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userData: this.props.route.userData['0'],
-            userUID: this.props.route.userUID,
+            userData: JSON.parse(localStorage.getItem('currentUserData')),
+            userUID: localStorage.getItem('userUID'),
             viewRequestServices: false,
             viewProfile: false,
         }
         this.openViewProfile = this.openViewProfile.bind(this)
         this.openViewRequestServices = this.openViewRequestServices.bind(this)
+
     }
 
     openViewProfile = () => {

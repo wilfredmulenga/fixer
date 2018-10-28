@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Firebase from '../../config/firebase';
-import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
 
 let userData
@@ -13,8 +12,8 @@ class UpdateProfileUser extends Component {
 
     constructor(props) {
         super(props);
-        userData = this.props.route.userData['0'];
-        userUID = this.props.route.userUID;
+        userData = JSON.parse(localStorage.getItem('currentUserData'));
+        userUID = localStorage.getItem('userUID');
         if (userData != null) {
             this.state = {
                 signedIn: true,
@@ -25,7 +24,6 @@ class UpdateProfileUser extends Component {
                 streetAddress: userData.serviceAddress.streetAddress,
                 area: userData.serviceAddress.area,
                 city: userData.serviceAddress.city,
-                userUID: userData.userUID,
                 open: false,
                 snackbarText: '',
                 servicePhoneNumber: userData.serviceAddress.servicePhoneNumber,
@@ -163,7 +161,7 @@ class UpdateProfileUser extends Component {
 
         return (
             <div>
-                <Navbar userUID={this.state.userUID} />
+                <Navbar />
                 <div className="container justify-content-center">
                     <h3>Update Profile</h3>
                     <div className="card">

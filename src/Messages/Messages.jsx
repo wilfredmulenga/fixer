@@ -18,14 +18,14 @@ class Messages extends React.Component {
       loginStatus: true,
       selectedPersonUsername: '',
       loadMessagesMobile: false,
-      userUID: this.props.route.userUID
+      userUID: localStorage.getItem('userUID')
       //  messageKey: this.props.location.state.messageKey
     }
     this.loadMessages = this.loadMessages.bind(this);
     this.displayMessage = this.displayMessage.bind(this);
     this.messageSubmit = this.messageSubmit.bind(this);
     this.handleEnter = this.handleEnter.bind(this)
-    userUID = this.props.route.userUID
+
   }
   componentDidMount() {
     //this.loadMessages();

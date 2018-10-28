@@ -16,7 +16,7 @@ class UpdateProfile extends Component {
   constructor(props) {
     super(props);
     userData = this.props.route.userData['0'];
-    userUID = this.props.route.userUID;
+    userUID = localStorage.getItem('userUID');
     if (userData != null) {
       this.state = {
         signedIn: true,
@@ -45,7 +45,7 @@ class UpdateProfile extends Component {
         profilePicPreviewUrl: userData.pic,
         // base64 of uploaded Images
         uploadedImagesBase64: [],
-        userUID: userData.userUID,
+        userUID: localStorage.getItem('userUID'),
         open: false,
         snackbarText: ''
       }

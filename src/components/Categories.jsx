@@ -10,7 +10,7 @@ import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
 
-
+var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
 
 
 //let displayName = 'Anonymous';
@@ -46,9 +46,9 @@ class Categories extends React.Component {
     if (!this.props.route.currentUser) {
       this.state = {
         modalIsOpen: false,
-        userData: this.props.route.userData,
-        userUID: this.props.route.userUID,
-        currentUser: this.props.route.currentUser[0],
+        userData: listOfFixers,
+        userUID: localStorage.getItem('userUID'),
+        currentUser: JSON.parse(localStorage.getItem('currentUserData')),
         typeOfUser: (this.props.location.state) ? this.props.location.state.typeOfUser : null
 
       };
@@ -56,8 +56,8 @@ class Categories extends React.Component {
     } else {
       this.state = {
         modalIsOpen: false,
-        userData: this.props.route.userData,
-        userUID: this.props.route.userUID,
+        userData: listOfFixers,
+        userUID: localStorage.getItem('userUID'),
         currentUser: [],
         typeOfUser: (this.props.location.state) ? this.props.location.state.typeOfUser : null
       }
@@ -69,9 +69,9 @@ class Categories extends React.Component {
   render() {
     return (
       <div>
-        <Navbar userUID={this.state.userUID} typeOfUser={this.state.typeOfUser} />
+        <Navbar typeOfUser={this.state.typeOfUser} />
         <Tables userData={this.state.userData}
-          userUID={this.state.userUID} currentUser={this.state.currentUser} />
+          currentUser={this.state.currentUser} />
       </div>
     );
   }
@@ -85,7 +85,7 @@ class Tables extends React.Component {
     if (this.props.currentUser.pic) {
       this.state = {
         listOfPeople: this.props.userData,
-        userUID: this.props.userUID,
+        userUID: localStorage.getItem('userUID'),
         job: '',
         selectedPerson: [],
         loading: true,
@@ -97,7 +97,7 @@ class Tables extends React.Component {
     } else {
       this.state = {
         listOfPeople: this.props.userData,
-        userUID: this.props.userUID,
+        userUID: localStorage.getItem('userUID'),
         job: '',
         selectedPerson: [],
         loading: true,

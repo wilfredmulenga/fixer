@@ -14,9 +14,9 @@ class MessagesMobile extends React.Component {
             messageKey: this.props.location.state.selectedPersonUserUID,
             name: this.props.location.state.selectedPersonName,
             showChatHistory: true,
-            userUID: this.props.route.userUID
+            userUID: localStorage.getItem('userUID')
         }
-        userUID = this.props.route.userUID;
+
         this.loadMessages = this.loadMessages.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.messageSubmit = this.messageSubmit.bind(this);

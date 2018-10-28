@@ -7,11 +7,9 @@ import Messages from './Messages/Messages';
 import MessagesMobile from './Messages/MessagesMobile';
 import ChatHistoryMobile from './Messages/ChatHistoryMobile';
 import UpdateProfile from './Accounts/UpdateProfile';
-import SignIn from './Accounts/SignIn'
-import SignUp from './Accounts/SignUp'
 import Loader from './components/Loader'
 // eslint-disable-next-line
-import jsonData from './database/NchitoUserDatabase.json'
+import jsonData from './database/fixer-test-export.json'
 import PhoneLogin from './Accounts/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
@@ -23,42 +21,74 @@ import UpdateProfileUser from './Accounts/User/UpdateProfileUser';
 import ProfileFixer from './Accounts/Fixer/ProfileFixer';
 import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer'
 
-var peopleArray = [];
-var currentUser = [];
+var listOfFixers = [];
 var userUID;
 //= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
+//check which type of user 
+var typeOfUser = localStorage.getItem('typeOfUser');
+if (typeOfUser === 'user') {
+  typeOfUser = 'Users'
+} else {
+  typeOfUser = 'Fixers'
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       listOfPeople: []
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
+    this.handleDataLoad = this.handleDataLoad.bind(this)
+    this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
+    this.handleDataLoad()
+    this.handleCurrentUserDataLoad()
   }
-  handleLoadUsers = () => {
-    //check which type of user 
-    var typeOfUser = localStorage.getItem('typeOfUser');
-    if (typeOfUser === 'user') {
-      typeOfUser = 'Users'
-    } else {
-      typeOfUser = 'Fixers'
+  handleCurrentUserDataLoad = () => {
+    var listOfUsers = []
+    var x = jsonData['Users']
+    var elements;
+    for (const index in x) {
+      elements = x[index]
+      listOfUsers.push(elements);
     }
+
+    localStorage.setItem('currentUserData', JSON.stringify(listOfUsers[2]))
+  }
+
+  handleDataLoad = () => {
+    JobsSnapshot = jsonData['Fixers'];
+    let elements;
+    for (const index in JobsSnapshot) {
+      elements = JobsSnapshot[index]
+      if (elements.profession != null) {
+        listOfFixers.push(elements);
+      }
+    }
+    //save list of fixers as json to localStorage
+    localStorage.setItem('listOfFixers', JSON.stringify(listOfFixers))
+    // currentUser = JSON.parse(localStorage.getItem('listOfFixers'))[2]
+  }
+
+
+  handleLoadUsers = () => {
+
     //get current user data
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         //handleLoadUsers()
         userUID = user.uid
-        // console.log("current user", userUID)
-        Firebase.database()
-          .ref(`${typeOfUser}/${userUID}`)
-          .once('value', (snapshot) => {
-            currentUser.push(snapshot.val())
-          })
+        //save current user's userUID to localStorage
+        localStorage.setItem('userUID', userUID)
+        // Firebase.database()
+        //   .ref(`${typeOfUser}/${userUID}`)
+        //   .once('value', (snapshot) => {
+        //     currentUser.push(snapshot.val())
+        //   })
       } else {
 
         // this.setState({
@@ -72,24 +102,24 @@ class App extends Component {
     })
 
     //fectch data of fixers
-    Firebase.database()
-      .ref(`Fixers`)
-      .once('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
-        let elements;
-        // React doesnt accept objects in states so it has to be converted into an array
-        for (const index in JobsSnapshot) {
+    // Firebase.database()
+    //   .ref(`Fixers`)
+    //   .once('value', (snapshot) => {
+    //     JobsSnapshot = snapshot.val();
+    //     let elements;
+    //     // React doesnt accept objects in states so it has to be converted into an array
+    //     for (const index in JobsSnapshot) {
 
-          elements = JobsSnapshot[index];
-          if (elements.profession != null) {
-            peopleArray.push(elements);
-          }
-        }
-        this.setState({
-          loading: true,
-          listOfPeople: peopleArray,
-        });
-      });
+    //       elements = JobsSnapshot[index];
+    //       if (elements.profession != null) {
+    //         peopleArray.push(elements);
+    //       }
+    //     }
+    //     this.setState({
+    //       loading: true,
+    //       listOfPeople: peopleArray,
+    //     });
+    //   });
   }
   render() {
 
@@ -97,22 +127,20 @@ class App extends Component {
       return (
 
         < Router history={browserHistory} >
-          <Route path="/" component={Home} userUID={userUID} />
-          <Route path="/categories" component={Categories} userData={peopleArray} userUID={userUID} currentUser={currentUser} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/" component={Home} />
+          <Route path="/categories" component={Categories} />
           <Route path="/privacypolicy" component={PrivacyPolicy} />
-          <Route path="/updateprofile" component={UpdateProfile} userData={currentUser} userUID={userUID} />
-          <Route path="/messages" component={Messages} userUID={userUID} />
-          <Route path='/profile' component={Profile} userData={currentUser} userUID={userUID} />
-          <Route path='/phonelogin' component={PhoneLogin} userUID={userUID} />
-          <Route path='/messagesmobile' component={MessagesMobile} userUID={userUID} />
-          <Route path='/chathistorymobile' component={ChatHistoryMobile} userUID={userUID} />
-          <Route path='/requestservice' component={RequestService} userUID={userUID} userData={currentUser} />
-          <Route path='/user/profile' component={ProfileUser} userData={currentUser} userUID={userUID} />
-          <Route path='/user/updateprofile' component={UpdateProfileUser} userData={currentUser} userUID={userUID} />
-          <Route path='/fixer/profile' component={ProfileFixer} userData={currentUser} userUID={userUID} />
-          <Route path='/fixer/updateprofile' component={UpdateProfileFixer} userData={currentUser} userUID={userUID} />
+          <Route path="/updateprofile" component={UpdateProfile} />
+          <Route path="/messages" component={Messages} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/phonelogin' component={PhoneLogin} />
+          <Route path='/messagesmobile' component={MessagesMobile} />
+          <Route path='/chathistorymobile' component={ChatHistoryMobile} />
+          <Route path='/requestservice' component={RequestService} />
+          <Route path='/user/profile' component={ProfileUser} />
+          <Route path='/user/updateprofile' component={UpdateProfileUser} />
+          <Route path='/fixer/profile' component={ProfileFixer} />
+          <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
           <Route path='/contactus' component={ContactUs} />
         </Router >
 
