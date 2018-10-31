@@ -9,6 +9,35 @@ import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  card: {
+    maxWidth: 400,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+
+});
 
 class Home extends React.Component {
   constructor(props) {
@@ -110,6 +139,35 @@ class Home extends React.Component {
                 </div>
               </div>
             </div>
+            {/* Buttons*/}
+            <div>
+
+              <div class="container-fluid padding">
+                <div class="row text-center padding">
+                  <div class="col-md cardMargin">
+                    <Card>
+                      <br /><br /><br /><br />
+                      <h1>Become a Fixer</h1>
+                      <br />
+                      <button className="btn btn-dark btn-lg">Become A Fixer</button>
+                      <br /><br /><br /><br />
+                    </Card>
+                  </div>
+                  <br />
+                  <div class="col-md cardMargin">
+                    <Card>
+                      <br /><br /><br /><br />
+                      <h1>Become an Employer</h1>
+                      <br />
+                      <button className="btn btn-dark btn-lg">Become An Employer</button>
+                      <br /><br /><br /><br />
+                    </Card>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
             {/* Contact */}
             <div style={{ backgroundColor: '#343a40', color: 'white', marginTop: '100px ' }} >
 
@@ -146,5 +204,5 @@ class Home extends React.Component {
 
 }
 
-
-export default Home;
+export default withStyles(styles)(Home);
+//export default Home;
