@@ -79,3 +79,24 @@ input:valid+span:after {
 {
   margin:10px
 }
+
+.fixerIcons
+{
+  display: inline;
+  margin: 30px 30px 30px 30px;
+}
+
+/* .fixerIcon
+{
+  margin:30px 0px 30px 0px;
+} */
+
+/* .fixerIcons h3
+{
+  display: inline;
+} */
+
+/* .social img 
+{    
+  padding: 3rem;
+} */

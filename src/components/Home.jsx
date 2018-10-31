@@ -11,6 +11,20 @@ import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
+//Icons
+import computerIcon from '../images/fixerIcons/icons8-computer-support-48.png';
+import drillIcon from '../images/fixerIcons/icons8-drill-48.png';
+import plugIcon from '../images/fixerIcons/icons8-electrical-48.png';
+import carIcon from '../images/fixerIcons/icons8-fiat-500-48.png';
+import houseKeeperIcon from '../images/fixerIcons/icons8-housekeeper-48.png';
+import janitorIcon from '../images/fixerIcons/icons8-janitor-48.png';
+import maintenanceIcon from '../images/fixerIcons/icons8-maintenance-48.png';
+import plumberIcon from '../images/fixerIcons/icons8-pipelines-48.png';
+import sawIcon from '../images/fixerIcons/icons8-saw-48.png';
+import spadeIcon from '../images/fixerIcons/icons8-spade-48.png';
+import trainingIcon from '../images/fixerIcons/icons8-training-48.png';
+import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
+
 
 const styles = theme => ({
   card: {
@@ -142,22 +156,22 @@ class Home extends React.Component {
             {/* Buttons*/}
             <div>
 
-              <div class="container-fluid padding">
-                <div class="row text-center padding">
-                  <div class="col-md cardMargin">
+              <div className="container-fluid padding">
+                <div className="row text-center padding">
+                  <div className="col-md cardMargin">
                     <Card>
                       <br /><br /><br /><br />
-                      <h1>Become a Fixer</h1>
+                      <h1>Get Hired</h1>
                       <br />
                       <button className="btn btn-dark btn-lg">Become A Fixer</button>
                       <br /><br /><br /><br />
                     </Card>
                   </div>
                   <br />
-                  <div class="col-md cardMargin">
+                  <div className="col-md cardMargin">
                     <Card>
                       <br /><br /><br /><br />
-                      <h1>Become an Employer</h1>
+                      <h1>Hire someone</h1>
                       <br />
                       <button className="btn btn-dark btn-lg">Become An Employer</button>
                       <br /><br /><br /><br />
@@ -165,6 +179,96 @@ class Home extends React.Component {
                   </div>
                 </div>
 
+
+              </div>
+            </div>
+            {/*Type of Fixers*/}
+            <div className="container-fluid padding">
+              <div className="row text-center padding justify-content-center">
+                <div className="col-12">
+                  <h2>Fixers</h2>
+                  <hr />
+                </div>
+                <div className="col-5 fixerIcon">
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={carIcon} alt="" />
+                    </a>
+
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={computerIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plugIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={drillIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plumberIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={carIcon} alt="" />
+                    </a>
+
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={computerIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plugIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={drillIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plumberIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={carIcon} alt="" />
+                    </a>
+
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={computerIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plugIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={drillIcon} alt="" />
+                    </a>
+                  </div>
+                  <div className="fixerIcons">
+                    <a href="#">
+                      <img src={plumberIcon} alt="" />
+                    </a>
+                  </div>
+                </div>
 
               </div>
             </div>
