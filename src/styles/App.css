@@ -82,8 +82,16 @@ input:valid+span:after {
 
 .fixerIcons
 {
-  display: inline;
-  margin: 30px 30px 30px 30px;
+  /* display: inline;
+  margin: 30px 30px 30px 30px; */
+  /* padding: 10px; */
+  margin: 5px;
+  width: 400px
+}
+
+.fixerCard
+{
+  background-color: black;
 }
 
 /* .fixerIcon

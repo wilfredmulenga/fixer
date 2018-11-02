@@ -182,95 +182,139 @@ class Home extends React.Component {
 
               </div>
             </div>
+            <br /><br />
             {/*Type of Fixers*/}
-            <div className="container-fluid padding">
-              <div className="row text-center padding justify-content-center">
-                <div className="col-12">
-                  <h2>Fixers</h2>
-                  <hr />
+            <div className="container-fluid padding text-center">
+              <Card className="fixerCard">
+                <br />
+                <h1>Fixers</h1>
+                <br />
+                <div className="row padding align-content-center justify-content-center">
+
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={computerIcon} alt="" /></p>
+                          <h3 className="card-title">Computer Repair</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={drillIcon} alt="" /></p>
+                          <h3 className="card-title">Appliances</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={carIcon} alt="" /></p>
+                          <h3 className="card-title">Car Repair</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={welderIcon} alt="" /></p>
+                          <h3 className="card-title">Welding</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={plumberIcon} alt="" /></p>
+                          <h3 className="card-title">Plumbing</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={janitorIcon} alt="" /></p>
+                          <h3 className="card-title">Janitorial Services</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={houseKeeperIcon} alt="" /></p>
+                          <h3 className="card-title">House Keeper</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={maintenanceIcon} alt="" /></p>
+                          <h3 className="card-title">Maintenance</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={plugIcon} alt="" /></p>
+                          <h3 className="card-title">Electrician</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="">
+                          <p><img className="img-fluid" src={sawIcon} alt="" /></p>
+                          <h3 className="card-title">Carpenter</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="#">
+                          <p><img className="img-fluid" src={spadeIcon} alt="" /></p>
+                          <h3 className="card-title">Landscaping</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xs fixerIcons">
+                    <div className="card">
+                      <div className="card-body text-center">
+                        <a href="#">
+                          <p><img className="img-fluid" src={trainingIcon} alt="" /></p>
+                          <h3 className="card-title">Training</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-                <div className="col-5 fixerIcon">
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={carIcon} alt="" />
-                    </a>
-
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={computerIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plugIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={drillIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plumberIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={carIcon} alt="" />
-                    </a>
-
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={computerIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plugIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={drillIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plumberIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={carIcon} alt="" />
-                    </a>
-
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={computerIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plugIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={drillIcon} alt="" />
-                    </a>
-                  </div>
-                  <div className="fixerIcons">
-                    <a href="#">
-                      <img src={plumberIcon} alt="" />
-                    </a>
-                  </div>
-                </div>
-
-              </div>
+                <br /><br />
+              </Card>
             </div>
             {/* Contact */}
             <div style={{ backgroundColor: '#343a40', color: 'white', marginTop: '100px ' }} >
