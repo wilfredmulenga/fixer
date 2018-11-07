@@ -106,16 +106,25 @@ class Home extends React.Component {
 
           </div>
           {/* customer/fixer */}
-          {/* <div className="text-center">
-            <div>
-              <h3>Looking for a Fixer</h3>
-              <button onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</button>
+          <div className="row mt-5  justify-content-center">
+            <div className='card text-center  col-md-4'>
+              <div>
+                <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>
+                <Button
+                  type="button"
+                  variant='text'
+                  onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</Button>
+              </div>
+              <div>
+                <h3 className='mb-4 mt-5'>Looking to get hired</h3>
+                <Button
+                  type="button"
+                  variant='text'
+                  className='mb-5'
+                  onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</Button>
+              </div>
             </div>
-            <div>
-              <h3>Looking to get hired</h3>
-              <button onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</button>
-            </div>
-          </div> */}
+          </div>
           <div >
             <div className="container">
               {/* How it Works section */}
