@@ -1,7 +1,4 @@
 import React from 'react';
-import workingIcon from '../images/icons8-work-light-100.png'
-import handIcon from '../images/icons8-handshake-100.png'
-import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
@@ -24,6 +21,8 @@ import sawIcon from '../images/fixerIcons/icons8-saw-48.png';
 import spadeIcon from '../images/fixerIcons/icons8-spade-48.png';
 import trainingIcon from '../images/fixerIcons/icons8-training-48.png';
 import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
+import CustomerFixerCard from './CustomerFixerCard'
+import HowItWorks from './HowItWorks'
 
 
 const styles = theme => ({
@@ -93,104 +92,30 @@ class Home extends React.Component {
       <div>
         <div id="home">
           <Navbar userUID={this.state.userUID} />
-          <div id="landingPage" className="col-md-12 col-sm-12">
-            <img
+          <div id="landingPage" style={{ height: "100vh" }} className="blueBackground col-md-12 col-sm-12">
+            {/* <img
               src={landingPage}
               className={'img-fluid'}
-              alt="landing page" />
+              alt="landing page" /> */}
             <div style={{
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
-              <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
+              <p style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Short description of our service/Unique Value Proposition</p>
+              <Button variant='outlined' className='mt-5'
+                style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
+              >Hire a Fixer</Button>
+
+            </div>
 
           </div>
           {/* customer/fixer */}
-          <div className="row mt-5  justify-content-center">
-            <div className='card text-center  col-md-4'>
-              <div>
-                <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>
-                <Button
-                  type="button"
-                  variant='text'
-                  onClick={() => browserHistory.push({ pathname: '/categories' })}>Join as Customer</Button>
-              </div>
-              <div>
-                <h3 className='mb-4 mt-5'>Looking to get hired</h3>
-                <Button
-                  type="button"
-                  variant='text'
-                  className='mb-5'
-                  onClick={() => browserHistory.push({ pathname: '/viewprofile' })}>Join as Fixer</Button>
-              </div>
-            </div>
-          </div>
+          {/* <CustomerFixerCard /> */}
           <div >
-            <div className="container">
-              {/* How it Works section */}
-              <div className="mt-5 flex mb-5" style={{ textAlign: 'center' }}>
-                <h3 className="titles">How It Works</h3>
-                <div className="row d-flex justify-content-between">
-                  <div className="col-md-4 col-sm-12 mb-3">
-                    <img src={workingIcon} alt="working icon" />
-                    <div className="card mt-3">
-                      <h5 className="card-title mt-3">I want to get hired</h5>
-                      <p className="card-text">
-                        Our platform lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
-                </p>
-                    </div>
-                  </div>
-                  <div className=" col-md-4 col-sm-12 mb-3">
-                    <img src={workerIcon} alt='worker icon' />
-                    <div className='card mt-3'>
-                      <h5 className="card-title mt-3">I want to hire someone</h5>
-                      <p className="card-text">
-                        Looking for a good hairdresser but just don't know where to look. Or maybe your Kitchen needs some remodeling. Our platform lists the very best professionals in the informal job sector, skilled for the job you may require. Feel free to browse through our category section to get started.
-                </p>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 col-sm-12 mb-3">
-                    <img src={handIcon} alt="hand icon" />
-                    <div className="card mt-3">
-                      <h5 className="card-title mt-3">I want to be a Partner</h5>
-                      <p className="card-text">
-                        We are always looking for ways to improve our platform and from new angles or ideas. We feel that people with informal jobs could use a platform that is taylored specifically for them to showcase their work. If you share the same passion as well do, we would be happy to hear from you.
-                    </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* How it Works section */}
+            <HowItWorks />
             {/* Buttons*/}
-            <div>
 
-              <div className="container-fluid padding">
-                <div className="row text-center padding">
-                  <div className="col-md cardMargin">
-                    <Card>
-                      <br /><br /><br /><br />
-                      <h1>Get Hired</h1>
-                      <br />
-                      <button className="btn btn-dark btn-lg">Become A Fixer</button>
-                      <br /><br /><br /><br />
-                    </Card>
-                  </div>
-                  <br />
-                  <div className="col-md cardMargin">
-                    <Card>
-                      <br /><br /><br /><br />
-                      <h1>Hire someone</h1>
-                      <br />
-                      <button className="btn btn-dark btn-lg">Become An Employer</button>
-                      <br /><br /><br /><br />
-                    </Card>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
             <br /><br />
             {/*Type of Fixers*/}
             <div className="container-fluid padding text-center">

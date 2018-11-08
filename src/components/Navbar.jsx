@@ -31,7 +31,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div id="navbar">
-        <nav className="navbar navbar-expand-md bg-dark navbar-dark">
+        <nav className="navbar navbar-expand-md navbar-light">
           <Link to="/" className="navbar-brand link" style={{
             lineHeight: '1.3', fontSize: '23px',
             letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
@@ -39,7 +39,7 @@ class Navbar extends React.Component {
             {/* <img src={brandImage} width="30" height="30" class="d-inline-block align-top" alt=""></img> */}
             Fixer
          </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <button className=" navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
@@ -48,13 +48,6 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" className="link">Categories</Link>
               </li>
-              {/* <Link to="/login" className="link" //onClick={this.props.action} 
-  onClick={this.openSignInModal}>
-  <li className="nav-item active mr-3" id='login'>{
-    (loginStatus) ? `Sign Out` : `Sign In`
-  }
-  </li>
-</Link> */}
               <li className="nav-item active mr-3">
                 <Link to="/viewprofile" className="link">Profile</Link>
               </li>
@@ -62,6 +55,10 @@ class Navbar extends React.Component {
                 <Link to="/phonelogin" className="link">{(this.state.userUID) ? `Logout` : `Login`}</Link>
               </li>
             </ul>
+            <form className="form-inline mr-5 my-2 my-lg-0">
+
+              <button className="btn link my-2 my-sm-0" >Become A Fixer</button>
+            </form>
           </div>
         </nav>
         {/* Currently under testing notice */}
