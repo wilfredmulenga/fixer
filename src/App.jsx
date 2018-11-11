@@ -91,7 +91,7 @@ class App extends Component {
   }
   render() {
 
-    if (this.state.loading) {
+    if (true) {
       return (
 
         < Router history={browserHistory} >

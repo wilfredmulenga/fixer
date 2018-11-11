@@ -8,21 +8,10 @@ import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
-//Icons
-import computerIcon from '../images/fixerIcons/icons8-computer-support-48.png';
-import drillIcon from '../images/fixerIcons/icons8-drill-48.png';
-import plugIcon from '../images/fixerIcons/icons8-electrical-48.png';
-import carIcon from '../images/fixerIcons/icons8-fiat-500-48.png';
-import houseKeeperIcon from '../images/fixerIcons/icons8-housekeeper-48.png';
-import janitorIcon from '../images/fixerIcons/icons8-janitor-48.png';
-import maintenanceIcon from '../images/fixerIcons/icons8-maintenance-48.png';
-import plumberIcon from '../images/fixerIcons/icons8-pipelines-48.png';
-import sawIcon from '../images/fixerIcons/icons8-saw-48.png';
-import spadeIcon from '../images/fixerIcons/icons8-spade-48.png';
-import trainingIcon from '../images/fixerIcons/icons8-training-48.png';
-import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
+import TypeOfFixers from './TypesOfFixers'
 import CustomerFixerCard from './CustomerFixerCard'
 import HowItWorks from './HowItWorks'
+import JobsCarousel from './JobsCarousel'
 
 
 const styles = theme => ({
@@ -113,145 +102,13 @@ class Home extends React.Component {
           {/* <CustomerFixerCard /> */}
           <div >
             {/* How it Works section */}
+            <JobsCarousel />
             <HowItWorks />
             {/* Buttons*/}
-
-            <br /><br />
             {/*Type of Fixers*/}
-            <div className="container-fluid padding text-center">
-              <Card className="fixerCard">
-                <br />
-                <h1>Fixers</h1>
-                <br />
-                <div className="row padding align-content-center justify-content-center">
-
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={computerIcon} alt="" /></p>
-                          <h3 className="card-title">Computer Repair</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={drillIcon} alt="" /></p>
-                          <h3 className="card-title">Appliances</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={carIcon} alt="" /></p>
-                          <h3 className="card-title">Car Repair</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={welderIcon} alt="" /></p>
-                          <h3 className="card-title">Welding</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={plumberIcon} alt="" /></p>
-                          <h3 className="card-title">Plumbing</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={janitorIcon} alt="" /></p>
-                          <h3 className="card-title">Janitorial Services</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={houseKeeperIcon} alt="" /></p>
-                          <h3 className="card-title">House Keeper</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={maintenanceIcon} alt="" /></p>
-                          <h3 className="card-title">Maintenance</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={plugIcon} alt="" /></p>
-                          <h3 className="card-title">Electrician</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="">
-                          <p><img className="img-fluid" src={sawIcon} alt="" /></p>
-                          <h3 className="card-title">Carpenter</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="#">
-                          <p><img className="img-fluid" src={spadeIcon} alt="" /></p>
-                          <h3 className="card-title">Landscaping</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xs fixerIcons">
-                    <div className="card">
-                      <div className="card-body text-center">
-                        <a href="#">
-                          <p><img className="img-fluid" src={trainingIcon} alt="" /></p>
-                          <h3 className="card-title">Training</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-                <br /><br />
-              </Card>
-            </div>
+            <TypeOfFixers />
             {/* Contact */}
-            <div style={{ backgroundColor: '#343a40', color: 'white', marginTop: '100px ' }} >
+            <div style={{ backgroundColor: '#343a40', color: 'white' }} >
 
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
