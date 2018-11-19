@@ -42,7 +42,7 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar typeOfUser={this.state.typeOfUser} />
-        <Tables userData={this.state.userData}
+        <Tables userData={this.state.userData} typeOfUser={this.state.typeOfUser}
           currentUser={this.state.currentUser} />
       </div>
     );
@@ -84,11 +84,13 @@ class Tables extends React.Component {
     this.handleCardClick = this.handleCardClick.bind(this);
     this.handleConnect = this.handleConnect.bind(this);
     this.handleClose = this.handleClose.bind(this)
-
+    console.log("categories constructor")
+    // this.handleClick("Electrician")
   }
   handleClose = () => {
     this.setState({ open: false })
   }
+
 
 
   handleConnect = (selectedPersonFirstName, selectedPersonLastName, selectedPersonPic, selectedPersonUserUID) => {
@@ -150,7 +152,7 @@ class Tables extends React.Component {
 
 
   handleClick = (value) => {
-
+    console.log('handleClick', value)
     var filterByProfession = []
     for (var y = 0; y < this.props.userData.length; y++) {
       if (this.props.userData[y]["profession"] === value) {
@@ -318,10 +320,10 @@ class Tables extends React.Component {
                               color="secondary">
                               Cancel</Button> */}
                           </div>
-                          <div className="row">
+                          <div className="row justify-content-center">
 
                             <div className="col-md-6">
-                              <div className="row">
+                              <div>
                                 <div className='text-center col mb-2'>
                                   <img
                                     className="rounded-circle"
@@ -330,15 +332,18 @@ class Tables extends React.Component {
                                     alt={'profile pic'}
                                   />
                                 </div>
-                                <div className="col-md-6 ml-3">
-                                  <b> Name: </b>{`${selectedPerson.firstName} ${selectedPerson.lastName}`}
-                                  <br />
-                                  <b> Skills: </b>{(selectedPerson.skills) ? selectedPerson.skills.map((element, i) => (
-                                    element.label
-                                  )) : null} <br />
-                                  <b> City: </b>{selectedPerson.city} <br />
+                                <div className="col-md-12 col-sm-12 text-center">
+                                  <p style={{ fontSize: 24, marginBottom: 0 }}>{`${selectedPerson.firstName} ${selectedPerson.lastName}`}</p>
+                                  <p style={{ fontSize: 16, marginBottom: 0 }}>{`${selectedPerson.profession}`}</p>
+                                  <p style={{ fontSize: 12, marginBottom: 0 }}>{selectedPerson.city}</p>
+                                  <div className='row'>
+                                    <div className='col-6'><p>Ratings: 5 Stars</p></div>
 
-                                  <Button className="mt-3" variant='contained'
+                                    <div className='col-6'><p>24 Reviews</p></div>
+                                  </div>
+                                </div>
+                                <div>
+                                  {/* <Button className="mt-3" variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
                                     onClick={() => (this.state.userUID) ?
                                       browserHistory.push({
@@ -353,26 +358,20 @@ class Tables extends React.Component {
                                       })}
                                   //this.handleConnect(selectedPerson.firstName, selectedPerson.lastName,
                                   //selectedPerson.pic, selectedPerson.userUID)}
-                                  >Request Service</Button>
+                                  >Request Service</Button> */}
                                   {/* </Link> */}
                                 </div>
                               </div>
-                              <h5 className="mt-4 mb-1">Brief Job Description</h5>
-                              {`${selectedPerson.briefDescription}`}
-                            </div>
-                            <div className="col-md-6">
-                              <div>
-                                <h5 className="mt-4">Gallery of Work</h5>
-                                {(selectedPerson.galleryOfWork) ? selectedPerson.galleryOfWork.map((image, i) => (
-                                  <div className="row mb-3" key={i}>
-                                    <div className="col-md-6">
-                                      <img className="img-thumbnail mr-2" src={image} alt="gallery of" />
-                                    </div>
+                              <div className="text-center">
+                                <a href="tel:+260967639241" style={{ decoration: 'none' }}>
+                                  <Button className="mt-3" variant='contained'
+                                    style={{ backgroundColor: '#FFF', color: '#000', width: 200 }}
+                                  // onClick={() => }
 
-                                  </div>
-                                )) : null}
+                                  >Call</Button></a>
                               </div>
                             </div>
+
                           </div>
                         </div>
                       </Modal> : null}

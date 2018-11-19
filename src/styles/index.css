@@ -1,3 +1,11 @@
+.custom-toggler.navbar-toggler {
+  border-color: #1B74D1;
+} 
+
+.blueBackground {
+  background-color: #1B74D1
+}
+
 
 .message-form{
   
@@ -71,10 +79,10 @@
 }
 
 .link {
-  color: #FFF;
+  color: #707070;
 }
 .link:hover {
-   color: #00F
+   color: #1B74D1
 }
 
 #snackbar {

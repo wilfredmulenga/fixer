@@ -1,14 +1,46 @@
 import React from 'react';
-import workingIcon from '../images/icons8-work-light-100.png'
-import handIcon from '../images/icons8-handshake-100.png'
-import workerIcon from '../images/icons8-workers-100.png'
 import Navbar from './Navbar';
 import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import landingPage from '../images/landingPage2.jpg'
 import Button from '@material-ui/core/Button';
-var userUID = localStorage.getItem('userUID');
+import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+import TypeOfFixers from './TypesOfFixers'
+import CustomerFixerCard from './CustomerFixerCard'
+import HowItWorks from './HowItWorks'
+import JobsCarousel from './JobsCarousel'
+
+
+const styles = theme => ({
+  card: {
+    maxWidth: 400,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+
+});
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -44,100 +76,34 @@ class Home extends React.Component {
       <div>
         <div id="home">
           <Navbar />
-          <div id="landingPage" className="col-md-12 col-sm-12">
-            <img
+          <div id="landingPage" style={{ height: "100vh" }} className="blueBackground col-md-12 col-sm-12">
+            {/* <img
               src={landingPage}
               className={'img-fluid'}
-              alt="landing page" />
+              alt="landing page" /> */}
             <div style={{
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
-              <p style={{ fontSize: 40, color: '#fff', float: 'left', marginLeft: '20px', fontStyle: 'oblique' }}>Just what I needed</p></div>
+              <p style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Short description of our service/Unique Value Proposition</p>
+              <Button variant='outlined' className='mt-5'
+                style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
+              >Hire a Fixer</Button>
+
+            </div>
 
           </div>
           {/* customer/fixer */}
-          {console.log(typeof null)}
-          {(userUID === 'null') ? (<div className="row mt-5  justify-content-center">
-            <div className='card-body text-center  col-md-4'>
-              <div>
-                <h3 className='mb-4 mt-5'>Looking for a Fixer</h3>
-                <Button
-                  type="button"
-                  variant='text'
-                  onClick={() => {
-                    localStorage.setItem('typeOfUser', 'user');
-                    browserHistory.push({ pathname: '/phonelogin' })
-                  }}>Join as Customer</Button>
-              </div>
-              <div>
-                <h3 className='mb-4 mt-5'>Looking to get hired</h3>
-                <Button
-                  type="button"
-                  variant='text'
-                  className='mb-5'
-                  onClick={() => {
-
-                    localStorage.setItem('typeOfUser', 'fixer');
-                    browserHistory.push({ pathname: '/phonelogin' })
-                  }}>Join as Fixer</Button>
-              </div>
-            </div>
-          </div>) : null}
-          {/* customer/fixer */}
-
-          {/* Choose a particular service */}
-          <div className='mt-5 justify-content-center'>
-            <div className='card  col-md-5'>
-              <div className='card-body'>
-
-              </div>
-            </div>
-          </div>
-
-          {/* Choose a particular service */}
-          <div>
-
-          </div>
+          {/* <CustomerFixerCard /> */}
           <div >
-            <div className="container">
-              {/* How it Works section */}
-              <div className="mt-5 flex mb-5" style={{ textAlign: 'center' }}>
-                <h3 className="titles">How It Works</h3>
-                <div className="row d-flex justify-content-between">
-                  <div className="col-md-4 col-sm-12 mb-3">
-                    <img src={workingIcon} alt="working icon" />
-                    <div className="card mt-3">
-                      <h5 className="card-title mt-3">I want to get hired</h5>
-                      <p className="card-body">
-                        Our platform lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
-                </p>
-                    </div>
-                  </div>
-                  <div className=" col-md-4 col-sm-12 mb-3">
-                    <img src={workerIcon} alt='worker icon' />
-                    <div className='card mt-3'>
-                      <h5 className="card-title mt-3">I want to hire someone</h5>
-                      <p className="card-body">
-                        Looking for a good hairdresser but just don't know where to look. Or maybe your Kitchen needs some remodeling. Our platform lists the very best professionals in the informal job sector, skilled for the job you may require. Feel free to browse through our category section to get started.
-                </p>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 col-sm-12 mb-3">
-                    <img src={handIcon} alt="hand icon" />
-                    <div className="card mt-3">
-                      <h5 className="card-title mt-3">I want to be a Partner</h5>
-                      <p className="card-body">
-                        We are always looking for ways to improve our platform and from new angles or ideas. We feel that people with informal jobs could use a platform that is taylored specifically for them to showcase their work. If you share the same passion as well do, we would be happy to hear from you.
-                    </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* How it Works section */}
+            <JobsCarousel />
+            <HowItWorks />
+            {/* Buttons*/}
+            {/*Type of Fixers*/}
+            <TypeOfFixers />
             {/* Contact */}
-            <div style={{ backgroundColor: '#343a40', color: 'white', marginTop: '100px ' }} >
+            <div style={{ backgroundColor: '#343a40', color: 'white' }} >
 
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
@@ -172,5 +138,5 @@ class Home extends React.Component {
 
 }
 
-
-export default Home;
+export default withStyles(styles)(Home);
+//export default Home;
