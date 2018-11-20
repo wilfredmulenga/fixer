@@ -1,29 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Firebase from '../config/firebase';
 import Modal from 'react-modal';
+import Firebas from '../config/firebase'
+import Firebase from '../config/firebase';
+import { browserHistory } from 'react-router';
 
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
-    super(props);
-
-    this.handleSignOut = this.handleSignOut.bind(this);
-
+    super(props)
+    this.handleOnClick = this.handleOnClick.bind(this)
   }
-
-  handleSignOut() {
-    Firebase.auth().signOut();
-    this.setState({
-      signOutModalIsOpen: false,
-      signInModalIsOpen: true
+  handleOnClick = () => {
+    Firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        browserHistory.push({
+          pathname: '/fixer/profile'
+        })
+      } else {
+        browserHistory.push({
+          pathname: '/phonelogin'
+        })
+      }
     })
-
   }
-
   render() {
     return (
-      <div id="navbar">
+      <div id="navbar" >
         <nav className="navbar navbar-expand-md navbar-light">
           <Link to="/" className="navbar-brand link" style={{
             lineHeight: '1.3', fontSize: '23px',
@@ -50,19 +53,24 @@ class Navbar extends React.Component {
                 <Link to="/phonelogin" className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
               </li>
             </ul>
-            <form className="form-inline mr-5 my-2 my-lg-0">
 
-              <button className="btn link my-2 my-sm-0" >Become A Fixer</button>
-            </form>
+
+            <button className="btn link my-2 my-sm-0"
+              onClick={() => this.handleOnClick()}
+            >Become A Fixer</button>
+
           </div>
         </nav>
         {/* Currently under testing notice */}
-        <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert">
-          This application is currently under testing. Feel free to give us feedback at <Link to='/contactus'>info@fixer-app.co</Link>
-        </div>
+        <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
+          This application is currently under testing.Feel free to give us feedback at < Link to='/contactus' > info@fixer-app.co</Link >
+        </div >
       </div >
     );
   }
 }
 
 export default Navbar;
+
+
+
