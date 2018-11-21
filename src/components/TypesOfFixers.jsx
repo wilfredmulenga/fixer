@@ -19,50 +19,50 @@ import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
 export default function TypeOfFixers() {
     return (
         <div style={{ height: "100vh" }} className="blueBackground text-center">
-            <h3 className='pb-5' style={{ color: 'white' }}>Fixers</h3>
+            <h2 className='pb-5' style={{ color: 'white' }}>Our Services</h2>
             <div className="row justify-content-center">
-                <div className="row col-md-8 justify-content-center">
-                    <div className="col-md-4 fixerIcons"
+                <div className="row col-md-12 justify-content-center">
+                    <div className="col-md-2 fixerIcons"
                         onClick={() => browserHistory.push({
                             pathname: '/categories',
                             state: { typeOfUser: 'Electrician' }
                         })}>
-                        <div className="card">
+                        <div className="card rounder">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid" src={plugIcon} alt="" /></p>
-                                <h3 className="card-title">Electrician</h3>
-
+                                <p><img className="img-fluid rounded" src={plugIcon} alt="" /></p>
+                                <h5 className="card-title">Electrician</h5>
+                                <br />
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4 fixerIcons">
+                    <div className="col-md-2 fixerIcons">
                         <div className="card">
                             <div className="card-body text-center">
 
                                 <p><img className="img-fluid" src={plumberIcon} alt="" /></p>
-                                <h3 className="card-title">Plumbing</h3>
-
+                                <h5 className="card-title">Plumbing</h5>
+                                <br />
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4 fixerIcons mt-3">
+                    <div className="col-md-2 fixerIcons">
                         <div className="card">
                             <div className="card-body text-center">
 
                                 <p><img className="img-fluid" src={sawIcon} alt="" /></p>
-                                <h3 className="card-title">Carpenter</h3>
-
+                                <h5 className="card-title">Carpenter</h5>
+                                <br />
                             </div>
                         </div>
                     </div>
 
-                    <div className="col-md-4 fixerIcons mt-3">
+                    <div className="col-md-2 fixerIcons ">
                         <div className="card">
                             <div className="card-body text-center">
 
                                 <p><img className="img-fluid" src={janitorIcon} alt="" /></p>
-                                <h3 className="card-title">House Cleaning</h3>
+                                <h5 className="card-title">House Cleaning</h5>
 
                             </div>
                         </div>

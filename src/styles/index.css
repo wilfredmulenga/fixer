@@ -1,9 +1,9 @@
 .custom-toggler.navbar-toggler {
-  border-color: #1B74D1;
+  border-color: #ADD8E6;
 } 
 
 .blueBackground {
-  background-color: #1B74D1
+  background-color: #ade6e6;
 }
 
 
@@ -145,4 +145,7 @@ However, delay the fade out process for 2.5 seconds */
     overflow: 'scroll';
   }
 
-  
+  .rounder{
+    border: solid 2px blue;
+    border-radius: 30px;
+  }
