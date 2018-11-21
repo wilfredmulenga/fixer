@@ -11,7 +11,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TypeOfFixers from './TypesOfFixers'
 import CustomerFixerCard from './CustomerFixerCard'
 import HowItWorks from './HowItWorks'
-import JobsCarousel from './JobsCarousel'
+import JobsCarousel from './JobsCarousel';
+import Carousel from './ContactForm'
 
 
 const styles = theme => ({
@@ -101,13 +102,14 @@ class Home extends React.Component {
           {/* <CustomerFixerCard /> */}
           <div >
             {/* How it Works section */}
-            <JobsCarousel />
+            <Carousel />
+
             <HowItWorks />
             {/* Buttons*/}
             {/*Type of Fixers*/}
             <TypeOfFixers />
             {/* Contact */}
-            <div style={{ backgroundColor: '#343a40', color: 'white' }} >
+            <div style={{ backgroundColor: '#fff', color: 'black' }} >
 
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
