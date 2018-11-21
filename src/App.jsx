@@ -50,15 +50,8 @@ class App extends Component {
     this.handleCurrentUserDataLoad()
   }
   handleCurrentUserDataLoad = () => {
-    var listOfUsers = []
-    var x = jsonData['Users']
-    var elements;
-    for (const index in x) {
-      elements = x[index]
-      listOfUsers.push(elements);
-    }
-
-    localStorage.setItem('currentUserData', JSON.stringify(listOfUsers[2]))
+    var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
+    localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
   }
 
   handleDataLoad = () => {

@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
 
-
-
+var fixerUserProfile = JSON.parse(localStorage.getItem('currentUserData'))
+console.log(fixerUserProfile.galleryOfWork[0])
 class ViewProfileFixer extends Component {
     constructor(props) {
         super(props)
-
-        // this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
-            userData: this.props.userData,
+            firstName: fixerUserProfile
         }
+
     }
 
 
-    // handleSignOut() {
-    //     Firebase.auth().signOut();
-    //     browserHistory.push('/');
-    // }
 
-    // UNSAFE_componentWillMount() {
-    //     this.handleLoad()
-    // }
-    componentDidMount() {
-        //this.handleLoad();
-    }
 
     render() {
-        const { userData } = this.state;
+
 
         return (
 
             <div>
 
-                {(userData) ? <div className='container' >
+                {(fixerUserProfile) ? <div className='container' >
                     <h3 className='mb-3 mt-3'>Your Profile</h3>
                     <div className="d-flex justify-content-center ">
 
@@ -40,7 +29,7 @@ class ViewProfileFixer extends Component {
                         <div style={{ textAlign: 'center' }}>
                             <img
                                 className="rounded-circle"
-                                src={userData.pic}
+                                src={fixerUserProfile.pic}
                                 style={{ width: 160, height: 160 }}
                                 alt={'profile pic'}
                             /> <br />
@@ -51,26 +40,29 @@ class ViewProfileFixer extends Component {
                         <div className="mb-3 col-md-5 ">
                             <h4>Personal Details</h4>
                             <b>
-                                Name:</b>{`${userData.firstName} ${userData.lastName}`}
+                                Name:</b>{`${fixerUserProfile.firstName} ${fixerUserProfile.lastName}`}
                             <br />
-                            <b>Profession: </b>{userData.profession} <br />
+                            <b>Profession: </b>{fixerUserProfile.profession} <br />
 
                             <b>
-                                City: </b>{userData.city} <br />
+                                City: </b>{fixerUserProfile.city} <br />
 
 
                             <h4 className="mt-4 mb-1">Job Details</h4>
                             <b>
-                                Skills: </b>{`${userData.skills.map((element, i) => (
-                                    element.label
-                                ))}`} <br />
+                                Skills: </b>
+                            {`${fixerUserProfile.skills.map((element, i) => (
+                                element.label
+                            ))}`}
+
+                            <br />
 
 
-                            <b>Job Desciption: </b>{`${userData.briefDescription}`}
+                            <b>Job Desciption: </b>{`${fixerUserProfile.briefDescription}`}
                         </div>
                         <div className=" col-md-5 ">
                             <h4 className="mb-2">Gallery of Work</h4>
-                            {userData.galleryOfWork.map((image, i) => (
+                            {fixerUserProfile.galleryOfWork.map((image, i) => (
                                 <div key={i} className="row mb-3" >
                                     <div className="col-md-6">
                                         <img className="img-thumbnail mr-2" alt=" gallery of work" src={image} />

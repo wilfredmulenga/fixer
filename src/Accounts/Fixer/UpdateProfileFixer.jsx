@@ -82,6 +82,8 @@ class UpdateProfileFixer extends Component {
                 snackbarText: ''
             }
         }
+
+        console.log(this.state.chipData)
         this.handleDelete = this.handleDelete.bind(this);
         this.addItem = this.addItem.bind(this);
         this.sendData = this.sendData.bind(this);

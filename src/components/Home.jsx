@@ -88,9 +88,10 @@ class Home extends React.Component {
               <p style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Short description of our service/Unique Value Proposition</p>
               <Button variant='outlined' className='mt-5'
                 style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
-                onClick={() => browserHistory.push({
-                  pathname: '/categories'
-                })}
+                onClick={() => {
+                  localStorage.setItem('typeOfUser', 'fixer')
+                  browserHistory.push({ pathname: '/categories' })
+                }}
               >Hire a Fixer</Button>
 
             </div>

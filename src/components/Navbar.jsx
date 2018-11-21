@@ -18,6 +18,7 @@ class Navbar extends React.Component {
           pathname: '/fixer/profile'
         })
       } else {
+        localStorage.setItem('typeOfUser', 'fixer')
         browserHistory.push({
           pathname: '/phonelogin'
         })

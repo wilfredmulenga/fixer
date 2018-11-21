@@ -3,7 +3,8 @@ import Navbar from './Navbar';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 
-var currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
+var currentUserData = []
+// JSON.parse(localStorage.getItem('currentUserData'));
 
 class RequestService extends React.Component {
     constructor(props) {

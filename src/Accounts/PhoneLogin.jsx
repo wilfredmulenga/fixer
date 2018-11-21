@@ -57,6 +57,8 @@ class PhoneLogin extends React.Component {
     handleSignOut() {
         localStorage.setItem('typeOfUser', null)
         localStorage.setItem('userUID', null)
+        localStorage.setItem('currentUserData', null)
+        localStorage.setItem('listOfFixers', null)
 
         Firebase.auth().signOut();
         //browserHistory.push('/')
@@ -69,6 +71,7 @@ class PhoneLogin extends React.Component {
             <div>
                 <Navbar typeOfUser={this.state.typeOfUser} />
                 {
+                    //if user is logged in and the press login button it shows sign out dialog
                     (userUID !== 'null') ?
                         (<div className='mt-5' >
                             <div style={{ marginTop: 50, textAlign: 'center' }}>{
@@ -88,6 +91,7 @@ class PhoneLogin extends React.Component {
                             </div>
                         </div>)
                         :
+                        //else it shows sign in dialog
                         (<div className='mt-5 text-center'>
                             <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
                             {(this.state.typeOfUser === "user") ? (<StyledFirebaseAuth uiConfig={uiConfigCustomer} firebaseAuth={Firebase.auth()} />)
