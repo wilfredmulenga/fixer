@@ -5,6 +5,8 @@ import Firebas from '../config/firebase'
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 
+var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
+
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
@@ -12,11 +14,24 @@ class Navbar extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this)
   }
   handleOnClick = () => {
+
+    //when "Become a Fixer" button is pressed, if user already has info, 
+    //takes them to their profile, if they dont, it sends them to update profile
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        browserHistory.push({
-          pathname: '/fixer/profile'
-        })
+        console.log(user.uid)
+        for (var y = 0; y < listOfFixers.length; y++) {
+          if (listOfFixers[y]["userUID"] === user.uid) {
+            browserHistory.push({
+              pathname: '/fixer/profile'
+            })
+          } else {
+            browserHistory.push({
+              pathname: '/fixer/updateprofile'
+            })
+          }
+        }
+
       } else {
         localStorage.setItem('typeOfUser', 'fixer')
         browserHistory.push({
