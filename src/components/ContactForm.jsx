@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 export default function Carousel() {
     return (
         <div style={{ height: "100vh" }} className="container blueBackground col-md-12 col-sm-12">
-            <div className='text-center mb-5'><h2 style={{ color: 'white' }}>Gallery</h2></div>
+            <div className='text-center mb-5'><h2 style={{ color: 'white', fontFamily: 'New Century Schoolbook', fontSize: 40 }}>Gallery</h2></div>
 
             <div className='row justify-content-around '>
 
@@ -25,7 +25,8 @@ export default function Carousel() {
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img className="card-img-top" src={ElectricianImage} alt="Card image mec" />
+
+                            <img className="card-img-top makesmaller" src={ElectricianImage} alt="Card image mec" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Electrical Services</strong></h5>
                                 <p style={{ fontSize: 20, color: '#fff', float: 'center', marginLeft: '20px' }}>We will connect you to  electricians tradesman specializing in electrical wiring of buildings, transmission lines, stationary machines, and related equipment.</p>
@@ -33,19 +34,23 @@ export default function Carousel() {
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img className="card-img-top" src={CleaningImage} alt="Card image mec" />
+
+                            <img className="card-img-top makesmaller" src={CleaningImage} alt="Card image mec" />
                             <div class="carousel-caption d-none d-md-block">
 
-                                <h5 style={{ fontSize: 40, color: '#ade6e6', float: 'center', marginLeft: '20px' }}><strong>Cleaning Services</strong></h5>
-                                <p style={{ fontSize: 20, color: '#ade6e6', float: 'center', marginLeft: '20px' }}>Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
+                                <h5 style={{ fontSize: 40, color: '#000', float: 'center', marginLeft: '20px' }}><strong>Cleaning Services</strong></h5>
+                                <p style={{ fontSize: 20, color: '#000', float: 'center', marginLeft: '20px' }}>Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
                             </div>
+
                         </div>
                         <div class="carousel-item">
-                            <img className="card-img-top" src={CarpenterImage} alt="Card image mec" />
+
+                            <img className="card-img-top " src={CarpenterImage} alt="Card image mec" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Carpenting Services</strong></h5>
                                 <p style={{ fontSize: 20, color: '#fff', float: 'center', marginLeft: '20px' }}>Get in touch with skilled carpenters with experience in performing is the cutting, shaping and installation of building materials during the construction of buildings and home furniture.</p>
                             </div>
+
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

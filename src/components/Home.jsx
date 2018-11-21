@@ -102,7 +102,7 @@ class Home extends React.Component {
           <div >
             {/* How it Works section */}
             <Carousel />
-            <JobsCarousel />
+
             <HowItWorks />
             {/* Buttons*/}
             {/*Type of Fixers*/}

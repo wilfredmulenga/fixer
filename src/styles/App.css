@@ -97,6 +97,12 @@ input:valid+span:after {
   background-color: black;
 }
 
+
+#carouselExampleIndicators {
+  width:1000px;
+  height:750px;
+}
+
 /* .fixerIcon
 {
   margin:30px 0px 30px 0px;
