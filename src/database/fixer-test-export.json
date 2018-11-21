@@ -8,6 +8,10 @@
       "firstName": "Olivier",
       "lastName": "Oliver",
       "nrc": "1024330",
+      "rating": "5",
+      "reviews": [
+        "He is a good Carpenter and responds promptly"
+      ],
       "phoneNumber": "0971500748",
       "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/L5WK2zajNqS7wLVja2KwzsdWfCA3%2FIMG_4507_cropped.jpg?alt=media&token=2903abe9-a6ac-4087-a2cd-abcd2f7533bd",
       "profession": "Carpenter",
@@ -208,7 +212,7 @@
       },
       "estimatedBudget": "121",
       "fixer": {
-        "fullName": "Olivier Oliver",
+        "fullName": "Olivier JM",
         "userUID": "L5WK2zajNqS7wLVja2KwzsdWfCA3"
       },
       "jobDescription": "121",

@@ -1,27 +1,21 @@
 import React from 'react';
 import Navbar from './Navbar'
 
-var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
+
 var fixerProfile = []
 class Fixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            fixerUID: this.props.location.state.fixerUID
+            fixerProfile: this.props.location.state.fixerProfile[0]
         }
-        console.log(this.state.fixerUID)
+        console.log(this.props.location.state.fixerProfile[0])
     }
 
-    UNSAFE_componentWillMount() {
-        for (var y = 0; y < listOfFixers.length; y++) {
-            if (listOfFixers[y]["userUID"] === this.state.fixerUID) {
-                fixerProfile.push(listOfFixers[y])
-            }
-        }
-        console.log(fixerProfile)
-    }
+
 
     render() {
+        const { fixerProfile } = this.state
         return (
             <div >
                 <Navbar />
@@ -29,24 +23,25 @@ class Fixer extends React.Component {
                     <div className="col-md-8">
                         <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
                             <div className="row">
-                                <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={fixerProfile[0]['pic']} /></div>
+                                <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
                                 <div>
-                                    <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>Clara Tembo</p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>Electrician, Lusaka City</p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>Rating: 5 Stars</p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}></p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>+260979 999 999</p>
+                                    <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
+                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
+                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
+                                    {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
+
+                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
                                 </div>
                             </div>
                             <hr />
                             <div>
                                 <h5>Job Description</h5>
-                                <p>...</p>
+                                <p>{`${fixerProfile.briefDescription}`}</p>
                             </div>
                             <hr />
                             <div>
                                 <h5>Reviews</h5>
-                                <p>...</p>
+                                {(fixerProfile.reviews) ? fixerProfile.reviews.map((element, i) => <p key={i}>{element}</p>) : <p>no reviews yet</p>}
                             </div>
 
                         </div>

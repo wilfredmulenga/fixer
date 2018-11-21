@@ -42,9 +42,15 @@ class Categories extends React.Component {
     this.handleClose = this.handleClose.bind(this)
   }
   handleCardClick = (userUID) => {
+    let fixerProfile = []
+    for (var y = 0; y < listOfFixers.length; y++) {
+      if (listOfFixers[y]["userUID"] === userUID) {
+        fixerProfile.push(listOfFixers[y])
+      }
+    }
     browserHistory.push({
       pathname: '/fixer',
-      state: { 'fixerUID': userUID }
+      state: { 'fixerProfile': fixerProfile }
     })
   };
 

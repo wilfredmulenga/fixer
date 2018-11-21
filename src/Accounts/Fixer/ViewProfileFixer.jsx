@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 var fixerUserProfile = JSON.parse(localStorage.getItem('currentUserData'))
-console.log(fixerUserProfile.galleryOfWork[0])
+
 class ViewProfileFixer extends Component {
     constructor(props) {
         super(props)
@@ -10,13 +10,7 @@ class ViewProfileFixer extends Component {
         }
 
     }
-
-
-
-
     render() {
-
-
         return (
 
             <div>
