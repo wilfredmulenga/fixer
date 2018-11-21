@@ -7,7 +7,7 @@ export default function HowItWorks() {
     return (
         <div className="blueBackground">
             <div className="flex pb-5" style={{ textAlign: 'center' }}>
-                <h3 className="titles" style={{ color: 'white', fontFamily: 'New Century Schoolbook', fontSize: 40 }}>How It Works</h3>
+                <h3 className="titles" style={{ color: 'white', fontSize: 40 }}>How It Works</h3>
                 <div className="row d-flex justify-content-start">
                     <div className=" row col-md-5  offset-md-2 col-sm-12 mb-3">
                         <div className="col-md-4 row align-items-center"> <img src={workingIcon} style={{ height: 80 }} alt="working icon" /></div>
