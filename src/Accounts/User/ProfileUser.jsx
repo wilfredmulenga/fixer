@@ -39,7 +39,7 @@ class ProfileUser extends React.Component {
         return (
 
             <div>
-                <Navbar userUID={this.state.userUID} />
+                <Navbar userUID={userUID} />
                 {(userUID) ?
                     <div className="row container-fluid justify-content-start mt-4">
                         <div className="card col-md-2 ml-3 d-flex mt-2 mb-3">
@@ -71,7 +71,7 @@ class ProfileUser extends React.Component {
                                 })}>Requested Services</Button>
 
                             {/* On small devices route to /messagemobile when Messages button is clicked. On large devices /messages */}
-                            <Media query="(max-width: 769px)"
+                            {/* <Media query="(max-width: 769px)"
                                 render={() => <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                     onClick={() => browserHistory.push('/chathistorymobile')}>Messages</Button>}
                             /> <Media query="(min-width: 770px)"
@@ -79,7 +79,7 @@ class ProfileUser extends React.Component {
                                     onClick={() => browserHistory.push('/messages')}>Messages</Button>
 
                                 }
-                            />
+                            /> */}
                             {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => browserHistory.push('/messages')}>Messages</Button> */}
                             {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}

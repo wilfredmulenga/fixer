@@ -9,6 +9,7 @@ import cancelButton from '../images/icons8-delete-26.png'
 
 Modal.setAppElement('#root');
 var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
+var userUID = localStorage.getItem('userUID')
 
 class Categories extends React.Component {
 
@@ -161,7 +162,11 @@ class Categories extends React.Component {
 
                 (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
                   <div className="card col-md-5 pt-3 pb-3 mb-4 " key={i}
-                    onClick={() => this.handleCardClick(element.userUID)}>
+                    onClick={() =>
+                      (userUID === null) ? this.setState({
+                        open: true
+                      }) :
+                        this.handleCardClick(element.userUID)}>
                     <div className="row justify-content-center">
                       <div className="col-md-6 mb-2 text-center">
                         <img
@@ -206,7 +211,7 @@ class Categories extends React.Component {
             message={<span id="message-id">Login first</span>}
           />
         </div >
-      </div>
+      </div >
     );
   }
 }

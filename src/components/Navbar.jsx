@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import Firebas from '../config/firebase'
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
+import jsonData from '../database/fixer-test-export.json'
 
 var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
 
@@ -22,6 +22,8 @@ class Navbar extends React.Component {
         console.log(user.uid)
         for (var y = 0; y < listOfFixers.length; y++) {
           if (listOfFixers[y]["userUID"] === user.uid) {
+            var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
+            localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
             browserHistory.push({
               pathname: '/fixer/profile'
             })
@@ -78,9 +80,9 @@ class Navbar extends React.Component {
           </div>
         </nav>
         {/* Currently under testing notice */}
-        <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
+        {/* <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
           This application is currently under testing.Feel free to give us feedback at < Link to='/contactus' > info@fixer-app.co</Link >
-        </div >
+        </div > */}
       </div >
     );
   }

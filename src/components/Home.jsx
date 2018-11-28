@@ -13,6 +13,7 @@ import CustomerFixerCard from './CustomerFixerCard'
 import HowItWorks from './HowItWorks'
 import JobsCarousel from './JobsCarousel';
 import Carousel from './ContactForm'
+import jsonData from '../database/fixer-test-export.json'
 
 
 const styles = theme => ({
@@ -86,11 +87,13 @@ class Home extends React.Component {
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
-              <p style={{ fontSize: 40, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Short description of our service/Unique Value Proposition</p>
+              <p style={{ fontSize: 32, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>The convenient way to find reliable tradesmen in your neighborhood</p>
               <Button variant='outlined' className='mt-5'
                 style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
                 onClick={() => {
-                  localStorage.setItem('typeOfUser', 'fixer')
+                  var userProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
+                  localStorage.setItem('currentUserData', JSON.stringify(userProfile))
+                  localStorage.setItem('typeOfUser', 'user')
                   browserHistory.push({ pathname: '/categories' })
                 }}
               >Hire a Fixer</Button>
@@ -121,8 +124,8 @@ class Home extends React.Component {
                   <div className="col-md-4 align-items-center">
 
                     <h4 className="mb-3">Contact</h4>
-                    <h5>Email: <Link to='/contactus'>info@fixer-app.co</Link></h5>
-                    <h5>Phone: 0979622855</h5>
+                    <h5>Email: <Link to='/contactus'>support@myfixerapp.com</Link></h5>
+                    <h5>Phone: 0967639241</h5>
                     {/* <h5>Address:</h5> */}
 
                   </div>

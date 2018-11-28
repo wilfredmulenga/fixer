@@ -25,5 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
   }
 }

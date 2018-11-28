@@ -8,6 +8,11 @@
       "firstName": "Olivier",
       "lastName": "Oliver",
       "nrc": "1024330",
+      "skills": [
+        {
+          "label": "wood-work"
+        }
+      ],
       "rating": "5",
       "reviews": [
         "He is a good Carpenter and responds promptly"
@@ -16,24 +21,6 @@
       "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/L5WK2zajNqS7wLVja2KwzsdWfCA3%2FIMG_4507_cropped.jpg?alt=media&token=2903abe9-a6ac-4087-a2cd-abcd2f7533bd",
       "profession": "Carpenter",
       "userUID": "L5WK2zajNqS7wLVja2KwzsdWfCA3"
-    },
-    "LY39kSxhktf36awEoDxWnccBTi52": {
-      "age": "19",
-      "briefDescription": "I sit at a computer screen all day",
-      "city": "Lusaka",
-      "email": "mariasitumbeko@gmail.com",
-      "firstName": "Maria",
-      "lastName": "Situmbeko",
-      "nrc": "242424",
-      "phoneNumber": "0978006736",
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/LY39kSxhktf36awEoDxWnccBTi52%2Fim-lonely-here-meme.jpg?alt=media&token=5903ee56-1236-4a95-9098-d6dd03d19ced",
-      "profession": "Electrician",
-      "skills": [
-        {
-          "label": "Programmer"
-        }
-      ],
-      "userUID": "LY39kSxhktf36awEoDxWnccBTi52"
     },
     "O29nIFjBn8N6U2Kh9eXMyXwGN5B3": {
       "age": "23",
@@ -76,36 +63,6 @@
         }
       ],
       "userUID": "SPi0DrpMhGa3lzbwEi4iEtLu26Q2"
-    },
-    "cLPKunnvQsWRlxuvf4tN9BlRIyv1": {
-      "age": "24",
-      "briefDescription": "i work hard",
-      "city": "Lusaka",
-      "email": "bandafrancismicheal@yahoo.com",
-      "firstName": "Francis",
-      "lastName": "Banda",
-      "nrc": "293089",
-      "phoneNumber": "260978206075",
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/cLPKunnvQsWRlxuvf4tN9BlRIyv1%2Fheader-bg.jpg?alt=media&token=ddb02792-b305-4d77-8106-b37a18389619",
-      "profession": "Maid",
-      "userUID": "cLPKunnvQsWRlxuvf4tN9BlRIyv1"
-    },
-    "exVCV2yrhUM0na5CLsl0Peb5bNs2": {
-      "briefDescription": "I have worked as an Electrician for 4 years",
-      "city": "Ndola",
-      "firstName": "Sam",
-      "galleryOfWork": [
-        "https://storage.googleapis.com/lsk-guide-jobs.appspot.com/electrician.jpeg"
-      ],
-      "lastName": "Smith",
-      "pic": "https://storage.googleapis.com/lsk-guide-jobs.appspot.com/pexels-photo-428333.jpeg",
-      "profession": "Electrician",
-      "skills": [
-        {
-          "label": "Wiring"
-        }
-      ],
-      "userUID": "exVCV2yrhUM0na5CLsl0Peb5bNs2"
     },
     "gHayewR0vKPEcmFIMuaoboYeBGZ2": {
       "age": "23",
@@ -168,18 +125,6 @@
       "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/myKiXrK2v0Q2UAdbiZDev98Dllh2%2FIMG_20180902_140810.png?alt=media&token=7a1fc3b8-3f47-465a-b05a-48a4111ba023",
       "profession": "Electrician",
       "userUID": "myKiXrK2v0Q2UAdbiZDev98Dllh2"
-    },
-    "pmdVn7c51KQf6EfmlmGtbvfztv03": {
-      "age": "24",
-      "briefDescription": "Fix electronic appliances ",
-      "city": "Lusaka",
-      "email": "vikwatokamanga@rocketmail.com",
-      "firstName": "Vikwato",
-      "lastName": "Kamanga",
-      "nrc": "322971661",
-      "phoneNumber": "0971040497",
-      "profession": "Electrician",
-      "userUID": "pmdVn7c51KQf6EfmlmGtbvfztv03"
     }
   },
   "ServiceRequests": {
@@ -251,18 +196,6 @@
     }
   },
   "Users": {
-    "B43mRrGxOqPuJP2XMSpB3nU3f422": {
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/B43mRrGxOqPuJP2XMSpB3nU3f422%2F15416107473175127232366529569884.jpg?alt=media&token=a10efac9-c61c-4527-afab-f87a8db1454d"
-    },
-    "HH09FJU6wqWK3rOH3PocXo4ALEy2": {
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/HH09FJU6wqWK3rOH3PocXo4ALEy2%2FIMG_20181025_193831.jpg?alt=media&token=e9fb6c16-3431-45be-b0bf-1042359f911c"
-    },
-    "WH7CHJOrYMNUlHgiGcAb26cO8KQ2": {
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/WH7CHJOrYMNUlHgiGcAb26cO8KQ2%2Fprofile-7.jpg?alt=media&token=b88f2b73-a4d5-4b66-9e48-014e470fbf3f"
-    },
-    "YVf5bxR6krTY1WjLW2PAvEyFAo83": {
-      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/YVf5bxR6krTY1WjLW2PAvEyFAo83%2Fgenius-cleaning-hacks-used-by-pro-housekeepers-2.jpg?alt=media&token=a832d475-7245-41fc-9255-ccf16201aebe"
-    },
     "gHayewR0vKPEcmFIMuaoboYeBGZ2": {
       "firstName": "Wilfred",
       "lastName": "Mulenga",

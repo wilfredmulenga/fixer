@@ -1,15 +1,17 @@
 import React from 'react';
 import Navbar from './Navbar'
+import Button from '@material-ui/core/Button';
+import { browserHistory } from 'react-router';
 
 
-var fixerProfile = []
+
 class Fixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             fixerProfile: this.props.location.state.fixerProfile[0]
         }
-        console.log(this.props.location.state.fixerProfile[0])
+
     }
 
 
@@ -22,15 +24,35 @@ class Fixer extends React.Component {
                 <div style={{ height: "100vh", backgroundColor: "#F7F5F5" }} className=" row justify-content-center ">
                     <div className="col-md-8">
                         <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
-                            <div className="row">
-                                <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
-                                <div>
-                                    <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
-                                    {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
+                            <div className="row col-md-12">
+                                <div className="row col-md-8">
+                                    <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
+                                    <div>
+                                        <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
+                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
+                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
+                                        {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
 
-                                    <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
+                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
+                                    </div>
+                                </div>
+                                <div className="col-md-4 text-center row align-items-center justify-content-center">
+                                    <Button
+                                        className="btn  mb-1"
+                                        type="button"
+                                        variant='contained'
+                                        style={{ backgroundColor: '#FFF', color: '#000' }}
+                                        onClick={() => browserHistory.push({
+                                            pathname: '/requestservice',
+                                            state: {
+                                                fixerUID: fixerProfile.userUID,
+                                                profession: fixerProfile.profession,
+                                                fixerFullName: `${fixerProfile.firstName} ${fixerProfile.lastName}`
+                                            }
+                                        })}
+                                    >
+                                        Request Service
+                                        </Button>
                                 </div>
                             </div>
                             <hr />

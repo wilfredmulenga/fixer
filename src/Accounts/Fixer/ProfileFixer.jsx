@@ -63,11 +63,11 @@ class ProfileFixer extends React.Component {
                             state: { userDetails: listOfPeople }
                         }} >Update Profile</Link> */}
                             </Button>
-                            {/* <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                            <Button className="btn  mb-1" variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => this.setState({
                                     viewProfile: false,
                                     viewRequestServices: true
-                                })}>Requested Services</Button> */}
+                                })}>Requested Services</Button>
 
                             {/* On small devices route to /messagemobile when Messages button is clicked. On large devices /messages */}
                             {/* <Media query="(max-width: 769px)"

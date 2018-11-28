@@ -56,17 +56,18 @@ export default function TypeOfFixers() {
                             </div>
                         </div>
                     </div>
-
-                    <div className="col-md-2 fixerIcons ">
+                    <div className="col-md-2 fixerIcons">
                         <div className="card">
                             <div className="card-body text-center">
 
                                 <p><img className="img-fluid" src={janitorIcon} alt="" /></p>
                                 <h5 className="card-title">House Cleaning</h5>
-
+                                <br />
                             </div>
                         </div>
                     </div>
+
+
                 </div>
                 {/* <div className="col-xs fixerIcons">
                     <div className="card">

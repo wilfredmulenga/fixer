@@ -37,6 +37,9 @@ class ViewRequestServices extends React.Component {
             .update({
                 status: "cancelled"
             })
+        this.setState({
+            modalIsOpen: false
+        })
     }
     render() {
         return (<div>

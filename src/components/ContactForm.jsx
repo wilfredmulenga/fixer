@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 export default function Carousel() {
     return (
-        <div style={{ height: "100vh" }} className="container blueBackground col-md-12 col-sm-12">
+        <div style={{ height: "150vh" }} className="container blueBackground col-md-12 col-sm-12">
             <div className='text-center mb-5'><h2 style={{ color: 'white', fontSize: 40 }}>Gallery</h2></div>
 
             <div className='row justify-content-around '>
@@ -50,8 +50,8 @@ export default function Carousel() {
                             <img className="card-img-top makesmaller" src={CleaningImage} alt="Card image cleaning" />
                             <div class="carousel-caption d-none d-md-block">
 
-                                <h5 style={{ fontSize: 30, color: '#000', float: 'center', marginLeft: '20px' }}><strong>Cleaning Services</strong></h5>
-                                <p style={{ fontSize: 20, color: '#000', float: 'center', marginLeft: '20px' }}>Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
+                                <h5 style={{ fontSize: 30, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Cleaning Services</strong></h5>
+                                <p style={{ fontSize: 20, color: '#fff', float: 'center', marginLeft: '20px' }}>Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
                             </div>
 
                         </div>

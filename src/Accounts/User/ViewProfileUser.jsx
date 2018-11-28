@@ -8,7 +8,7 @@ class ViewProfileUser extends Component {
 
         // this.handleSignOut = this.handleSignOut.bind(this)
         this.state = {
-            userData: this.props.userData,
+            userData: JSON.parse(localStorage.getItem('currentUserData'))
         }
     }
 
