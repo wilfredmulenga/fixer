@@ -6,12 +6,12 @@ require('firebase/storage');
 
 
 var config = {
-  apiKey: "AIzaSyCQQOqoAv9gfqTqtpXgLVEFO-0MFb7MFDw",
-  authDomain: "fixer-test.firebaseapp.com",
-  databaseURL: "https://fixer-test.firebaseio.com",
-  projectId: "fixer-test",
-  storageBucket: "fixer-test.appspot.com",
-  messagingSenderId: "539870130177"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 firebase.initializeApp(config);
 var Firebase = firebase;

@@ -25,15 +25,11 @@ class RequestService extends React.Component {
             open: false
 
         }
-        this.serviceRequest = this.serviceRequest.bind(this)
+
 
     }
 
-    serviceRequest = () => {
-        this.setState({
-            open: true
-        })
-    }
+
 
 
     render() {
@@ -209,7 +205,7 @@ class DetailedService extends React.Component {
                 </div>
                 <div className="col-md-12 mt-5 text-center">
                     <button
-                        onClick={() => this.serviceRequest()}
+                        onClick={() => this.submitRequest()}
 
                     >Request Hire</button>
                 </div>
