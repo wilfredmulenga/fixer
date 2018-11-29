@@ -12,8 +12,8 @@ This project was created with ReactJS for Frontend and Express.js for Backend.
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `npm start`
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-Server runs on [http://localhost:3001](http://localhost:3001)
+
 
