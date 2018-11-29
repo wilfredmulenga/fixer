@@ -1,5 +1,19 @@
-This project was created with react.js.
-Open up your terminal and run 'npm install -g create-react-app' to crate a boilerplate version of the React application.
+##  Fixer
 
+Fixer is an web app that helps home owners find trusted and reliable tradesmen in their area at the time of their convenience. Currently only supporting the region in Lusaka, Zambia.
 
-After that open the terminal in the project directory and run 'npm install' then 'npm start'
+## Contributors
+
+Open to contributions. Please contact the lead contributor first. Twitter: @MulengaWilfred
+
+## Available Scripts
+
+This project was created with ReactJS for Frontend and Express.js for Backend.
+
+In the project directory, you can run:
+
+### `npm run dev`
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Server runs on [http://localhost:3001](http://localhost:3001)
+
