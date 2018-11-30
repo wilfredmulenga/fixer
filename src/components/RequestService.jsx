@@ -14,7 +14,6 @@ class RequestService extends React.Component {
             estimatedBudget: '',
             userData: currentUserData,
             streetAddress: (currentUserData) ? currentUserData.serviceAddress.streetAddress : null,
-            area: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.area : null,
             city: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.city : null,
             phoneNumber: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.servicePhoneNumber : null,
             preferredStartDate: '',
@@ -53,7 +52,6 @@ class DetailedService extends React.Component {
             estimatedBudget: '',
             userData: currentUserData,
             streetAddress: (currentUserData) ? currentUserData.serviceAddress.streetAddress : null,
-            area: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.area : null,
             city: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.city : null,
             phoneNumber: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.servicePhoneNumber : null,
             preferredStartDate: '',
@@ -84,11 +82,7 @@ class DetailedService extends React.Component {
                     streetAddress: value
                 })
                 break;
-            case 'area':
-                this.setState({
-                    area: value
-                })
-                break;
+
             case 'city':
                 this.setState({
                     city: value
@@ -109,11 +103,13 @@ class DetailedService extends React.Component {
         }
     }
     submitRequest = (event) => {
-
+        this.setState({
+            open: true
+        })
         Firebase.database()
-            .ref(`ServiceRequests`)
+            .ref(`ServiceRequests/`)
             .push({
-                customer: {
+                user: {
                     userUID: this.state.userUID,
                     fullName: `${this.state.userData.firstName} ${this.state.userData.lastName}`
                 },
@@ -127,7 +123,6 @@ class DetailedService extends React.Component {
                 estimatedBudget: this.state.estimatedBudget,
                 serviceAddress: {
                     streetAddress: this.state.streetAddress,
-                    area: this.state.area,
                     city: this.state.city,
                     phoneNumber: this.state.phoneNumber,
                     preferredStartDate: this.state.preferredStartDate
@@ -182,8 +177,6 @@ class DetailedService extends React.Component {
                                 <input className="form-control mb-2" type="text" placeholder="street address"
                                     onChange={this.handleChangeInput} value={this.state.streetAddress}
                                     required></input>
-                                <input className="form-control mb-2" type="text" placeholder="area"
-                                    onChange={this.handleChangeInput} value={this.state.area} required></input>
                                 <input className="form-control mb-2" type="text" placeholder="city"
                                     onChange={this.handleChangeInput} value={this.state.city} required></input>
                                 <input
@@ -205,7 +198,7 @@ class DetailedService extends React.Component {
                 </div>
                 <div className="col-md-12 mt-5 text-center">
                     <button
-                        onClick={() => this.submitRequest()}
+                        onClick={() => this.submitRequest}
 
                     >Request Hire</button>
                 </div>

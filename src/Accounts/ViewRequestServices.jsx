@@ -4,22 +4,42 @@ import Modal from 'react-modal';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
 
+let typeOfUser = localStorage.getItem('typeOfUser')
+let userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 let requests;
-Firebase.database()
-    .ref('ServiceRequests/')
-    .on('value', (snapshot) => {
-        let elements = [];
 
-        for (const index in snapshot.val()) {
-            var x = snapshot.val()[index]
-            x.requestID = index
-            elements.push(x)
-        }
-        requests = elements
+//fetching service requests depending on the type of user
+if (typeOfUser === 'user') {
+    Firebase.database()
+        .ref(`ServiceRequests/`)
+        .on('value', (snapshot) => {
+            let elements = [];
+            for (const index in snapshot.val()) {
+                var x = snapshot.val()[index]
+                x.requestID = index
+                elements.push(x)
+            }
+            requests = elements
+            console.log(requests)
 
+        })
+} else if (typeOfUser === 'fixer') {
+    Firebase.database()
+        .ref(`ServiceRequests/`)
+        .on('value', (snapshot) => {
+            let elements = [];
+            for (const index in snapshot.val()) {
+                var x = snapshot.val()[index]
+                x.requestID = index
+                elements.push(x)
+            }
+            requests = elements
+            console.log(requests)
 
-    })
+        })
+}
+
 class ViewRequestServices extends React.Component {
     constructor(props) {
         super(props)
@@ -86,6 +106,7 @@ class ViewRequestServices extends React.Component {
                                     modalIsOpen: true,
                                     requestID: element.requestID
                                 })}>
+                                    {console.log(element.requestID)}
                                     <th scope="row">{i + 1}</th>
                                     <td>{element.fixer.fullName}</td>
                                     <td>{`Profession: ${element.profession}`}<br />
@@ -93,7 +114,6 @@ class ViewRequestServices extends React.Component {
                                         {`Estimated Budget: K${element.estimatedBudget}`}<br />
                                         {`Preferred Start Date: ${element.serviceAddress.preferredStartDate}`}</td>
                                     <td>{element.serviceAddress.streetAddress}<br />
-                                        {element.serviceAddress.area}<br />
                                         {element.serviceAddress.city}<br />
                                         {element.serviceAddress.phoneNumber}</td>
                                     <td>{element.status}</td>

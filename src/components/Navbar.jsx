@@ -14,7 +14,9 @@ class Navbar extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this)
   }
   handleOnClick = () => {
-
+    localStorage.setItem('typeOfUser', 'fixer')
+    var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
+    localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
     //when "Become a Fixer" button is pressed, if user already has info, 
     //takes them to their profile, if they dont, it sends them to update profile
     Firebase.auth().onAuthStateChanged((user) => {
@@ -22,8 +24,7 @@ class Navbar extends React.Component {
         console.log(user.uid)
         for (var y = 0; y < listOfFixers.length; y++) {
           if (listOfFixers[y]["userUID"] === user.uid) {
-            var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
-            localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
+
             browserHistory.push({
               pathname: '/fixer/profile'
             })

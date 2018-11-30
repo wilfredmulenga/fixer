@@ -129,7 +129,7 @@
   },
   "ServiceRequests": {
     "-LOeQdsEXuyYgxDsXn--": {
-      "customer": {
+      "user": {
         "fullName": "Jayne Page",
         "userUID": "O29nIFjBn8N6U2Kh9eXMyXwGN5B3"
       },
@@ -151,7 +151,7 @@
       "timestamp": "10/13/2018, 12:38:46 AM"
     },
     "-LPeLBJ_LUCw6h-JrmaB": {
-      "customer": {
+      "user": {
         "fullName": "Wilfred Mulenga",
         "userUID": "pam7pXQd5RRXHXdiBOONOUhkc0N2"
       },
@@ -173,7 +173,7 @@
       "timestamp": "10/25/2018, 10:30:36 AM"
     },
     "-LPeN1aNszOppFeOjAKQ": {
-      "customer": {
+      "user": {
         "fullName": "Wilfred Mulenga",
         "userUID": "pam7pXQd5RRXHXdiBOONOUhkc0N2"
       },
