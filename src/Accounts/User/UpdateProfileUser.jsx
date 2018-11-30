@@ -5,6 +5,8 @@ import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Firebase from '../../config/firebase';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 let userData
 let userUID
@@ -162,78 +164,143 @@ class UpdateProfileUser extends Component {
         return (
             <div>
                 <Navbar />
-                <div className="container justify-content-center">
-                    <h3>Update Profile</h3>
-                    <div className="card">
+                <br />
+                <br />
+                <div className="container">
+                    <div className="row">
+                        <div className="col align-self-center">
+                            <Card className="main-login main-center updateProfileCard">
+                                <CardContent>
 
-                        <div className="card-body">
-                            <form
-                                className="needs-validation" onSubmit={this.sendData}>
-                                <h5>Personal Information</h5>
-                                <div className="mb-1">
-                                    <div className="form-row">
-                                        <div className="col col-sm-12 mb-3">
-                                            <input
-                                                type="text"
-                                                value={this.state.firstName}
-                                                onChange={this.handleChangeInput}
-                                                className="form-control"
-                                                placeholder="First Name"
-                                                required
-                                            />
+                                    <div>
+                                        <h3>Update Profile</h3>
+                                        <h5>Personal Information</h5>
+                                        <form
+                                            className="needs-validation" onSubmit={this.sendData}>
+
+                                            <div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">First Name</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input
+                                                                type="text"
+                                                                value={this.state.firstName}
+                                                                onChange={this.handleChangeInput}
+                                                                className="form-control"
+                                                                placeholder="First Name"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">Last Name</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input
+                                                                type="text"
+                                                                value={this.state.lastName}
+                                                                onChange={this.handleChangeInput}
+                                                                className="form-control"
+                                                                placeholder="Last Name"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">Phone Number</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input
+                                                                type="text"
+
+                                                                value={this.state.phoneNumber}
+                                                                onChange={this.handleChangeInput}
+                                                                className="form-control"
+                                                                minLength='10'
+                                                                maxLength='13'
+                                                                placeholder="Phone Number e.g 0979999999"
+                                                                required
+                                                                pattern="[0-9,+]" />
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h5>Service Address</h5>
+                                            <div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">Street Address</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input className="form-control " type="text" placeholder="street address"
+                                                                onChange={this.handleChangeInput} value={this.state.streetAddress}
+                                                                required></input>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">Area</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input className="form-control " type="text" placeholder="area"
+                                                                onChange={this.handleChangeInput} value={this.state.area} required></input>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">City</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input className="form-control " type="text" placeholder="city"
+                                                                onChange={this.handleChangeInput} value={this.state.city} required></input>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className="cols-sm-2 control-label">Phone Number</label>
+                                                    <div className="cols-sm-10">
+                                                        <div className="input-group">
+                                                            <input className="form-control " type="text" placeholder="phone number"
+                                                                minLength='10'
+                                                                maxLength='13'
+                                                                pattern="[0-9,+]"
+                                                                onChange={this.handleChangeInput} value={this.state.servicePhoneNumber} required></input>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </form>
+                                        <br />
+                                        <div className='text-center'>
+                                            <Button
+                                                size="large"
+                                                variant='contained'
+                                                onClick={this.sendData}>Update Profile</Button>
                                         </div>
-                                        <div className="col col-sm-12 mb-3">
-                                            <input
-                                                type="text"
-                                                value={this.state.lastName}
-                                                onChange={this.handleChangeInput}
-                                                className="form-control"
-                                                placeholder="Last Name"
-                                                required
-                                            />
-                                        </div>
+                                        <br />
+
                                     </div>
-                                    <div className="form-row">
-                                        <div className="col-md-6 col-sm-12 mb-3">
-                                            <input
-                                                type="text"
-                                                style={{ display: 'inline-block' }}
-                                                value={this.state.phoneNumber}
-                                                onChange={this.handleChangeInput}
-                                                className="form-control"
-                                                minLength='10'
-                                                maxLength='13'
-                                                placeholder="Phone Number e.g 0979999999"
-                                                required
-                                                pattern="[0-9,+]" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <h5>Service Address</h5>
-                                <div className="col-md-10" style={{ display: 'inline-block' }}>
-                                    <input className="form-control mb-3" type="text" placeholder="street address"
-                                        onChange={this.handleChangeInput} value={this.state.streetAddress}
-                                        required></input>
-                                    <input className="form-control mb-3" type="text" placeholder="area"
-                                        onChange={this.handleChangeInput} value={this.state.area} required></input>
-                                    <input className="form-control mb-3" type="text" placeholder="city"
-                                        onChange={this.handleChangeInput} value={this.state.city} required></input>
-                                    <input className="form-control mb-3" type="text" placeholder="phone number"
-                                        minLength='10'
-                                        maxLength='13'
-                                        pattern="[0-9,+]"
-                                        onChange={this.handleChangeInput} value={this.state.servicePhoneNumber} required></input>
-                                </div>
-                            </form>
+                                </CardContent>
+                            </Card>
                         </div>
                     </div>
+
                 </div>
-                <div className='text-center'>
-                    <Button
-                        type="button"
-                        variant='text'
-                        onClick={this.sendData}>Update Profile</Button>
-                </div>
+                <br />
+                <br />
             </div>
         );
     }
