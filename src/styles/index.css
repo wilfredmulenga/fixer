@@ -1,9 +1,30 @@
 .custom-toggler.navbar-toggler {
-  border-color: #ADD8E6;
+  border-color: #0dbab1;
 } 
 
+
+body{
+  font-family: 'Work Sans', sans-serif;
+}
+
+a:hover{
+  color: #0dbab1; 
+}
+
 .blueBackground {
-  background-color: #ade6e6;
+  background-color: #0dbab1;
+}
+
+.whiteBackground {
+  background-color: #fff;
+}
+
+.greyBackground {
+  background-color: #c0caca;
+}
+
+.greenText{
+  color: #0dbab1;
 }
 
 
@@ -131,6 +152,7 @@ However, delay the fade out process for 2.5 seconds */
   to {bottom: 0; opacity: 0;}
 }
 
+@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav');
 
 
   #modalStyles {
@@ -149,4 +171,18 @@ However, delay the fade out process for 2.5 seconds */
   .rounder{
     border: solid 2px blue;
     border-radius: 30px;
+  }
+
+  .landing-btn{
+    margin-right: 10px;
+  }
+
+  .invisibleBorder{
+    border: 1px solid white;
+
+  }
+
+  .colorChange:hover {
+    background-color: #0dbab1;
+    color: #fff; 
   }
