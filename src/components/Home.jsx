@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TypeOfFixers from './TypesOfFixers'
 import CustomerFixerCard from './CustomerFixerCard'
 import HowItWorks from './HowItWorks';
-import How from './HowItWorks';
+import How from './HowItWorks2';
 import JobsCarousel from './JobsCarousel';
 import Carousel from './ContactForm'
 import jsonData from '../database/fixer-test-export.json'
@@ -113,7 +113,7 @@ class Home extends React.Component {
             {/* How it Works section */}
             <JobsCarousel />
 
-            <HowItWorks />
+            <How />
             {/* Buttons*/}
             {/*Type of Fixers*/}
             <TypeOfFixers />

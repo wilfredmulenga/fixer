@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Work Sans', sans-serif;
   height: 100%
 }
 #root {
@@ -41,6 +41,8 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav');
 
 h4{
   margin: 0.5%
