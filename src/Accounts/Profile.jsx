@@ -4,7 +4,8 @@ import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
 import ViewProfile from './ViewProfile';
-import ViewRequestServices from './ViewRequestServices';
+import ViewRequestServicesUser from '../Accounts/User/ViewRequestServicesUser'
+
 
 
 class Profile extends React.Component {
@@ -88,7 +89,7 @@ class Profile extends React.Component {
 
                         <div className="card col center-align mt-2  ml-3">
                             {(this.state.viewProfile) ? <ViewProfile userData={this.state.userData} />
-                                : (this.state.viewRequestServices) ? <ViewRequestServices />
+                                : (this.state.viewRequestServices) ? <ViewRequestServicesUser />
                                     : < div > <h3>Please Update Your Profile</h3></div>}
                         </div>
                     </div>

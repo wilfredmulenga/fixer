@@ -109,14 +109,10 @@ class DetailedService extends React.Component {
         Firebase.database()
             .ref(`ServiceRequests/`)
             .push({
-                user: {
-                    userUID: this.state.userUID,
-                    fullName: `${this.state.userData.firstName} ${this.state.userData.lastName}`
-                },
-                fixer: {
-                    userUID: this.state.selectedPersonUserUID,
-                    fullName: this.state.selectedPersonFullName
-                },
+                userUID: this.state.userUID,
+                userFullName: `${this.state.userData.firstName} ${this.state.userData.lastName}`,
+                fixerUID: this.state.selectedPersonUserUID,
+                fixerFullName: this.state.selectedPersonFullName,
                 status: 'pending',
                 jobDescription: this.state.jobDescription,
                 profession: this.state.profession,

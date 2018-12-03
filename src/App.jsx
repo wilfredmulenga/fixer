@@ -10,7 +10,7 @@ import UpdateProfile from './Accounts/UpdateProfile';
 import Loader from './components/Loader'
 // eslint-disable-next-line
 import jsonData from './database/fixer-test-export.json'
-import PhoneLogin from './Accounts/PhoneLogin'
+import PhoneLogin from './components/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
 import ContactUs from './components/ContactUs'

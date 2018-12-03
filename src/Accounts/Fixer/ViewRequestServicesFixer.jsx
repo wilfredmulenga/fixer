@@ -1,5 +1,5 @@
 import React from 'react';
-import Firebase from '../config/firebase';
+import Firebase from '../../config/firebase';
 import Modal from 'react-modal';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
@@ -9,53 +9,37 @@ let userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 let requests;
 
-//fetching service requests depending on the type of user
-if (typeOfUser === 'user') {
-    Firebase.database()
-        .ref(`ServiceRequests/`)
-        .on('value', (snapshot) => {
-            let elements = [];
-            for (const index in snapshot.val()) {
-                var x = snapshot.val()[index]
-                x.requestID = index
-                elements.push(x)
-            }
-            requests = elements
-            console.log(requests)
+//fetch service requests based on the fixer's userUID
+Firebase.database()
+    .ref(`ServiceRequests/`)
+    .orderByChild('fixerUID')
+    .equalTo('L5WK2zajNqS7wLVja2KwzsdWfCA3')
+    .on('value', (snapshot) => {
+        let elements = [];
+        for (const index in snapshot.val()) {
+            var x = snapshot.val()[index]
+            x.requestID = index
+            elements.push(x)
+        }
+        requests = elements
+    })
 
-        })
-} else if (typeOfUser === 'fixer') {
-    Firebase.database()
-        .ref(`ServiceRequests/`)
-        .on('value', (snapshot) => {
-            let elements = [];
-            for (const index in snapshot.val()) {
-                var x = snapshot.val()[index]
-                x.requestID = index
-                elements.push(x)
-            }
-            requests = elements
-            console.log(requests)
 
-        })
-}
-
-class ViewRequestServices extends React.Component {
+class ViewRequestServicesFixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             modalIsOpen: false,
             requestID: null
         }
-        this.cancelRequest = this.cancelRequest.bind(this)
+        this.acceptRequest = this.acceptRequest.bind(this)
     }
 
-    cancelRequest = () => {
-        console.log('cancel')
+    acceptRequest = () => {
         Firebase.database()
             .ref(`ServiceRequests/${this.state.requestID}`)
             .update({
-                status: "cancelled"
+                status: "accepted"
             })
         this.setState({
             modalIsOpen: false
@@ -94,7 +78,7 @@ class ViewRequestServices extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Fixer</th>
+                                <th scope="col">{(typeOfUser === 'user') ? `Fixer` : `User`}</th>
                                 <th scope="col">Job Description</th>
                                 <th scope="col">Service Address</th>
                                 <th scope="col">Job Status</th>
@@ -108,7 +92,7 @@ class ViewRequestServices extends React.Component {
                                 })}>
                                     {console.log(element.requestID)}
                                     <th scope="row">{i + 1}</th>
-                                    <td>{element.fixer.fullName}</td>
+                                    <td>{(typeOfUser === `user`) ? element.fixerFullName : element.userFullName}</td>
                                     <td>{`Profession: ${element.profession}`}<br />
                                         {`Job Description: ${element.jobDescription}`}<br />
                                         {`Estimated Budget: K${element.estimatedBudget}`}<br />
@@ -125,11 +109,11 @@ class ViewRequestServices extends React.Component {
                     <Modal
                         isOpen={this.state.modalIsOpen}>
                         <div className="justify-content-center text-center">
-                            <h3 className="mb-5">Are you sure you want to cancel this service request?</h3>
+                            <h3 className="mb-5">would you like to accept this job?</h3>
                             <div className="row justify-content-around">
                                 <Button variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
-                                    onClick={this.cancelRequest}
+                                    onClick={this.acceptRequest}
                                 >Yes</Button>
                                 <Button variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
@@ -140,9 +124,8 @@ class ViewRequestServices extends React.Component {
                         </div>
                     </Modal>
                 </div>} />
-            {/* {(requests !== undefined) ? requests['0'].customer : null} */}
         </div>)
     }
 }
 
-export default ViewRequestServices;
+export default ViewRequestServicesFixer;

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";
 import ViewProfileFixer from '../Fixer/ViewProfileFixer';
-import ViewRequestServices from '../ViewRequestServices';
+import ViewRequestServicesFixer from './ViewRequestServicesFixer';
 
 
 class ProfileFixer extends React.Component {
@@ -87,7 +87,7 @@ class ProfileFixer extends React.Component {
 
                         <div className="card col center-align mt-2  ml-3">
                             {(this.state.viewProfile) ? <ViewProfileFixer userData={this.state.userData} />
-                                : (this.state.viewRequestServices) ? <ViewRequestServices />
+                                : (this.state.viewRequestServices) ? <ViewRequestServicesFixer />
                                     : < div > <h3>Please Update Your Profile</h3></div>}
                         </div>
                     </div>
