@@ -111,7 +111,7 @@ class Home extends React.Component {
           {/* <CustomerFixerCard /> */}
           <div >
             {/* How it Works section */}
-            <Carousel />
+            <JobsCarousel />
 
             <HowItWorks />
             {/* Buttons*/}
