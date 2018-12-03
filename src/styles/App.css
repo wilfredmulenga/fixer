@@ -117,3 +117,9 @@ input:valid+span:after {
 {    
   padding: 3rem;
 } */
+
+.updateProfileCard{
+  max-width: 700px;
+  text-align: center;
+  /* align-items: center; */
+}
