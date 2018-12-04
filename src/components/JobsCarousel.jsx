@@ -13,12 +13,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 export default function JobsCarousel() {
     return (
-        <div style={{ height: "100vh" }} className="container blueBackground col-md-12 col-sm-12">
-            <div className='text-center mb-5'><h2 style={{ color: 'white', fontSize: 40 }}>Gallery</h2></div>
+        <div style={{ height: "100vh" }} className="container whiteBackground col-md-12 col-sm-12">
+            <br />
+            <div className='text-center mb-5'><h2 style={{ color: '#0dbab1', fontSize: 40 }}>Gallery</h2></div>
 
-
-
-            <Divider />
             <div className='row justify-content-around '>
                 <div className="card" style={{ width: "21rem" }}>
                     <img className="card-img-top" src={CarpenterImage} alt="Card image cap" />
@@ -32,10 +30,10 @@ export default function JobsCarousel() {
 
 
 
-                <div className="card" style={{ width: "21rem" }}>
-                    <img className="card-img-top" src={CleaningImage} alt="Card image mec" />
+                <div className="card invisibleBorder" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
+                    <img className="card-img-top rounded" src={CleaningImage} alt="Card image mec" />
                     <div className="card-body">
-                        <h5 className="card-title"><strong>Cleaning Services</strong></h5>
+                        <h5 className="card-title greenText"><strong>Cleaning Services</strong></h5>
                         <p className="card-text">Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
 
                     </div>
@@ -45,7 +43,7 @@ export default function JobsCarousel() {
 
                 <div className="card" style={{ width: "21rem" }}>
                     <img className="card-img-top" src={ElectricianImage} alt="Card image elec" />
-                    <div className="card-body">
+                    <div className="card-body blueBackground" style={{ color: "white" }}>
                         <h5 className="card-title"><strong>Electrical Services</strong></h5>
                         <p className="card-text">We will connect you to  electricians tradesman specializing in electrical wiring of buildings, transmission lines, stationary machines, and related equipment.</p>
 

@@ -161,7 +161,7 @@ class DetailedService extends React.Component {
                         </div>
                         <p>When would you like the service</p>
                         <div>
-                            <input className="form-control mb-2" type="text" placeholder="preferred start date"
+                            <input className="form-control mb-2" type="date" placeholder="preferred start date"
                                 style={{ display: 'inline-block' }}
                                 onChange={this.handleChangeInput} value={this.state.preferredStartDate} required></input>
                         </div>
