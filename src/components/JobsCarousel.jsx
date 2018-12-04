@@ -18,12 +18,12 @@ export default function JobsCarousel() {
             <div className='text-center mb-5'><h2 style={{ color: '#0dbab1', fontSize: 40 }}>Gallery</h2></div>
 
             <div className='row justify-content-around '>
-                <div className="card" style={{ width: "21rem" }}>
-                    <img className="card-img-top" src={CarpenterImage} alt="Card image cap" />
+                <div className="card" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
+                    <img className="card-img-top rounded" src={ElectricianImage} alt="Card image electrician" />
                     <div className="card-body">
-                        <h5 className="card-title"><strong>Carpenter Services</strong></h5>
+                        <h5 className="card-title greenText"><strong>Electrical Services</strong></h5>
 
-                        <p className="card-text">Get in touch with skilled carpenters with experience in performing is the cutting, shaping and installation of building materials during the construction of buildings and home furniture.</p>
+                        <p className="card-text">We will connect you to  electricians tradesman specializing in electrical wiring of buildings, transmission lines, stationary machines, and related equipment.</p>
 
                     </div>
                 </div>
@@ -31,7 +31,7 @@ export default function JobsCarousel() {
 
 
                 <div className="card invisibleBorder" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
-                    <img className="card-img-top rounded" src={CleaningImage} alt="Card image mec" />
+                    <img className="card-img-top rounded" src={CleaningImage} alt="Card image cleaner" />
                     <div className="card-body">
                         <h5 className="card-title greenText"><strong>Cleaning Services</strong></h5>
                         <p className="card-text">Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
@@ -41,11 +41,11 @@ export default function JobsCarousel() {
 
 
 
-                <div className="card" style={{ width: "21rem" }}>
-                    <img className="card-img-top" src={ElectricianImage} alt="Card image elec" />
-                    <div className="card-body blueBackground" style={{ color: "white" }}>
-                        <h5 className="card-title"><strong>Electrical Services</strong></h5>
-                        <p className="card-text">We will connect you to  electricians tradesman specializing in electrical wiring of buildings, transmission lines, stationary machines, and related equipment.</p>
+                <div className="card" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
+                    <img className="card-img-top rounded" src={CarpenterImage} alt="Card image carpenter" />
+                    <div className="card-body ">
+                        <h5 className="card-title greenText"><strong>Carpenter Services</strong></h5>
+                        <p className="card-text">Get in touch with skilled carpenters with experience in performing is the cutting, shaping and installation of building materials during the construction of buildings and home furniture.</p>
 
                     </div>
                 </div>
