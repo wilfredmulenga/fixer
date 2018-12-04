@@ -168,7 +168,7 @@ class UpdateProfileUser extends Component {
                 <br />
                 <div className="container">
                     <div className="row">
-                        <div className="col align-self-center">
+                        <div className="col offset-md-2 align-self-center">
                             <Card className="main-login main-center updateProfileCard">
                                 <CardContent>
 
