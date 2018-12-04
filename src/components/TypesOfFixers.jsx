@@ -18,8 +18,9 @@ import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
 
 export default function TypeOfFixers() {
     return (
-        <div style={{ height: "100vh" }} className="blueBackground text-center">
-            <h2 className='pb-5' style={{ color: 'white', fontSize: 40 }}>Our Services</h2>
+        <div style={{ height: "100vh" }} className="whiteBackground text-center">
+            <br />
+            <h2 className='pb-5' style={{ color: '#0dbab1', fontSize: 40 }}>Our Services</h2>
             <div className="row justify-content-center">
                 <div className="row col-md-12 justify-content-center">
                     <div className="col-md-2 fixerIcons"
@@ -27,42 +28,41 @@ export default function TypeOfFixers() {
                             pathname: '/categories',
                             state: { typeOfUser: 'Electrician' }
                         })}>
-                        <div className="card rounder">
+                        <div className="card colorChange">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid rounded" src={plugIcon} alt="" /></p>
+                                <p><img className="img-fluid rounded" src={plugIcon} alt="electrical plug" /></p>
                                 <h5 className="card-title">Electrician</h5>
                                 <br />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-2 fixerIcons">
-                        <div className="card">
+                        <div className="card colorChange">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid" src={plumberIcon} alt="" /></p>
+                                <p><img className="img-fluid" src={plumberIcon} alt="plumber" /></p>
                                 <h5 className="card-title">Plumbing</h5>
                                 <br />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-2 fixerIcons">
-                        <div className="card">
+                        <div className="card colorChange">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid" src={sawIcon} alt="" /></p>
+                                <p><img className="img-fluid" src={sawIcon} alt="saw" /></p>
                                 <h5 className="card-title">Carpenter</h5>
                                 <br />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-2 fixerIcons">
-                        <div className="card">
+                        <div className="card colorChange">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid" src={janitorIcon} alt="" /></p>
+                                <p><img className="img-fluid" src={janitorIcon} alt="janitor" /></p>
                                 <h5 className="card-title">House Cleaning</h5>
-                                <br />
                             </div>
                         </div>
                     </div>

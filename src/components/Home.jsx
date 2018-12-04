@@ -10,7 +10,8 @@ import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import TypeOfFixers from './TypesOfFixers'
 import CustomerFixerCard from './CustomerFixerCard'
-import HowItWorks from './HowItWorks'
+import HowItWorks from './HowItWorks';
+import How from './HowItWorks2';
 import JobsCarousel from './JobsCarousel';
 import Carousel from './ContactForm'
 import jsonData from '../database/fixer-test-export.json'
@@ -52,7 +53,7 @@ class Home extends React.Component {
     //this.handleLoadUsers()
   }
 
-  // handleLoadUsers = () => {
+  // handleLoadUsers = () => { 
   //   console.log("handle loaders")
   //   Firebase.database()
   //     .ref('Users/')
@@ -87,8 +88,9 @@ class Home extends React.Component {
               position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center'
             }}>
-              <p style={{ fontSize: 32, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>The convenient way to find reliable tradesmen in your neighborhood</p>
-              <Button variant='outlined' className='mt-5'
+              <p style={{ fontSize: 32, color: '#fff', float: 'center', marginLeft: '20px' }}>The convenient way to find reliable tradesmen in your neighborhood</p>
+              <p style={{ fontSize: 17, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Choose from our vetted tardesmen for help without all the fuss. We are currently offering services for the following:</p>
+              {/* <Button variant='outlined' className='mt-5'
                 style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
                 onClick={() => {
                   var userProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
@@ -96,7 +98,11 @@ class Home extends React.Component {
                   localStorage.setItem('typeOfUser', 'user')
                   browserHistory.push({ pathname: '/categories' })
                 }}
-              >Hire a Fixer</Button>
+              >Hire a Fixer</Button> */}
+              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Plumber</button>
+              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Cleaner</button>
+              <button type="button" className="btn btn-outline-dark landing-btn">Hire An Electrician</button>
+              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Carpenter</button>
 
             </div>
 
@@ -105,9 +111,9 @@ class Home extends React.Component {
           {/* <CustomerFixerCard /> */}
           <div >
             {/* How it Works section */}
-            <Carousel />
+            <JobsCarousel />
 
-            <HowItWorks />
+            <How />
             {/* Buttons*/}
             {/*Type of Fixers*/}
             <TypeOfFixers />
