@@ -48,10 +48,10 @@ class App extends Component {
     this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
     this.handleDataLoad()
-    // this.handleCurrentUserDataLoad()
+    this.handleCurrentUserDataLoad()
   }
   handleCurrentUserDataLoad = () => {
-    var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
+    var fixerUserProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
     localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
   }
 

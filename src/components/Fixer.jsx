@@ -21,7 +21,7 @@ class Fixer extends React.Component {
         return (
             <div >
                 <Navbar />
-                <div style={{ height: "100vh", backgroundColor: "#F7F5F5" }} className=" row justify-content-center ">
+                <div style={{ height: "100vh", backgroundColor: "#0dbab1" }} className=" row justify-content-center ">
                     <div className="col-md-8">
                         <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
                             <div className="row col-md-12">

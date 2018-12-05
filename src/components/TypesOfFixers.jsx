@@ -61,12 +61,12 @@ export default function TypeOfFixers() {
                         <div className="card colorChange">
                             <div className="card-body text-center">
 
-                                <p><img className="img-fluid" src={janitorIcon} alt="janitor" /></p>
+                                <p><img className="img-fluid" src={janitorIcon} alt="saw" /></p>
                                 <h5 className="card-title">House Cleaning</h5>
+                                <br />
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 {/* <div className="col-xs fixerIcons">

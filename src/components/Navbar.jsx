@@ -46,14 +46,14 @@ class Navbar extends React.Component {
   render() {
     return (
       <div id="navbar" >
-        <nav style={{ backgroundColor: '#0dbab1' }} className="navbar navbar-expand-md navbar-light">
+        <nav style={{ backgroundColor: '#007470' }} className="navbar navbar-expand-md navbar-light">
           <Link to="/" className="navbar-brand link" style={{
-            lineHeight: '1.3', fontSize: '23px',
+            lineHeight: '1.3', fontSize: '23px', color: '#FFF',
             letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
           }}>
             {/* <img src={brandImage} width="30" height="30" class="d-inline-block align-top" alt=""></img> */}
             Fixer
-         </Link>
+          </Link>
           <button className=" navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -61,15 +61,15 @@ class Navbar extends React.Component {
             <ul className="navbar-nav mr-auto ">
 
               <li className="nav-item active mr-3">
-                <Link to="/categories" className="link">Categories</Link>
+                <Link to="/categories" style={{ color: "#fff" }} className="link">Categories</Link>
               </li>
               <li className="nav-item active mr-3">
 
-                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" className="link">Profile</Link> : null}
-                {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" className="link">Profile</Link> : null}
+                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
+                {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
               </li>
               <li className="nav-item active mr-3">
-                <Link to="/phonelogin" className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
+                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
               </li>
             </ul>
 

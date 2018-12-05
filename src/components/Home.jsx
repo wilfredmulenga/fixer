@@ -51,6 +51,12 @@ class Home extends React.Component {
 
     //this.handleLoadUsers = this.handleLoadUsers.bind(this)
     //this.handleLoadUsers()
+    this.handleHire = this.handleHire.bind(this)
+  }
+
+  handleHire = () => {
+    browserHistory.push({ pathname: '/categories' })
+    localStorage.setItem('typeOfUser', 'user')
   }
 
   // handleLoadUsers = () => { 
@@ -99,10 +105,10 @@ class Home extends React.Component {
                   browserHistory.push({ pathname: '/categories' })
                 }}
               >Hire a Fixer</Button> */}
-              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Plumber</button>
-              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Cleaner</button>
-              <button type="button" className="btn btn-outline-dark landing-btn">Hire An Electrician</button>
-              <button type="button" className="btn btn-outline-dark landing-btn">Hire A Carpenter</button>
+              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button>
+              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Cleaner</button>
+              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire An Electrician</button>
+              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Carpenter</button>
 
             </div>
 
@@ -118,20 +124,20 @@ class Home extends React.Component {
             {/*Type of Fixers*/}
             <TypeOfFixers />
             {/* Contact */}
-            <div style={{ backgroundColor: '#0dbab1', color: 'black' }} >
+            <div style={{ backgroundColor: '#007470', color: 'black' }} >
 
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
                 <div className="row justify-content-between">
                   <div className="col-md-4">
                     <h4 className="mb-3" style={{ color: '#ffff' }}>Links</h4>
-                    <Link to="/privacypolicy" className="link">Privacy Policy</Link>
+                    <Link to="/privacypolicy" style={{ color: "#fff" }} className="link">Privacy Policy</Link>
                   </div>
                   <div className="col-md-4 align-items-center">
 
                     <h4 className="mb-3" style={{ color: '#ffff' }}>Contact</h4>
-                    <h5>Email: <Link to='/contactus'>support@myfixerapp.com</Link></h5>
-                    <h5>Phone: 0967639241</h5>
+                    <h5 style={{ color: "#fff" }}>Email: <Link style={{ color: "#fff" }} to='/contactus'>support@myfixerapp.com</Link></h5>
+                    <h5 style={{ color: "#fff" }}>Phone: 0967639241</h5>
                     {/* <h5>Address:</h5> */}
 
                   </div>

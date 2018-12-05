@@ -2,7 +2,8 @@ import React from 'react';
 import Navbar from './Navbar';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
-import Snackbar from '@material-ui/core/Snackbar'
+import Snackbar from '@material-ui/core/Snackbar';
+import Button from '@material-ui/core/Button';
 
 var currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
 
@@ -10,22 +11,11 @@ class RequestService extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            jobDescription: '',
-            estimatedBudget: '',
-            userData: currentUserData,
-            streetAddress: (currentUserData) ? currentUserData.serviceAddress.streetAddress : null,
-            city: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.city : null,
-            phoneNumber: (currentUserData.serviceAddress) ? currentUserData.serviceAddress.servicePhoneNumber : null,
-            preferredStartDate: '',
-            userUID: localStorage.getItem('userUID'),
             selectedPersonUserUID: this.props.location.state.fixerUID,
             selectedPersonFullName: `${this.props.location.state.fixerFullName}`,
             profession: this.props.location.state.profession,
-            open: false
 
         }
-
-
     }
 
 
@@ -59,6 +49,8 @@ class DetailedService extends React.Component {
             selectedPersonUserUID: this.props.selectedPersonUserUID,
             selectedPersonFullName: `${this.props.selectedPersonFullName}`,
             profession: this.props.profession,
+            snackbarMessage: '',
+            open: false,
 
         }
         this.handleChangeInput = this.handleChangeInput.bind(this)
@@ -103,41 +95,60 @@ class DetailedService extends React.Component {
         }
     }
     submitRequest = (event) => {
-        this.setState({
-            open: true
-        })
-        Firebase.database()
-            .ref(`ServiceRequests/`)
-            .push({
-                userUID: this.state.userUID,
-                userFullName: `${this.state.userData.firstName} ${this.state.userData.lastName}`,
-                fixerUID: this.state.selectedPersonUserUID,
-                fixerFullName: this.state.selectedPersonFullName,
-                status: 'pending',
-                jobDescription: this.state.jobDescription,
-                profession: this.state.profession,
-                estimatedBudget: this.state.estimatedBudget,
-                serviceAddress: {
-                    streetAddress: this.state.streetAddress,
-                    city: this.state.city,
-                    phoneNumber: this.state.phoneNumber,
-                    preferredStartDate: this.state.preferredStartDate
-                },
-                timestamp: new Date().toLocaleString(),
-                // serviceRequestID :
-            }).catch((error) => {
-                console.error('Error writing new message to Firebase Database', error);
-            });
-        setTimeout(() => {
-            browserHistory.push('/user/profile')
-        }, 3000);
-        console.log("write successful")
-        event.preventDefault();
-        return false
+        if ((this.state.jobDescription !== '') && (this.state.estimatedBudget !== '')
+            && (this.state.preferredStartDate !== '') && (this.state.phoneNumber !== '') &&
+            (this.state.city !== '') && (this.state.streetAddress !== '')) {
+            this.setState({
+                open: true
+            })
+            Firebase.database()
+                .ref(`ServiceRequests/`)
+                .push({
+                    userUID: this.state.userUID,
+                    userFullName: `${this.state.userData.firstName} ${this.state.userData.lastName}`,
+                    fixerUID: this.state.selectedPersonUserUID,
+                    fixerFullName: this.state.selectedPersonFullName,
+                    status: 'pending',
+                    jobDescription: this.state.jobDescription,
+                    profession: this.state.profession,
+                    estimatedBudget: this.state.estimatedBudget,
+                    serviceAddress: {
+                        streetAddress: this.state.streetAddress,
+                        city: this.state.city,
+                        phoneNumber: this.state.phoneNumber,
+                        preferredStartDate: this.state.preferredStartDate
+                    },
+                    timestamp: new Date().toLocaleString(),
+                    // serviceRequestID :
+                }).catch((error) => {
+                    console.error('Error writing new message to Firebase Database', error);
+                    this.setState({
+                        open: true,
+                        snackbarMessage: 'please try again'
+                    })
+                });
+            this.setState({
+                open: true,
+                snackbarMessage: "Service Request Successful"
+            })
+            setTimeout(() => {
+                browserHistory.push('/user/profile')
+            }, 3000);
+            console.log("write successful")
+            //event.preventDefault();
+            return false
+        } else {
+            this.setState({
+                open: true,
+                snackbarMessage: 'please fill in all fields'
+            })
+        }
     }
     render() {
+        console.log(typeof this.state.jobDescription)
         return (
-            <form onSubmit={this.submitRequest}>
+
+            <form>
                 <h4 className="mb-4">Request Service</h4>
                 <div className='row'>
                     <div className="col-md-6">
@@ -193,10 +204,13 @@ class DetailedService extends React.Component {
                     </div>
                 </div>
                 <div className="col-md-12 mt-5 text-center">
-                    <button
-                        onClick={() => this.submitRequest}
-
-                    >Request Hire</button>
+                    <Button
+                        className="btn mb-1"
+                        type="button"
+                        variant='contained'
+                        style={{ backgroundColor: '#FFF', color: '#000' }}
+                        onClick={() => this.submitRequest()}
+                    >Request Hire</Button>
                 </div>
                 <Snackbar className="mb-4"
                     anchorOrigin={{
@@ -209,7 +223,7 @@ class DetailedService extends React.Component {
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">Service Request Successful</span>}
+                    message={<span id="message-id">{this.state.snackbarMessage}</span>}
                 />
             </form>
         )

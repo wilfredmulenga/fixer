@@ -110,9 +110,9 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="row container-fluid justify-content-start mt-4 mb-4">
-          <div className="card col-md-2 ml-3 mb-3 d-flex">
-            <div className="mt-3 justify-content-start text-center">
+        <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-start pt-4 ">
+          <div className="card col-md-2 ml-3  d-flex">
+            <div style={{ paddingLeft: 10 }} className="mt-3 justify-content-start text-center">
               <h5>BROWSE JOBS</h5>
               <hr />
             </div>
