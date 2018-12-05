@@ -4,7 +4,7 @@
 
 
 body{
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a:hover{
@@ -152,7 +152,7 @@ However, delay the fade out process for 2.5 seconds */
   to {bottom: 0; opacity: 0;}
 }
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav|Lato');
 
 
   #modalStyles {

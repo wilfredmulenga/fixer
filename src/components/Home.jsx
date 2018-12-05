@@ -118,25 +118,25 @@ class Home extends React.Component {
             {/*Type of Fixers*/}
             <TypeOfFixers />
             {/* Contact */}
-            <div style={{ backgroundColor: '#fff', color: 'black' }} >
+            <div style={{ backgroundColor: '#0dbab1', color: 'black' }} >
 
               <div className="container pt-3 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
                 <div className="row justify-content-between">
                   <div className="col-md-4">
-                    <h4 className="mb-3">Links</h4>
+                    <h4 className="mb-3" style={{ color: '#ffff' }}>Links</h4>
                     <Link to="/privacypolicy" className="link">Privacy Policy</Link>
                   </div>
                   <div className="col-md-4 align-items-center">
 
-                    <h4 className="mb-3">Contact</h4>
+                    <h4 className="mb-3" style={{ color: '#ffff' }}>Contact</h4>
                     <h5>Email: <Link to='/contactus'>support@myfixerapp.com</Link></h5>
                     <h5>Phone: 0967639241</h5>
                     {/* <h5>Address:</h5> */}
 
                   </div>
                   <div className="col-md-4">
-                    <h4 className="mb-3">Social Media</h4>
+                    <h4 className="mb-3" style={{ color: '#ffff' }}>Social Media</h4>
                     <div className="justify-content-between">
                       <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' >  <img src={facebookIcon} alt="twitter icon" /></a>
                       <a href="https://twitter.com/fixer_app"><img src={twitterIcon} alt="twitter icon" /></a>
