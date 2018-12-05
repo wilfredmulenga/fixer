@@ -26,6 +26,7 @@ Firebase.database()
 class ViewRequestServicesUser extends React.Component {
     constructor(props) {
         super(props)
+
         this.state = {
             modalIsOpen: false,
             requestID: null

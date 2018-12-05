@@ -46,7 +46,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div id="navbar" >
-        <nav className="navbar navbar-expand-md navbar-light">
+        <nav style={{ backgroundColor: '#0dbab1' }} className="navbar navbar-expand-md navbar-light">
           <Link to="/" className="navbar-brand link" style={{
             lineHeight: '1.3', fontSize: '23px',
             letterSpacing: 'normal', fontWeight: 'bold', textTransform: 'capitalize'
