@@ -2,6 +2,7 @@
   "name": "fixer",
   "version": "0.1.0",
   "private": true,
+  "homepage":"./",
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "autosuggest-highlight": "^3.1.1",
