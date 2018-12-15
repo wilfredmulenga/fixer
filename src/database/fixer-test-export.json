@@ -15,12 +15,24 @@
       ],
       "rating": "5",
       "reviews": [
-        "He is a good Carpenter and responds promptly"
+        {
+          "name": "Sam Banda",
+          "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/gHayewR0vKPEcmFIMuaoboYeBGZ2%2Fpic.jpeg?alt=media&token=56434a07-fddc-4b49-9b28-337fbf7895d8",
+          "rating": 5,
+          "dateOfReview": "2 July, 2018",
+          "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor cididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
       ],
       "phoneNumber": "0971500748",
       "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/L5WK2zajNqS7wLVja2KwzsdWfCA3%2FIMG_4507_cropped.jpg?alt=media&token=2903abe9-a6ac-4087-a2cd-abcd2f7533bd",
       "profession": "Carpenter",
-      "userUID": "L5WK2zajNqS7wLVja2KwzsdWfCA3"
+      "userUID": "L5WK2zajNqS7wLVja2KwzsdWfCA3",
+      "galleryOfWork": [
+        {
+          "label": "San Francisco – Oakland Bay Bridge, United States",
+          "imgPath": "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+        }
+      ]
     },
     "O29nIFjBn8N6U2Kh9eXMyXwGN5B3": {
       "age": "23",

@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import Media from 'react-media';
 import placeHolderImage from '../images/profilepic.jpeg';
 import SwipeableTextMobileStepper from '../components/SwipeableTextMobileStepper';
+import FixerReviews from '../components/FixerReviews';
 const textStyle = {
     fontSize: 11,
     marginBottom: 3
@@ -49,7 +50,18 @@ class Fixer extends React.Component {
                             </div>
                         </div>
                         <hr />
-                        <SwipeableTextMobileStepper />
+                        <SwipeableTextMobileStepper fixerUID={fixerProfile.userUID} />
+                        <hr />
+                        <div style={{ backgroundColor: 'lightGrey' }}>
+                            <p style={textStyle}>I Install and maintain wiring, control, and
+lighting systems. Inspect electrical components, such as
+ transformers and circuit breakers. Identify electrical
+ problems with a variety of testing devices. Repair or
+ replace wiring, equipment, or fixtures using hand tools
+and power tools.</p>
+                        </div>
+                        <FixerReviews />
+
                     </div>
 
                     }
