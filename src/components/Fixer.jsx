@@ -2,9 +2,13 @@ import React from 'react';
 import Navbar from './Navbar'
 import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
-
-
-
+import Media from 'react-media';
+import placeHolderImage from '../images/profilepic.jpeg';
+import SwipeableTextMobileStepper from '../components/SwipeableTextMobileStepper';
+const textStyle = {
+    fontSize: 11,
+    marginBottom: 3
+}
 class Fixer extends React.Component {
     constructor(props) {
         super(props)
@@ -16,58 +20,88 @@ class Fixer extends React.Component {
 
 
 
+
     render() {
         const { fixerProfile } = this.state
         return (
             <div >
                 <Navbar />
-                <div style={{ height: "100vh", backgroundColor: "#0dbab1" }} className=" row justify-content-center ">
-                    <div className="col-md-8">
-                        <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
-                            <div className="row col-md-12">
-                                <div className="row col-md-8">
-                                    <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
-                                    <div>
-                                        <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
-                                        {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
+                <Media query="(max-width: 375px)"
+                    render={() => <div style={{ height: '100%' }}>
+                        <div className='row container'>
+                            <div className='col-3'>
+                                <img className='rounded-circle' style={{ width: 72, height: 72 }} src='https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e' />
+                            </div>
+                            <div className='col-5' >
+                                <p style={textStyle}>Florence Sikazwe, Carpenter</p>
+                                <p style={textStyle}>Ibex Hill, Lusaka</p>
+                                <p style={textStyle}>Skills: Wiring, Scaffolding</p>
+                            </div>
+                            <div className='col-4 row align-items-end'>
 
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
+                                <a href='tel:+260967639241' >  <Button
+                                    className="btn  mb-1"
+                                    type="button"
+                                    variant='contained'
+                                    style={{ backgroundColor: '#FFF', color: '#000' }}
+
+                                > CALL </Button></a>
+                            </div>
+                        </div>
+                        <hr />
+                        <SwipeableTextMobileStepper />
+                    </div>
+
+                    }
+                />
+                <Media query="(min-width:376px)" render={() =>
+                    <div style={{ height: "100vh", backgroundColor: "#0dbab1" }}
+                        className=" row justify-content-center ">
+                        <div className="col-md-8">
+                            <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
+                                <div className="row col-md-12">
+                                    <div className="row col-md-8">
+                                        <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={placeHolderImage} /></div>
+                                        <div>
+                                            <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
+                                            <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
+                                            <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
+                                            {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
+                                            <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 text-center row align-items-center justify-content-center">
+                                        <a href='tel:+260967639241' >  <Button
+                                            className="btn  mb-1"
+                                            type="button"
+                                            variant='contained'
+                                            style={{ backgroundColor: '#FFF', color: '#000' }}
+                                        // onClick={() => browserHistory.push({
+                                        //     pathname: '/requestservice',
+                                        //     state: {
+                                        //         fixerUID: fixerProfile.userUID,
+                                        //         profession: fixerProfile.profession,
+                                        //         fixerFullName: `${fixerProfile.firstName} ${fixerProfile.lastName}`
+                                        //     }
+                                        // })}
+                                        > CALL </Button></a>
                                     </div>
                                 </div>
-                                <div className="col-md-4 text-center row align-items-center justify-content-center">
-                                    <a href='tel:+260967639241' >  <Button
-                                        className="btn  mb-1"
-                                        type="button"
-                                        variant='contained'
-                                        style={{ backgroundColor: '#FFF', color: '#000' }}
-                                    // onClick={() => browserHistory.push({
-                                    //     pathname: '/requestservice',
-                                    //     state: {
-                                    //         fixerUID: fixerProfile.userUID,
-                                    //         profession: fixerProfile.profession,
-                                    //         fixerFullName: `${fixerProfile.firstName} ${fixerProfile.lastName}`
-                                    //     }
-                                    // })}
-                                    > CALL </Button></a>
+                                <hr />
+                                <div>
+                                    <h5>Job Description</h5>
+                                    <p>{`${fixerProfile.briefDescription}`}</p>
                                 </div>
-                            </div>
-                            <hr />
-                            <div>
-                                <h5>Job Description</h5>
-                                <p>{`${fixerProfile.briefDescription}`}</p>
-                            </div>
-                            <hr />
-                            <div>
-                                <h5>Reviews</h5>
-                                {(fixerProfile.reviews) ? fixerProfile.reviews.map((element, i) => <p key={i}>{element}</p>) : <p>no reviews yet</p>}
-                            </div>
+                                <hr />
+                                <div>
+                                    <h5>Reviews</h5>
+                                    {(fixerProfile.reviews) ? fixerProfile.reviews.map((element, i) => <p key={i}>{element}</p>) : <p>no reviews yet</p>}
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                } />
             </div>
             // <div>
             //     {(selectedPerson.firstName !== '' && selectedPerson.lastName !== '' && selectedPerson.age !== ''
