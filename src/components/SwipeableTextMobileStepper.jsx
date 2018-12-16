@@ -9,7 +9,6 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import database from '../database/fixer-test-export.json';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -40,9 +39,6 @@ const tutorialSteps = [
       'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
   },
 ];
-//creating a constant of galleryOfWork from local database for testing
-const galleryOfWork = database.Fixers.L5WK2zajNqS7wLVja2KwzsdWfCA3.galleryOfWork;
-
 
 const styles = theme => ({
   root: {
@@ -89,12 +85,12 @@ class SwipeableTextMobileStepper extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
-    const maxSteps = galleryOfWork.length;
+    const maxSteps = tutorialSteps.length;
 
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{galleryOfWork[activeStep].label}</Typography>
+          <Typography>{tutorialSteps[activeStep].label}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -102,7 +98,7 @@ class SwipeableTextMobileStepper extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {galleryOfWork.map((step, index) => (
+          {tutorialSteps.map((step, index) => (
             <div key={step.label}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={step.imgPath} alt={step.label} />
