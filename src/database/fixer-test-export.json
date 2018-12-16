@@ -13,9 +13,15 @@
           "label": "wood-work"
         }
       ],
-      "rating": "5",
+      "rating": 3,
       "reviews": [
-        "He is a good Carpenter and responds promptly"
+        {
+          "name": "Sam Banda",
+          "rating": 3,
+          "review": "lorem",
+          "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/gHayewR0vKPEcmFIMuaoboYeBGZ2%2Fpic.jpeg?alt=media&token=56434a07-fddc-4b49-9b28-337fbf7895d8",
+          "dateOfReview": "2 July, 2018"
+        }
       ],
       "phoneNumber": "0971500748",
       "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/L5WK2zajNqS7wLVja2KwzsdWfCA3%2FIMG_4507_cropped.jpg?alt=media&token=2903abe9-a6ac-4087-a2cd-abcd2f7533bd",
