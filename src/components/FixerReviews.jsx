@@ -3,6 +3,7 @@ import database from '../database/fixer-test-export.json';
 import starFilled from '../images/icons8-star-filled-7.png';
 import starOutlined from '../images/icons8-star-7.png';
 
+
 let reviews = database.Fixers.L5WK2zajNqS7wLVja2KwzsdWfCA3.reviews;
 const textStyle = {
     fontSize: 11,

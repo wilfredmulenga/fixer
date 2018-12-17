@@ -51,17 +51,17 @@ class Fixer extends React.Component {
                         </div>
                         <hr />
                         <SwipeableTextMobileStepper />
-                        <div style={{backgroundColor:'lightGrey',textAlign:'center'}}>
+                        <div style={{ backgroundColor: '#fafafa', textAlign: 'center' }}>
                             <p style={textStyle}>
-                            I Install and maintain wiring, control, and
-lighting systems. Inspect electrical components, such as
- transformers and circuit breakers. Identify electrical
- problems with a variety of testing devices. Repair or
- replace wiring, equipment, or fixtures using hand tools 
-and power tools.
+                                I Install and maintain wiring, control, and
+    lighting systems. Inspect electrical components, such as
+     transformers and circuit breakers. Identify electrical
+     problems with a variety of testing devices. Repair or
+     replace wiring, equipment, or fixtures using hand tools
+    and power tools.
                             </p>
                         </div>
-                        <FixerReviews/>
+                        <FixerReviews />
                     </div>
 
                     }

@@ -47,6 +47,7 @@
           "label": "cooking"
         }
       ],
+      "rating": 3,
       "userUID": "O29nIFjBn8N6U2Kh9eXMyXwGN5B3"
     },
     "SPi0DrpMhGa3lzbwEi4iEtLu26Q2": {
@@ -68,6 +69,7 @@
           "label": "Wiring"
         }
       ],
+      "rating": 3,
       "userUID": "SPi0DrpMhGa3lzbwEi4iEtLu26Q2"
     },
     "gHayewR0vKPEcmFIMuaoboYeBGZ2": {
@@ -89,6 +91,7 @@
           "label": "wiring"
         }
       ],
+      "rating": 3,
       "userUID": "gHayewR0vKPEcmFIMuaoboYeBGZ2"
     },
     "kbVNfYtVIcUKwtTXFthTaFB8Xsp1": {
@@ -114,6 +117,7 @@
           "label": "Wood-Work"
         }
       ],
+      "rating": 3,
       "userUID": "kbVNfYtVIcUKwtTXFthTaFB8Xsp1"
     },
     "myKiXrK2v0Q2UAdbiZDev98Dllh2": {
@@ -130,6 +134,7 @@
       "phoneNumber": "0976709162",
       "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/myKiXrK2v0Q2UAdbiZDev98Dllh2%2FIMG_20180902_140810.png?alt=media&token=7a1fc3b8-3f47-465a-b05a-48a4111ba023",
       "profession": "Electrician",
+      "rating": 3,
       "userUID": "myKiXrK2v0Q2UAdbiZDev98Dllh2"
     }
   },
