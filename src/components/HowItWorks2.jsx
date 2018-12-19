@@ -12,7 +12,7 @@ export default function How() {
                 <h3 className="titles" style={{ color: 'white', fontSize: 40 }}>How It Works</h3>
                 <div className="mt-3 row d-flex justify-content-center">
                     <div className="row col-md-5 col-sm-12 mb-3">
-                        <div className="col-md-3 row align-items-center"> <img src={workingIcon} style={{ height: 80 }} alt="working icon" /></div>
+                        <div className="col-md-3 row align-items-center justify-content-center mb-3"> <img src={workingIcon} style={{ height: 80 }} alt="working icon" /></div>
                         <div className="card col-md-9">
                             <h5 className="card-title mt-3 greenText"><strong>I want to get hired</strong></h5>
                             <p className="card-text">
@@ -23,7 +23,7 @@ export default function How() {
                 </div>
                 <div className="mt-3 row d-flex justify-content-center">
                     <div className="row col-md-5 col-sm-12 mb-3">
-                        <div className="col-md-3 row align-items-center"> <img src={workerIcon} style={{ height: 80 }} alt="working icon" /></div>
+                        <div className="col-md-3 row align-items-center justify-content-center mb-3"> <img src={workerIcon} style={{ height: 80 }} alt="working icon" /></div>
                         <div className="card col-md-9">
 
                             <h5 className="card-title mt-3 greenText"><strong>I want to hire someone</strong></h5>
@@ -36,7 +36,7 @@ export default function How() {
                 </div>
                 <div className="mt-3 row d-flex justify-content-center">
                     <div className="row col-md-5 col-sm-12 mb-3">
-                        <div className="col-md-3 row align-items-center"> <img src={handIcon} style={{ height: 80 }} alt="working icon" /></div>
+                        <div className="col-md-3 row align-items-center justify-content-center mb-3"> <img src={handIcon} style={{ height: 80 }} alt="working icon" /></div>
                         <div className="card col-md-9">
 
                             <h5 className="card-title mt-3 greenText"><strong>I want to be a Partner</strong></h5>

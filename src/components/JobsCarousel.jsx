@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 export default function JobsCarousel() {
     return (
-        <div style={{ height: "100vh" }} className="container whiteBackground col-md-12 col-sm-12">
+        <div className="container  whiteBackground col-md-12 col-sm-12">
             <br />
             <div className='text-center mb-5'><h2 style={{ color: '#0dbab1', fontSize: 40 }}>Gallery</h2></div>
 

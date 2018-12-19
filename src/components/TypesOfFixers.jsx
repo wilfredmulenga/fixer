@@ -18,7 +18,7 @@ import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
 
 export default function TypeOfFixers() {
     return (
-        <div style={{ height: "100vh" }} className="whiteBackground text-center">
+        <div className="whiteBackground text-center">
             <br />
             <h2 className='pb-5' style={{ color: '#0dbab1', fontSize: 40 }}>Our Services</h2>
             <div className="row justify-content-center">

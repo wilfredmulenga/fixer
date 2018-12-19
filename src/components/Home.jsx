@@ -14,7 +14,7 @@ import HowItWorks from './HowItWorks';
 import How from './HowItWorks2';
 import JobsCarousel from './JobsCarousel';
 import Carousel from './ContactForm'
-import jsonData from '../database/fixer-test-export.json'
+import jsonData from '../database/fixer-test-export.json';
 
 
 const styles = theme => ({
@@ -85,7 +85,7 @@ class Home extends React.Component {
       <div>
         <div id="home">
           <Navbar />
-          <div id="landingPage" style={{ height: "100vh" }} className="blueBackground col-md-12 col-sm-12">
+          <div id="landingPage" className="blueBackground col-md-12 col-sm-12">
             {/* <img
               src={landingPage}
               className={'img-fluid'}
@@ -105,10 +105,14 @@ class Home extends React.Component {
                   browserHistory.push({ pathname: '/categories' })
                 }}
               >Hire a Fixer</Button> */}
-              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button>
-              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Cleaner</button>
-              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire An Electrician</button>
-              <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Carpenter</button>
+              <div className="col-12 row justify-content-center">
+                <div className="row col-8 justify-content-center">
+                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button></div>
+                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Cleaner</button></div>
+                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire An Electrician</button></div>
+                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Carpenter</button></div>
+                </div>
+              </div>
 
             </div>
 
