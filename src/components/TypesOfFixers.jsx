@@ -10,7 +10,7 @@ import sawIcon from '../images/fixerIcons/icons8-saw-48.png';
 
 export default function TypeOfFixers() {
     return (
-        <div className="whiteBackground text-center">
+        <div style={{ height: "100vh" }} className="whiteBackground text-center">
             <br />
             <h2 className='pb-5' style={{ color: '#0dbab1', fontSize: 40 }}>Our Services</h2>
             <div className="row justify-content-center">
