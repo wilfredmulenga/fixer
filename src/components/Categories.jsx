@@ -155,6 +155,7 @@ class Tables extends React.Component {
 
   handleCardClick = (selectedPersonUserID) => {
     for (const item in this.state.listOfPeople) {
+      // eslint-disable-next-line
       selectedPersonUserID === this.state.listOfPeople[item].userUID
         ? this.setState({
           selectedPerson: this.state.listOfPeople[item],
