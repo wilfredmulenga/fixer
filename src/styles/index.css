@@ -1,3 +1,31 @@
+.custom-toggler.navbar-toggler {
+  border-color: #0dbab1;
+} 
+
+body{
+  font-family: 'Lato', sans-serif;
+}
+
+a:hover{
+  color: #0dbab1; 
+}
+
+.blueBackground {
+  background-color: #0dbab1;
+}
+
+.whiteBackground {
+  background-color: #fff;
+}
+
+.greyBackground {
+  background-color: #c0caca;
+}
+
+.greenText{
+  color: #0dbab1;
+}
+
 
 .message-form{
   
@@ -71,10 +99,10 @@
 }
 
 .link {
-  color: #FFF;
+  color: #707070;
 }
 .link:hover {
-   color: #00F
+   color: #1B74D1
 }
 
 #snackbar {
@@ -123,6 +151,8 @@ However, delay the fade out process for 2.5 seconds */
   to {bottom: 0; opacity: 0;}
 }
 
+@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav|Lato');
+
 
   #modalStyles {
     top: '50%';
@@ -137,4 +167,25 @@ However, delay the fade out process for 2.5 seconds */
     overflow: 'scroll';
   }
 
-  
+  .rounder{
+    border: solid 2px blue;
+    border-radius: 30px;
+  }
+
+  .landing-btn{
+    margin-right: 10px;
+  }
+
+  .invisibleBorder{
+    border: 1px solid white;
+
+  }
+
+  .colorChange:hover {
+    background-color: #0dbab1;
+    color: #fff; 
+  }
+
+  .whiteText{
+    color: #fff 
+  }

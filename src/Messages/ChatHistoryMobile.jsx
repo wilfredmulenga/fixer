@@ -15,9 +15,9 @@ class ChatHistoryMobile extends React.Component {
             //name: this.props.location.state.selectedPersonName,
             showChatHistory: true
         }
-        userUID = this.props.route.userUID
+        userUID = localStorage.getItem('userUID')
+            // eslint-disable-next-line
             (userUID != null) ? null : this.setState({ loginStatus: false })
-
     }
 
     componentDidMount() {
@@ -73,6 +73,7 @@ class ChatHistoryMobile extends React.Component {
             container.innerHTML = MESSAGE_TEMPLATE;
             div = container.firstChild;
             div.setAttribute('id', name);
+            // eslint-disable-next-line
             (messageList != null) ? messageList.appendChild(div) : null;
         }
         div.querySelector('.name').textContent = name;

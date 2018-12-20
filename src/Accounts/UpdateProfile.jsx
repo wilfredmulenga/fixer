@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
-import greybackground from '../images/greybackground.jpeg';
 import Firebase from '../config/firebase';
 import Snackbar from '@material-ui/core/Snackbar';
+import greybackground from '../images/greybackground.jpeg'
 
 let userData
 let galleryFiles = []
@@ -16,7 +16,7 @@ class UpdateProfile extends Component {
   constructor(props) {
     super(props);
     userData = this.props.route.userData['0'];
-    userUID = this.props.route.userUID;
+    userUID = localStorage.getItem('userUID');
     if (userData != null) {
       this.state = {
         signedIn: true,
@@ -45,7 +45,7 @@ class UpdateProfile extends Component {
         profilePicPreviewUrl: userData.pic,
         // base64 of uploaded Images
         uploadedImagesBase64: [],
-        userUID: userData.userUID,
+        userUID: localStorage.getItem('userUID'),
         open: false,
         snackbarText: ''
       }
@@ -104,7 +104,7 @@ class UpdateProfile extends Component {
 
   handleDelete = data => () => {
     if (data.label === 'nameOfChip') {
-      alert('Why would you want to delete specifc Chip?! :)'); // eslint-disable-line no-alert
+      alert('Why would you want to delete specific Chip?! :)');
       return;
     }
     const chipData = [...this.state.chipData];
@@ -116,7 +116,7 @@ class UpdateProfile extends Component {
   // handle the addition of a chip
   addItem = () => {
     this.state.chipData.push({ label: this.state.input });
-    console.log(this.state.chipData);
+    console.log("addItem", this.state.chipData);
     const chipData = [...this.state.chipData];
     this.setState({ chipData });
   };
@@ -176,9 +176,10 @@ class UpdateProfile extends Component {
         },
       );
     setTimeout(() => {
-      browserHistory.push('/categories')
-    }, 5000);
-    return false
+
+    }, 2000);
+    window.location.reload()
+    browserHistory.push('/categories')
   }
   handleChangeImages(event) {
     const reader = new FileReader();
@@ -242,18 +243,22 @@ class UpdateProfile extends Component {
       galleryOfWork: [],
       //storageUri: fileSnapshot.metadata.fullPath
     });
-
+    var uploadedImageURL = []
     for (var x = 0; x < galleryFiles.length; x++) {
       var filePath = userUID + '/' + galleryFiles[x].name;
+      // eslint-disable-next-line
       Firebase.storage().ref(filePath).put(galleryFiles[x]).then(function (fileSnapshot) {
         // 3 - Generate a public URL for the file.
+
         return fileSnapshot.ref.getDownloadURL().then((url) => {
           // 4 - Update the chat message placeholder with the image's URL.
-          this.state.uploadedImages.push(url)
+
+          uploadedImageURL.push(url)
+
           //rewrite this line so that it only updates once if it is update several times
-          console.log(x)
+
           return Firebase.database().ref(`Users/${userUID}`).update({
-            galleryOfWork: this.state.uploadedImages,
+            galleryOfWork: uploadedImageURL,
             //storageUri: fileSnapshot.metadata.fullPath
           });
         });
@@ -263,6 +268,9 @@ class UpdateProfile extends Component {
         console.error('There was an error uploading a file to Cloud Storage:', error);
       });
     }
+    this.setState({
+      uploadedImages: uploadedImageURL
+    })
   }
   // handle input change except for those that need images
   // we can use a switch statement here 
@@ -547,9 +555,7 @@ class UpdateProfile extends Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="imgPreview">
-         {$imagePreview}
-       </div> */}
+
 
                 <div className="row col-md-12 mb-5">
                   <div className="col-md-6 mb-2" >

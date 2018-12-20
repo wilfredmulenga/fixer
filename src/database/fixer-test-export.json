@@ -1,0 +1,167 @@
+{
+  "Fixers": {
+    "L5WK2zajNqS7wLVja2KwzsdWfCA3": {
+      "age": "30",
+      "briefDescription": "I am good at what I do",
+      "city": "Lusaka",
+      "email": "manolivier93@gmail.com",
+      "firstName": "Olivier",
+      "lastName": "Oliver",
+      "nrc": "1024330",
+      "skills": [
+        {
+          "label": "wood-work"
+        }
+      ],
+      "rating": 3,
+      "reviews": [
+        {
+          "name": "Sam Banda",
+          "rating": 3,
+          "review": "lorem",
+          "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/gHayewR0vKPEcmFIMuaoboYeBGZ2%2Fpic.jpeg?alt=media&token=56434a07-fddc-4b49-9b28-337fbf7895d8",
+          "dateOfReview": "2 July, 2018"
+        }
+      ],
+      "phoneNumber": "0971500748",
+      "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/L5WK2zajNqS7wLVja2KwzsdWfCA3%2FIMG_4507_cropped.jpg?alt=media&token=2903abe9-a6ac-4087-a2cd-abcd2f7533bd",
+      "profession": "Carpenter",
+      "userUID": "L5WK2zajNqS7wLVja2KwzsdWfCA3"
+    },
+    "O29nIFjBn8N6U2Kh9eXMyXwGN5B3": {
+      "age": "23",
+      "briefDescription": "i am a maid",
+      "city": "lusaka",
+      "email": "jayne@nchito.com",
+      "firstName": "Jayne",
+      "galleryOfWork": [
+        "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/YVf5bxR6krTY1WjLW2PAvEyFAo83%2Fgenius-cleaning-hacks-used-by-pro-housekeepers-2.jpg?alt=media&token=a832d475-7245-41fc-9255-ccf16201aebe"
+      ],
+      "lastName": "Page",
+      "nrc": "12121212",
+      "phoneNumber": "0999999",
+      "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/O29nIFjBn8N6U2Kh9eXMyXwGN5B3%2Fpexels-photo-952005.jpeg?alt=media&token=9afca45f-3c33-4755-a747-03e9e27ee70f",
+      "profession": "Maid",
+      "skills": [
+        {
+          "label": "cooking"
+        }
+      ],
+      "rating": 3,
+      "userUID": "O29nIFjBn8N6U2Kh9eXMyXwGN5B3"
+    },
+    "SPi0DrpMhGa3lzbwEi4iEtLu26Q2": {
+      "age": "45",
+      "briefDescription": "I  have worked as a maid excellently for 10 years now and additionally I can braid hair",
+      "city": "kitwe",
+      "email": "pendomanjele@gmail.com",
+      "firstName": "Sam",
+      "galleryOfWork": [
+        "https://firebasestorage.googleapis.com/v0/b/fixer-2fd6e.appspot.com/o/O29nIFjBn8N6U2Kh9eXMyXwGN5B3%2Fcarpentry.jpeg?alt=media&token=91a6ba1a-bc68-44ad-80e9-1a0e02b62c77"
+      ],
+      "lastName": "smith",
+      "nrc": "11111",
+      "phoneNumber": "0972844772",
+      "pic": "https://storage.googleapis.com/lsk-guide-jobs.appspot.com/pexels-photo-428333.jpeg",
+      "profession": "Electrician",
+      "skills": [
+        {
+          "label": "Wiring"
+        }
+      ],
+      "rating": 3,
+      "userUID": "SPi0DrpMhGa3lzbwEi4iEtLu26Q2"
+    },
+    "gHayewR0vKPEcmFIMuaoboYeBGZ2": {
+      "age": "23",
+      "briefDescription": "i worked at zesco",
+      "city": "Lusaka",
+      "email": "smith@service.com",
+      "firstName": "Jordan",
+      "galleryOfWork": [
+        "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/gHayewR0vKPEcmFIMuaoboYeBGZ2%2Felectrician.jpeg?alt=media&token=37f810e2-d9bd-47c6-aa22-8f0b82926547"
+      ],
+      "lastName": "Smith",
+      "nrc": "195003/10/1",
+      "phoneNumber": "09888009",
+      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/gHayewR0vKPEcmFIMuaoboYeBGZ2%2Fpic.jpeg?alt=media&token=56434a07-fddc-4b49-9b28-337fbf7895d8",
+      "profession": "Electrician",
+      "skills": [
+        {
+          "label": "wiring"
+        }
+      ],
+      "rating": 3,
+      "userUID": "gHayewR0vKPEcmFIMuaoboYeBGZ2"
+    },
+    "kbVNfYtVIcUKwtTXFthTaFB8Xsp1": {
+      "age": "23",
+      "briefDescription": "I have worked as a carpenter for ABC Carpenters for 5 years. My roles include: Follow blueprints and building plans to meet the needs of clients Install structures and fixtures, such as windows and molding Measure, cut, or shape wood, plastic, and other materials Construct building frameworks, including walls, floors, and doorframes Help erect, level, and install building framework with the aid of rigging hardware and cranes",
+      "city": "Kabwe",
+      "email": "fred@service.com",
+      "firstName": "Fred",
+      "galleryOfWork": [
+        null,
+        "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fcarpentry.jpeg?alt=media&token=33cb2585-7508-4d13-bf15-fd70b25ca078"
+      ],
+      "lastName": "Banda",
+      "nrc": "121212",
+      "phoneNumber": "097999999",
+      "pic": "https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e",
+      "profession": "Carpenter",
+      "skills": [
+        {
+          "label": "Plumbing"
+        },
+        {
+          "label": "Wood-Work"
+        }
+      ],
+      "rating": 3,
+      "userUID": "kbVNfYtVIcUKwtTXFthTaFB8Xsp1"
+    },
+    "myKiXrK2v0Q2UAdbiZDev98Dllh2": {
+      "age": "25",
+      "briefDescription": "Fix computers software and hardware problems",
+      "city": "Lusaka",
+      "email": "okittojoe@gmail.com",
+      "firstName": "Joseph",
+      "galleryOfWork": [
+        "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/myKiXrK2v0Q2UAdbiZDev98Dllh2%2FScreenshot_2018-09-01-13-27-29.png?alt=media&token=80af66b3-e055-4ef6-a51c-c982d136a94a"
+      ],
+      "lastName": "Mulenga",
+      "nrc": "1111111",
+      "phoneNumber": "0976709162",
+      "pic": "https://firebasestorage.googleapis.com/v0/b/fixer-test.appspot.com/o/myKiXrK2v0Q2UAdbiZDev98Dllh2%2FIMG_20180902_140810.png?alt=media&token=7a1fc3b8-3f47-465a-b05a-48a4111ba023",
+      "profession": "Electrician",
+      "rating": 3,
+      "userUID": "myKiXrK2v0Q2UAdbiZDev98Dllh2"
+    }
+  },
+  "Users": {
+    "gHayewR0vKPEcmFIMuaoboYeBGZ2": {
+      "firstName": "Wilfred",
+      "lastName": "Mulenga",
+      "phoneNumber": "+260967639241",
+      "serviceAddress": {
+        "area": "Woodlands",
+        "city": "Lusaka",
+        "phoneNumber": "+260967639241",
+        "streetAddress": "28 Mwapona Road, Woodlands"
+      },
+      "userUID": "gHayewR0vKPEcmFIMuaoboYeBGZ2"
+    },
+    "pam7pXQd5RRXHXdiBOONOUhkc0N2": {
+      "firstName": "Wilfred",
+      "lastName": "Mulenga",
+      "phoneNumber": "+260967639241",
+      "serviceAddress": {
+        "area": "Woodlands",
+        "city": "Lusaka",
+        "servicePhoneNumber": "+260967639241",
+        "streetAddress": "28 Mwapona Road, Woodlands"
+      },
+      "userUID": "pam7pXQd5RRXHXdiBOONOUhkc0N2"
+    }
+  }
+}
