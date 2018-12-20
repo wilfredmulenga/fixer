@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar'
 import Button from '@material-ui/core/Button';
-import { browserHistory } from 'react-router';
 import Media from 'react-media';
 import placeHolderImage from '../images/profilepic.jpeg';
 import SwipeableTextMobileStepper from '../components/SwipeableTextMobileStepper';
@@ -31,7 +30,7 @@ class Fixer extends React.Component {
                     render={() => <div style={{ height: '100%' }}>
                         <div className='row container'>
                             <div className='col-3'>
-                                <img className='rounded-circle' style={{ width: 72, height: 72 }} src='https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e' />
+                                <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src='https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e' />
                             </div>
                             <div className='col-5' >
                                 <p style={textStyle}>Florence Sikazwe, Carpenter</p>
@@ -73,7 +72,7 @@ class Fixer extends React.Component {
                             <div style={{ backgroundColor: "#FFF" }} className="mt-5 card-body">
                                 <div className="row col-md-12">
                                     <div className="row col-md-8">
-                                        <div className="mr-5"><img style={{ width: '152px', height: '152px' }} src={placeHolderImage} /></div>
+                                        <div className="mr-5"><img alt='profile pic' style={{ width: '152px', height: '152px' }} src={placeHolderImage} /></div>
                                         <div>
                                             <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
                                             <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>

@@ -1,15 +1,9 @@
 import React from 'react';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
-import handIcon from '../images/icons8-handshake-100.png'
 import CarpenterImage from '../images/carpenter.jpeg'
-import MechanicImage from '../images/mechanic.jpg';
 import ElectricianImage from '../images/electrical.jpg';
 import CleaningImage from '../images/cleaning.jpg';
 import PlumberImage from '../images/plumber.jpg';
-import CardActions from '@material-ui/core/CardActions';
-import CardMedia from '@material-ui/core/CardMedia';
+
 
 export default function Carousel() {
     return (
@@ -28,7 +22,7 @@ export default function Carousel() {
                     <div class="carousel-inner">
                         <div class="carousel-item active">
 
-                            <img className="card-img-top makesmaller" src={ElectricianImage} alt="Card image electrician" />
+                            <img className="card-img-top makesmaller" src={ElectricianImage} alt="Card  electrician" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 style={{ fontSize: 30, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Electrical Services</strong></h5>
                                 <p style={{ fontSize: 20, color: '#fff', float: 'center', marginLeft: '20px' }}>We will connect you to  electrician tradesmen specializing in electrical wiring of buildings, transmission lines, stationary machines, and related equipment.</p>
@@ -37,7 +31,7 @@ export default function Carousel() {
                         </div>
                         <div class="carousel-item">
 
-                            <img className="card-img-top makesmaller" src={PlumberImage} alt="Card image plumber" />
+                            <img className="card-img-top makesmaller" src={PlumberImage} alt="Card plumber" />
                             <div class="carousel-caption d-none d-md-block">
 
                                 <h5 style={{ fontSize: 30, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Plumbing Services</strong></h5>
@@ -47,7 +41,7 @@ export default function Carousel() {
                         </div>
                         <div class="carousel-item">
 
-                            <img className="card-img-top makesmaller" src={CleaningImage} alt="Card image cleaning" />
+                            <img className="card-img-top makesmaller" src={CleaningImage} alt="Card cleaning" />
                             <div class="carousel-caption d-none d-md-block">
 
                                 <h5 style={{ fontSize: 30, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Cleaning Services</strong></h5>
@@ -57,7 +51,7 @@ export default function Carousel() {
                         </div>
                         <div class="carousel-item">
 
-                            <img className="card-img-top " src={CarpenterImage} alt="Card image carpenter" />
+                            <img className="card-img-top " src={CarpenterImage} alt="Card carpenter" />
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 style={{ fontSize: 30, color: '#fff', float: 'center', marginLeft: '20px' }}><strong>Carpenting Services</strong></h5>
                                 <p style={{ fontSize: 20, color: '#fff', float: 'center', marginLeft: '20px' }}>Get in touch with skilled carpenters with experience in performing is the cutting, shaping and installation of building materials during the construction of buildings and home furniture.</p>

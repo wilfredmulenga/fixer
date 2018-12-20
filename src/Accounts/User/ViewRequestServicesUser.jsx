@@ -6,7 +6,6 @@ import Media from "react-media";
 
 // view request services as a user
 let typeOfUser = localStorage.getItem('typeOfUser')
-let userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 let requests;
 

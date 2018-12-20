@@ -1,19 +1,11 @@
 import React from 'react'
-import Card from '@material-ui/core/Card';
 //Icons
 import { browserHistory } from 'react-router';
-import computerIcon from '../images/fixerIcons/icons8-computer-support-48.png';
-import drillIcon from '../images/fixerIcons/icons8-drill-48.png';
 import plugIcon from '../images/fixerIcons/icons8-electrical-48.png';
-import carIcon from '../images/fixerIcons/icons8-fiat-500-48.png';
-import houseKeeperIcon from '../images/fixerIcons/icons8-housekeeper-48.png';
 import janitorIcon from '../images/fixerIcons/icons8-janitor-48.png';
-import maintenanceIcon from '../images/fixerIcons/icons8-maintenance-48.png';
 import plumberIcon from '../images/fixerIcons/icons8-pipelines-48.png';
 import sawIcon from '../images/fixerIcons/icons8-saw-48.png';
-import spadeIcon from '../images/fixerIcons/icons8-spade-48.png';
-import trainingIcon from '../images/fixerIcons/icons8-training-48.png';
-import welderIcon from '../images/fixerIcons/icons8-welder-64.png';
+
 
 
 export default function TypeOfFixers() {

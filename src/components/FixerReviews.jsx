@@ -17,7 +17,7 @@ function starsCount(rating) {
         if (i > rating) {
             starType = starOutlined
         }
-        stars.push(<img src={starType} />)
+        stars.push(<img alt='star' src={starType} />)
     }
     return stars
 }
@@ -30,7 +30,7 @@ export default function FixerReviews() {
                 reviews.map((element, i) => (
                     <div className="row" key={i}>
                         <div className="col-4">
-                            <img className='rounded-circle' style={{ width: 72, height: 72 }} src={element.pic} />
+                            <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src={element.pic} />
                         </div>
                         <div className="col-8">
                             <p style={textStyle}>{element.name}</p>

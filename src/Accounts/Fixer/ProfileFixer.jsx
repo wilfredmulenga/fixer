@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
-import Media from "react-media";
 import ViewProfileFixer from '../Fixer/ViewProfileFixer';
 import ViewRequestServicesFixer from './ViewRequestServicesFixer';
 

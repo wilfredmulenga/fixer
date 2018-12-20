@@ -1,15 +1,7 @@
 import React from 'react';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
-import handIcon from '../images/icons8-handshake-100.png'
 import CarpenterImage from '../images/carpenter.jpeg'
-import MechanicImage from '../images/mechanic.jpg';
 import ElectricianImage from '../images/electrical.jpg';
 import CleaningImage from '../images/cleaning.jpg';
-import CardActions from '@material-ui/core/CardActions';
-//import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
 
 export default function JobsCarousel() {
     return (
@@ -19,7 +11,7 @@ export default function JobsCarousel() {
 
             <div className='row justify-content-around '>
                 <div className="card" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
-                    <img className="card-img-top rounded" src={ElectricianImage} alt="Card image electrician" />
+                    <img className="card-img-top rounded" src={ElectricianImage} alt="Card  electrician" />
                     <div className="card-body">
                         <h5 className="card-title greenText"><strong>Electrical Services</strong></h5>
 
@@ -31,7 +23,7 @@ export default function JobsCarousel() {
 
 
                 <div className="card invisibleBorder" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
-                    <img className="card-img-top rounded" src={CleaningImage} alt="Card image cleaner" />
+                    <img className="card-img-top rounded" src={CleaningImage} alt="Card  cleaner" />
                     <div className="card-body">
                         <h5 className="card-title greenText"><strong>Cleaning Services</strong></h5>
                         <p className="card-text">Connect to people with experince in management of duties and chores involved in the running of a household, such as cleaning, cooking, home maintenance, washing and grocery shopping.</p>
@@ -42,7 +34,7 @@ export default function JobsCarousel() {
 
 
                 <div className="card" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>
-                    <img className="card-img-top rounded" src={CarpenterImage} alt="Card image carpenter" />
+                    <img className="card-img-top rounded" src={CarpenterImage} alt="Card  carpenter" />
                     <div className="card-body ">
                         <h5 className="card-title greenText"><strong>Carpenter Services</strong></h5>
                         <p className="card-text">Get in touch with skilled carpenters with experience in performing is the cutting, shaping and installation of building materials during the construction of buildings and home furniture.</p>

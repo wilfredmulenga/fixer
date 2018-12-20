@@ -4,17 +4,10 @@ import facebookIcon from '../images/icons8-facebook-32.png'
 import twitterIcon from '../images/icons8-twitter-32.png'
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import landingPage from '../images/landingPage2.jpg'
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import TypeOfFixers from './TypesOfFixers'
-import CustomerFixerCard from './CustomerFixerCard'
-import HowItWorks from './HowItWorks';
 import How from './HowItWorks2';
 import JobsCarousel from './JobsCarousel';
-import Carousel from './ContactForm'
-import jsonData from '../database/fixer-test-export.json';
 
 
 const styles = theme => ({
@@ -96,15 +89,6 @@ class Home extends React.Component {
             }}>
               <p style={{ fontSize: 32, color: '#fff', float: 'center', marginLeft: '20px' }}>The convenient way to find reliable tradesmen in your neighborhood</p>
               <p style={{ fontSize: 17, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Choose from our vetted tardesmen for help without all the fuss. We are currently offering services for the following:</p>
-              {/* <Button variant='outlined' className='mt-5'
-                style={{ backgroundColor: '#FFF', color: '#000', marginTop: 50 }}
-                onClick={() => {
-                  var userProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
-                  localStorage.setItem('currentUserData', JSON.stringify(userProfile))
-                  localStorage.setItem('typeOfUser', 'user')
-                  browserHistory.push({ pathname: '/categories' })
-                }}
-              >Hire a Fixer</Button> */}
               <div className="col-12 row justify-content-center">
                 <div className="row col-8 justify-content-center">
                   <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button></div>

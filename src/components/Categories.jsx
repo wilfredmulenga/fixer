@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
 import Loader from './Loader';
 import Snackbar from '@material-ui/core/Snackbar'
-import cancelButton from '../images/icons8-delete-26.png';
 import Media from 'react-media';
 import starFilled from '../images/icons8-star-filled-7.png';
 import starOutlined from '../images/icons8-star-7.png';
@@ -27,12 +26,6 @@ class Categories extends React.Component {
       userUID: localStorage.getItem('userUID'),
       currentUser: JSON.parse(localStorage.getItem('currentUserData')),
       typeOfUser: (this.props.location.state) ? this.props.location.state.typeOfUser : null,
-      userUID: localStorage.getItem('userUID'),
-      job: '',
-      selectedPerson: [],
-      loading: true,
-      open: false,
-      typeOfUsers: "Search Results: Featured Workers",
       job: '',
       selectedPerson: [],
       loading: true,
@@ -70,7 +63,7 @@ class Categories extends React.Component {
       if (i > rating) {
         starType = starOutlined
       }
-      stars.push(<img src={starType} />)
+      stars.push(<img alt='star' src={starType} />)
     }
     return stars
   }

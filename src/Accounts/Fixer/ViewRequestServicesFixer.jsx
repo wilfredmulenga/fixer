@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Media from "react-media";
 
 let typeOfUser = localStorage.getItem('typeOfUser')
-let userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 let requests;
 
