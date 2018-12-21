@@ -21,7 +21,6 @@ import UpdateProfileUser from './Accounts/User/UpdateProfileUser';
 import ProfileFixer from './Accounts/Fixer/ProfileFixer';
 import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer';
 import Fixer from './components/Fixer';
-import ExpressTest from './components/ExpressTest';
 
 var listOfFixers = [];
 var userUID;
@@ -138,7 +137,7 @@ class App extends Component {
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
           <Route path='/contactus' component={ContactUs} />
           <Route path='/fixer' component={Fixer} />
-          <Route path='/expresstest' component={ExpressTest} />
+
         </Router >
 
       );

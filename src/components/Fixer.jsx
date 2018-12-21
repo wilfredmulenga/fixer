@@ -13,7 +13,7 @@ class Fixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            fixerProfile: (this.props.location.state.fixerProfile) ? this.props.location.state.fixerProfile[0] : null
+            fixerProfile: (this.props.location.state.fixerProfile !== undefined) ? this.props.location.state.fixerProfile[0] : null
         }
 
     }
