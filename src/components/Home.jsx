@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import { withStyles } from '@material-ui/core/styles';
 import TypeOfFixers from './TypesOfFixers'
-import How from './HowItWorks2';
+import How from './HowItWorks';
 import JobsCarousel from './JobsCarousel';
 
 
@@ -40,10 +40,6 @@ const styles = theme => ({
 class Home extends React.Component {
   constructor(props) {
     super(props);
-
-
-    //this.handleLoadUsers = this.handleLoadUsers.bind(this)
-    //this.handleLoadUsers()
     this.handleHire = this.handleHire.bind(this)
   }
 
@@ -52,50 +48,24 @@ class Home extends React.Component {
     localStorage.setItem('typeOfUser', 'user')
   }
 
-  // handleLoadUsers = () => { 
-  //   console.log("handle loaders")
-  //   Firebase.database()
-  //     .ref('Users/')
-  //     .on('value', (snapshot) => {
-  //       JobsSnapshot = snapshot.val();
-  //       let elements;
-  //       // React doesnt accept objects in states so it has to be converted into an array
-  //       for (const index in JobsSnapshot) {
-  //         elements = JobsSnapshot[index];
-  //         peopleArray.push(elements);
-  //       }
-  //       this.setState({
-  //         loading: true,
-  //         listOfPeople: peopleArray
-  //       })
-  //       console.log("home", peopleArray)
-  //     });
-
-  // };
-
   render() {
     return (
       <div>
         <div id="home">
           <Navbar />
-          <div id="landingPage" className="blueBackground col-md-12 col-sm-12">
-            {/* <img
-              src={landingPage}
-              className={'img-fluid'}
-              alt="landing page" /> */}
+          <div id="landingPage" style={{ height: "100vh" }} className="blueBackground col-md-12 col-sm-12">
             <div style={{
-              position: 'absolute', bottom: 0, width: '100%', height: '70%',
-              textAlign: 'center'
+              position: 'absolute', bottom: 0, width: '100%', height: '90%',
+              textAlign: 'center', padding: 10
             }}>
               <p style={{ fontSize: 32, color: '#fff', float: 'center', marginLeft: '20px' }}>The convenient way to find reliable tradesmen in your neighborhood</p>
               <p style={{ fontSize: 17, color: '#fff', float: 'center', marginLeft: '20px', fontStyle: 'oblique' }}>Choose from our vetted tardesmen for help without all the fuss. We are currently offering services for the following:</p>
-              <div className="col-12 row justify-content-center">
-                <div className="row col-8 justify-content-center">
-                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button></div>
-                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Cleaner</button></div>
-                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire An Electrician</button></div>
-                  <div className="mb-3"><button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Carpenter</button></div>
-                </div>
+
+              <div>
+                <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Plumber</button>
+                <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Cleaner</button>
+                <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire An Electrician</button>
+                <button type="button" className="btn btn-outline-dark landing-btn" onClick={() => this.handleHire()}>Hire A Carpenter</button>
               </div>
 
             </div>
