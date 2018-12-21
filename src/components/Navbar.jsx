@@ -81,9 +81,9 @@ class Navbar extends React.Component {
           </div>
         </nav>
         {/* Currently under testing notice */}
-        {/* <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
-          This application is currently under testing.Feel free to give us feedback at < Link to='/contactus' > info@fixer-app.co</Link >
-        </div > */}
+        <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
+          This application is currently under testing. Feel free to give us feedback at < Link to='/contactus' > suppport@myfixerapp.com</Link >
+        </div >
       </div >
     );
   }
