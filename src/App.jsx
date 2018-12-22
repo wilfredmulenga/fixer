@@ -13,7 +13,6 @@ import jsonData from './database/fixer-test-export.json'
 import PhoneLogin from './components/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
-import ContactUs from './components/ContactUs'
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
 import ProfileUser from './Accounts/User/ProfileUser';
@@ -39,14 +38,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
       listOfPeople: []
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleDataLoad = this.handleDataLoad.bind(this)
     this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
-    this.handleDataLoad()
+    // this.handleDataLoad()
     this.handleCurrentUserDataLoad()
   }
   handleCurrentUserDataLoad = () => {
@@ -96,24 +95,25 @@ class App extends Component {
     })
 
     //fectch data of fixers
-    // Firebase.database()
-    //   .ref(`Fixers`)
-    //   .once('value', (snapshot) => {
-    //     JobsSnapshot = snapshot.val();
-    //     let elements;
-    //     // React doesnt accept objects in states so it has to be converted into an array
-    //     for (const index in JobsSnapshot) {
-
-    //       elements = JobsSnapshot[index];
-    //       if (elements.profession != null) {
-    //         peopleArray.push(elements);
-    //       }
-    //     }
-    //     this.setState({
-    //       loading: true,
-    //       listOfPeople: peopleArray,
-    //     });
-    //   });
+    let peopleArray = []
+    Firebase.database()
+      .ref(`Fixers`)
+      .once('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
+        let elements;
+        // React doesnt accept objects in states so it has to be converted into an array
+        for (const index in JobsSnapshot) {
+          elements = JobsSnapshot[index];
+          if (elements.profession != null) {
+            peopleArray.push(elements);
+          }
+        }
+        this.setState({
+          loading: true,
+          // listOfPeople: peopleArray,
+        });
+        localStorage.setItem('listOfFixers', JSON.stringify(peopleArray))
+      });
   }
   render() {
 
@@ -135,7 +135,6 @@ class App extends Component {
           <Route path='/user/updateprofile' component={UpdateProfileUser} />
           <Route path='/fixer/profile' component={ProfileFixer} />
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
-          <Route path='/contactus' component={ContactUs} />
           <Route path='/fixer' component={Fixer} />
 
         </Router >

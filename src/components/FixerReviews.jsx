@@ -32,7 +32,7 @@ export default function FixerReviews() {
                         <div className="col-4">
                             <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src={element.pic} />
                         </div>
-                        <div className="col-8">
+                        <div key={i} className="col-8">
                             <p style={textStyle}>{element.name}</p>
                             {starsCount(element.rating)}
                             <p style={textStyle}>{element.review}</p>

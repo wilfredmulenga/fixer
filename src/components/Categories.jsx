@@ -68,6 +68,7 @@ class Categories extends React.Component {
     return stars
   }
   handleCardClick = (userUID) => {
+    console.log("clicked")
     let fixerProfile = []
     for (var y = 0; y < listOfFixers.length; y++) {
       if (listOfFixers[y]["userUID"] === userUID) {
@@ -78,6 +79,7 @@ class Categories extends React.Component {
       pathname: '/fixer',
       state: { 'fixerProfile': fixerProfile }
     })
+    // console.log(fixerProfile)
   };
 
   openModal() {
@@ -161,12 +163,9 @@ class Categories extends React.Component {
                 (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
                   <div className="card col-md-5 pt-3 pb-3 mb-3 " key={i}
                     onClick={() =>
-                      (userUID === null) ? this.setState({
-                        open: true
-                      }) :
-                        this.handleCardClick(element.userUID)}>
-                    <div className="row justify-content-center">
-                      <div className="col-4 mb-2 text-center">
+                      this.handleCardClick(element.userUID)}>
+                    <div key={i} className="row justify-content-center">
+                      <div key={i} className="col-4 mb-2 text-center">
                         <img
                           className="card-img-top rounded-circle"
                           src={element.pic}
