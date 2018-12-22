@@ -68,7 +68,6 @@ class Categories extends React.Component {
     return stars
   }
   handleCardClick = (userUID) => {
-    console.log("clicked")
     let fixerProfile = []
     for (var y = 0; y < listOfFixers.length; y++) {
       if (listOfFixers[y]["userUID"] === userUID) {

@@ -38,14 +38,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
+      loading: true,
       listOfPeople: []
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleDataLoad = this.handleDataLoad.bind(this)
     this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
-    // this.handleDataLoad()
+    this.handleDataLoad()
     this.handleCurrentUserDataLoad()
   }
   handleCurrentUserDataLoad = () => {
@@ -95,25 +95,25 @@ class App extends Component {
     })
 
     //fectch data of fixers
-    let peopleArray = []
-    Firebase.database()
-      .ref(`Fixers`)
-      .once('value', (snapshot) => {
-        JobsSnapshot = snapshot.val();
-        let elements;
-        // React doesnt accept objects in states so it has to be converted into an array
-        for (const index in JobsSnapshot) {
-          elements = JobsSnapshot[index];
-          if (elements.profession != null) {
-            peopleArray.push(elements);
-          }
-        }
-        this.setState({
-          loading: true,
-          // listOfPeople: peopleArray,
-        });
-        localStorage.setItem('listOfFixers', JSON.stringify(peopleArray))
-      });
+    // let peopleArray = []
+    // Firebase.database()
+    //   .ref(`Fixers`)
+    //   .once('value', (snapshot) => {
+    //     JobsSnapshot = snapshot.val();
+    //     let elements;
+    //     // React doesnt accept objects in states so it has to be converted into an array
+    //     for (const index in JobsSnapshot) {
+    //       elements = JobsSnapshot[index];
+    //       if (elements.profession != null) {
+    //         peopleArray.push(elements);
+    //       }
+    //     }
+    //     this.setState({
+    //       loading: true,
+    //       // listOfPeople: peopleArray,
+    //     });
+    //     localStorage.setItem('listOfFixers', JSON.stringify(peopleArray))
+    //   });
   }
   render() {
 

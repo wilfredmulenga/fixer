@@ -5,21 +5,35 @@ import Media from 'react-media';
 import placeHolderImage from '../images/profilepic.jpeg';
 import SwipeableTextMobileStepper from '../components/SwipeableTextMobileStepper';
 import FixerReviews from '../components/FixerReviews';
+import Firebase from '../config/firebase';
+
 const textStyle = {
     fontSize: 11,
     marginBottom: 3
 }
+const userUID = "gHayewR0vKPEcmFIMuaoboYeBGZ2";
 class Fixer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             fixerProfile: (this.props.location.state.fixerProfile !== undefined) ? this.props.location.state.fixerProfile[0] : null
         }
-
+        this.handleServiceRequest = this.handleServiceRequest.bind(this);
     }
 
+    handleServiceRequest = () => {
+        Firebase.database()
+            .ref(`Users/${userUID}/serviceRequests`)
+            .push({
+                fixerFullName: `${this.state.fixerProfile.firstName} ${this.state.fixerProfile.lastName}`,
+                fixerPhoneNumber: this.state.fixerProfile.phoneNumber,
+                profession: this.state.fixerProfile.profession,
+                fixerUID: this.state.fixerProfile.userUID,
+                reviewStatus: "pending"
 
+            })
 
+    }
 
     render() {
         const { fixerProfile } = this.state
@@ -39,12 +53,13 @@ class Fixer extends React.Component {
                             </div>
                             <div className='col-4 row align-items-end'>
 
-                                <a href='tel:+260967639241' >  <Button
+                                <a //href='tel:+260967639241'
+                                >  <Button
                                     className="btn  mb-1"
                                     type="button"
                                     variant='contained'
                                     style={{ backgroundColor: '#FFF', color: '#000' }}
-
+                                    onClick={() => this.handleServiceRequest()}
                                 > CALL </Button></a>
                             </div>
                         </div>
@@ -82,19 +97,22 @@ class Fixer extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-md-4 text-center row align-items-center justify-content-center">
-                                        <a href='tel:+260967639241' >  <Button
+                                        <a //href='tel:+260967639241'
+                                        >  <Button
                                             className="btn  mb-1"
                                             type="button"
                                             variant='contained'
                                             style={{ backgroundColor: '#FFF', color: '#000' }}
-                                        // onClick={() => browserHistory.push({
-                                        //     pathname: '/requestservice',
-                                        //     state: {
-                                        //         fixerUID: fixerProfile.userUID,
-                                        //         profession: fixerProfile.profession,
-                                        //         fixerFullName: `${fixerProfile.firstName} ${fixerProfile.lastName}`
-                                        //     }
-                                        // })}
+                                        // onClick={() => {
+                                        //     console.log("clicked")
+                                        //     Firebase.database()
+                                        //         .ref(`Users/${userUID}/ServiceRequests/`)
+                                        //         .update({
+                                        //             userUID: {
+                                        //                 reviewStatus: "pending review"
+                                        //             }
+                                        //         })
+                                        // }}
                                         > CALL </Button></a>
                                     </div>
                                 </div>
@@ -106,7 +124,7 @@ class Fixer extends React.Component {
                                 <hr />
                                 <div>
                                     <h5>Reviews</h5>
-                                    {(fixerProfile.reviews) ? fixerProfile.reviews.map((element, i) => <p key={i}>{element}</p>) : <p>no reviews yet</p>}
+                                    {/* {(fixerProfile.reviews) ? fixerProfile.reviews.map((element, i) => <p key={i}>{element}</p>) : <p>no reviews yet</p>} */}
                                 </div>
 
                             </div>
