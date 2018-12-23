@@ -18,9 +18,6 @@ class RequestService extends React.Component {
         }
     }
 
-
-
-
     render() {
         return (<div>
             <Navbar />

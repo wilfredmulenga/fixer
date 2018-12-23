@@ -15,11 +15,13 @@ import PrivacyPolicy from './components/PrivacyPolicy'
 import RequestService from './components/RequestService'
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
-import ProfileUser from './Accounts/User/ProfileUser';
+//import ProfileUser from './Accounts/User/ProfileUser';
 import UpdateProfileUser from './Accounts/User/UpdateProfileUser';
 import ProfileFixer from './Accounts/Fixer/ProfileFixer';
 import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer';
 import Fixer from './components/Fixer';
+import ProfileUser2 from './Accounts/User/ProfileUser2';
+import GiveReview from './components/GiveReview';
 
 var listOfFixers = [];
 var userUID;
@@ -131,11 +133,12 @@ class App extends Component {
           <Route path='/messagesmobile' component={MessagesMobile} />
           <Route path='/chathistorymobile' component={ChatHistoryMobile} />
           <Route path='/requestservice' component={RequestService} />
-          <Route path='/user/profile' component={ProfileUser} />
+          <Route path='/user/profile' component={ProfileUser2} />
           <Route path='/user/updateprofile' component={UpdateProfileUser} />
           <Route path='/fixer/profile' component={ProfileFixer} />
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
           <Route path='/fixer' component={Fixer} />
+          <Route path='/givereview' component={GiveReview} />
 
         </Router >
 

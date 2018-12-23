@@ -30,7 +30,6 @@ class Fixer extends React.Component {
                 profession: this.state.fixerProfile.profession,
                 fixerUID: this.state.fixerProfile.userUID,
                 reviewStatus: "pending"
-
             })
 
     }
