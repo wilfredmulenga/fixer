@@ -78,7 +78,7 @@ class App extends Component {
         //handleLoadUsers()
         userUID = user.uid
         //save current user's userUID to localStorage
-        localStorage.setItem('userUID', userUID)
+        localStorage.setItem('userUID', "gHayewR0vKPEcmFIMuaoboYeBGZ2")
         // Firebase.database()
         //   .ref(`${typeOfUser}/${userUID}`)
         //   .once('value', (snapshot) => {

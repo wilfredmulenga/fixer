@@ -7,6 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { browserHistory } from 'react-router';
+import Firebase from '../config/firebase';
+import { runInNewContext } from 'vm';
+
+
+var userUID = localStorage.getItem('userUID');
+
+
 
 const styles = {
     card: {
@@ -27,34 +34,52 @@ const styles = {
     },
 };
 
-function SimpleCard(props) {
-    const { classes } = props;
-    //const bull = <span className={classes.bullet}>•</span>;
+class SimpleCard extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            serviceRequests: []
+        }
+        Firebase.database()
+            .ref(`Users/${userUID}/serviceRequests`)
+            .once('value', (snapshot) => {
+                this.setState({
+                    serviceRequests: snapshot.val()
+                })
+                console.log(this.state.serviceRequests)
+            })
+    }
 
-    return (
-        <Card className={classes.card}>
-            <div>
-                <CardContent>
-                    <Typography className='p'>
-                        Clara Tembo
+    //const bull = <span className={classes.bullet}>•</span>;
+    render() {
+        const { classes } = this.props;
+        const { serviceRequests } = this.state
+        return (
+            <Card className={classes.card}>
+                {console.log(serviceRequests)}
+                {(serviceRequests !== []) ? <div> <div>
+                    <CardContent>
+                        <Typography className='p'>
+                            Clara Tembo
                         <br />
-                        Profession
+                            Profession
                    </Typography>
-                </CardContent>
-            </div>
-            <div>
-                <CardActions>
-                    <Button size="small"
-                        onClick={()=>
-                        browserHistory.push({
-                            pathname: '/givereview'
-                        })
-                            }
-                    >Pending Review</Button>
-                </CardActions>
-            </div>
-        </Card>
-    );
+                    </CardContent>
+                </div>
+                    <div>
+                        <CardActions>
+                            <Button size="small"
+                                onClick={() =>
+                                    browserHistory.push({
+                                        pathname: '/givereview'
+                                    })
+                                }
+                            >Pending Review</Button>
+                        </CardActions>
+                    </div> </div> : null}
+            </Card>
+        );
+    }
 }
 
 SimpleCard.propTypes = {
