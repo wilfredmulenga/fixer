@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, browserHistory, Route } from 'react-router';
-import './styles/App.css';
+import './styles/App.scss';
 import Categories from './components/Categories';
 import Home from './components/Home';
 import Messages from './Messages/Messages';
