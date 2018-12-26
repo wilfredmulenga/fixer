@@ -8,11 +8,12 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { browserHistory } from 'react-router';
 import Firebase from '../config/firebase';
-import { runInNewContext } from 'vm';
+
 
 
 var userUID = localStorage.getItem('userUID');
-
+var element = [];
+var requestService;
 
 
 const styles = {
@@ -43,10 +44,13 @@ class SimpleCard extends React.Component {
         Firebase.database()
             .ref(`Users/${userUID}/serviceRequests`)
             .once('value', (snapshot) => {
+                requestService = snapshot.val()
+                for (const index in requestService) {
+                    element.push(requestService[index])
+                }
                 this.setState({
-                    serviceRequests: snapshot.val()
+                    serviceRequests: element
                 })
-                console.log(this.state.serviceRequests)
             })
     }
 
@@ -56,27 +60,33 @@ class SimpleCard extends React.Component {
         const { serviceRequests } = this.state
         return (
             <Card className={classes.card}>
-                {console.log(serviceRequests)}
-                {(serviceRequests !== []) ? <div> <div>
+               
+                {(serviceRequests !== []) ? serviceRequests.map((element, i) => <div className="row" key={i}> <div>
                     <CardContent>
                         <Typography className='p'>
-                            Clara Tembo
-                        <br />
-                            Profession
-                   </Typography>
+                            {element.fixerFullName}
+                            <br />
+                            {element.profession}
+                        </Typography>
                     </CardContent>
                 </div>
                     <div>
                         <CardActions>
                             <Button size="small"
                                 onClick={() =>
-                                    browserHistory.push({
-                                        pathname: '/givereview'
-                                    })
+                                    (element.reviewStatus === 'pending') ?
+                                        browserHistory.push({
+                                            pathname: '/givereview',
+                                            state: {
+                                                'fixerUID': element.fixerUID
+                                            }
+                                        }) : null
                                 }
-                            >Pending Review</Button>
+                            >{(element.reviewStatus === 'pending') ? `Pending Review` : null}
+                                {(element.reviewStatus === 'reviewed') ? `Reviewed` : null}
+                            </Button>
                         </CardActions>
-                    </div> </div> : null}
+                    </div> </div>) : null}
             </Card>
         );
     }

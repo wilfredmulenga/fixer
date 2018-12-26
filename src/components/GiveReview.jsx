@@ -3,8 +3,12 @@ import Modal from 'react-modal';
 import Navbar from './Navbar';
 import Button from '@material-ui/core/Button';
 import Rating from './Rating';
+import Firebase from '../config/firebase';
+import { browserHistory } from 'react-router';
 
 Modal.setAppElement('#root');
+const currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
+const userUID = localStorage.getItem('userUID');
 
 class GiveReview extends React.Component {
     constructor(props) {
@@ -12,15 +16,55 @@ class GiveReview extends React.Component {
         this.state = {
             modal1IsOpen: true,
             modal2IsOpen: false,
+            modal3IsOpen: false,
+            modal4IsOpen: false,
             comment: '',
-            rating: null
+            rating: null,
+            fixerUID: this.props.location.state.fixerUID
         }
         this.submitReview = this.submitReview.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
         this.handleChange = this.handleChange.bind(this);
-
     }
     submitReview = () => {
+        let date = new Date()
+        let currentDate = date.getDate()
+        let currentMonth = date.getMonth()
+        let currentYear = date.getFullYear()
+        //creates a review 
+        Firebase.database()
+            .ref(`Fixers/L5WK2zajNqS7wLVja2KwzsdWfCA3/reviews`)
+            .push({
+                dateOfReview: `${currentDate}/${currentMonth}/${currentYear}`,
+                name: `${currentUserData.firstName} ${currentUserData.lastName}`,
+                pic: currentUserData.pic,
+                rating: this.state.rating + 1,
+                review: this.state.comment
+            })
+
+        //chances status of review to reviewed
+        Firebase.database()
+            .ref(`Users/${userUID}/serviceRequests`)
+            .orderByChild('fixerUID')
+            .equalTo(this.state.fixerUID)
+            .once('value', (snapshot) => {
+                return snapshot.val()
+            }).then(function (snapshot) {
+
+                return Object.getOwnPropertyNames(snapshot.val())[0]
+            })
+            .then(function (key) {
+                return Firebase.database()
+                    .ref(`Users/${userUID}/serviceRequests/${key}`)
+                    .update({
+                        reviewStatus: 'reviewed'
+                    })
+            })
+
+        this.setState({
+            modal3IsOpen: false,
+            modal4IsOpen: true
+        })
 
     }
     handleChangeInput = ({ target: { value, placeholder } }) => {
@@ -131,8 +175,24 @@ class GiveReview extends React.Component {
                             type="button"
                             variant='contained'
                             style={{ backgroundColor: '#FFF', color: '#000' }}
-                            onClick={() => this.submitReview}
+                            onClick={() => this.submitReview()}
                         >SUBMIT REVIEW</Button>
+                    </div>
+                </Modal>
+                <Modal isOpen={this.state.modal4IsOpen}>
+                    <div style={{ textAlign: 'center' }}>
+                        <p>Thank you for your review!</p>
+                        <div className='mt-5 row justify-content-center '>
+                            <Button
+                                className="btn"
+                                type="button"
+                                variant='contained'
+                                style={{ backgroundColor: '#FFF', color: '#000' }}
+                                onClick={() => browserHistory.push({
+                                    pathname: '/categories'
+                                })}
+                            >RETURN</Button>
+                        </div>
                     </div>
                 </Modal>
             </div>
