@@ -140,7 +140,7 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar />
-        <Media query="(max-width:375px)"
+        <Media query="(max-width:480px)"
           render={() =>
             <div>
               {/* Menu */}
@@ -188,7 +188,7 @@ class Categories extends React.Component {
               </div>
             </div>
           } />
-        <Media query="(min-width: 376px)"
+        <Media query="(min-width: 481px)"
           render={() =>
             <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-start pt-4 ">
               <div className="card col-md-2 ml-3  d-flex">

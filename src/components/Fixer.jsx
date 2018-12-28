@@ -41,12 +41,12 @@ class Fixer extends React.Component {
                 <Navbar />
                 <Media query="(max-width: 375px)"
                     render={() => <div style={{ height: '100%' }}>
-                        <div className='row container'>
+                        <div className='row container mt-2'>
                             <div className='col-3'>
                                 <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src='https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e' />
                             </div>
                             <div className='col-5' >
-                                <p style={textStyle}>Florence Sikazwe, Carpenter</p>
+                                <p style={textStyle}>Richard Sikazwe, Carpenter</p>
                                 <p style={textStyle}>Ibex Hill, Lusaka</p>
                                 <p style={textStyle}>Skills: Wiring, Scaffolding</p>
                             </div>
@@ -64,7 +64,7 @@ class Fixer extends React.Component {
                         </div>
                         <hr />
                         <SwipeableTextMobileStepper />
-                        <div style={{ backgroundColor: '#fafafa', textAlign: 'center' }}>
+                        <div className='container-fluid' style={{ backgroundColor: '#fafafa', textAlign: 'center' }}>
                             <p style={textStyle}>
                                 I Install and maintain wiring, control, and
     lighting systems. Inspect electrical components, such as

@@ -23,7 +23,9 @@ import Fixer from './components/Fixer';
 import ProfileUser2 from './Accounts/User/ProfileUser2';
 import GiveReview from './components/GiveReview';
 import ViewProfileUser from './Accounts/User/ViewProfileUser';
-import ViewRequestServicesFixer from './Accounts/Fixer/ViewRequestServicesFixer'
+import ViewRequestServicesFixer from './Accounts/Fixer/ViewRequestServicesFixer';
+import Media from 'react-media';
+import LargeDevice from './components/LargeDevice';
 
 var listOfFixers = [];
 var userUID;
@@ -123,28 +125,34 @@ class App extends Component {
 
     if (this.state.loading) {
       return (
+        <div>
+          <Media query="(max-width:480px)"
+            render={() =>
+              < Router history={browserHistory} >
+                <Route path="/" component={Home} />
+                <Route path="/categories" component={Categories} />
+                <Route path="/privacypolicy" component={PrivacyPolicy} />
+                <Route path="/updateprofile" component={UpdateProfile} />
+                <Route path="/messages" component={Messages} />
+                <Route path='/profile' component={Profile} />
+                <Route path='/phonelogin' component={PhoneLogin} />
+                <Route path='/messagesmobile' component={MessagesMobile} />
+                <Route path='/chathistorymobile' component={ChatHistoryMobile} />
+                <Route path='/requestservice' component={RequestService} />
+                <Route path='/user/profile' component={ProfileUser2} />
+                <Route path='/user/updateprofile' component={UpdateProfileUser} />
+                <Route path='/fixer/profile' component={ProfileFixer} />
+                <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
+                <Route path='/fixer' component={Fixer} />
+                <Route path='/givereview' component={GiveReview} />
+                <Route path='/givereview' component={GiveReview} />
 
-        < Router history={browserHistory} >
-          <Route path="/" component={Home} />
-          <Route path="/categories" component={Categories} />
-          <Route path="/privacypolicy" component={PrivacyPolicy} />
-          <Route path="/updateprofile" component={UpdateProfile} />
-          <Route path="/messages" component={Messages} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/phonelogin' component={PhoneLogin} />
-          <Route path='/messagesmobile' component={MessagesMobile} />
-          <Route path='/chathistorymobile' component={ChatHistoryMobile} />
-          <Route path='/requestservice' component={RequestService} />
-          <Route path='/user/profile' component={ProfileUser2} />
-          <Route path='/user/updateprofile' component={UpdateProfileUser} />
-          <Route path='/fixer/profile' component={ProfileFixer} />
-          <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
-          <Route path='/fixer' component={Fixer} />
-          <Route path='/givereview' component={GiveReview} />
-          <Route path='/givereview' component={GiveReview} />
-
-        </Router >
-
+              </Router >
+            } />
+          <Media query="(min-width:481px)"
+            render={() => <LargeDevice />
+            } />
+        </div>
       );
     } else {
       return (<Loader />)
