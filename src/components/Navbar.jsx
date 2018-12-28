@@ -71,6 +71,9 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 {(localStorage.getItem('userUID') !== null) ? <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link> : null}
               </li>
+              <li className='nav-item active mr-3'>
+                <Link to="/requestservice2" style={{ color: "#fff" }} className="link">Requested Services</Link>
+              </li>
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
               </li>

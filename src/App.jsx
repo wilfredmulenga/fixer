@@ -23,6 +23,7 @@ import Fixer from './components/Fixer';
 import ProfileUser2 from './Accounts/User/ProfileUser2';
 import GiveReview from './components/GiveReview';
 import ViewProfileUser from './Accounts/User/ViewProfileUser';
+import ViewRequestServicesFixer from './Accounts/Fixer/ViewRequestServicesFixer'
 
 var listOfFixers = [];
 var userUID;
@@ -140,7 +141,8 @@ class App extends Component {
           <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
           <Route path='/fixer' component={Fixer} />
           <Route path='/givereview' component={GiveReview} />
-
+          <Route path='/givereview' component={GiveReview} />
+          <Route path='/requestservice2' component={ViewRequestServicesFixer} />
         </Router >
 
       );
