@@ -142,7 +142,7 @@ class App extends Component {
           <Route path='/fixer' component={Fixer} />
           <Route path='/givereview' component={GiveReview} />
           <Route path='/givereview' component={GiveReview} />
-          <Route path='/requestservice2' component={ViewRequestServicesFixer} />
+
         </Router >
 
       );

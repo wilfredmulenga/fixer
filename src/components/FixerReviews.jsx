@@ -25,7 +25,7 @@ class FixerReviews extends React.Component {
         this.handleReviews()
     }
     UNSAFE_componentWillMount() {
-        console.log("will mount")
+
         //reset stars array to empty so that it doesnt continue adding stars
         stars = []
     }
@@ -42,10 +42,11 @@ class FixerReviews extends React.Component {
                 this.setState({
                     reviews: elements
                 })
-                console.log(this.state.reviews)
+
             })
     }
     starsCount = (rating) => {
+        stars = []
         for (var i = 1; i < 6; i++) {
             let starType = starFilled
             if (i > rating) {
@@ -59,7 +60,7 @@ class FixerReviews extends React.Component {
     render() {
         const { reviews } = this.state;
         return (
-            <div >
+            <div className="container-fluid">
                 <h5>Reviews</h5>
                 {
                     reviews.map((element, i) => (

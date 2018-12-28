@@ -53,48 +53,48 @@ class SimpleCard extends React.Component {
 
     //const bull = <span className={classes.bullet}>•</span>;
     render() {
-        const { serviceRequests } = this.state
+
         return (
             <div className="container-fluid">
-            <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col whiteText">Fixer</th>
-                        <th scope="col whiteText">Profession</th>
-                        <th scope="col whiteText">Review Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {(serviceRequests !== []) ? serviceRequests.map((element, i) =>
-                        <tr key={i}>
-                            <th scope="row"> <Typography className='p whiteText'>
-                                {element.fixerFullName}</Typography></th>
-                            <th scope="row"><Typography className='p whiteText'>
-                                {element.profession}</Typography></th>
-                            <th scope="row">
-                                <Button size="small"
-                                    className="btn"
-                                    type="button"
-                                    variant='contained'
-                                    style={{ backgroundColor: '#FFF', color: '#000' }}
-                                    onClick={() =>
-                                        (element.reviewStatus === 'pending') ?
-                                            browserHistory.push({
-                                                pathname: '/givereview',
-                                                state: {
-                                                    'fixerUID': element.fixerUID
-                                                }
-                                            }) : null
-                                    }
-                                >{(element.reviewStatus === 'pending') ? `Pending` : null}
-                                    {(element.reviewStatus === 'reviewed') ? `Reviewed` : null}
-                                </Button>
-
-                            </th>
+                <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col whiteText">Fixer</th>
+                            <th scope="col whiteText">Profession</th>
+                            <th scope="col whiteText">Review Status</th>
                         </tr>
-                    ) : null}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {(this.state.serviceRequests !== []) ? this.state.serviceRequests.map((element, i) =>
+                            <tr key={i}>
+                                <th scope="row"> <Typography className='p whiteText'>
+                                    {element.fixerFullName}</Typography></th>
+                                <th scope="row"><Typography className='p whiteText'>
+                                    {element.profession}</Typography></th>
+                                <th scope="row">
+                                    <Button size="small"
+                                        className="btn"
+                                        type="button"
+                                        variant='contained'
+                                        style={{ backgroundColor: '#FFF', color: '#000' }}
+                                        onClick={() =>
+                                            (element.reviewStatus === 'pending') ?
+                                                browserHistory.push({
+                                                    pathname: '/givereview',
+                                                    state: {
+                                                        'fixerUID': element.fixerUID
+                                                    }
+                                                }) : null
+                                        }
+                                    >{(element.reviewStatus === 'pending') ? `Pending` : null}
+                                        {(element.reviewStatus === 'reviewed') ? `Reviewed` : null}
+                                    </Button>
+
+                                </th>
+                            </tr>
+                        ) : null}
+                    </tbody>
+                </table>
             </div>
         );
     }

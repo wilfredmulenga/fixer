@@ -21,7 +21,7 @@ class Navbar extends React.Component {
     //takes them to their profile, if they dont, it sends them to update profile
     Firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.uid)
+
         for (var y = 0; y < listOfFixers.length; y++) {
           if (listOfFixers[y]["userUID"] === user.uid) {
 
@@ -71,9 +71,7 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 {(localStorage.getItem('userUID') !== null) ? <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link> : null}
               </li>
-              <li className='nav-item active mr-3'>
-                <Link to="/requestservice2" style={{ color: "#fff" }} className="link">Requested Services</Link>
-              </li>
+
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
               </li>
