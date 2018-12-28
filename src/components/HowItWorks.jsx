@@ -16,7 +16,7 @@ export default function HowItWorks() {
                         <div className="mt-3 row d-flex justify-content-center">
                             <div className="col-sm-12 mb-3">
                                 <div className=" pb-2 row justify-content-center "> <img src={workerIcon} style={{ height: 80 }} alt="working icon" /></div>
-                                <div className="card ">
+                                <div className="card px-3">
 
                                     <h5 className="card-title mt-3 greenText"><strong>I want to hire someone</strong></h5>
                                     <p className="card-text">
@@ -28,7 +28,7 @@ export default function HowItWorks() {
                         <div className=" mt-3 row d-flex justify-content-center">
                             <div className="   col-sm-12 mb-3">
                                 <div className="pb-2 row justify-content-center"> <img src={workingIcon} style={{ height: 80 }} alt="working icon" /></div>
-                                <div className="card ">
+                                <div className="card px-3">
                                     <h5 className="card-title mt-3 greenText"><strong>I want to get hired</strong></h5>
                                     <p className="card-text">
                                         Our platform lets people who are not in the formal sector be able to list their skills and services thus opening up the window that has been overlooked by other Job-listing sites. Whether you are a Carpenter, Welder, Barberman, this site will help bring the customers to you.
@@ -39,10 +39,10 @@ export default function HowItWorks() {
                         <div className="mt-3 row d-flex justify-content-center">
                             <div className=" col-sm-12 mb-3">
                                 <div className="pb-2 row justify-content-center"> <img src={handIcon} style={{ height: 80 }} alt="working icon" /></div>
-                                <div className="card ">
+                                <div className="card px-3">
 
                                     <h5 className="card-title mt-3 greenText"><strong>I want to be a Partner</strong></h5>
-                                    <p className="card-text">
+                                    <p className=" card-text">
                                         We are always looking for ways to improve our platform and from new angles or ideas. We feel that people with informal jobs could use a platform that is taylored specifically for them to showcase their work. If you share the same passion as well do, we would be happy to hear from you.
                      </p><br />
                                 </div>
