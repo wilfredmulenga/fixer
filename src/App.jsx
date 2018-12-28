@@ -12,7 +12,7 @@ import Loader from './components/Loader'
 import jsonData from './database/fixer-test-export.json'
 import PhoneLogin from './components/PhoneLogin'
 import PrivacyPolicy from './components/PrivacyPolicy'
-import RequestService from './components/RequestService'
+import RequestService from './components/RequestedServices2'
 import Firebase from './config/firebase';
 import Profile from './Accounts/Profile';
 //import ProfileUser from './Accounts/User/ProfileUser';
@@ -22,6 +22,7 @@ import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer';
 import Fixer from './components/Fixer';
 import ProfileUser2 from './Accounts/User/ProfileUser2';
 import GiveReview from './components/GiveReview';
+import ViewProfileUser from './Accounts/User/ViewProfileUser';
 
 var listOfFixers = [];
 var userUID;

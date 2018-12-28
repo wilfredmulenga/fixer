@@ -65,8 +65,11 @@ class Navbar extends React.Component {
               </li>
               <li className="nav-item active mr-3">
 
-                {(localStorage.getItem('typeOfUser') === 'user') ? <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
-                {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
+                {(localStorage.getItem('userUID') !== null) ? <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
+                {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
+              </li>
+              <li className="nav-item active mr-3">
+                {(localStorage.getItem('userUID') !== null) ? <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link> : null}
               </li>
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>

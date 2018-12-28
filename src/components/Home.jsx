@@ -80,7 +80,7 @@ class Home extends React.Component {
             <How />
             {/* Buttons*/}
             {/*Type of Fixers*/}
-            <TypeOfFixers />
+            {/* <TypeOfFixers /> */}
             {/* Contact */}
             <div style={{ backgroundColor: '#007470', color: 'black' }} >
 

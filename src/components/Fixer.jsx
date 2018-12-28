@@ -74,7 +74,7 @@ class Fixer extends React.Component {
     and power tools.
                             </p>
                         </div>
-                        <FixerReviews />
+                        <FixerReviews fixerUID={this.state.fixerProfile.userUID} />
                     </div>
 
                     }

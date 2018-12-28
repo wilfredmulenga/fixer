@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar'
 
 var userUID = localStorage.getItem('userUID')
 
-const uiConfigCustomer = {
+const uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
@@ -23,22 +23,22 @@ const uiConfigCustomer = {
 
     ]
 };
-const uiConfigFixer = {
-    // Popup signin flow rather than redirect flow.
-    signInFlow: 'popup',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: '/fixer/profile',
+// const uiConfigFixer = {
+//     // Popup signin flow rather than redirect flow.
+//     signInFlow: 'popup',
+//     // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+//     signInSuccessUrl: '/fixer/profile',
 
-    // We will display Google and Facebook as auth providers.
-    signInOptions: [
-        {
-            provider: Firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-            defaultCountry: 'ZM',
-            //defaultNationalNumber: '979 99 99',
-        },
+//     // We will display Google and Facebook as auth providers.
+//     signInOptions: [
+//         {
+//             provider: Firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+//             defaultCountry: 'ZM',
+//             //defaultNationalNumber: '979 99 99',
+//         },
 
-    ]
-};
+//     ]
+// };
 
 
 class PhoneLogin extends React.Component {
@@ -55,7 +55,7 @@ class PhoneLogin extends React.Component {
 
 
     handleSignOut() {
-        localStorage.setItem('typeOfUser', null)
+
         localStorage.setItem('userUID', null)
         localStorage.setItem('currentUserData', null)
         localStorage.setItem('listOfFixers', null)
@@ -69,7 +69,7 @@ class PhoneLogin extends React.Component {
     render() {
         return (
             <div>
-                <Navbar typeOfUser={this.state.typeOfUser} />
+                <Navbar />
                 {
                     //if user is logged in and the press login button it shows sign out dialog
                     (userUID !== 'null') ?
@@ -94,12 +94,12 @@ class PhoneLogin extends React.Component {
                         //else it shows sign in dialog
                         (<div className='mt-5 text-center'>
                             <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
-                            {(this.state.typeOfUser === "user") ? (<StyledFirebaseAuth uiConfig={uiConfigCustomer} firebaseAuth={Firebase.auth()} />)
-                                : (<StyledFirebaseAuth uiConfig={uiConfigFixer} firebaseAuth={Firebase.auth()} />)}
+                            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
+
                         </div>)
 
                 }
-                {console.log(localStorage.getItem('typeOfUser'))}
+
             </div>
         )
     }
