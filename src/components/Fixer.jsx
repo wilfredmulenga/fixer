@@ -11,7 +11,7 @@ const textStyle = {
     fontSize: 11,
     marginBottom: 3
 }
-const userUID = "gHayewR0vKPEcmFIMuaoboYeBGZ2";
+const userUID = localStorage.getItem('userUID')
 class Fixer extends React.Component {
     constructor(props) {
         super(props)
@@ -39,7 +39,7 @@ class Fixer extends React.Component {
         return (
             <div >
                 <Navbar />
-                <Media query="(max-width: 375px)"
+                <Media query="(max-width: 480px)"
                     render={() => <div style={{ height: '100%' }}>
                         <div className='row container mt-2'>
                             <div className='col-3'>
@@ -52,7 +52,7 @@ class Fixer extends React.Component {
                             </div>
                             <div className='col-4 row align-items-end'>
 
-                                <a //href='tel:+260967639241'
+                                <a href='tel:+2609799999999'
                                 >  <Button
                                     className="btn  mb-1"
                                     type="button"
@@ -79,7 +79,7 @@ class Fixer extends React.Component {
 
                     }
                 />
-                <Media query="(min-width:376px)" render={() =>
+                <Media query="(min-width:481px)" render={() =>
                     <div style={{ height: "100vh", backgroundColor: "#0dbab1" }}
                         className=" row justify-content-center ">
                         <div className="col-md-8">
@@ -96,7 +96,7 @@ class Fixer extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-md-4 text-center row align-items-center justify-content-center">
-                                        <a //href='tel:+260967639241'
+                                        <a href='tel:+2609799999999'
                                         >  <Button
                                             className="btn  mb-1"
                                             type="button"

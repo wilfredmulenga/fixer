@@ -22,8 +22,6 @@ import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer';
 import Fixer from './components/Fixer';
 import ProfileUser2 from './Accounts/User/ProfileUser2';
 import GiveReview from './components/GiveReview';
-import ViewProfileUser from './Accounts/User/ViewProfileUser';
-import ViewRequestServicesFixer from './Accounts/Fixer/ViewRequestServicesFixer';
 import Media from 'react-media';
 import LargeDevice from './components/LargeDevice';
 
@@ -32,13 +30,7 @@ var userUID;
 //= 'O29nIFjBn8N6U2Kh9eXMyXwGN5B3'
 var JobsSnapshot;
 
-//check which type of user 
-var typeOfUser = localStorage.getItem('typeOfUser');
-if (typeOfUser === 'user') {
-  typeOfUser = 'Users'
-} else {
-  typeOfUser = 'Fixers'
-}
+
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +43,7 @@ class App extends Component {
     this.handleDataLoad = this.handleDataLoad.bind(this)
     this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
-    this.handleDataLoad()
+    // this.handleDataLoad()
     this.handleCurrentUserDataLoad()
   }
   handleCurrentUserDataLoad = () => {
@@ -82,44 +74,40 @@ class App extends Component {
         //handleLoadUsers()
         userUID = user.uid
         //save current user's userUID to localStorage
-        localStorage.setItem('userUID', "gHayewR0vKPEcmFIMuaoboYeBGZ2")
-        // Firebase.database()
-        //   .ref(`${typeOfUser}/${userUID}`)
-        //   .once('value', (snapshot) => {
-        //     currentUser.push(snapshot.val())
-        //   })
+        localStorage.setItem('userUID', userUID)
+        Firebase.database()
+          .ref(`Users/${userUID}`)
+          .once('value', (snapshot) => {
+            return snapshot
+          }).then((snapshot) => {
+            if (snapshot !== null) { localStorage.setItem('currentUserData', JSON.stringify(snapshot.val())) }
+          })
+
       } else {
-
-        // this.setState({
-        //   loading: true,
-        //   listOfPeople: peopleArray
-        // })
-
         browserHistory.push('/')
-
       }
     })
 
     //fectch data of fixers
-    // let peopleArray = []
-    // Firebase.database()
-    //   .ref(`Fixers`)
-    //   .once('value', (snapshot) => {
-    //     JobsSnapshot = snapshot.val();
-    //     let elements;
-    //     // React doesnt accept objects in states so it has to be converted into an array
-    //     for (const index in JobsSnapshot) {
-    //       elements = JobsSnapshot[index];
-    //       if (elements.profession != null) {
-    //         peopleArray.push(elements);
-    //       }
-    //     }
-    //     this.setState({
-    //       loading: true,
-    //       // listOfPeople: peopleArray,
-    //     });
-    //     localStorage.setItem('listOfFixers', JSON.stringify(peopleArray))
-    //   });
+    let peopleArray = []
+    Firebase.database()
+      .ref(`Fixers`)
+      .once('value', (snapshot) => {
+        JobsSnapshot = snapshot.val();
+        let elements;
+        // React doesnt accept objects in states so it has to be converted into an array
+        for (const index in JobsSnapshot) {
+          elements = JobsSnapshot[index];
+          if (elements.profession != null) {
+            peopleArray.push(elements);
+          }
+        }
+        this.setState({
+          loading: true,
+          // listOfPeople: peopleArray,
+        });
+        localStorage.setItem('listOfFixers', JSON.stringify(peopleArray))
+      });
   }
   render() {
 
@@ -145,8 +133,6 @@ class App extends Component {
                 <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
                 <Route path='/fixer' component={Fixer} />
                 <Route path='/givereview' component={GiveReview} />
-                <Route path='/givereview' component={GiveReview} />
-
               </Router >
             } />
           <Media query="(min-width:481px)"

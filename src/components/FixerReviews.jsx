@@ -1,8 +1,8 @@
 import React from 'react';
-import database from '../database/fixer-test-export.json';
 import starFilled from '../images/icons8-star-filled-7.png';
 import starOutlined from '../images/icons8-star-7.png';
 import Firebase from '../config/firebase';
+import profile_placeholder from '../images/profile_placeholder.png'
 
 
 //let reviews = database.Fixers.L5WK2zajNqS7wLVja2KwzsdWfCA3.reviews;
@@ -33,8 +33,8 @@ class FixerReviews extends React.Component {
     handleReviews = () => {
         let elements = []
         Firebase.database()
-            .ref(`Fixers/L5WK2zajNqS7wLVja2KwzsdWfCA3/reviews`)
-            //.ref(`Fixers/${this.props.fixerUID}/reviews`)
+            //.ref(`Fixers/L5WK2zajNqS7wLVja2KwzsdWfCA3/reviews`)
+            .ref(`Fixers/${this.props.fixerUID}/reviews`)
             .once('value', (snapshot) => {
                 for (const index in snapshot.val()) {
                     elements.push(snapshot.val()[index])
@@ -66,7 +66,7 @@ class FixerReviews extends React.Component {
                     reviews.map((element, i) => (
                         <div className="row mb-3" key={i}>
                             <div className="col-4">
-                                <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src={element.pic} />
+                                <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src={(element.pic !== null) ? element.pic : profile_placeholder} />
                             </div>
                             <div key={i} className="col-8">
                                 <p style={textStyle}>{`${element.name}, ${element.dateOfReview}`}</p>

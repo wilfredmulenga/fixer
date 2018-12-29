@@ -92,7 +92,7 @@ class SimpleCard extends React.Component {
 
                                 </th>
                             </tr>
-                        ) : null}
+                        ) : <div className='row justify-content-center'><p className='whiteText'>No service requests yet</p></div>}
                     </tbody>
                 </table>
             </div>

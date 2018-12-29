@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-
+import placeholderPic from '../../images/profile_placeholder.png';
 let currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
 
 class ProfileUser2 extends React.Component {
@@ -11,9 +11,9 @@ class ProfileUser2 extends React.Component {
         super(props)
         this.state = {
             edit: true,
-            fullName: `${currentUserData.firstName} ${currentUserData.lastName}`,
-            phoneNumber: currentUserData.phoneNumber,
-            profilePic: currentUserData.pic
+            fullName: (currentUserData.firstName !== undefined) ? `${currentUserData.firstName} ${currentUserData.lastName}` : '',
+            phoneNumber: (currentUserData.phoneNumber !== undefined) ? currentUserData.phoneNumber : '',
+            profilePic: (currentUserData.pic !== undefined) ? currentUserData.pic : placeholderPic
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeProfilePic = this.handleChangeProfilePic.bind(this)
@@ -30,6 +30,7 @@ class ProfileUser2 extends React.Component {
                     phoneNumber: value,
                 })
                 break;
+            default:
         }
     }
     handleChangeProfilePic = (event) => {

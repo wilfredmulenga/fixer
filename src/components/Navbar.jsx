@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 import jsonData from '../database/fixer-test-export.json'
 
 var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
-
+var userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
@@ -63,15 +63,9 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" style={{ color: "#fff" }} className="link">Categories</Link>
               </li>
-              <li className="nav-item active mr-3">
-
-                {(localStorage.getItem('userUID') !== null) ? <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null}
-                {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
-              </li>
-              <li className="nav-item active mr-3">
-                {(localStorage.getItem('userUID') !== null) ? <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link> : null}
-              </li>
-
+              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li> : null}
+              {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
+              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li> : null}
               <li className="nav-item active mr-3">
                 <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
               </li>
@@ -79,7 +73,7 @@ class Navbar extends React.Component {
 
 
             <button className="btn link my-2 my-sm-0"
-              onClick={() => this.handleOnClick()}
+            //onClick={() => this.handleOnClick()}
             >Become A Fixer</button>
 
           </div>

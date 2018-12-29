@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Rating from './Rating';
 import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
+import placeholderPic from '../images/profile_placeholder.png'
 
 Modal.setAppElement('#root');
 const currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
@@ -33,11 +34,11 @@ class GiveReview extends React.Component {
         let currentYear = date.getFullYear()
         //creates a review 
         Firebase.database()
-            .ref(`Fixers/L5WK2zajNqS7wLVja2KwzsdWfCA3/reviews`)
+            .ref(`Fixers/${this.state.fixerUID}/reviews`)
             .push({
                 dateOfReview: `${currentDate}/${currentMonth}/${currentYear}`,
-                name: `${currentUserData.firstName} ${currentUserData.lastName}`,
-                pic: currentUserData.pic,
+                name: (currentUserData.firstName) ? `${currentUserData.firstName} ${currentUserData.lastName}` : `Anonymous`,
+                pic: (currentUserData.pic) ? currentUserData.pic : placeholderPic,
                 rating: this.state.rating + 1,
                 review: this.state.comment
             })
