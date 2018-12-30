@@ -8,7 +8,7 @@ import FixerReviews from '../components/FixerReviews';
 import Firebase from '../config/firebase';
 
 const textStyle = {
-    fontSize: 11,
+    fontSize: 13,
     marginBottom: 3
 }
 const userUID = localStorage.getItem('userUID')
@@ -45,7 +45,7 @@ class Fixer extends React.Component {
                             <div className='col-3'>
                                 <img alt='profile pic' className='rounded-circle' style={{ width: 72, height: 72 }} src='https://firebasestorage.googleapis.com/v0/b/lsk-guide-jobs.appspot.com/o/kbVNfYtVIcUKwtTXFthTaFB8Xsp1%2Fpexels-photo-428361.jpeg?alt=media&token=9ef3aee5-412a-491e-ae01-1cc43913be4e' />
                             </div>
-                            <div className='col-5' >
+                            <div className='col-5 ml-1' >
                                 <p style={textStyle}>Richard Sikazwe, Carpenter</p>
                                 <p style={textStyle}>Ibex Hill, Lusaka</p>
                                 <p style={textStyle}>Skills: Wiring, Scaffolding</p>
@@ -57,7 +57,7 @@ class Fixer extends React.Component {
                                     className="btn  mb-1"
                                     type="button"
                                     variant='contained'
-                                    style={{ backgroundColor: '#FFF', color: '#000' }}
+                                    style={{ backgroundColor: '#FFF', color: '#000', width: 100 }}
                                     onClick={() => this.handleServiceRequest()}
                                 > CALL </Button></a>
                             </div>

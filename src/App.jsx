@@ -41,15 +41,11 @@ class App extends Component {
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleDataLoad = this.handleDataLoad.bind(this)
-    this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
     // this.handleDataLoad()
-    this.handleCurrentUserDataLoad()
+
   }
-  handleCurrentUserDataLoad = () => {
-    var fixerUserProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
-    localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
-  }
+
 
   handleDataLoad = () => {
     JobsSnapshot = jsonData['Fixers'];

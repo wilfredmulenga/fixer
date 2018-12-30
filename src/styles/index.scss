@@ -1,18 +1,19 @@
+$blue-theme-color :  #0dbab1;
+$body-font : 'Lato, sans-serif';
 .custom-toggler.navbar-toggler {
-  border-color: #0dbab1;
+  border-color: $blue-theme-color;
 } 
 
-
 body{
-  font-family: 'Lato', sans-serif;
+  font-family: $body-font;
 }
 
 a:hover{
-  color: #0dbab1; 
+  color: $blue-theme-color; 
 }
 
 .blueBackground {
-  background-color: #0dbab1;
+  background-color: $blue-theme-color;
 }
 
 .whiteBackground {
@@ -24,7 +25,7 @@ a:hover{
 }
 
 .greenText{
-  color: #0dbab1;
+  color: $blue-theme-color ;
 }
 
 

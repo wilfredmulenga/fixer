@@ -106,7 +106,9 @@ class GiveReview extends React.Component {
                                 style={{ backgroundColor: '#FFF', color: '#000' }}
                                 onClick={() => this.setState({
                                     modal1IsOpen: false
-                                })}
+                                })
+                                
+                            }
                             >NO</Button>
                         </div>
                         <div className="col-6" style={{ textAlign: 'center' }}>

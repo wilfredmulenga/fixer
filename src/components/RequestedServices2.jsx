@@ -7,7 +7,7 @@ export default function RequestedServices2() {
         <div>
             <Navbar />
             <div style={{ height: '100vh' }} className='blueBackground pt-5'>
-                <div style={{ textAlign: "center" }}>  <h5 className="whiteText">Requested Fixers</h5></div>
+
                 <PendingReviewCard />
             </div>
         </div>

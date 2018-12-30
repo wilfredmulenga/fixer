@@ -41,31 +41,38 @@ class SimpleCard extends React.Component {
         Firebase.database()
             .ref(`Users/${userUID}/serviceRequests`)
             .once('value', (snapshot) => {
-                requestService = snapshot.val()
-                for (const index in requestService) {
-                    element.push(requestService[index])
+                if (snapshot.val() !== null) {
+                    requestService = snapshot.val()
+                    for (const index in requestService) {
+                        element.push(requestService[index])
+                    }
+                    this.setState({
+                        serviceRequests: element
+                    })
                 }
-                this.setState({
-                    serviceRequests: element
-                })
             })
     }
-
+    UNSAFE_componentWillMount() {
+        element = []
+    }
     //const bull = <span className={classes.bullet}>•</span>;
     render() {
 
         return (
             <div className="container-fluid">
-                <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col whiteText">Fixer</th>
-                            <th scope="col whiteText">Profession</th>
-                            <th scope="col whiteText">Review Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {(this.state.serviceRequests !== []) ? this.state.serviceRequests.map((element, i) =>
+                {(this.state.serviceRequests.length !== 0) ? <div>
+                    <div style={{ textAlign: "center" }}>  <h5 className="whiteText pb-2">Requested Fixers</h5></div>
+                    <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col whiteText">Fixer</th>
+                                <th scope="col whiteText">Profession</th>
+                                <th scope="col whiteText">Review Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>{this.state.serviceRequests.map((element, i) =>
+
                             <tr key={i}>
                                 <th scope="row"> <Typography className='p whiteText'>
                                     {element.fixerFullName}</Typography></th>
@@ -92,9 +99,9 @@ class SimpleCard extends React.Component {
 
                                 </th>
                             </tr>
-                        ) : <div className='row justify-content-center'><p className='whiteText'>No service requests yet</p></div>}
-                    </tbody>
-                </table>
+                        )}</tbody> </table></div> : <div className='row justify-content-center'><h5 className='whiteText'>No service requests yet</h5></div>}
+
+
             </div>
         );
     }
