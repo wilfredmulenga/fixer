@@ -8,6 +8,8 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Media from 'react-media';
 import starFilled from '../images/icons8-star-filled-7.png';
 import starOutlined from '../images/icons8-star-7.png';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
 Modal.setAppElement('#root');
@@ -40,14 +42,27 @@ class Categories extends React.Component {
     this.handleCardClick = this.handleCardClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.starsCount = this.starsCount.bind(this);
-    this.handleMenuClick = this.handleMenuClick.bind(this);
+    this.typeOfFixer = this.typeOfFixer.bind(this);
+    this.fixerLocation = this.fixerLocation.bind(this)
   }
 
-  //for menu
-  handleMenuClick = (event) => {
+  //type of fixer selection
+  typeOfFixer = (event) => {
     let filterByProfession = []
     for (let y = 0; y < this.state.listOfFixers.length; y++) {
       if (this.state.listOfFixers[y]["profession"] === event.target.value) {
+        filterByProfession.push(this.state.listOfFixers[y])
+      }
+    }
+    this.setState({
+      filteredFixers: filterByProfession
+    })
+  }
+  //fixer location
+  fixerLocation = (event) => {
+    let filterByProfession = []
+    for (let y = 0; y < this.state.listOfFixers.length; y++) {
+      if (this.state.listOfFixers[y]["location"] === event.target.value) {
         filterByProfession.push(this.state.listOfFixers[y])
       }
     }
@@ -142,48 +157,72 @@ class Categories extends React.Component {
         <Navbar />
         <Media query="(max-width:480px)"
           render={() =>
-            <div>
+            <div className='container-fluid'>
               {/* Menu */}
 
-              <div className="container-fluid mt-2 mb-3">
-                <select
-                  className="form-control mb-3"
-                  id="professionSelect"
-                  onChange={this.handleMenuClick}>
-                  <option value={'Maid'}>Maid</option>
-                  <option value={'Electrician'}>Electrician</option>
-                  <option value={'Carpenter'}>Carpenter</option>
+              <Card className=" col-12 mt-2 mb-3">
+                <CardContent >
+                  <p><b>Filter</b></p>
+                  <div className='row'>
+                    <div className='col-6'>
+                      {/* <label> Type of Fixer: */}
+                      <select
+                        className="form-control mb-3"
+                        id="professionSelect"
+                        onChange={this.typeOfFixer}>
+                        <option disabled selected>by Trade</option>
+                        <option value={'Maid'}>Maid</option>
+                        <option value={'Electrician'}>Electrician</option>
+                        <option value={'Carpenter'}>Carpenter</option>
 
-                </select>
-              </div>
-              {/* list of fixers */}
-              <div className="container-fluid">  {
-
-                (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
-                  <div className="card col-md-5 pt-3 pb-3 mb-3 " key={i}
-                    onClick={() =>
-                      this.handleCardClick(element.userUID)}>
-                    <div key={i} className="row justify-content-center">
-                      <div key={i} className="col-4 mb-2 text-center">
-                        <img
-                          className="card-img-top rounded-circle"
-                          src={element.pic}
-                          style={{ width: 68, height: 68 }}
-                          alt={'profile pic'}
-                        />
-                      </div>
-                      <div className="col-8 text-align-center">
-                        <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
-                        <b>Rating:</b>   {this.starsCount(element.rating)}<br />
-                        <b>  Skills: </b>{(element.skills !== undefined) ? `${
-                          element.skills.map((element, i) => (
-                            element.label
-                          ))
-                          }` : null} <br />
-                        <b> City:</b> {element.city} <br />
-                      </div>
+                      </select>
+                      {/* </label> */}
+                    </div>
+                    <div className="col-6">
+                      {/* <label> Location: */}
+                      <select
+                        className="form-control mb-3"
+                        id="professionSelect"
+                        onChange={this.fixerLocation}>
+                        <option disabled selected>by Location</option>
+                        <option value={'Woodlands'}>Woodlands</option>
+                        <option value={'Kabulonga'}>Kabulonga</option>
+                        <option value={'Roma'}>Roma</option>
+                      </select>
+                      {/* </label> */}
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+              {/* list of fixers */}
+              <div>  {
+
+                (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
+                  <Card className="pt-3 pb-3 mb-3 " key={i}
+                    onClick={() =>
+                      this.handleCardClick(element.userUID)}><CardContent>
+                      <div key={i} className="row justify-content-center">
+                        <div key={i} className="col-4 mb-2 text-center">
+                          <img
+                            className="card-img-top rounded-circle"
+                            src={element.pic}
+                            style={{ width: 68, height: 68 }}
+                            alt={'profile pic'}
+                          />
+                        </div>
+                        <div className="col-8 text-align-center">
+                          <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
+                          <b>Rating:</b>   {this.starsCount(element.rating)}<br />
+                          <b>  Skills: </b>{(element.skills !== undefined) ? `${
+                            element.skills.map((element, i) => (
+                              element.label
+                            ))
+                            }` : null} <br />
+                          <b> City:</b> {element.city} <br />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 )) : <Loader />}
               </div>
             </div>

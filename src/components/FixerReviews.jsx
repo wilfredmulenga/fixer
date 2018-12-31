@@ -83,7 +83,7 @@ class FixerReviews extends React.Component {
                             </div>))}
                     </div>
                         :
-                        <div className='row justify-content-center mb-4'><p>No reviews yet</p></div>}
+                        <div className='row justify-content-center mt-4 mb-4'><p>No reviews yet</p></div>}
             </div>
         )
     }
