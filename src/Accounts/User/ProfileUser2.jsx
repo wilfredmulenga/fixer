@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import placeholderPic from '../../images/profile_placeholder.png';
 import Firebase from '../../config/firebase';
 import Loader from '../../components/Loader';
+import TextField from '@material-ui/core/TextField';
 
 const userUID = localStorage.getItem('userUID');
 
@@ -43,16 +44,16 @@ class ProfileUser2 extends React.Component {
     }
 
 
-    handleChange = ({ target: { value, placeholder } }) => {
-        switch (placeholder) {
-            case 'full name':
+    handleChange = (event) => {
+        switch (event.target.id) {
+            case 'fullName':
                 this.setState({
-                    fullName: value,
+                    fullName: event.target.value,
                 })
                 break;
-            case 'phone number':
+            case 'phoneNumber':
                 this.setState({
-                    phoneNumber: value,
+                    phoneNumber: event.target.value,
                 })
                 break;
             default:
@@ -125,8 +126,22 @@ class ProfileUser2 extends React.Component {
                             </div>
                             <Card style={{ minWidth: 240, display: 'flex', flexWrap: 'wrap' }}>
                                 <CardContent style={{ width: '100%' }}>
-                                    <div className="col-12 mb-2"> {(this.state.edit) ? <input style={{ width: '100%' }} type='text' placeholder='full name' value={this.state.fullName} onChange={this.handleChange}></input> : <p > Full Name: {this.state.fullName}</p>}</div>
-                                    <div className="col-12">{(this.state.edit) ? <input style={{ width: '100%' }} type='number' placeholder='phone number' value={this.state.phoneNumber} onChange={this.handleChange}></input> : <p >Phone Number: {this.state.phoneNumber}</p>}</div>
+                                    <div className="col-12 mb-2"> {(this.state.edit) ? <TextField
+                                        id="fullName"
+                                        label="Full Name"
+                                        fullWidth
+                                        value={this.state.fullName}
+                                        onChange={this.handleChange}
+                                        margin="normal"
+                                    /> : <p > Full Name: {this.state.fullName}</p>}</div>
+                                    <div className="col-12">{(this.state.edit) ? <TextField
+                                        id="phoneNumber"
+                                        label="Phone Number"
+                                        fullWidth
+                                        value={this.state.phoneNumber}
+                                        onChange={this.handleChange}
+                                        margin="normal"
+                                    /> : <p >Phone Number: {this.state.phoneNumber}</p>}</div>
                                 </CardContent>
                             </Card>
                             <div className="mt-5 row justify-content-center">

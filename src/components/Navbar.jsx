@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Modal from 'react-modal';
 import * as emailjs from '../../node_modules/emailjs-com';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 var userUID = localStorage.getItem('userUID')
@@ -57,26 +58,27 @@ class Navbar extends React.Component {
     console.log('submit', this.state.emailAddress, this.state.fullName, this.state.phoneNumber, this.state.profession)
   }
 
-  handleInputChange = ({ target: { value, placeholder } }) => {
-    switch (placeholder) {
-      case 'full name':
+  handleInputChange = (event) => {
+    console.log()
+    switch (event.target.id) {
+      case 'fullName':
         this.setState({
-          fullName: value,
+          fullName: event.target.value,
         })
         break;
       case 'profession':
         this.setState({
-          profession: value,
+          profession: event.target.value,
         })
         break;
-      case 'phone number':
+      case 'phoneNumber':
         this.setState({
-          phoneNumber: value,
+          phoneNumber: event.target.value,
         })
         break;
-      case 'email address':
+      case 'emailAddress':
         this.setState({
-          emailAddress: value,
+          emailAddress: event.target.value,
         })
         break;
       default:
@@ -130,13 +132,45 @@ class Navbar extends React.Component {
           isOpen={this.state.openModal}
 
         >
-          <div className='container-fluid' style={{ textAlign: 'center', height: '100%' }} >
-            <div  >
+          <div style={{ textAlign: 'center', height: '100%' }} >
+            <div className='container-fluid'  >
               <h5 className='greenText mb-3'>Become a Fixer</h5>
-              <input className='mb-1' type="text" placeholder='full name' value={this.state.fullName} onChange={this.handleInputChange}></input>
-              <input className='mb-1' type="text" placeholder='profession' value={this.state.profession} onChange={this.handleInputChange}></input>
-              <input className='mb-1' type='text' placeholder='phone number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
-              <input className='mb-1' type='email' placeholder='email address' value={this.state.emailAddress} onChange={this.handleInputChange}></input>
+              <TextField
+                id="fullName"
+                label="Full Name"
+                fullWidth
+                value={this.state.fullName}
+                onChange={this.handleInputChange}
+                margin="normal"
+              />
+              <TextField
+                id="profession"
+                label="Profession"
+                fullWidth
+                value={this.state.profession}
+                onChange={this.handleInputChange}
+                margin="normal"
+              />
+              <TextField
+                id="phoneNumber"
+                label="Phone Number"
+                fullWidth
+                value={this.state.phoneNumber}
+                onChange={this.handleInputChange}
+                margin="normal"
+              />
+              <TextField
+                id="emailAddress"
+                label="Email Address"
+                fullWidth
+                value={this.state.emailAddress}
+                onChange={this.handleInputChange}
+                margin="normal"
+              />
+              {/* <input style={{ width: '90%' }} className='mb-1' type="text" placeholder='full name' value={this.state.fullName} onChange={this.handleInputChange}></input>
+              <input style={{ width: '90%' }} className='mb-1' type="text" placeholder='profession' value={this.state.profession} onChange={this.handleInputChange}></input>
+              <input style={{ width: '90%' }} className='mb-1' type='text' placeholder='phone number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+              <input style={{ width: '90%' }} className='mb-1' type='email' placeholder='email address' value={this.state.emailAddress} onChange={this.handleInputChange}></input> */}
             </div>
             <div>
               {(this.state.showError) ? <p style={{ color: 'red' }}>Please input all fields</p> : null}
