@@ -1,46 +1,90 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import Firebase from '../config/firebase';
-import { browserHistory } from 'react-router';
-import jsonData from '../database/fixer-test-export.json'
+import * as emailjs from '../../node_modules/emailjs-com';
+import Button from '@material-ui/core/Button';
 
-var listOfFixers = JSON.parse(localStorage.getItem('listOfFixers'))
+
 var userUID = localStorage.getItem('userUID')
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      openModal: false,
+      fullName: '',
+      profession: '',
+      phoneNumber: '',
+      emailAddress: '',
+      showError: false,
+      submitSuccess: false,
+      tryAgain: false
+    }
     this.handleOnClick = this.handleOnClick.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit = () => {
+    if ((this.state.fullName !== '') && (this.state.profession !== '') &&
+      (this.state.profession !== '') && (this.state.emailAddress !== '')) {
+      var templateParams = {
+        // name: 'helo',
+        // notes: 'helo'
+        name: `${this.state.fullName}`,
+        profession: `${this.state.profession}`,
+        phoneNumber: `${this.state.phoneNumber}`,
+        emailAddress: `${this.state.emailAddress}`
+      };
+
+      emailjs.send('default_service', 'received_your_query', templateParams, process.env.REACT_APP_EMAILJS_USER_ID)
+        .then(function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+        }, function (error) {
+          console.log('FAILED...', error);
+          this.setState({
+            tryAgain: true
+          })
+        });
+      this.setState({
+        submitSuccess: true,
+        openModal: false
+      })
+    } else {
+      this.setState({
+        showError: true
+      })
+    }
+    console.log('submit', this.state.emailAddress, this.state.fullName, this.state.phoneNumber, this.state.profession)
+  }
+
+  handleInputChange = ({ target: { value, placeholder } }) => {
+    switch (placeholder) {
+      case 'full name':
+        this.setState({
+          fullName: value,
+        })
+        break;
+      case 'profession':
+        this.setState({
+          profession: value,
+        })
+        break;
+      case 'phone number':
+        this.setState({
+          phoneNumber: value,
+        })
+        break;
+      case 'email address':
+        this.setState({
+          emailAddress: value,
+        })
+        break;
+      default:
+    }
   }
   handleOnClick = () => {
-    localStorage.setItem('typeOfUser', 'fixer')
-    var fixerUserProfile = jsonData['Fixers']['O29nIFjBn8N6U2Kh9eXMyXwGN5B3']
-    localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
-    //when "Become a Fixer" button is pressed, if user already has info, 
-    //takes them to their profile, if they dont, it sends them to update profile
-    Firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-
-        for (var y = 0; y < listOfFixers.length; y++) {
-          if (listOfFixers[y]["userUID"] === user.uid) {
-
-            browserHistory.push({
-              pathname: '/fixer/profile'
-            })
-          } else {
-            browserHistory.push({
-              pathname: '/fixer/updateprofile'
-            })
-          }
-        }
-
-      } else {
-        localStorage.setItem('typeOfUser', 'fixer')
-        browserHistory.push({
-          pathname: '/phonelogin'
-        })
-      }
+    this.setState({
+      openModal: !this.state.openModal
     })
   }
   render() {
@@ -73,7 +117,7 @@ class Navbar extends React.Component {
 
 
             <button className="btn link my-2 my-sm-0"
-            //onClick={() => this.handleOnClick()}
+              onClick={() => this.handleOnClick()}
             >Become A Fixer</button>
 
           </div>
@@ -82,7 +126,64 @@ class Navbar extends React.Component {
         <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
           This application is currently under testing. Feel free to give us feedback at < Link to='/contactus' > suppport@myfixerapp.com</Link >
         </div >
+        <Modal
+          isOpen={this.state.openModal}
+
+        >
+          <div className='container-fluid' style={{ textAlign: 'center', height: '100%' }} >
+            <div  >
+              <h5 className='greenText mb-3'>Become a Fixer</h5>
+              <input className='mb-1' type="text" placeholder='full name' value={this.state.fullName} onChange={this.handleInputChange}></input>
+              <input className='mb-1' type="text" placeholder='profession' value={this.state.profession} onChange={this.handleInputChange}></input>
+              <input className='mb-1' type='text' placeholder='phone number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
+              <input className='mb-1' type='email' placeholder='email address' value={this.state.emailAddress} onChange={this.handleInputChange}></input>
+            </div>
+            <div>
+              {(this.state.showError) ? <p style={{ color: 'red' }}>Please input all fields</p> : null}
+            </div>
+            <div className='align-self-end mt-5'>
+              <div className='row justify-content-around '>
+                <Button className="btn  mb-1"
+                  type="button"
+                  variant='contained'
+                  style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.setState({
+                    openModal: false
+                  })}>Close</Button>
+                <Button className="btn  mb-1"
+                  type="button"
+                  variant='contained'
+                  style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.handleSubmit()}>Submit</Button>
+              </div>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={this.state.submitSuccess}>
+          <div style={{ height: '100%' }} className='row container-fluid justify-content-center align-items-center'>
+            <h5 className='mb-5 greenText'>Thank you for signing up! Our Fixer Team will be in contact soon.</h5>
+            <Button className="btn  mb-1"
+              type="button"
+              variant='contained'
+              style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.setState({
+                submitSuccess: false
+              })}>Close</Button>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={this.state.tryAgain}>
+          <div style={{ height: '100%' }} className='row container-fluid justify-content-center align-items-center'>
+            <h5 className='mb-5 greenText'>Ooops! something went wrong. Please try again</h5>
+            <Button className="btn  mb-1"
+              type="button"
+              variant='contained'
+              style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.setState({
+                submitSuccess: false,
+                openModal: true
+              })}>Retry</Button>
+          </div>
+        </Modal>
       </div >
+
     );
   }
 }

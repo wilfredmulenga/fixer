@@ -9,6 +9,8 @@ import How from './HowItWorks';
 import JobsCarousel from './JobsCarousel';
 import Button from '@material-ui/core/Button';
 
+
+
 const styles = theme => ({
   card: {
     maxWidth: 400,
@@ -39,13 +41,18 @@ const styles = theme => ({
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.handleHire = this.handleHire.bind(this)
-  }
+    this.state = {
 
+    }
+
+    this.handleHire = this.handleHire.bind(this)
+
+  }
   handleHire = () => {
     browserHistory.push({ pathname: '/categories' })
 
   }
+
 
   render() {
     return (
@@ -58,7 +65,7 @@ class Home extends React.Component {
               textAlign: 'center', padding: 10
             }}>
               <p style={{ fontSize: 32, color: '#fff', float: 'center', }}>The convenient way to find reliable tradesmen in your neighborhood</p>
-              <p style={{ fontSize: 17, color: '#fff', float: 'center', fontStyle: 'oblique' }}>Choose from our list of vetted tardesmen for help without all the fuss.</p>
+              <p style={{ fontSize: 17, color: '#fff', float: 'center', fontStyle: 'oblique' }}>Choose from our list of vetted tradesmen for help without all the fuss.</p>
 
               <div className='mt-5'>
                 <Button className="btn  mb-1"
@@ -112,6 +119,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+
       </div >)
   }
 

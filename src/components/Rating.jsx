@@ -14,6 +14,7 @@ class Rating extends React.Component {
             rating: rating,
             temp_rating: rating
         });
+        //callback function to GiveReview.jsx
         this.props.handleChange(rating)
     }
     star_over(rating) {
