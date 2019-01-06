@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import placeholderPic from '../../images/profile_placeholder.png';
 import Firebase from '../../config/firebase';
-import Loader from '../../components/Loader';
+import WhiteLoader from '../../components/WhiteLoader';
 import TextField from '@material-ui/core/TextField';
 
 const userUID = localStorage.getItem('userUID');
@@ -144,7 +144,16 @@ class ProfileUser2 extends React.Component {
                                     /> : <p >Phone Number: {this.state.phoneNumber}</p>}</div>
                                 </CardContent>
                             </Card>
-                            <div className="mt-5 row justify-content-center">
+                            <div className="mt-5 row justify-content-around">
+                                <Button
+                                    className="btn"
+                                    type="button"
+                                    variant='contained'
+                                    style={{ backgroundColor: '#FFF', color: '#000', width: '100px' }}
+                                    onClick={() => this.setState({
+                                        edit: true
+                                    })}
+                                >EDIT</Button>
                                 <Button
                                     className="btn"
                                     type="button"
@@ -152,7 +161,10 @@ class ProfileUser2 extends React.Component {
                                     style={{ backgroundColor: '#FFF', color: '#000', width: '100px' }}
                                     onClick={() => this.onSave()}
                                 >SAVE</Button>
-                            </div></div> : <Loader />
+
+                            </div></div> : <div style={{ height: '100vh' }}>
+                                <WhiteLoader />
+                            </div>
                     }
                 </div>
             </div>

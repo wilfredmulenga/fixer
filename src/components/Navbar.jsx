@@ -55,7 +55,7 @@ class Navbar extends React.Component {
         showError: true
       })
     }
-    console.log('submit', this.state.emailAddress, this.state.fullName, this.state.phoneNumber, this.state.profession)
+
   }
 
   handleInputChange = (event) => {
