@@ -155,181 +155,96 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar />
-        <Media query="(max-width:480px)"
-          render={() =>
-            <div className='container-fluid'>
-              {/* Menu */}
+        <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  container-fluid justify-content-center pt-4 ">
+          <div className=" col-md-3 ml-3">
+            <Card >
+              <CardContent style={{ paddingLeft: 10 }} className="mt-3 justify-content-start text-center">
+                <h5>FILTER</h5>
+                <hr />
+                <select
+                  className="form-control mb-3"
+                  id="professionSelect"
+                  onChange={this.typeOfFixer}>
+                  <option disabled selected>by Trade</option>
+                  <option value={'Maid'}>Maid</option>
+                  <option value={'Electrician'}>Electrician</option>
+                  <option value={'Carpenter'}>Carpenter</option>
 
-              <Card className=" col-12 mt-2 mb-3">
-                <CardContent >
-                  <p><b>Filter</b></p>
-                  <div className='row'>
-                    <div className='col-6'>
-                      {/* <label> Type of Fixer: */}
-                      <select
-                        className="form-control mb-3"
-                        id="professionSelect"
-                        onChange={this.typeOfFixer}>
-                        <option disabled selected>by Trade</option>
-                        <option value={'Maid'}>Maid</option>
-                        <option value={'Electrician'}>Electrician</option>
-                        <option value={'Carpenter'}>Carpenter</option>
+                </select>
+                <select
+                  className="form-control mb-3"
+                  id="professionSelect"
+                  onChange={this.fixerLocation}>
+                  <option disabled selected>by Location</option>
+                  <option value={'Woodlands'}>Woodlands</option>
+                  <option value={'Kabulonga'}>Kabulonga</option>
+                  <option value={'Roma'}>Roma</option>
+                </select>
+              </CardContent>
 
-                      </select>
-                      {/* </label> */}
-                    </div>
-                    <div className="col-6">
-                      {/* <label> Location: */}
-                      <select
-                        className="form-control mb-3"
-                        id="professionSelect"
-                        onChange={this.fixerLocation}>
-                        <option disabled selected>by Location</option>
-                        <option value={'Woodlands'}>Woodlands</option>
-                        <option value={'Kabulonga'}>Kabulonga</option>
-                        <option value={'Roma'}>Roma</option>
-                      </select>
-                      {/* </label> */}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              {/* list of fixers */}
-              <div>  {
+            </Card>
+          </div>
+          <div className="col ml-3 ">
+            {/* <div className="mt-2 mb-1">{this.state.typeOfUsers}</div> */}
+
+            <div className="row pl-4 justify-content-between pr-4">
+
+
+              {
 
                 (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
-                  <Card className="pt-3 pb-3 mb-3 " key={i}
+                  <Card className=" col-md-5 pt-3 pb-3 mb-4 " key={i}
                     onClick={() =>
-                      this.handleCardClick(element.userUID)}><CardContent>
-                      <div key={i} className="row justify-content-center">
-                        <div key={i} className="col-4 mb-2 text-center">
+                      (userUID === null) ? this.setState({
+                        open: true
+                      }) :
+                        this.handleCardClick(element.userUID)}>
+                    <CardContent>
+                      <div className="row justify-content-center">
+                        <div className="col-md-6 mb-2 text-center">
                           <img
                             className="card-img-top rounded-circle"
                             src={element.pic}
-                            style={{ width: 68, height: 68 }}
+                            style={{ width: 100, height: 100 }}
                             alt={'profile pic'}
                           />
                         </div>
-                        <div className="col-8 text-align-center">
+                        <div className="col-md-6  text-align-center">
                           <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
-                          <b>Rating:</b>   {this.starsCount(element.rating)}<br />
+
                           <b>  Skills: </b>{(element.skills !== undefined) ? `${
                             element.skills.map((element, i) => (
                               element.label
                             ))
                             }` : null} <br />
                           <b> City:</b> {element.city} <br />
+
+                          {/* <Button className='mt-5' variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
+                        onClick={() => this.handleCardClick(element.userUID)}>View More</Button> */}
                         </div>
+
+                        {/* Modal when user clicks on a specific person */}
+
                       </div>
                     </CardContent>
                   </Card>
                 )) : <Loader />}
-              </div>
             </div>
-          } />
-        <Media query="(min-width: 481px)"
-          render={() =>
-            <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-start pt-4 ">
-              <div className="card col-md-2 ml-3  d-flex">
-                <div style={{ paddingLeft: 10 }} className="mt-3 justify-content-start text-center">
-                  <h5>BROWSE JOBS</h5>
-                  <hr />
-                </div>
-                {/* Three sample jobs for demo purposes. list can be as long as desired */}
-
-                <Button
-                  className="btn  mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }}
-                  onClick={() => this.handleClick('Maid')}
-                >Maid</Button>
-                <Button
-                  className="btn mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }}
-                  onClick={() => this.handleClick('Electrician')}
-                >
-                  Electrician
-            </Button>
-                <Button
-                  className="btn  mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }}
-                  onClick={() => this.handleClick('Carpenter')}
-                >
-                  Carpenter
-            </Button>
-                <Button
-                  className="btn  mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }}
-                  onClick={() => this.handleClick('All')}
-                >All</Button>
-
-              </div>
-              <div className="card col ml-3 ">
-                <div className="mt-2 mb-1">{this.state.typeOfUsers}</div>
-
-                <div className="row pl-4 justify-content-between mt-4 pr-4">
-
-
-                  {
-
-                    (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
-                      <div className="card col-md-5 pt-3 pb-3 mb-4 " key={i}
-                        onClick={() =>
-                          (userUID === null) ? this.setState({
-                            open: true
-                          }) :
-                            this.handleCardClick(element.userUID)}>
-                        <div className="row justify-content-center">
-                          <div className="col-md-6 mb-2 text-center">
-                            <img
-                              className="card-img-top rounded-circle"
-                              src={element.pic}
-                              style={{ width: 100, height: 100 }}
-                              alt={'profile pic'}
-                            />
-                          </div>
-                          <div className="col-md-6  text-align-center">
-                            <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
-
-                            <b>  Skills: </b>{(element.skills !== undefined) ? `${
-                              element.skills.map((element, i) => (
-                                element.label
-                              ))
-                              }` : null} <br />
-                            <b> City:</b> {element.city} <br />
-
-                            {/* <Button className='mt-5' variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
-                        onClick={() => this.handleCardClick(element.userUID)}>View More</Button> */}
-                          </div>
-
-                          {/* Modal when user clicks on a specific person */}
-
-                        </div>
-                      </div>
-                    )) : <Loader />}
-                </div>
-              </div>
-              <Snackbar className="mb-4"
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                open={this.state.open} //change to this.state.open to show snackbar
-                autoHideDuration={3000}
-                onClose={this.handleClose}
-                ContentProps={{
-                  'aria-describedby': 'message-id',
-                }}
-                message={<span id="message-id">Login first</span>}
-              />
-            </div >} />
+          </div>
+          <Snackbar className="mb-4"
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={this.state.open} //change to this.state.open to show snackbar
+            autoHideDuration={3000}
+            onClose={this.handleClose}
+            ContentProps={{
+              'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">Login first</span>}
+          />
+        </div >
 
       </div >
     );
