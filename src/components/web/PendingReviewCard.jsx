@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { browserHistory } from 'react-router';
 import Firebase from '../../config/firebase';
+import WhiteLoader from './WhiteLoader';
 
 
 
@@ -36,7 +37,8 @@ class SimpleCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            serviceRequests: []
+            serviceRequests: [],
+            loaded: false
         }
         Firebase.database()
             .ref(`Users/${userUID}/serviceRequests`)
@@ -47,7 +49,8 @@ class SimpleCard extends React.Component {
                         element.push(requestService[index])
                     }
                     this.setState({
-                        serviceRequests: element
+                        serviceRequests: element,
+                        loaded: true
                     })
                 }
             })
@@ -59,47 +62,48 @@ class SimpleCard extends React.Component {
     render() {
 
         return (
-            <div className="container-fluid">
-                {(this.state.serviceRequests.length !== 0) ? <div>
-                    <div style={{ textAlign: "center" }}>  <h5 className="whiteText pb-2">Requested Fixers</h5></div>
-                    <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col whiteText">Fixer</th>
-                                <th scope="col whiteText">Profession</th>
-                                <th scope="col whiteText">Review Status</th>
-                            </tr>
-                        </thead>
+            <div className="row justify-content-center container-fluid">
+                {(this.state.loaded) ?
+                    (this.state.serviceRequests.length !== 0) ? <div className='col-md-8'>
+                        <div style={{ textAlign: "center" }}>  <h5 className="whiteText pb-2">Requested Fixers</h5></div>
+                        <table style={{ backgroundColor: '#fff' }} className="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col whiteText">Fixer</th>
+                                    <th scope="col whiteText">Profession</th>
+                                    <th scope="col whiteText">Review Status</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>{this.state.serviceRequests.map((element, i) =>
+                            <tbody>{this.state.serviceRequests.map((element, i) =>
 
-                            <tr key={i}>
-                                <th scope="row"> <Typography className='p whiteText'>
-                                    {element.fixerFullName}</Typography></th>
-                                <th scope="row"><Typography className='p whiteText'>
-                                    {element.profession}</Typography></th>
-                                <th scope="row">
-                                    <Button size="small"
-                                        className="btn"
-                                        type="button"
-                                        variant='contained'
-                                        style={{ backgroundColor: '#FFF', color: '#000' }}
-                                        onClick={() =>
-                                            (element.reviewStatus === 'pending') ?
-                                                browserHistory.push({
-                                                    pathname: '/givereview',
-                                                    state: {
-                                                        'fixerUID': element.fixerUID
-                                                    }
-                                                }) : null
-                                        }
-                                    >{(element.reviewStatus === 'pending') ? `Pending` : null}
-                                        {(element.reviewStatus === 'reviewed') ? `Reviewed` : null}
-                                    </Button>
+                                <tr key={i}>
+                                    <th scope="row"> <Typography className='p whiteText'>
+                                        {element.fixerFullName}</Typography></th>
+                                    <th scope="row"><Typography className='p whiteText'>
+                                        {element.profession}</Typography></th>
+                                    <th scope="row">
+                                        <Button size="small"
+                                            className="btn"
+                                            type="button"
+                                            variant='contained'
+                                            style={{ backgroundColor: '#FFF', color: '#000' }}
+                                            onClick={() =>
+                                                (element.reviewStatus === 'pending') ?
+                                                    browserHistory.push({
+                                                        pathname: '/givereview',
+                                                        state: {
+                                                            'fixerUID': element.fixerUID
+                                                        }
+                                                    }) : null
+                                            }
+                                        >{(element.reviewStatus === 'pending') ? `Pending` : null}
+                                            {(element.reviewStatus === 'reviewed') ? `Reviewed` : null}
+                                        </Button>
 
-                                </th>
-                            </tr>
-                        )}</tbody> </table></div> : <div className='row justify-content-center'><h5 className='whiteText'>No service requests yet</h5></div>}
+                                    </th>
+                                </tr>
+                            )}</tbody> </table></div> : <div className='row justify-content-center'><h5 className='whiteText'>No service requests yet</h5></div> : <WhiteLoader />}
 
 
             </div>

@@ -15,7 +15,7 @@ class ProfileUser2 extends React.Component {
         super(props)
         this.state = {
             loaded: false,
-            edit: true,
+            edit: false,
             fullName: '',
             phoneNumber: '',
             profilePic: placeholderPic
@@ -102,9 +102,9 @@ class ProfileUser2 extends React.Component {
         return (
             <div>
                 <Navbar />
-                <div className="container-fluid pb-5" style={{ backgroundColor: "#0dbab1", }}>
+                <div className="row justify-content-center container-fluid  pb-5" style={{ backgroundColor: "#0dbab1", height: '90vh' }}>
                     {
-                        (this.state.loaded) ? <div><div className='pt-4' style={{ textAlign: 'center' }}><h5 className='whiteText'>Personal Information</h5></div>
+                        (this.state.loaded) ? <div className='col-md-4'><div className='pt-4' style={{ textAlign: 'center' }}><h5 className='whiteText'>Personal Information</h5></div>
                             <div className="row justify-content-center pt-4 mb-5">
                                 <div className='col-12 row justify-content-center'>
                                     <img

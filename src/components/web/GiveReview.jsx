@@ -6,6 +6,7 @@ import Rating from './Rating';
 import Firebase from '../../config/firebase';
 import { browserHistory } from 'react-router';
 import placeholderPic from '../../images/profile_placeholder.png'
+import TextField from '@material-ui/core/TextField';
 
 Modal.setAppElement('#root');
 const currentUserData = JSON.parse(localStorage.getItem('currentUserData'));
@@ -21,7 +22,7 @@ class GiveReview extends React.Component {
             modal4IsOpen: false,
             comment: '',
             rating: null,
-            fixerUID: this.props.location.state.fixerUID
+            fixerUID: (this.props.location.state !== undefined) ? this.props.location.state.fixerUID : null
         }
         this.submitReview = this.submitReview.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
@@ -68,11 +69,11 @@ class GiveReview extends React.Component {
         })
 
     }
-    handleChangeInput = ({ target: { value, placeholder } }) => {
-        switch (placeholder) {
-            case "leave a comment":
+    handleChangeInput = (event) => {
+        switch (event.target.id) {
+            case "comment":
                 this.setState({
-                    comment: value
+                    comment: event.target.value
                 })
                 break;
             default:
@@ -93,7 +94,7 @@ class GiveReview extends React.Component {
                 {/* did they pick up the call modal */}
                 <Modal
                     isOpen={this.state.modal1IsOpen}
-                    //style={customStyles}
+                    style={customStyles}
                     id="modalStyles"
                     contentLabel="Example Modal">
                     <h5>Did the Fixer pick up the call</h5>
@@ -104,10 +105,12 @@ class GiveReview extends React.Component {
                                 type="button"
                                 variant='contained'
                                 style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={() => this.setState({
-                                    modal1IsOpen: false
-                                })
-
+                                onClick={() => {
+                                    this.setState({
+                                        modal1IsOpen: false
+                                    })
+                                    browserHistory.push({ pathname: '/requestservice' })
+                                }
                                 }
                             >NO</Button>
                         </div>
@@ -127,7 +130,7 @@ class GiveReview extends React.Component {
                 </Modal>
                 <Modal
                     isOpen={this.state.modal2IsOpen}
-                    //style={customStyles}
+                    style={customStyles}
                     id="modalStyles"
                     contentLabel="Example Modal">
                     <h5>Have they finished the job?</h5>
@@ -138,9 +141,12 @@ class GiveReview extends React.Component {
                                 type="button"
                                 variant='contained'
                                 style={{ backgroundColor: '#FFF', color: '#000' }}
-                                onClick={() => this.setState({
-                                    modal2IsOpen: false
-                                })}
+                                onClick={() => {
+                                    this.setState({
+                                        modal2IsOpen: false
+                                    })
+                                    browserHistory.push({ pathname: '/requestservice' })
+                                }}
                             >NO</Button>
                         </div>
                         <div className="col-6" style={{ textAlign: 'center' }}>
@@ -160,7 +166,7 @@ class GiveReview extends React.Component {
                 {/* rate their service */}
                 <Modal
                     isOpen={this.state.modal3IsOpen}
-                    //style={customStyles}
+                    style={customStyles2}
                     id="modalStyles"
                     contentLabel="Example Modal">
                     <h5>How well would you rate this fixer</h5>
@@ -168,9 +174,21 @@ class GiveReview extends React.Component {
                         <Rating rating={this.state.rating} handleChange={this.handleChange} />
                     </div>
                     <h5 className="mt-3 mb-3">Comments</h5>
-                    <div className='row justify-content-center  '>
-                        <textarea rows="3" value={this.state.comment} onChange={this.handleChangeInput}
-                            placeholder="leave a comment" required ></textarea>
+                    <div className='row justify-content-center mb-3  '>
+                        <TextField
+                            id="comment"
+                            multiline
+                            rows="3"
+                            // helperText="Full width!"
+                            fullWidth
+                            // defaultValue="Default Value"
+                            className='col-md-8'
+                            margin="normal"
+                            value={this.state.comment}
+                            onChange={this.handleChangeInput}
+                        />
+                        {/* <textarea style={{ width: 200 }} rows="3" value={this.state.comment} onChange={this.handleChangeInput}
+                            placeholder="leave a comment" required ></textarea> */}
                     </div>
                     <div className='mt-5 row justify-content-center '>
                         <Button
@@ -182,7 +200,7 @@ class GiveReview extends React.Component {
                         >SUBMIT REVIEW</Button>
                     </div>
                 </Modal>
-                <Modal isOpen={this.state.modal4IsOpen}>
+                <Modal style={customStyles} isOpen={this.state.modal4IsOpen}>
                     <div style={{ textAlign: 'center' }}>
                         <p>Thank you for your review!</p>
                         <div className='mt-5 row justify-content-center '>
@@ -203,6 +221,33 @@ class GiveReview extends React.Component {
     }
 }
 
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        width: '50vw',
+        height: '50vh',
+        textAlign: 'center'
+    }
+};
+
+const customStyles2 = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        width: '50vw',
+        height: '80vh',
+        textAlign: 'center'
+    }
+};
 
 
 
