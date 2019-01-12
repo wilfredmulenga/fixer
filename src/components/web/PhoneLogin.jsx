@@ -69,7 +69,7 @@ class PhoneLogin extends React.Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar showButton={false} />
                 {
                     //if user is logged in and the press login button it shows sign out dialog
                     (userUID !== 'null') ?

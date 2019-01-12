@@ -187,21 +187,21 @@ class Categories extends React.Component {
           <div className="col ml-3 ">
             {/* <div className="mt-2 mb-1">{this.state.typeOfUsers}</div> */}
 
-            <div className="row pl-4 justify-content-between pr-4">
+            <div className="row pl-4 justify-content-start pr-4">
 
 
               {
 
                 (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
-                  <Card className=" col-md-5 pt-3 pb-3 mb-4 " key={i}
+                  <Card className=" col-md-5 pt-3 pb-3 mb-4  mr-4" key={i}
                     onClick={() =>
                       (userUID === null) ? this.setState({
                         open: true
                       }) :
                         this.handleCardClick(element.userUID)}>
                     <CardContent>
-                      <div className="row justify-content-center">
-                        <div className="col-md-6 mb-2 text-center">
+                      <div className="row justify-content-between align-items-center">
+                        <div className="col-md-4 mb-2 text-center">
                           <img
                             className="card-img-top rounded-circle"
                             src={element.pic}
@@ -209,7 +209,7 @@ class Categories extends React.Component {
                             alt={'profile pic'}
                           />
                         </div>
-                        <div className="col-md-6  text-align-center">
+                        <div className="col-md-7  text-align-center">
                           <b>   Name: </b> {`${element.firstName} ${element.lastName}`}<br />
 
                           <b>  Skills: </b>{(element.skills !== undefined) ? `${
@@ -217,7 +217,7 @@ class Categories extends React.Component {
                               element.label
                             ))
                             }` : null} <br />
-                          <b> City:</b> {element.city} <br />
+                          <b> Location:</b> {element.location} <br />
 
                           {/* <Button className='mt-5' variant='contained' style={{ backgroundColor: '#FFF', color: '#000' }}
                         onClick={() => this.handleCardClick(element.userUID)}>View More</Button> */}

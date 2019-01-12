@@ -19,8 +19,10 @@ class Navbar extends React.Component {
       emailAddress: '',
       showError: false,
       submitSuccess: false,
-      tryAgain: false
+      tryAgain: false,
+      showButton: (this.props.showButton === undefined) ? true : false
     }
+   
     this.handleOnClick = this.handleOnClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -118,9 +120,9 @@ class Navbar extends React.Component {
             </ul>
 
 
-            <button className="btn link my-2 my-sm-0"
+            {(this.state.showButton) ? <button className="btn link my-2 my-sm-0"
               onClick={() => this.handleOnClick()}
-            >Become A Fixer</button>
+            >Become A Fixer</button> : null}
 
           </div>
         </nav>
@@ -129,11 +131,12 @@ class Navbar extends React.Component {
           This application is currently under testing. Feel free to give us feedback at < Link to='/contactus' > suppport@myfixerapp.com</Link >
         </div >
         <Modal
+          style={customStyles}
           isOpen={this.state.openModal}
 
         >
-          <div style={{ textAlign: 'center', height: '100%' }} >
-            <div className='container-fluid'  >
+          <div className='row justify-content-center' >
+            <div className='col-md-8'   >
               <h5 className='greenText mb-3'>Become a Fixer</h5>
               <TextField
                 id="fullName"
@@ -172,26 +175,29 @@ class Navbar extends React.Component {
               <input style={{ width: '90%' }} className='mb-1' type='text' placeholder='phone number' value={this.state.phoneNumber} onChange={this.handleInputChange}></input>
               <input style={{ width: '90%' }} className='mb-1' type='email' placeholder='email address' value={this.state.emailAddress} onChange={this.handleInputChange}></input> */}
             </div>
-            <div>
-              {(this.state.showError) ? <p style={{ color: 'red' }}>Please input all fields</p> : null}
-            </div>
-            <div className='align-self-end mt-5'>
-              <div className='row justify-content-around '>
-                <Button className="btn  mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.setState({
-                    openModal: false
-                  })}>Close</Button>
-                <Button className="btn  mb-1"
-                  type="button"
-                  variant='contained'
-                  style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.handleSubmit()}>Submit</Button>
-              </div>
+
+
+          </div>
+          <div>
+            {(this.state.showError) ? <p style={{ color: 'red' }}>Please input all fields</p> : null}
+          </div>
+          <div className='align-self-end mt-5'>
+            <div className='row justify-content-around '>
+              <Button className="btn  mb-1"
+                type="button"
+                variant='contained'
+                style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.setState({
+                  openModal: false
+                })}>Close</Button>
+              <Button className="btn  mb-1"
+                type="button"
+                variant='contained'
+                style={{ backgroundColor: '#FFF', color: '#000' }} onClick={() => this.handleSubmit()}>Submit</Button>
             </div>
           </div>
         </Modal>
         <Modal
+          style={customStyles}
           isOpen={this.state.submitSuccess}>
           <div style={{ height: '100%' }} className='row container-fluid justify-content-center align-items-center'>
             <h5 className='mb-5 greenText'>Thank you for signing up! Our Fixer Team will be in contact soon.</h5>
@@ -204,6 +210,7 @@ class Navbar extends React.Component {
           </div>
         </Modal>
         <Modal
+          style={customStyles}
           isOpen={this.state.tryAgain}>
           <div style={{ height: '100%' }} className='row container-fluid justify-content-center align-items-center'>
             <h5 className='mb-5 greenText'>Ooops! something went wrong. Please try again</h5>
@@ -221,6 +228,20 @@ class Navbar extends React.Component {
     );
   }
 }
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '50vw',
+    height: '80vh',
+    textAlign: 'center'
+  }
+};
 
 export default Navbar;
 
