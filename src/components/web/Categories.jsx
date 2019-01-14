@@ -1,11 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Navbar from './Navbar';
-import Button from '@material-ui/core/Button';
 import { browserHistory } from 'react-router';
 import Loader from './Loader';
 import Snackbar from '@material-ui/core/Snackbar'
-import Media from 'react-media';
 import starFilled from '../../images/icons8-star-filled-7.png';
 import starOutlined from '../../images/icons8-star-7.png';
 import Card from '@material-ui/core/Card';

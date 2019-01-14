@@ -102,7 +102,7 @@ class ProfileUser2 extends React.Component {
         return (
             <div>
                 <Navbar />
-                <div className="row justify-content-center container-fluid  pb-5" style={{ backgroundColor: "#0dbab1", height: '90vh' }}>
+                <div className="row justify-content-center container-fluid  pb-5" style={{ backgroundColor: "#0dbab1" }}>
                     {
                         (this.state.loaded) ? <div className='col-md-4'><div className='pt-4' style={{ textAlign: 'center' }}><h5 className='whiteText'>Personal Information</h5></div>
                             <div className="row justify-content-center pt-4 mb-5">
@@ -110,7 +110,7 @@ class ProfileUser2 extends React.Component {
                                     <img
                                         className="card-img-top rounded-circle"
                                         src={this.state.profilePic}
-                                        style={{ width: 72, height: 72 }}
+                                        style={{ width: 96, height: 96 }}
                                         alt={'profile pic'}
                                     />
                                 </div>

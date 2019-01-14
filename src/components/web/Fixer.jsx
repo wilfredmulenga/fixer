@@ -1,19 +1,17 @@
 import React from 'react';
 import Navbar from './Navbar'
 import Button from '@material-ui/core/Button';
-import Media from 'react-media';
-import placeHolderImage from '../../images/profilepic.jpeg';
 import SwipeableTextMobileStepper from './SwipeableTextMobileStepper';
 import FixerReviews from './FixerReviews';
 import Firebase from '../../config/firebase';
-import Snackbar from '@material-ui/core/Snackbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { browserHistory } from 'react-router';
 
-const textStyle = {
-    fontSize: 13,
-    marginBottom: 3
-}
+// const textStyle = {
+//     fontSize: 13,
+//     marginBottom: 3
+// }
 const userUID = localStorage.getItem('userUID')
 class Fixer extends React.Component {
     constructor(props) {
@@ -30,9 +28,9 @@ class Fixer extends React.Component {
     }
 
     handleServiceRequest = () => {
-        console.log(typeof userUID)
+
         if (userUID !== 'null') {
-            console.log('if statement')
+
             Firebase.database()
                 .ref(`Users/${userUID}/serviceRequests`)
                 .push({
@@ -64,13 +62,23 @@ class Fixer extends React.Component {
                                 <div className="row mb-4">
                                     <div className="mr-5"><img
                                         className="card-img-top rounded-circle"
-                                        alt='profile pic' style={{ width: '152px', height: '152px' }} src={placeHolderImage} /></div>
+                                        alt='profile pic' style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
                                     <div>
                                         <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
                                         <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.city} City`}</p>
+                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`Roma`}</p>
                                         {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.phoneNumber}`}</p>
+                                        {(userUID !== 'null') ? <p style={{ marginTop: 0, marginBottom: 0 }}>{`0979000000`}</p> :
+                                            <Button
+                                                className="btn mt-2 mb-1"
+                                                type="button"
+                                                variant='contained'
+                                                style={{ backgroundColor: '#FFF', color: '#000' }}
+                                                onClick={() => browserHistory.push({
+                                                    pathname: '/phonelogin'
+                                                })}
+                                            >Login to view Contact</Button>
+                                        }
                                     </div>
                                 </div>
                             </div>
