@@ -218,7 +218,7 @@ class Categories extends React.Component {
                               element.label
                             ))
                             }` : null} <br />
-                          <b> City:</b> {element.city} <br />
+                          <b> Area:</b> {element.location} <br />
                         </div>
                       </div>
                     </CardContent>

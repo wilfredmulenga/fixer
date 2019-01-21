@@ -61,11 +61,11 @@ class Home extends React.Component {
           <Navbar />
           <div id="landingPage" style={{ height: "100vh" }} className="blueBackground col-md-12 col-sm-12">
             <div className='container-fluid' style={{
-              position: 'absolute', bottom: 0, width: '100%', height: '90%',
+              position: 'absolute', bottom: 0, width: '100%', height: '70%',
               textAlign: 'center', padding: 10
             }}>
-              <p style={{ fontSize: 32, color: '#fff', float: 'center', }}>The convenient way to find reliable tradesmen in your neighborhood</p>
-              <p style={{ fontSize: 17, color: '#fff', float: 'center', fontStyle: 'oblique' }}>Choose from our list of vetted tradesmen for help without all the fuss.</p>
+              <p class='heading' style={{ fontStyle: 'bold', fontSize: 36, color: '#fff', float: 'center', }}>The convenient way to find reliable tradesmen in your neighborhood</p>
+              <p class='subHeading mt-5 mb-1' style={{ fontSize: 22, color: '#fff', float: 'center', fontStyle: 'oblique' }}>Choose from our list of vetted tradesmen for help without all the fuss.</p>
 
               <div className='mt-5'>
                 <Button className="btn  mb-1"
@@ -91,23 +91,23 @@ class Home extends React.Component {
             {/* Contact */}
             <div style={{ backgroundColor: '#007470', color: 'black' }} >
 
-              <div className="container pt-3 pb-3">
+              <div className="container pt-5 pb-3">
                 {/* <div className='text-center'><h3>Get in touch with us</h3></div> */}
                 <div className="row justify-content-between">
                   <div className="col-md-4">
-                    <h4 className="mb-3" style={{ color: '#ffff' }}>Links</h4>
+                    <h4 className="mb-3 heading" style={{ color: '#ffff' }}>Links</h4>
                     <Link to="/privacypolicy" style={{ color: "#fff" }} className="link">Privacy Policy</Link>
                   </div>
                   <div className="col-md-4 align-items-center">
 
-                    <h4 className="mb-3" style={{ color: '#ffff' }}>Contact</h4>
+                    <h4 className="mb-3 heading" style={{ color: '#ffff' }}>Contact</h4>
                     <h5 style={{ color: "#fff" }}>Email: <Link style={{ color: "#fff" }} to='/contactus'>support@myfixerapp.com</Link></h5>
-                    <h5 style={{ color: "#fff" }}>Phone: 0967639241</h5>
+                    <h5 style={{ color: "#fff" }}>Phone: +260967639241</h5>
                     {/* <h5>Address:</h5> */}
 
                   </div>
                   <div className="col-md-4">
-                    <h4 className="mb-3" style={{ color: '#ffff' }}>Social Media</h4>
+                    <h4 className="mb-3 heading" style={{ color: '#ffff' }}>Social Media</h4>
                     <div className="justify-content-between">
                       <a href='https://web.facebook.com/FixerApp/?__xts__%5B0%5D=68.ARAhajZ5_xxcGPxF9I3hKsPez_rEai7f0oFA9T6zv7MOExER-gNR2H5PWh8wOAETh8NHRsE2PjBsbV9fcAkCE8imrlznsQJoIN7w_Z3n5EZsMYiEnq7rD9TaAUi6cLrOCebHBPLLzxS51ZpsVedkffBuzIpH4q7i3_h-p3tdlsUaj_0VKCT1JA&__tn__=-UK-R' >  <img src={facebookIcon} alt="twitter icon" /></a>
                       <a href="https://twitter.com/fixer_app"><img src={twitterIcon} alt="twitter icon" /></a>

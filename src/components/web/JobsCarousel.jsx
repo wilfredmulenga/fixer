@@ -5,9 +5,9 @@ import CleaningImage from '../../images/cleaning.jpg';
 
 export default function JobsCarousel() {
     return (
-        <div className="container whiteBackground col-md-12 col-sm-12">
+        <div className="container whiteBackground col-md-12 col-sm-12 mb-3">
             <br />
-            <div className='text-center mb-5'><h2 style={{ color: '#0dbab1', fontSize: 40 }}>Gallery</h2></div>
+            <div className='text-center mb-5 heading'><h2 style={{ color: '#0dbab1', fontSize: 40, fontStyle: 'bold' }}>Gallery</h2></div>
 
             <div className='row justify-content-around '>
                 <div className="card" style={{ width: "21rem", border: "1px solid white", textAlign: "center" }}>

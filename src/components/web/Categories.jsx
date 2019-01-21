@@ -153,11 +153,11 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar />
-        <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  container-fluid justify-content-center pt-4 ">
+        <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-center pt-4 ">
           <div className=" col-md-3 ml-3">
             <Card >
               <CardContent style={{ paddingLeft: 10 }} className="mt-3 justify-content-start text-center">
-                <h5>FILTER</h5>
+                <h4 className='greenText' style={{ fontStyle: 'bold' }}>FILTER</h4>
                 <hr />
                 <select
                   className="form-control mb-3"

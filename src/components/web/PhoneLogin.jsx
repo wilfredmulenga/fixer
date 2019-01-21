@@ -76,7 +76,7 @@ class PhoneLogin extends React.Component {
                         (<div className='mt-5' >
                             <div style={{ marginTop: 50, textAlign: 'center' }}>{
                                 <div>
-                                    <h1> Sign Out of Fixer? </h1>
+                                    <h1 className='greenText'> Sign Out of Fixer? </h1>
                                     <div className='row justify-content-center' style={{ textAlign: 'center' }}>
                                         <Button className='mt-5 mr-5' variant='contained' color='secondary'
                                             onClick={this.handleSignOut}>Yes</Button>
@@ -93,7 +93,7 @@ class PhoneLogin extends React.Component {
                         :
                         //else it shows sign in dialog
                         (<div className='mt-5 text-center'>
-                            <h1 style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
+                            <h1 className='greenText' style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
                             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
 
                         </div>)
