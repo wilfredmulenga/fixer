@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import * as emailjs from '../../../node_modules/emailjs-com';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 
 var userUID = localStorage.getItem('userUID')
+console.log('navbar', userUID)
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Navbar extends React.Component {
       tryAgain: false,
       showButton: (this.props.showButton === undefined) ? true : false
     }
-   
+
     this.handleOnClick = this.handleOnClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,24 +30,7 @@ class Navbar extends React.Component {
   handleSubmit = () => {
     if ((this.state.fullName !== '') && (this.state.profession !== '') &&
       (this.state.profession !== '') && (this.state.emailAddress !== '')) {
-      var templateParams = {
-        // name: 'helo',
-        // notes: 'helo'
-        name: `${this.state.fullName}`,
-        profession: `${this.state.profession}`,
-        phoneNumber: `${this.state.phoneNumber}`,
-        emailAddress: `${this.state.emailAddress}`
-      };
 
-      emailjs.send('default_service', 'received_your_query', templateParams, process.env.REACT_APP_EMAILJS_USER_ID)
-        .then(function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-        }, function (error) {
-          console.log('FAILED...', error);
-          this.setState({
-            tryAgain: true
-          })
-        });
       this.setState({
         submitSuccess: true,
         openModal: false
@@ -61,7 +44,7 @@ class Navbar extends React.Component {
   }
 
   handleInputChange = (event) => {
-    console.log()
+
     switch (event.target.id) {
       case 'fullName':
         this.setState({
@@ -111,11 +94,11 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" style={{ color: "#fff" }} className="link">Categories</Link>
               </li>
-              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li> : null}
+              {((userUID === 'null') || (userUID === null)) ? null : <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li>}
               {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
-              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li> : null}
+              {((userUID === 'null') || (userUID === null)) ? null : <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li>}
               <li className="nav-item active mr-3">
-                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
+                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{((userUID === 'null') || (userUID === null)) ? `Login` : `Logout`}</Link>
               </li>
             </ul>
 

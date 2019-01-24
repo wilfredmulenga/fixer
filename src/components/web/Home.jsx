@@ -96,7 +96,9 @@ class Home extends React.Component {
                 <div className="row justify-content-between">
                   <div className="col-md-4">
                     <h4 className="mb-3 heading" style={{ color: '#ffff' }}>Links</h4>
-                    <Link to="/privacypolicy" style={{ color: "#fff" }} className="link">Privacy Policy</Link>
+                    <Link to="/privacypolicy" style={{ color: "#fff" }} className="link">Privacy Policy</Link><br />
+                    <a href='http://bit.ly/fixertermsofuse' rel="noopener noreferrer" target='_blank' style={{ color: "#fff" }} className="link">Terms of Use</a>
+
                   </div>
                   <div className="col-md-4 align-items-center">
 

@@ -1,6 +1,6 @@
 {
   "projects": {
     "staging": "fixer-test",
-    "default": "fixer-2fd6e"
+    "default": "fixer-test"
   }
 }

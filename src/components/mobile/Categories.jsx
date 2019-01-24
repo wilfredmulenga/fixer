@@ -174,6 +174,7 @@ class Categories extends React.Component {
                         <option value={'Maid'}>Maid</option>
                         <option value={'Electrician'}>Electrician</option>
                         <option value={'Carpenter'}>Carpenter</option>
+                        <option value={'Cleaning'}>Carpenter</option>
 
                       </select>
                       {/* </label> */}
@@ -188,6 +189,7 @@ class Categories extends React.Component {
                         <option value={'Woodlands'}>Woodlands</option>
                         <option value={'Kabulonga'}>Kabulonga</option>
                         <option value={'Roma'}>Roma</option>
+                        <option value={'Within Lusaka'}>Roma</option>
                       </select>
                       {/* </label> */}
                     </div>

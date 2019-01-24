@@ -109,11 +109,11 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" style={{ color: "#fff" }} className="link">Categories</Link>
               </li>
-              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li> : null}
+              {((userUID !== 'null') || (userUID !== null)) ? <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li> : null}
               {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
-              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li> : null}
+              {((userUID !== 'null') || (userUID !== null)) ? <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li> : null}
               <li className="nav-item active mr-3">
-                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(localStorage.getItem('userUID') !== 'null') ? `Logout` : `Login`}</Link>
+                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{((userUID === 'null') || (userUID === null)) ? `Login` : `Logout`}</Link>
               </li>
             </ul>
 
@@ -125,9 +125,7 @@ class Navbar extends React.Component {
           </div>
         </nav>
         {/* Currently under testing notice */}
-        <div className="alert alert-warning text-center" style={{ marginBottom: 0 }} role="alert" >
-          This application is currently under testing. Feel free to give us feedback at < Link to='/contactus' > suppport@myfixerapp.com</Link >
-        </div >
+
         <Modal
           isOpen={this.state.openModal}
 

@@ -8,10 +8,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { browserHistory } from 'react-router';
 
-// const textStyle = {
-//     fontSize: 13,
-//     marginBottom: 3
-// }
+const textStyle = {
+    fontSize: 18,
+    marginBottom: 3,
+    marginTop: 3
+}
 const userUID = localStorage.getItem('userUID')
 class Fixer extends React.Component {
     constructor(props) {
@@ -56,19 +57,25 @@ class Fixer extends React.Component {
 
                 <div style={{ backgroundColor: "#0dbab1" }}
                     className=" row justify-content-center ">
-                    <Card className="col-md-6 mt-5">
+                    <Card className="col-md-8 mt-5">
                         <CardContent>
                             <div >
-                                <div className="row mb-4">
-                                    <div className="mr-5"><img
+                                <div className="row mb-4 justify-content-center">
+                                    <div className="col-md-3 "><img
                                         className="card-img-top rounded-circle"
-                                        alt='profile pic' style={{ width: '152px', height: '152px' }} src={fixerProfile.pic} /></div>
-                                    <div>
-                                        <p style={{ fontSize: 42, marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</p>
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.profession}`}</p>
-                                        <p style={{ marginTop: 0, marginBottom: 0 }}>{`Roma`}</p>
+                                        alt='profile pic' style={{ width: '152px', height: '152px', objectFit: 'cover' }} src={fixerProfile.pic} /></div>
+                                    <div className="col-md-9">
+                                        <h4 style={{ fontStyle: 'bold', marginTop: 0, marginBottom: 0 }}>{`${fixerProfile.firstName} ${fixerProfile.lastName}`}</h4>
+                                        <p style={textStyle}>{`Profession: ${fixerProfile.profession}`}</p>
+                                        <p style={textStyle}>{`Serviceable Area: ${fixerProfile.location}`}</p>
                                         {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
-                                        {(userUID !== 'null') ? <p style={{ marginTop: 0, marginBottom: 0 }}>{`0979000000`}</p> :
+                                        {(userUID === 'null') ? (<div><p style={textStyle}>{(fixerProfile.phoneNumber) ? `Phone Number: ${fixerProfile.phoneNumber}` : null}
+                                        </p>
+                                            <p style={textStyle}> {(fixerProfile.email) ? `Email: ${fixerProfile.email}` : null}
+                                            </p>
+                                            <a style={textStyle} href={(fixerProfile.websit !== null) ? fixerProfile.website : null}> {(fixerProfile.website) ? `Website: ${fixerProfile.website}` : null}
+                                            </a>
+                                        </div>) :
                                             <Button
                                                 className="btn mt-2 mb-1"
                                                 type="button"
@@ -82,17 +89,12 @@ class Fixer extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <SwipeableTextMobileStepper />
+                            <SwipeableTextMobileStepper galleryOfWork={fixerProfile.galleryOfWork} />
                             <hr />
                             <div className='container-fluid mb-4' style={{ backgroundColor: '#fafafa', textAlign: 'center' }}>
                                 <p>
-                                    I Install and maintain wiring, control, and
-        lighting systems. Inspect electrical components, such as
-         transformers and circuit breakers. Identify electrical
-         problems with a variety of testing devices. Repair or
-         replace wiring, equipment, or fixtures using hand tools
-        and power tools.
-                            </p>
+                                    {(fixerProfile.briefDescription !== null) ? <p>{fixerProfile.briefDescription}</p> : null}
+                                </p>
                             </div>
                             <hr />
                             <FixerReviews fixerUID={this.state.fixerProfile.userUID} />

@@ -9,27 +9,25 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import working from '../../images/working.jpg';
-import plumber from '../../images/plumber.jpg';
-import carpenter from '../../images/carpenter.jpeg';
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const tutorialSteps = [
-  {
-    label: 'This is me working on a grill door',
-    imgPath: working,
-  },
-  {
-    label: 'And this is me fixing a outdoor pipe',
-    imgPath: plumber
-  },
-  {
-    label: 'This is me making a kitchen table',
-    imgPath: carpenter
-  },
+// `const tutorialSteps = [
+//   {
+//     label: 'This is me working on a grill door',
+//     imgPath: working,
+//   },
+//   {
+//     label: 'And this is me fixing a outdoor pipe',
+//     imgPath: plumber
+//   },
+//   {
+//     label: 'This is me making a kitchen table',
+//     imgPath: carpenter
+//   },
 
-];
+// ];`
 
 const styles = theme => ({
   root: {
@@ -53,9 +51,15 @@ const styles = theme => ({
 });
 
 class SwipeableTextMobileStepper extends React.Component {
-  state = {
-    activeStep: 0,
-  };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      galleryOfWork: Object.values(this.props.galleryOfWork),
+      activeStep: 0
+    }
+  }
+
 
   handleNext = () => {
     this.setState(prevState => ({
@@ -73,15 +77,16 @@ class SwipeableTextMobileStepper extends React.Component {
     this.setState({ activeStep });
   };
 
+
   render() {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
-    const maxSteps = tutorialSteps.length;
-
+    const maxSteps = this.state.galleryOfWork.length;
+    console.log(this.state.galleryOfWork)
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].label}</Typography>
+          <Typography>{this.state.galleryOfWork[activeStep].text}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -89,10 +94,10 @@ class SwipeableTextMobileStepper extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map((step, index) => (
+          {this.state.galleryOfWork.map((step, index) => (
             <div key={step.label}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.imgPath} alt={step.label} />
+                <img className={classes.img} src={step.photo} alt={step.text} />
               ) : null}
             </div>
           ))}

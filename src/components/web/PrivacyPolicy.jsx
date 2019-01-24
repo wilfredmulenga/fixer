@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
                 <h1>Privacy Policy</h1>
 
 
-                <p>Effective date: October 03, 2018</p>
+                <p>Effective date: January 03, 2018</p>
 
 
                 <p>Fixer App Zambia Limited ("us", "we", or "our") operates the https://myfixerapp.com/ website (the "Service").</p>
@@ -107,7 +107,7 @@ export default function PrivacyPolicy() {
                 <h2>Contact Us</h2>
                 <p>If you have any questions about this Privacy Policy, please contact us:</p>
                 <ul>
-                    <li>By email: info@fixer-app.co</li>
+                    <li>By email: support@myfixerapp.com</li>
 
                 </ul>
             </div>

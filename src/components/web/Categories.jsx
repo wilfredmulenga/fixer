@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import Navbar from './Navbar';
 import { browserHistory } from 'react-router';
-import Loader from './Loader';
+import WhiteLoader from './WhiteLoader';
 import Snackbar from '@material-ui/core/Snackbar'
 import starFilled from '../../images/icons8-star-filled-7.png';
 import starOutlined from '../../images/icons8-star-7.png';
@@ -153,7 +153,7 @@ class Categories extends React.Component {
     return (
       <div>
         <Navbar />
-        <div style={{ height: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-center pt-4 ">
+        <div style={{ minHeight: '100vh', backgroundColor: '#0dbab1', paddingLeft: 10 }} className="row  justify-content-center pt-4 ">
           <div className=" col-md-3 ml-3">
             <Card >
               <CardContent style={{ paddingLeft: 10 }} className="mt-3 justify-content-start text-center">
@@ -167,7 +167,7 @@ class Categories extends React.Component {
                   <option value={'Maid'}>Maid</option>
                   <option value={'Electrician'}>Electrician</option>
                   <option value={'Carpenter'}>Carpenter</option>
-
+                  <option value={'Cleaning Services'}>Cleaning</option>
                 </select>
                 <select
                   className="form-control mb-3"
@@ -177,6 +177,7 @@ class Categories extends React.Component {
                   <option value={'Woodlands'}>Woodlands</option>
                   <option value={'Kabulonga'}>Kabulonga</option>
                   <option value={'Roma'}>Roma</option>
+                  <option value={'Within Lusaka'}>Within Lusaka</option>
                 </select>
               </CardContent>
 
@@ -190,7 +191,7 @@ class Categories extends React.Component {
 
               {
 
-                (filteredFixers !== ["empty"]) ? filteredFixers.map((element, i) => (
+                (filteredFixers !== 'empty') ? filteredFixers.map((element, i) => (
                   <Card className=" col-md-5 pt-3 pb-3 mb-4  mr-4" key={i}
                     onClick={() =>
                       (userUID === null) ? this.setState({
@@ -226,7 +227,7 @@ class Categories extends React.Component {
                       </div>
                     </CardContent>
                   </Card>
-                )) : <Loader />}
+                )) : <WhiteLoader />}
             </div>
           </div>
           <Snackbar className="mb-4"
