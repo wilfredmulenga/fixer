@@ -86,7 +86,7 @@ class SwipeableTextMobileStepper extends React.Component {
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{this.state.galleryOfWork[activeStep].text}</Typography>
+          {/* <Typography>{this.state.galleryOfWork[activeStep].text}</Typography> */}
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -95,7 +95,7 @@ class SwipeableTextMobileStepper extends React.Component {
           enableMouseEvents
         >
           {this.state.galleryOfWork.map((step, index) => (
-            <div key={step.label}>
+            <div key={index}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={step.photo} alt={step.text} />
               ) : null}

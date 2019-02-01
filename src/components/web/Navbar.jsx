@@ -26,6 +26,7 @@ class Navbar extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    console.log('userUID', typeof userUID, userUID)
   }
   handleSubmit = () => {
     if ((this.state.fullName !== '') && (this.state.profession !== '') &&
@@ -94,11 +95,11 @@ class Navbar extends React.Component {
               <li className="nav-item active mr-3">
                 <Link to="/categories" style={{ color: "#fff" }} className="link">Categories</Link>
               </li>
-              {((userUID === 'null') || (userUID === null)) ? null : <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li>}
+              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/user/profile" style={{ color: "#fff" }} className="link">Profile</Link>  </li> : null}
               {/* {(localStorage.getItem('typeOfUser') === 'fixer') ? <Link to="/fixer/profile" style={{ color: "#fff" }} className="link">Profile</Link> : null} */}
-              {((userUID === 'null') || (userUID === null)) ? null : <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li>}
+              {(userUID !== 'null') ? <li className="nav-item active mr-3"> <Link to="/requestservice" style={{ color: "#fff" }} className="link">Requested Services</Link>  </li> : null}
               <li className="nav-item active mr-3">
-                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{((userUID === 'null') || (userUID === null)) ? `Login` : `Logout`}</Link>
+                <Link to="/phonelogin" style={{ color: "#fff" }} className="link">{(userUID === 'null') ? `Login` : `Logout`}</Link>
               </li>
             </ul>
 

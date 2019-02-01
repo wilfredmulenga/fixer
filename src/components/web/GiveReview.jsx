@@ -80,12 +80,7 @@ class GiveReview extends React.Component {
 
         }
     }
-    handleChange = (rating) => {
-        this.setState({
-            rating: rating
-        })
 
-    }
 
     render() {
         return (
