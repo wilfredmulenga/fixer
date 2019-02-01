@@ -2,12 +2,19 @@ html {
   height:calc(100% - 70px);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav|Lato');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans|Questrial|Quicksand|Yantramanav|Lato|Merriweather|Josefin Sans|Roboto+Condensed:300i|Montserrat');
+
+.heading{
+  font-family: 'Merriweather',sans-serif;
+}
+.subHeading{
+  font-family: 'Roboto Condensed',sans-serif;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   height: 100%
 }
 #root {
@@ -59,7 +66,8 @@ h4{
 }
 
 .titles {
-  margin-bottom: 40px
+  margin-bottom: 60px;
+  padding-top : 30px
 }
 
 #leftBorder {

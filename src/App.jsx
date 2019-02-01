@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import { Router, browserHistory, Route } from 'react-router';
 import './styles/App.scss';
-import Categories from './components/Categories';
-import Home from './components/Home';
-import Messages from './Messages/Messages';
-import MessagesMobile from './Messages/MessagesMobile';
-import ChatHistoryMobile from './Messages/ChatHistoryMobile';
-import UpdateProfile from './Accounts/UpdateProfile';
-import Loader from './components/Loader'
+//components for mobile
+import CategoriesMobile from './components/mobile/Categories';
+import HomeMobile from './components/mobile/Home';
 // eslint-disable-next-line
 import jsonData from './database/fixer-test-export.json'
-import PhoneLogin from './components/PhoneLogin'
-import PrivacyPolicy from './components/PrivacyPolicy'
-import RequestService from './components/RequestedServices2'
+import PhoneLoginMobile from './components/mobile/PhoneLogin'
+import PrivacyPolicyMobile from './components/mobile/PrivacyPolicy'
+import RequestServiceMobile from './components/mobile/RequestedServices2'
 import Firebase from './config/firebase';
-import Profile from './Accounts/Profile';
-//import ProfileUser from './Accounts/User/ProfileUser';
-import UpdateProfileUser from './Accounts/User/UpdateProfileUser';
-import ProfileFixer from './Accounts/Fixer/ProfileFixer';
-import UpdateProfileFixer from './Accounts/Fixer/UpdateProfileFixer';
-import Fixer from './components/Fixer';
-import ProfileUser2 from './Accounts/User/ProfileUser2';
-import GiveReview from './components/GiveReview';
-import Media from 'react-media';
-import LargeDevice from './components/LargeDevice';
+import UpdateProfileUserMobile from './components/mobile/UpdateProfileUser';
+import ProfileFixerMobile from './components/mobile/ProfileFixer'
+import UpdateProfileFixerMobile from './components/mobile/UpdateProfileFixer';
+import FixerMobile from './components/mobile/Fixer';
+import ProfileUser2Mobile from './components/mobile/ProfileUser2';
+import GiveReviewMobile from './components/mobile/GiveReview';
+//components for web
+import CategoriesWeb from './components/web/Categories';
+import HomeWeb from './components/web/Home';
+import PhoneLoginWeb from './components/web/PhoneLogin'
+import PrivacyPolicyWeb from './components/web/PrivacyPolicy'
+import RequestServiceWeb from './components/web/RequestedServices2'
+import UpdateProfileUserWeb from './components/web/UpdateProfileUser';
+import ProfileFixerWeb from './components/web/ProfileFixer'
+import UpdateProfileFixerWeb from './components/web/UpdateProfileFixer';
+import FixerWeb from './components/web/Fixer';
+import ProfileUser2Web from './components/web/ProfileUser2';
+import GiveReviewWeb from './components/web/GiveReview';
+import Media from 'react-media'
+import Loader from './components/mobile/Loader'
+
 
 var listOfFixers = [];
 var userUID;
@@ -41,15 +48,11 @@ class App extends Component {
     }
     this.handleLoadUsers = this.handleLoadUsers.bind(this)
     this.handleDataLoad = this.handleDataLoad.bind(this)
-    this.handleCurrentUserDataLoad = this.handleCurrentUserDataLoad.bind(this)
     this.handleLoadUsers()
     // this.handleDataLoad()
-    this.handleCurrentUserDataLoad()
+
   }
-  handleCurrentUserDataLoad = () => {
-    var fixerUserProfile = jsonData['Users']['gHayewR0vKPEcmFIMuaoboYeBGZ2']
-    localStorage.setItem('currentUserData', JSON.stringify(fixerUserProfile))
-  }
+
 
   handleDataLoad = () => {
     JobsSnapshot = jsonData['Fixers'];
@@ -117,26 +120,34 @@ class App extends Component {
           <Media query="(max-width:480px)"
             render={() =>
               < Router history={browserHistory} >
-                <Route path="/" component={Home} />
-                <Route path="/categories" component={Categories} />
-                <Route path="/privacypolicy" component={PrivacyPolicy} />
-                <Route path="/updateprofile" component={UpdateProfile} />
-                <Route path="/messages" component={Messages} />
-                <Route path='/profile' component={Profile} />
-                <Route path='/phonelogin' component={PhoneLogin} />
-                <Route path='/messagesmobile' component={MessagesMobile} />
-                <Route path='/chathistorymobile' component={ChatHistoryMobile} />
-                <Route path='/requestservice' component={RequestService} />
-                <Route path='/user/profile' component={ProfileUser2} />
-                <Route path='/user/updateprofile' component={UpdateProfileUser} />
-                <Route path='/fixer/profile' component={ProfileFixer} />
-                <Route path='/fixer/updateprofile' component={UpdateProfileFixer} />
-                <Route path='/fixer' component={Fixer} />
-                <Route path='/givereview' component={GiveReview} />
+                <Route path="/" component={HomeMobile} />
+                <Route path="/categories" component={CategoriesMobile} />
+                <Route path="/privacypolicy" component={PrivacyPolicyMobile} />
+                <Route path='/phonelogin' component={PhoneLoginMobile} />
+                <Route path='/requestservice' component={RequestServiceMobile} />
+                <Route path='/user/profile' component={ProfileUser2Mobile} />
+                <Route path='/user/updateprofile' component={UpdateProfileUserMobile} />
+                <Route path='/fixer/profile' component={ProfileFixerMobile} />
+                <Route path='/fixer/updateprofile' component={UpdateProfileFixerMobile} />
+                <Route path='/fixer' component={FixerMobile} />
+                <Route path='/givereview' component={GiveReviewMobile} />
               </Router >
             } />
           <Media query="(min-width:481px)"
-            render={() => <LargeDevice />
+            render={() =>
+              < Router history={browserHistory} >
+                <Route path="/" component={HomeWeb} />
+                <Route path="/categories" component={CategoriesWeb} />
+                <Route path="/privacypolicy" component={PrivacyPolicyWeb} />
+                <Route path='/phonelogin' component={PhoneLoginWeb} />
+                <Route path='/requestservice' component={RequestServiceWeb} />
+                <Route path='/user/profile' component={ProfileUser2Web} />
+                <Route path='/user/updateprofile' component={UpdateProfileUserWeb} />
+                <Route path='/fixer/profile' component={ProfileFixerWeb} />
+                <Route path='/fixer/updateprofile' component={UpdateProfileFixerWeb} />
+                <Route path='/fixer' component={FixerWeb} />
+                <Route path='/givereview' component={GiveReviewWeb} />
+              </Router >
             } />
         </div>
       );
