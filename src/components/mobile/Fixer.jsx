@@ -69,7 +69,7 @@ class Fixer extends React.Component {
                                         <p style={textStyle}>{`Profession: ${fixerProfile.profession}`}</p>
                                         <p style={textStyle}>{`Serviceable Area: ${fixerProfile.location}`}</p>
                                         {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
-                                        {(userUID === 'null') ? (<div><p style={textStyle}>{(fixerProfile.phoneNumber) ? `Phone Number: ${fixerProfile.phoneNumber}` : null}
+                                        {(userUID !== 'null') ? (<div><p style={textStyle}>{(fixerProfile.phoneNumber) ? `Phone Number: ${fixerProfile.phoneNumber}` : null}
                                         </p>
                                             <p style={textStyle}> {(fixerProfile.email) ? `Email: ${fixerProfile.email}` : null}
                                             </p>

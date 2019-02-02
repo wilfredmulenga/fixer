@@ -73,33 +73,33 @@ class PhoneLogin extends React.Component {
                 <Navbar showButton={false} />
                 {
                     //if user is logged in and the press login button it shows sign out dialog
-                    ((userUID !== 'null')||(userUID !== null)) ?
+                    (userUID === 'null') ?
 
-                    (<div className='mt-5 text-center'>
+                        (<div className='mt-5 text-center'>
                             <h1 className='greenText' style={{ marginBottom: 50 }}>Welcome to Fixer</h1>
                             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={Firebase.auth()} />
 
                         </div>)
-                       
+
                         :
                         //else it shows sign in dialog
                         (<div className='mt-5' >
-                        <div style={{ marginTop: 50, textAlign: 'center' }}>{
-                            <div>
-                                <h1 className='greenText'> Sign Out of Fixer? </h1>
-                                <div className='row justify-content-center' style={{ textAlign: 'center' }}>
-                                    <Button className='mt-5 mr-5' variant='contained' color='secondary'
-                                        onClick={this.handleSignOut}>Yes</Button>
-                                    <Button className='mt-5 ml-5' variant='contained' color='primary'
-                                        onClick={() => browserHistory.push('/')}>Not Yet</Button>
+                            <div style={{ marginTop: 50, textAlign: 'center' }}>{
+                                <div>
+                                    <h1 className='greenText'> Sign Out of Fixer? </h1>
+                                    <div className='row justify-content-center' style={{ textAlign: 'center' }}>
+                                        <Button className='mt-5 mr-5' variant='contained' color='secondary'
+                                            onClick={this.handleSignOut}>Yes</Button>
+                                        <Button className='mt-5 ml-5' variant='contained' color='primary'
+                                            onClick={() => browserHistory.push('/')}>Not Yet</Button>
+                                    </div>
                                 </div>
+
+
+
+                            }
                             </div>
-
-
-
-                        }
-                        </div>
-                    </div>)
+                        </div>)
 
                 }
 
