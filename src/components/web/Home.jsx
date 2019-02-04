@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import How from './HowItWorks';
 import JobsCarousel from './JobsCarousel';
 import Button from '@material-ui/core/Button';
+import BecomeAFixer from './BecomeAFixer';
 
 
 
@@ -85,6 +86,7 @@ class Home extends React.Component {
             <JobsCarousel />
 
             <How />
+            <BecomeAFixer />
             {/* Buttons*/}
             {/*Type of Fixers*/}
             {/* <TypeOfFixers /> */}

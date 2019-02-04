@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 
 
 var userUID = localStorage.getItem('userUID')
-console.log('navbar', userUID)
 Modal.setAppElement('#root');
 class Navbar extends React.Component {
   constructor(props) {
@@ -26,7 +25,6 @@ class Navbar extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    console.log('userUID', typeof userUID, userUID)
   }
   handleSubmit = () => {
     if ((this.state.fullName !== '') && (this.state.profession !== '') &&

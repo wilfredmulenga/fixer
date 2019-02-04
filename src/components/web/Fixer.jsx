@@ -22,10 +22,11 @@ class Fixer extends React.Component {
             loginPrompt: false
         }
         this.handleServiceRequest = this.handleServiceRequest.bind(this);
+        this.handleHire = this.handleHire.bind(this)
     }
 
-    componentDidMount() {
-
+    handleHire = ()=>{
+        
     }
 
     handleServiceRequest = () => {
@@ -69,13 +70,22 @@ class Fixer extends React.Component {
                                         <p style={textStyle}>{`Profession: ${fixerProfile.profession}`}</p>
                                         <p style={textStyle}>{`Serviceable Area: ${fixerProfile.location}`}</p>
                                         {/* <p style={{ marginTop: 0, marginBottom: 0 }}>{(fixerProfile.rating) ? `${fixerProfile.rating} Stars` : `0 Stars`}</p> */}
-                                        {(userUID !== 'null') ? (<div><p style={textStyle}>{(fixerProfile.phoneNumber) ? `Phone Number: ${fixerProfile.phoneNumber}` : null}
-                                        </p>
-                                            <p style={textStyle}> {(fixerProfile.email) ? `Email: ${fixerProfile.email}` : null}
-                                            </p>
-                                            <a style={textStyle} href={(fixerProfile.websit !== null) ? fixerProfile.website : null}> {(fixerProfile.website) ? `Website: ${fixerProfile.website}` : null}
-                                            </a>
-                                        </div>) :
+                                        {(userUID !== 'null') ?
+                                            <Button
+                                                className="btn mt-2 mb-1"
+                                                type="button"
+                                                variant='contained'
+                                                style={{ backgroundColor: '#FFF', color: '#000' }}
+                                                onClick={() => this.handleHire}
+                                            >HIRE</Button>
+                                            // (<div><p style={textStyle}>{(fixerProfile.phoneNumber) ? `Phone Number: ${fixerProfile.phoneNumber}` : null}
+                                            // </p>
+                                            //     <p style={textStyle}> {(fixerProfile.email) ? `Email: ${fixerProfile.email}` : null}
+                                            //     </p>
+                                            //     <a style={textStyle} href={(fixerProfile.websit !== null) ? fixerProfile.website : null}> {(fixerProfile.website) ? `Website: ${fixerProfile.website}` : null}
+                                            //     </a>
+                                            // </div>) 
+                                            :
                                             <Button
                                                 className="btn mt-2 mb-1"
                                                 type="button"

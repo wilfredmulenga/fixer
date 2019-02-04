@@ -1,4 +1,5 @@
 $blue-theme-color :  #0dbab1;
+$lightBlue-theme-color : #6eb6af;
 $body-font : 'Lato, sans-serif';
 .custom-toggler.navbar-toggler {
   border-color: $blue-theme-color;
@@ -18,6 +19,10 @@ a:hover{
 
 .whiteBackground {
   background-color: #fff;
+}
+
+.greenBorder {
+  border: 1px $lightBlue-theme-color solid;
 }
 
 .greyBackground {
