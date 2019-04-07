@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
-import facebookIcon from '../../images/icons8-facebook-32.png'
-import twitterIcon from '../../images/icons8-twitter-32.png'
+import facebookIcon from '../images/icons8-facebook-32.png'
+import twitterIcon from '../images/icons8-twitter-32.png'
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import { withStyles } from '@material-ui/core/styles';

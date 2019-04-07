@@ -3,8 +3,8 @@ import Navbar from './Navbar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import placeholderPic from '../../images/profile_placeholder.png';
-import Firebase from '../../config/firebase';
+import placeholderPic from '../images/profile_placeholder.png';
+import Firebase from '../config/firebase';
 import WhiteLoader from './WhiteLoader';
 import TextField from '@material-ui/core/TextField';
 

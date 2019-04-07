@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import Firebase from '../../config/firebase';
+import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
 import Button from '@material-ui/core/Button';
 import Navbar from './Navbar'

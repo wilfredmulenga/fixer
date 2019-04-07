@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import Navbar from './Navbar';
 import { browserHistory } from 'react-router';
 import Chip from '@material-ui/core/Chip';
-import greybackground from '../../images/greybackground.jpeg';
-import Firebase from '../../config/firebase';
+import greybackground from '../images/greybackground.jpeg';
+import Firebase from '../config/firebase';
 import Snackbar from '@material-ui/core/Snackbar';
 
 let userData
@@ -275,7 +275,7 @@ class UpdateProfileFixer extends Component {
         })
     }
     // handle input change except for those that need images
-    // we can use a switch statement here 
+    // we can use a switch statement here
 
     handleChangeInput = ({ target: { value, placeholder } }) => {
         switch (placeholder) {

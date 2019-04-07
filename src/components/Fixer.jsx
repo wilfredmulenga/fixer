@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Button from '@material-ui/core/Button';
 import SwipeableTextMobileStepper from './SwipeableTextMobileStepper';
 import FixerReviews from './FixerReviews';
-import Firebase from '../../config/firebase';
+import Firebase from '../config/firebase';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { browserHistory } from 'react-router';
@@ -25,8 +25,8 @@ class Fixer extends React.Component {
         this.handleHire = this.handleHire.bind(this)
     }
 
-    handleHire = ()=>{
-        
+    handleHire = () => {
+
     }
 
     handleServiceRequest = () => {
@@ -84,7 +84,7 @@ class Fixer extends React.Component {
                                             //     </p>
                                             //     <a style={textStyle} href={(fixerProfile.websit !== null) ? fixerProfile.website : null}> {(fixerProfile.website) ? `Website: ${fixerProfile.website}` : null}
                                             //     </a>
-                                            // </div>) 
+                                            // </div>)
                                             :
                                             <Button
                                                 className="btn mt-2 mb-1"

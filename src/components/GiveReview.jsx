@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import Navbar from './Navbar';
 import Button from '@material-ui/core/Button';
 import Rating from './Rating';
-import Firebase from '../../config/firebase';
+import Firebase from '../config/firebase';
 import { browserHistory } from 'react-router';
-import placeholderPic from '../../images/profile_placeholder.png'
+import placeholderPic from '../images/profile_placeholder.png'
 import TextField from '@material-ui/core/TextField';
 
 Modal.setAppElement('#root');
@@ -33,7 +33,7 @@ class GiveReview extends React.Component {
         let currentDate = date.getDate()
         let currentMonth = date.getMonth()
         let currentYear = date.getFullYear()
-        //creates a review 
+        //creates a review
         Firebase.database()
             .ref(`Fixers/${this.state.fixerUID}/reviews`)
             .push({

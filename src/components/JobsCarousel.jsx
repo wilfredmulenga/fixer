@@ -1,7 +1,7 @@
 import React from 'react';
-import CarpenterImage from '../../images/carpenter.jpeg'
-import ElectricianImage from '../../images/electrical.jpg';
-import CleaningImage from '../../images/cleaning.jpg';
+import CarpenterImage from '../images/carpenter.jpeg'
+import ElectricianImage from '../images/electrical.jpg';
+import CleaningImage from '../images/cleaning.jpg';
 
 export default function JobsCarousel() {
     return (

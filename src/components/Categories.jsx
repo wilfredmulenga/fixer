@@ -4,8 +4,8 @@ import Navbar from './Navbar';
 import { browserHistory } from 'react-router';
 import WhiteLoader from './WhiteLoader';
 import Snackbar from '@material-ui/core/Snackbar'
-import starFilled from '../../images/icons8-star-filled-7.png';
-import starOutlined from '../../images/icons8-star-7.png';
+import starFilled from '../images/icons8-star-filled-7.png';
+import starOutlined from '../images/icons8-star-7.png';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 

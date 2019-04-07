@@ -1,5 +1,5 @@
 import React from 'react';
-import Firebase from '../../config/firebase';
+import Firebase from '../config/firebase';
 import Modal from 'react-modal';
 import Button from '@material-ui/core/Button';
 import Media from "react-media";

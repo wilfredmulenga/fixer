@@ -1,8 +1,8 @@
 import React from 'react';
-import starFilled from '../../images/icons8-star-filled-7.png';
-import starOutlined from '../../images/icons8-star-7.png';
-import Firebase from '../../config/firebase';
-import profile_placeholder from '../../images/profile_placeholder.png';
+import starFilled from '../images/icons8-star-filled-7.png';
+import starOutlined from '../images/icons8-star-7.png';
+import Firebase from '../config/firebase';
+import profile_placeholder from '../images/profile_placeholder.png';
 import Loader from './Loader';
 
 

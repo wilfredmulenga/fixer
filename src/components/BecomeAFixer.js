@@ -1,5 +1,5 @@
 import React from 'react';
-import ShakingHands from '../../images/shaking-hands.jpeg';
+import ShakingHands from '../images/shaking-hands.jpeg';
 import Button from '@material-ui/core/Button';
 import Modal from 'react-modal';
 import TextField from '@material-ui/core/TextField';

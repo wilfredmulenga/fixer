@@ -1,7 +1,7 @@
 import React from 'react';
-import workingIcon from '../../images/icons8-work-light-100.png'
-import handIcon from '../../images/icons8-handshake-100.png'
-import workerIcon from '../../images/icons8-workers-100.png'
+import workingIcon from '../images/icons8-work-light-100.png'
+import handIcon from '../images/icons8-handshake-100.png'
+import workerIcon from '../images/icons8-workers-100.png'
 
 export default function HowItWorks() {
     return (

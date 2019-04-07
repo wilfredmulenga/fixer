@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import { browserHistory } from 'react-router';
-import Firebase from '../../config/firebase';
+import Firebase from '../config/firebase';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
